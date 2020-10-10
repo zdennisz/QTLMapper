@@ -18,8 +18,9 @@ namespace QTLbyRegression
         public Form1()
         {
             InitializeComponent();
+            SetupUI();
             //set the format of the dates
-            setDateTimeFormat();
+            SetDateTimeFormat();
         }
 
         private void btnSimulateData_Click(object sender, EventArgs e)
@@ -75,11 +76,31 @@ namespace QTLbyRegression
             //Step 3 - Generate Table of traits
             generateTableOfTraits(dateTime);
 
+
+            GenerateOkMessageBox("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Information");
+
         }
 
+        private void GenerateOkMessageBox(string message,string caption)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+            
+            result = MessageBox.Show(message, caption, buttons,MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+          
+            }
+        }
+        private void SetupUI()
+        {
+            //Set the background color 
+            this.BackColor = Color.FromArgb(239, 252, 255);
+          
+        
+        }
 
-
-        private void setDateTimeFormat()
+        private void SetDateTimeFormat()
         {
             CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             culture.DateTimeFormat.ShortDatePattern = "dd_MM_yyyy H_mm_ss";
@@ -128,5 +149,7 @@ namespace QTLbyRegression
                 //    writer.WriteLine(line);
             }
         }
+
+       
     }
 }

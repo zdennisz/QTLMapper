@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,12 +18,17 @@ namespace QTLbyRegression
         public Form1()
         {
             InitializeComponent();
+            //set the format of the dates
+            setDateTimeFormat();
         }
 
         private void btnSimulateData_Click(object sender, EventArgs e)
         {
 
             // Create 3 output files
+
+            //Get current date and generate the files under the same time 
+            DateTime dateTime = DateTime.Now;
 
             /*  1.table of genotypes: 
                  -tab delimited
@@ -60,22 +67,31 @@ namespace QTLbyRegression
             */
 
             //Step 1 - Table of Geneotypes
-            generateTableOfGenotypes();
+            generateTableOfGenotypes(dateTime);
 
             //Step 2 - Generate genetic map
-            generateGeneticMap();
+            generateGeneticMap(dateTime);
 
             //Step 3 - Generate Table of traits
-            generateTableOfTraits();
+            generateTableOfTraits(dateTime);
 
         }
 
-        private void generateTableOfGenotypes()
+
+
+        private void setDateTimeFormat()
+        {
+            CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            culture.DateTimeFormat.ShortDatePattern = "dd_MM_yyyy H_mm_ss";
+            culture.DateTimeFormat.LongTimePattern = "";
+            Thread.CurrentThread.CurrentCulture = culture;
+        }
+        private void generateTableOfGenotypes(DateTime dateTime)
         {
             var delimiter = "\t";
-            
+           
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filePath = filePath + "\\Genotype.CSV";
+            filePath = filePath + "\\Genotype_"+ dateTime.ToString() + ".CSV";
 
             using (var writer = new StreamWriter(filePath))
             {
@@ -84,12 +100,12 @@ namespace QTLbyRegression
             }
         }
 
-        private void generateGeneticMap()
+        private void generateGeneticMap(DateTime dateTime)
         {
             var delimiter = "\t";
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filePath = filePath + "\\GeneticMap.CSV";
+            filePath = filePath + "\\GeneticMap_" + dateTime.ToString() + ".CSV";
 
             using (var writer = new StreamWriter(filePath))
             {
@@ -99,12 +115,12 @@ namespace QTLbyRegression
         }
 
 
-        private void generateTableOfTraits()
+        private void generateTableOfTraits(DateTime dateTime)
         {
             var delimiter = "\t";
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filePath = filePath + "\\TraitTable.CSV";
+            filePath = filePath + "\\TraitTable_" + dateTime.ToString() + ".CSV";
 
             using (var writer = new StreamWriter(filePath))
             {

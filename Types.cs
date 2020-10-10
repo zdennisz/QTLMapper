@@ -19,6 +19,17 @@ namespace QTLProject
           Codominant=2
         }
 
+        //0   - Allele 1 is recessive
+        //1   - Allele 1 is dominant
+        //0.5 - Allele 1 is codominant
+        public struct AdditiveEffect_h 
+        {
+            public const double Recessive = 0;
+            public const double Codominant = 0.5;
+            public const double Dominant = 1;
+
+        }
+
         /// <summary>
         /// Gender : 0 - Female, 1 - Male
         /// </summary>

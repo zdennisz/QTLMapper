@@ -16,5 +16,18 @@ namespace QTLbyRegression
         {
             InitializeComponent();
         }
+
+        private void btnSimulateData_Click(object sender, EventArgs e)
+        {
+            // Create 3 output files
+
+            //1 table of genotypes
+
+
+            //2 genetic map
+
+
+            //3 table of traits
+        }
     }
 }

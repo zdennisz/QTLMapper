@@ -8,6 +8,6 @@ namespace QTLProject
     {
         public Chromosome Chromosome { get; set; }
         public double PositionChrGenetic { get; set; }//coordinate in cM
-        public double PositionChrPhys { get; set; }//coordinate in bp (Not important for this project)
+       // public double PositionChrPhys { get; set; }//coordinate in bp (Not important for this project)
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,18 +72,45 @@ namespace QTLbyRegression
 
         private void generateTableOfGenotypes()
         {
+            var delimiter = "\t";
+            
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            filePath = filePath + "\\Genotype.CSV";
 
+            using (var writer = new StreamWriter(filePath))
+            {
+            //    var line = string.Join(delimiter, itemContent);
+            //    writer.WriteLine(line);
+            }
         }
 
         private void generateGeneticMap()
         {
+            var delimiter = "\t";
 
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            filePath = filePath + "\\GeneticMap.CSV";
+
+            using (var writer = new StreamWriter(filePath))
+            {
+                //    var line = string.Join(delimiter, itemContent);
+                //    writer.WriteLine(line);
+            }
         }
 
 
         private void generateTableOfTraits()
         {
+            var delimiter = "\t";
 
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            filePath = filePath + "\\TraitTable.CSV";
+
+            using (var writer = new StreamWriter(filePath))
+            {
+                //    var line = string.Join(delimiter, itemContent);
+                //    writer.WriteLine(line);
+            }
         }
     }
 }

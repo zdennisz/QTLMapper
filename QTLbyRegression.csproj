@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chromosome.cs" />
+    <Compile Include="DataGeneratorController.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="SelectedData_Model.cs" />
     <Compile Include="DataIndividualsAndTraits.cs" />

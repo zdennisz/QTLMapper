@@ -38,5 +38,20 @@ namespace QTLProject
             Female=0,
             Male=1
         }
+        /// <summary>
+        ///MappingFunctionIndex  0=Haldane (independent recombinations), 1=Kossambi
+        /// </summary>
+        public enum MappingIndex
+        {
+            Haldane = 0,
+            Kossambi=1
+        }
+
+        public enum OrganismType
+        {
+            Drosophila=1,
+            PseudoWheat=2,
+        }
+         
     }
-}
+    }

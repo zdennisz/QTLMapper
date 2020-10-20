@@ -9,6 +9,7 @@ namespace QTLProject
 {
     public class DataGeneratorController
     {
+        #region Fields
         public GenomeOrganization go = null;
         
         private int nChr;
@@ -16,12 +17,15 @@ namespace QTLProject
         public Individ mother;
         public Individ father;
         public Individ offSpring;
+        public Population pop;
 
+        #endregion Fields
         /*Notes - 
          * DefineChromosomeLength - Should be run first to define the length since the next method assumes that the length was already defined (DefineChromosomePositions).
          * 
          */
 
+        #region Constructor
         public DataGeneratorController(int _nChr, OrganismType _type)
         {
             go = new GenomeOrganization();
@@ -29,7 +33,9 @@ namespace QTLProject
             type = _type;
            
         }
-        
+        #endregion Constructor
+
+        #region Public Methods
         /// <summary>
         /// This is  method defines the location of the loci on the chromosome
         /// </summary>
@@ -220,23 +226,57 @@ namespace QTLProject
             hapl.a1=offSpring.Haplotype1[ILocus];
             return hapl;
         }
-        private GenomeOrganization genereateDrosophila(GenomeOrganization go,int nChr)
+
+
+        public void SimulateRecombination(int amountOfIndivids)
+        {
+            //create population of  200 children -individulas
+            pop = new Population();
+            for(int i = 0; i < amountOfIndivids; i++)
+            {
+                //the same parents
+                Individ offSpring = new Individ();
+                offSpring.Parent0 = mother;
+                offSpring.Parent1 = father;
+                pop.Individ.Add(offSpring);
+            }
+
+
+            //calculate recombination pathways
+            //FusionSimple()
+            //gameta_get()
+        }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private void FusionSimple()
+        {
+
+        }
+
+        private void gameta_get()
+        {
+
+        }
+        private GenomeOrganization genereateDrosophila(GenomeOrganization go, int nChr)
         {
             double coef = 1;
             int drosophilaConst1 = 75, drosophilaConst2 = 107, drosophilaConst3 = 110;
             Chromosome ch = new Chromosome
             {
-                Id=0,
+                Id = 0,
                 LenGenetcM = drosophilaConst1 * coef,
-                BRecInFemales=true,
-                BGender=true
+                BRecInFemales = true,
+                BGender = true
             };
 
             go.Chromosome.Add(ch);
 
             Chromosome ch1 = new Chromosome
             {
-                Id=1,
+                Id = 1,
                 LenGenetcM = drosophilaConst2 * coef,
                 BRecInFemales = true,
                 BGender = true
@@ -246,7 +286,7 @@ namespace QTLProject
 
             Chromosome ch2 = new Chromosome
             {
-                Id=3,
+                Id = 3,
                 LenGenetcM = drosophilaConst3 * coef,
                 BRecInFemales = true,
                 BGender = true
@@ -254,30 +294,20 @@ namespace QTLProject
 
             go.Chromosome.Add(ch2);
 
-            
+
 
             return go;
         }
 
 
-        private GenomeOrganization generatePseudoWheat(GenomeOrganization go,int nChr)
+        private GenomeOrganization generatePseudoWheat(GenomeOrganization go, int nChr)
         {
-          
-            
-            
+
+
+
             return go;
         }
-
-        public void DefineParentalHalotypes()
-        {
-
-        }
-
-        public void SimulateRecombination()
-        {
-
-        }
-
+        #endregion Private Methods
     }
 
 }

@@ -52,6 +52,18 @@ namespace QTLProject
             Drosophila=1,
             PseudoWheat=2,
         }
+
+        public enum RecombinationType
+        {
+            Backcross=0,
+            BackcrossWithNoise=1
+        }
+
+        public struct IndividualHapl
+        {
+         public int a0;
+         public int a1;
+        }
          
     }
     }

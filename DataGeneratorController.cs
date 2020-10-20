@@ -13,6 +13,9 @@ namespace QTLProject
         
         private int nChr;
         private OrganismType type;
+        public Individ mother;
+        public Individ father;
+        public Individ offSpring;
 
         /*Notes - 
          * DefineChromosomeLength - Should be run first to define the length since the next method assumes that the length was already defined (DefineChromosomePositions).
@@ -140,8 +143,83 @@ namespace QTLProject
             
 
         }
+        /// <summary>
+        /// Defines the parental haplotypes according to the recombination type
+        /// </summary>
+        /// <param name="recType"></param>
+        public void DefineParentalHaplotypes(RecombinationType recType)
+        {
 
+             mother = new Individ();
+             father = new Individ();
+             Random s_Random = new Random();
+            switch (recType)
+            {
+                case RecombinationType.Backcross:
+                  for(int i = 0; i < mother.Haplotype0.Length; i++)
+                    {
+                        mother.Haplotype0[i] = 0;
+                    }
+                    for (int i = 0; i < father.Haplotype0.Length; i++)
+                    {
+                        father.Haplotype0[i] = 1;
+                    }
+                    break;
 
+                case RecombinationType.BackcrossWithNoise:
+                    for (int i = 0; i < mother.Haplotype0.Length; i++)
+                    {
+                        int perCent = s_Random.Next(0, 100);
+                        if (perCent < 20)
+                        {
+                            mother.Haplotype0[i] = 1;
+                        }
+                        else
+                        {
+                            mother.Haplotype0[i] = 0;
+                        }
+                       
+                    }
+                    for (int i = 0; i < father.Haplotype0.Length; i++)
+                    {
+                        int perCent = s_Random.Next(0, 100);
+                        if (perCent < 20)
+                        {
+                            mother.Haplotype0[i] = 0;
+                        }
+                        else
+                        {
+                            mother.Haplotype0[i] = 1;
+                        }
+                    }
+                    break;
+            }
+          
+        }
+
+        /// <summary>
+        /// Set the Offsprings haplotypes  in a certain locus index
+        /// </summary>
+        /// <param name="a0"></param>
+        /// <param name="a1"></param>
+        /// <param name="ILocus"></param>
+        public void GenotypeLocusSet(int a0,int a1,long ILocus)
+        {
+            offSpring.Haplotype0[ILocus] = a0;
+            offSpring.Haplotype1[ILocus] = a1;
+        }
+        /// <summary>
+        /// Get the offspring halpotypes according to Locus index
+        /// </summary>
+        /// <param name="ILocus"></param>
+        /// <returns></returns>
+        public IndividualHapl GenotypeLocusGSet(long ILocus)
+        {
+            IndividualHapl hapl = new IndividualHapl();
+            hapl.a0=offSpring.Haplotype0[ILocus];
+            hapl.a1=offSpring.Haplotype1[ILocus];
+            return hapl;
+        }
         private GenomeOrganization genereateDrosophila(GenomeOrganization go,int nChr)
         {
             double coef = 1;

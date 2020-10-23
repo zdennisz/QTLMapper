@@ -284,6 +284,45 @@ namespace QTLProject
         }
 
 
+        public void DefineQTL()
+        {
+            /*
+             Calculate the children (population) traits and children qtl genotypes
+              according to the position on the map the effects and parents alleles.
+                 positions on map:
+                 QTL1:  Chromosome 1, x=30 cM
+                 QTL2:  Chromosome 1, x=70 cM
+                 QTL3:  Chromosome 3, x=40 cM
+                 effect on trait: Example: single trait:
+                 QTL1: d=1, h=1
+                 QTL2: d=0.8, h=1
+                 QTL3: d=0.4, h=1
+                 sigma^2=1 
+
+             In simple case, QTL genotypes of parents are
+             QTL                mother     father
+             haplotype        h0   h1    h0   h1
+             QTL1                0    1       1     1
+             QTL2                0    1       1     1
+             QTL3                0    1       1     1
+
+             QTL genotypes of children are defined based on the same position of recombination events (analogiously to genotypes of markers)
+             Children traits are random values with normal distribution with average T and variance sigma^2, where T is defined by genotypes in QTL loci. 
+             Example:
+             T(father)=2*d1+2*d2+2*d3=2*1+2*0.8+2*0.4
+             T(mother)=h1*d1+h2*d2+h3*d3=1*1+1*0.8+1*0.4
+             */
+
+            for (int i = 0; i < pop.Individ.Count; i++)
+            {
+
+
+
+
+            }
+
+        }
+
         #endregion Public Methods
 
         #region Private Methods

@@ -24,7 +24,7 @@ namespace QTLProject
          * DefineChromosomeLength - Should be run first to define the length since the next method assumes that the length was already defined (DefineChromosomePositions).
          * 
          */
-
+         //My First Commit
         #region Constructor
         /// <summary>
         /// The default nChr is 3 and the organism type is drosophila

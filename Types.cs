@@ -59,11 +59,7 @@ namespace QTLProject
             BackcrossWithNoise=1
         }
 
-        public struct IndividualHapl
-        {
-         public int a0;
-         public int a1;
-        }
+
          
     }
     }

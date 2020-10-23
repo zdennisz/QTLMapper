@@ -11,7 +11,7 @@ namespace QTLProject
     {
         #region Fields
         public GenomeOrganization go = null;
-        
+
         private int nChr;
         private OrganismType type;
         public Individ mother;
@@ -26,117 +26,67 @@ namespace QTLProject
          */
 
         #region Constructor
-        public DataGeneratorController(int _nChr, OrganismType _type)
+        /// <summary>
+        /// The default nChr is 3 and the organism type is drosophila
+        /// </summary>
+        /// <param name="_nChr"></param>
+        /// <param name="_type"></param>
+        public DataGeneratorController(int _nChr = 3, OrganismType _type = OrganismType.Drosophila)
         {
             go = new GenomeOrganization();
             nChr = _nChr;
             type = _type;
-           
+
         }
         #endregion Constructor
 
         #region Public Methods
-        /// <summary>
-        /// This is  method defines the location of the loci on the chromosome
-        /// </summary>
-        /// <param name="dBetweenMarkers_set"></param>
-        /// <param name="nMarkersGrouped"></param>
-        /// <param name="dMarkersGrouped"></param>
-        /// <param name="indexAnimal"></param>
-        public void DefineChromosomePositions(double dBetweenMarkers_set ,long nMarkersGrouped , double dMarkersGrouped , int indexAnimal )
+
+        public void DefineChromosomePositions(double dBetweenMarkers=0.5, long nOnChr=11)
         {
-            int index=1;
+            //go over all chromosome and define the position according to each marker dBetweenMarkers=0.5 . ex: 0 , 0.5, 1.5 ...
+            //each chromosome begin at 0 cm the position of loci
 
-            double coorPrev=0.0, d, coorStartOnCurrentChr=0.0, dBetweenMarkers = 2.0;
-            long j, nMarkersMax, nOnChr=11;
+            for (int i = 0; i < nChr; i++)
+            {
 
-            if (dBetweenMarkers_set > 0)
-            {
-                //distance between markers
-                dBetweenMarkers = dBetweenMarkers_set;
-            }
-
-            if (index == 0)
-            {
-                //amount of markers
-                nMarkersMax = nChr * nOnChr;
-            }
-            else
-            {
-                //amount of markers
-                nMarkersMax = nChr * (int)(500 / dBetweenMarkers);
-            }
-
-            for(int i = 0; i < nChr; i++)
-            {
-                if (index == 0)
-                {
-                    d = go.Chromosome[i].LenGenetcM / (nOnChr - 1);
-                }
-                else
-                {
-                    d = dBetweenMarkers;
-                    nOnChr=(int)(go.Chromosome[i].LenGenetcM/d)+1;
-                }
-                //Line 195 is this correct
-                if (go.Chromosome[i].Id > 1)
-                {
-                    coorPrev = coorPrev + 1000 - d;
-                }
-                else
-                {
-                    coorPrev = -d;
-                }
-                for (j = 0; j < nOnChr; j++)
+                for (int j = 0; j < nOnChr; j++)
                 {
 
                     Locus loci = new Locus();
                     //default location
-                    loci.Position.Chromosome = go.Chromosome[i];
-                    loci.Position.PositionChrGenetic = coorPrev + d;
-
-                    if(j>1 && j<= dMarkersGrouped)
+                    if (j == 0)
                     {
-                        loci.Position.PositionChrGenetic = coorPrev + dMarkersGrouped;
+                        loci.Position.PositionChrGenetic = 0;
                     }
-                    if (j == 1)
+                    else
                     {
-                        coorStartOnCurrentChr = loci.Position.PositionChrGenetic;
+                        loci.Position.PositionChrGenetic = loci.Position.PositionChrGenetic+ dBetweenMarkers;
                     }
-                    if (j == nOnChr)
-                    {
-                        loci.Position.PositionChrGenetic = coorStartOnCurrentChr + go.Chromosome[i].LenGenetcM;
-                    }
-                    //Line 215 not clear
-                    // go.Chromosome[i]loci.Position.PositionChrGenetic - coorStartOnCurrentChr;
+                  
 
                     loci.Name = "loc_" + j;
                     loci.Id = i;
-                    coorPrev = loci.Position.PositionChrGenetic;
-
+                    
                     go.Chromosome[i].Locus.Add(loci);
-                }    
-            
-            
+                }
             }
-
         }
-
         /// <summary>
         /// This method defines the length of the chromosomes
         /// </summary>
         public void DefineChromosomeLength()
         {
-            
+
             switch (type)
             {
                 case OrganismType.Drosophila:
-                    go = genereateDrosophila(go,nChr);
+                    go = genereateDrosophila(go, nChr);
                     break;
 
 
                 case OrganismType.PseudoWheat:
-                    go = generatePseudoWheat(go,nChr);
+                    go = generatePseudoWheat(go, nChr);
                     break;
 
 
@@ -146,37 +96,41 @@ namespace QTLProject
                     break;
 
             }
-            
+
 
         }
+
         /// <summary>
         /// Defines the parental haplotypes according to the recombination type
         /// </summary>
         /// <param name="recType"></param>
-        public void DefineParentalHaplotypes(RecombinationType recType)
+        public void DefineParentalHaplotypes(RecombinationType experimentDesign, double strengthOfNoise = 0.2)
         {
 
-             mother = new Individ();
-             father = new Individ();
-             Random s_Random = new Random();
-            switch (recType)
+            mother = new Individ();
+            father = new Individ();
+            Random s_Random = new Random();
+            switch (experimentDesign)
             {
                 case RecombinationType.Backcross:
-                  for(int i = 0; i < mother.Haplotype0.Length; i++)
+                    for (int i = 0; i < mother.Haplotype0.Length; i++)
                     {
                         mother.Haplotype0[i] = 0;
+                        mother.Haplotype1[i] = 1;
                     }
                     for (int i = 0; i < father.Haplotype0.Length; i++)
                     {
                         father.Haplotype0[i] = 1;
+                        father.Haplotype1[i] = 1;
                     }
                     break;
 
                 case RecombinationType.BackcrossWithNoise:
+
                     for (int i = 0; i < mother.Haplotype0.Length; i++)
                     {
-                        int perCent = s_Random.Next(0, 100);
-                        if (perCent < 20)
+
+                        if (s_Random.NextDouble() < strengthOfNoise)
                         {
                             mother.Haplotype0[i] = 1;
                         }
@@ -184,82 +138,179 @@ namespace QTLProject
                         {
                             mother.Haplotype0[i] = 0;
                         }
-                       
+
+                        if (s_Random.NextDouble() < strengthOfNoise)
+                        {
+                            mother.Haplotype1[i] = 0;
+                        }
+                        else
+                        {
+                            mother.Haplotype1[i] = 1;
+                        }
+
                     }
                     for (int i = 0; i < father.Haplotype0.Length; i++)
                     {
-                        int perCent = s_Random.Next(0, 100);
-                        if (perCent < 20)
+                        if (s_Random.NextDouble() < strengthOfNoise)
                         {
-                            mother.Haplotype0[i] = 0;
+                            father.Haplotype0[i] = 0;
                         }
                         else
                         {
-                            mother.Haplotype0[i] = 1;
+                            father.Haplotype0[i] = 1;
                         }
+                        if (s_Random.NextDouble() < strengthOfNoise)
+                        {
+                            father.Haplotype1[i] = 0;
+                        }
+                        else
+                        {
+                            father.Haplotype1[i] = 1;
+                        }
+
                     }
+
+
                     break;
             }
-          
+
         }
 
         /// <summary>
-        /// Set the Offsprings haplotypes  in a certain locus index
+        /// Simulates the recombination events for the production of the children from two parents
         /// </summary>
-        /// <param name="a0"></param>
-        /// <param name="a1"></param>
-        /// <param name="ILocus"></param>
-        public void GenotypeLocusSet(int a0,int a1,long ILocus)
+        /// <param name="amountOfIndivids"></param>
+        public void SimulateRecombination(int amountOfIndivids = 200)
         {
-            offSpring.Haplotype0[ILocus] = a0;
-            offSpring.Haplotype1[ILocus] = a1;
-        }
-        /// <summary>
-        /// Get the offspring halpotypes according to Locus index
-        /// </summary>
-        /// <param name="ILocus"></param>
-        /// <returns></returns>
-        public IndividualHapl GenotypeLocusGSet(long ILocus)
-        {
-            IndividualHapl hapl = new IndividualHapl();
-            hapl.a0=offSpring.Haplotype0[ILocus];
-            hapl.a1=offSpring.Haplotype1[ILocus];
-            return hapl;
-        }
+            Random rand = new Random();
+            double p, previousPosition, currentPosition = 0.0, l, lambda = (1 / 100);
 
-
-        public void SimulateRecombination(int amountOfIndivids)
-        {
             //create population of  200 children -individulas
             pop = new Population();
-            for(int i = 0; i < amountOfIndivids; i++)
+            for (int i = 0; i < amountOfIndivids; i++)
             {
                 //the same parents
                 Individ offSpring = new Individ();
                 offSpring.Parent0 = mother;
                 offSpring.Parent1 = father;
-                pop.Individ.Add(offSpring);
+                //define recombination events positions H0 haplotyes for children
+                for (int j = 0; j < go.Chromosome.Count; j++)
+                {
+                    //genereate random number P = 0 to 1 
+                    p = rand.NextDouble();
+                    if (p < 0.5)
+                    {
+                        //begin with grandmother (copy haplotpes H0)
+                        //first recombination happens at coordinate 0
+                        offSpring.Genotype[0] = mother.Haplotype0[0];
+                    }
+                    else
+                    {
+                        //begin with grandfather(copy haplotpes H1)
+                        //first recombination happens at coordinate 0
+                        offSpring.Genotype[0] = mother.Haplotype1[0];
+                    }
+                    previousPosition = 0.0;
+
+                    while (go.Chromosome[j].LenGenetcM > currentPosition)
+                    {
+                        // l=generate random number with exponantional distribution with lambda = 1/100
+                        l = generateRandExponantionalDist(go.Chromosome[j].LenGenetcM, 0, lambda);
+                        currentPosition = previousPosition + l;
+                        Position pos = new Position();
+                        pos.PositionChrGenetic = currentPosition;
+                        offSpring.RecEventsParent0.Add(pos);
+
+                        previousPosition = currentPosition;
+                    }
+
+                    for(int h = 0; h < offSpring.RecEventsParent0.Count; h++)
+                    {
+                        offSpring.Genotype[h] = mother.Haplotype0[h];
+                    }
+
+
+                }
+                //reset all the values 
+                p = 0.0;
+                previousPosition = 0.0;
+                currentPosition = 0.0;
+                l = 0.0;
+
+                //define recombination events positions H1 haplotyes for children
+                for (int k = 0; k < go.Chromosome.Count; k++)
+                {
+                    //genereate random number P = 0 to 1 
+                    p = rand.NextDouble();
+                    if (p < 0.5)
+                    {
+                        //begin with grandmother (copy haplotpes H0)
+                        //first recombination happens at coordinate 0
+                        offSpring.Genotype[0] = father.Haplotype0[0];
+                        
+                    }
+                    else
+                    {
+                        //begin with grandfather(copy haplotpes H1)
+                        //first recombination happens at coordinate 0
+                        offSpring.Genotype[0] = father.Haplotype1[0];
+                    }
+                    previousPosition = 0.0;
+
+                    while (go.Chromosome[k].LenGenetcM > currentPosition)
+                    {
+                        // l=generate random number with exponantional distribution with lambda = 1/100
+                        l = generateRandExponantionalDist(go.Chromosome[k].LenGenetcM, 0, lambda);
+                        currentPosition = previousPosition + l;
+                        Position pos = new Position();
+                        pos.PositionChrGenetic = currentPosition;
+                        offSpring.RecEventsParent1.Add(pos);
+
+                        previousPosition = currentPosition;
+                    }
+
+                    
+
+                    for (int h = 0; h < offSpring.RecEventsParent1.Count; h++)
+                    {
+                        offSpring.Genotype[h] = father.Haplotype1[h];
+                    }
+
+                    pop.Individ.Add(offSpring);
+
+                }
+
             }
-
-
-            //calculate recombination pathways
-            //FusionSimple()
-            //gameta_get()
         }
+
 
         #endregion Public Methods
 
         #region Private Methods
-
-        private void FusionSimple()
+        /// <summary>
+        /// Generate a random value within max and min boundrys with an exponential distibution
+        /// </summary>
+        /// <param name="maxValue"></param>
+        /// <param name="minValue"></param>
+        /// <param name="lambda"></param>
+        /// <returns></returns>
+        private double generateRandExponantionalDist(double maxValue,double minValue,double lambda)
         {
+            Random rand = new Random();
+            double u,t, increment, res=0.0 ;
+            double result = maxValue;
+            do
+            {
+                 u = rand.NextDouble();
+                 t = -Math.Log(u) / lambda;
+                 increment =
+                  (maxValue - minValue) / 6.0;
+                result = minValue + (t * increment);
+            } while (result >= maxValue);
 
+            return res;
         }
 
-        private void gameta_get()
-        {
-
-        }
         private GenomeOrganization genereateDrosophila(GenomeOrganization go, int nChr)
         {
             double coef = 1;
@@ -267,9 +318,10 @@ namespace QTLProject
             Chromosome ch = new Chromosome
             {
                 Id = 0,
+                Name = "1",
                 LenGenetcM = drosophilaConst1 * coef,
                 BRecInFemales = true,
-                BGender = true
+                BGender = false
             };
 
             go.Chromosome.Add(ch);
@@ -277,19 +329,21 @@ namespace QTLProject
             Chromosome ch1 = new Chromosome
             {
                 Id = 1,
+                Name = "2",
                 LenGenetcM = drosophilaConst2 * coef,
                 BRecInFemales = true,
-                BGender = true
+                BGender = false
             };
 
             go.Chromosome.Add(ch1);
 
             Chromosome ch2 = new Chromosome
             {
-                Id = 3,
+                Id = 2,
+                Name = "3",
                 LenGenetcM = drosophilaConst3 * coef,
                 BRecInFemales = true,
-                BGender = true
+                BGender = false
             };
 
             go.Chromosome.Add(ch2);

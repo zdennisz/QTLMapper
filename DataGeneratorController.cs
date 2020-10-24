@@ -202,13 +202,13 @@ namespace QTLProject
                     {
                         //begin with grandmother (copy haplotpes H0)
                         //first recombination happens at coordinate 0
-                        offSpring.Genotype[0] = mother.Haplotype0[0];
+                        offSpring.Haplotype0[0] = mother.Haplotype0[0];
                     }
                     else
                     {
                         //begin with grandfather(copy haplotpes H1)
                         //first recombination happens at coordinate 0
-                        offSpring.Genotype[0] = mother.Haplotype1[0];
+                        offSpring.Haplotype0[0] = mother.Haplotype1[0];
                     }
                     previousPosition = 0.0;
 
@@ -218,17 +218,14 @@ namespace QTLProject
                         l = generateRandExponantionalDist(go.Chromosome[j].LenGenetcM, 0, lambda);
                         currentPosition = previousPosition + l;
                         Position pos = new Position();
+                        pos.Chromosome = go.Chromosome[j];
                         pos.PositionChrGenetic = currentPosition;
                         offSpring.RecEventsParent0.Add(pos);
 
                         previousPosition = currentPosition;
                     }
 
-                    for(int h = 0; h < offSpring.RecEventsParent0.Count; h++)
-                    {
-                        offSpring.Genotype[h] = mother.Haplotype0[h];
-                    }
-
+ 
 
                 }
                 //reset all the values 
@@ -246,14 +243,14 @@ namespace QTLProject
                     {
                         //begin with grandmother (copy haplotpes H0)
                         //first recombination happens at coordinate 0
-                        offSpring.Genotype[0] = father.Haplotype0[0];
+                        offSpring.Haplotype1[0] = father.Haplotype0[0];
                         
                     }
                     else
                     {
                         //begin with grandfather(copy haplotpes H1)
                         //first recombination happens at coordinate 0
-                        offSpring.Genotype[0] = father.Haplotype1[0];
+                        offSpring.Haplotype1[0] = father.Haplotype1[0];
                     }
                     previousPosition = 0.0;
 
@@ -263,17 +260,25 @@ namespace QTLProject
                         l = generateRandExponantionalDist(go.Chromosome[k].LenGenetcM, 0, lambda);
                         currentPosition = previousPosition + l;
                         Position pos = new Position();
+                        pos.Chromosome = go.Chromosome[k];
                         pos.PositionChrGenetic = currentPosition;
                         offSpring.RecEventsParent1.Add(pos);
 
                         previousPosition = currentPosition;
                     }
 
-                    
+                   int locationOfRecomb;
+                   for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
+                   {
+                         locationOfRecomb = (int)offSpring.RecEventsParent0[g].PositionChrGenetic;
+                        offSpring.Haplotype0[locationOfRecomb] = mother.Haplotype0[g];
+                   }
 
-                    for (int h = 0; h < offSpring.RecEventsParent1.Count; h++)
-                    {
-                        offSpring.Genotype[h] = father.Haplotype1[h];
+                    
+                   for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
+                   {
+                        locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
+                        offSpring.Haplotype1[locationOfRecomb] = father.Haplotype1[r];
                     }
 
                     pop.Individ.Add(offSpring);
@@ -315,8 +320,11 @@ namespace QTLProject
 
             for (int i = 0; i < pop.Individ.Count; i++)
             {
+                //position on map
 
+                //effect on trait
 
+                //children qtl genotypes
 
 
             }

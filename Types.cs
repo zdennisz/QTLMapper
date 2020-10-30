@@ -22,11 +22,11 @@ namespace QTLProject
         //0   - Allele 1 is recessive
         //1   - Allele 1 is dominant
         //0.5 - Allele 1 is codominant
-        public struct AdditiveEffect_h 
+        public static class AdditiveEffect_h 
         {
-            public const double Recessive = 0;
+            public const double Recessive = 0.0;
             public const double Codominant = 0.5;
-            public const double Dominant = 1;
+            public const double Dominant = 1.0;
 
         }
 

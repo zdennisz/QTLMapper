@@ -24,7 +24,7 @@ namespace QTLProject
          * DefineChromosomeLength - Should be run first to define the length since the next method assumes that the length was already defined (DefineChromosomePositions).
          * 
          */
-         //My First Commit
+        //My First Commit
         #region Constructor
         /// <summary>
         /// The default nChr is 3 and the organism type is drosophila
@@ -42,7 +42,7 @@ namespace QTLProject
 
         #region Public Methods
 
-        public void DefineChromosomePositions(double dBetweenMarkers=0.5, long nOnChr=11)
+        public void DefineChromosomePositions(double dBetweenMarkers = 0.5, long nOnChr = 11)
         {
             //go over all chromosome and define the position according to each marker dBetweenMarkers=0.5 . ex: 0 , 0.5, 1.5 ...
             //each chromosome begin at 0 cm the position of loci
@@ -61,13 +61,13 @@ namespace QTLProject
                     }
                     else
                     {
-                        loci.Position.PositionChrGenetic = loci.Position.PositionChrGenetic+ dBetweenMarkers;
+                        loci.Position.PositionChrGenetic = loci.Position.PositionChrGenetic + dBetweenMarkers;
                     }
-                  
+
 
                     loci.Name = "loc_" + j;
                     loci.Id = i;
-                    
+
                     go.Chromosome[i].Locus.Add(loci);
                 }
             }
@@ -225,7 +225,7 @@ namespace QTLProject
                         previousPosition = currentPosition;
                     }
 
- 
+
 
                 }
                 //reset all the values 
@@ -244,7 +244,7 @@ namespace QTLProject
                         //begin with grandmother (copy haplotpes H0)
                         //first recombination happens at coordinate 0
                         offSpring.Haplotype1[0] = father.Haplotype0[0];
-                        
+
                     }
                     else
                     {
@@ -267,16 +267,16 @@ namespace QTLProject
                         previousPosition = currentPosition;
                     }
 
-                   int locationOfRecomb;
-                   for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
-                   {
-                         locationOfRecomb = (int)offSpring.RecEventsParent0[g].PositionChrGenetic;
+                    int locationOfRecomb;
+                    for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
+                    {
+                        locationOfRecomb = (int)offSpring.RecEventsParent0[g].PositionChrGenetic;
                         offSpring.Haplotype0[locationOfRecomb] = mother.Haplotype0[g];
-                   }
+                    }
 
-                    
-                   for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
-                   {
+
+                    for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
+                    {
                         locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
                         offSpring.Haplotype1[locationOfRecomb] = father.Haplotype1[r];
                     }
@@ -318,15 +318,44 @@ namespace QTLProject
              T(mother)=h1*d1+h2*d2+h3*d3=1*1+1*0.8+1*0.4
              */
 
-            for (int i = 0; i < pop.Individ.Count; i++)
+            foreach (Individ offspring in pop.Individ)
             {
-                //position on map
+               
+                QTL_SingleLocusEffectOnSingleTrait effectOfQ1 = new QTL_SingleLocusEffectOnSingleTrait();
+                effectOfQ1.AdditiveEffect_d = 1;
+                effectOfQ1.AdditiveEffect_h = AdditiveEffect_h.Dominant;
 
-                //effect on trait
+                QTL_SingleLocusEffectOnSingleTrait effectOfQ2 = new QTL_SingleLocusEffectOnSingleTrait();
+                effectOfQ2.AdditiveEffect_d = 0.8;
+                effectOfQ2.AdditiveEffect_h = AdditiveEffect_h.Dominant;
 
-                //children qtl genotypes
+                QTL_SingleLocusEffectOnSingleTrait effectOfQ3 = new QTL_SingleLocusEffectOnSingleTrait();
+                effectOfQ3.AdditiveEffect_d = 0.4;
+                effectOfQ3.AdditiveEffect_h = AdditiveEffect_h.Dominant;
+
+                // 0 T(father)
+                offSpring.TraitValue[0] = (float)(2 * effectOfQ1.AdditiveEffect_d + 2 * effectOfQ2.AdditiveEffect_d + 2 * effectOfQ3.AdditiveEffect_d);
+                // 1 T(mother)
+                offSpring.TraitValue[1] = (float)(effectOfQ1.AdditiveEffect_d * effectOfQ1.AdditiveEffect_h + effectOfQ2.AdditiveEffect_d * effectOfQ2.AdditiveEffect_h + effectOfQ3.AdditiveEffect_d * effectOfQ3.AdditiveEffect_h);
 
 
+                //define the genotype of children
+                foreach(int member in offSpring.Genotype)
+                {
+                    int locationOfRecomb;
+                    for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
+                    {
+                        locationOfRecomb = (int)offSpring.RecEventsParent0[g].PositionChrGenetic;
+                        offSpring.Genotype[locationOfRecomb] = mother.Haplotype0[g];
+                    }
+
+
+                    for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
+                    {
+                        locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
+                        offSpring.Genotype[locationOfRecomb] = father.Haplotype1[r];
+                    }
+                }
             }
 
         }
@@ -341,17 +370,17 @@ namespace QTLProject
         /// <param name="minValue"></param>
         /// <param name="lambda"></param>
         /// <returns></returns>
-        private double generateRandExponantionalDist(double maxValue,double minValue,double lambda)
+        private double generateRandExponantionalDist(double maxValue, double minValue, double lambda)
         {
             Random rand = new Random();
-            double u,t, increment, res=0.0 ;
+            double u, t, increment, res = 0.0;
             double result = maxValue;
             do
             {
-                 u = rand.NextDouble();
-                 t = -Math.Log(u) / lambda;
-                 increment =
-                  (maxValue - minValue) / 6.0;
+                u = rand.NextDouble();
+                t = -Math.Log(u) / lambda;
+                increment =
+                 (maxValue - minValue) / 6.0;
                 result = minValue + (t * increment);
             } while (result >= maxValue);
 

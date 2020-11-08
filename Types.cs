@@ -59,7 +59,15 @@ namespace QTLProject
             BackcrossWithNoise=1
         }
 
+        public enum SoftwareStep
+        {
+            None = 0,
+            InputData =1,
+            CalculateData=2,
+            SimulateData=3,
+            ViewResults=4,
+            
+        }
 
-         
     }
     }

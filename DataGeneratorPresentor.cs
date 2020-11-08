@@ -7,7 +7,7 @@ using static QTLProject.Types;
 
 namespace QTLProject
 {
-    public class DataGeneratorController
+    public class DataGeneratorPresentor
     {
         #region Fields
         public GenomeOrganization go = null;
@@ -31,7 +31,7 @@ namespace QTLProject
         /// </summary>
         /// <param name="_nChr"></param>
         /// <param name="_type"></param>
-        public DataGeneratorController(int _nChr = 3, OrganismType _type = OrganismType.Drosophila)
+        public DataGeneratorPresentor(int _nChr = 3, OrganismType _type = OrganismType.Drosophila)
         {
             go = new GenomeOrganization();
             nChr = _nChr;

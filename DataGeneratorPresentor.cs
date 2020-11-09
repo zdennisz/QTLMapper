@@ -46,58 +46,45 @@ namespace QTLProject
         {
             //go over all chromosome and define the position according to each marker dBetweenMarkers=0.5 . ex: 0 , 0.5, 1.5 ...
             //each chromosome begin at 0 cm the position of loci
-
-            for (int i = 0; i < nChr; i++)
+            //Zeev: doesn't take into account length of chromosome?!
+            int idLocus=0;
+            for (int iChr = 0; iChr < nChr; iChr++)
             {
-
-                for (int j = 0; j < nOnChr; j++)
+                int posPrev=0
+                for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
                 {
-
-                    Locus loci = new Locus();
+                    Locus locus = new Locus();
                     //default location
-                    if (j == 0)
-                    {
-                        loci.Position.PositionChrGenetic = 0;
-                    }
-                    else
-                    {
-                        loci.Position.PositionChrGenetic = loci.Position.PositionChrGenetic + dBetweenMarkers;
-                    }
-
-
-                    loci.Name = "loc_" + j;
-                    loci.Id = i;
-
-                    go.Chromosome[i].Locus.Add(loci);
+                    locus.Position.PositionChrGenetic = posPrev;
+                    posPrev+=dBetweenMarkers;
+                    locus.Name = "loc_" + jOnChr;
+                    idLocus++;
+                    locus.Id = idLocus;//Zeev: not iChr
+                    go.Chromosome[iChr].Locus.Add(locus);
                 }
             }
         }
+        
         /// <summary>
         /// This method defines the length of the chromosomes
+        /// difine global parameters:
+        ///    go=Genome organisation
+        ///    nChr=number of chromosoms
         /// </summary>
         public void DefineChromosomeLength()
         {
-
             switch (type)
             {
                 case OrganismType.Drosophila:
                     go = genereateDrosophila(go, nChr);
                     break;
-
-
                 case OrganismType.PseudoWheat:
                     go = generatePseudoWheat(go, nChr);
                     break;
-
-
-
                 default:
                     //error organisim is not supported
                     break;
-
             }
-
-
         }
 
         /// <summary>

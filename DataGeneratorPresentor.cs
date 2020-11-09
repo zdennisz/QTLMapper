@@ -376,13 +376,19 @@ namespace QTLProject
 
         private GenomeOrganization genereateDrosophila(GenomeOrganization go, int nChr)
         {
+            //see https://en.wikipedia.org/wiki/Drosophila_melanogaster
+            //we consider only siple case (like in human): 
+            //    diploid, 
+            //    first chromosome is X (male has only one, he has also Y), 
+            //    no recombination in males, 
+            //    three chromosomes: X, 2, 3 (short fouth is ignored)
+            //indeed, drosophyla can be triploid and tetraploid (with XXX and XXXX (may also 1 or more Y) for females; X and XX)
             double coef = 1;
             int drosophilaConst1 = 75, drosophilaConst2 = 107, drosophilaConst3 = 110;
             Chromosome ch = new Chromosome
             {
-                Id = 0,
                 Name = "1",
-                LenGenetcM = drosophilaConst1 * coef,
+                LenGenetcM = 75,
                 BRecInFemales = true,
                 BGender = false
             };

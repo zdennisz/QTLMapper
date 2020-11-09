@@ -16,5 +16,10 @@ namespace QTLProject
         {
             return(Chromosome.Count)
         }
+        public void addChr(Chromosome ch)
+        {
+            ch.Id=nChr()
+            Chromosome.Add(ch);
+        }
     }
 }

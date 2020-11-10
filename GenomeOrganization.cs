@@ -14,12 +14,12 @@ namespace QTLProject
         //number of chromosomes
         public int nChr()
         {
-            return(Chromosome.Count)
+            return (Chromosome.Count);
         }
         public void addChr(Chromosome ch)
         {
-            ch.Id=nChr()
-            Chromosome.Add(ch);
+            ch.Id = nChr();
+            Chromosome.Add(ch); 
         }
     }
 }

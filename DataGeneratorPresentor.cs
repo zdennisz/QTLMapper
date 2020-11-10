@@ -50,7 +50,7 @@ namespace QTLProject
             int idLocus=0;
             for (int iChr = 0; iChr < nChr; iChr++)
             {
-                int posPrev=0
+                double posPrev = 0;
                 for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
                 {
                     Locus locus = new Locus();

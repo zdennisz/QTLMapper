@@ -8,13 +8,32 @@ namespace QTLProject
 {
     public partial class SimulateData : UserControl
     {
+
+        #region Events
+        public event EventHandler nextButtonClicked;
+        public event EventHandler backButtonClicked;
+        #endregion Events
+        #region Constructor
         public SimulateData()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             //set the format of the dates
+            this.btnNext.MouseClick += BtnNext_MouseClick;
+            this.btnBack.MouseClick += BtnBack_MouseClick;
             SetDateTimeFormat();
         }
 
+        private void BtnBack_MouseClick(object sender, MouseEventArgs e)
+        {
+            backButtonClicked?.Invoke(this, e);
+        }
+
+        private void BtnNext_MouseClick(object sender, MouseEventArgs e)
+        {
+            nextButtonClicked?.Invoke(this, e);
+        }
+        #endregion Constructor
 
         /// <summary>
         /// Applies a date and time format  

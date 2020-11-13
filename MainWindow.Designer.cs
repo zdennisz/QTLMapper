@@ -77,7 +77,7 @@
             this.btnCalculateQTL.TabIndex = 4;
             this.btnCalculateQTL.Text = "Calculate QTL location and P Value";
             this.btnCalculateQTL.UseVisualStyleBackColor = false;
-            this.btnCalculateQTL.Click += new System.EventHandler(this.btnCalculateQTL_Click);
+
             // 
             // btnInputData
             // 

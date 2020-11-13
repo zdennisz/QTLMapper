@@ -69,5 +69,39 @@ namespace QTLProject
             
         }
 
+       
+
+        public class State
+        {
+            private SoftwareStep currentStep;
+            private SoftwareStep prevoiusStep;
+            private bool goingForward = false;
+         
+            
+            public event EventHandler<StateUpdate> StateChange;
+
+            public void UpdateState(SoftwareStep nextStep, SoftwareStep prevStep,bool goingForward)
+            {
+                StateUpdate args = new StateUpdate();
+                args.PrevoiusStep = prevStep;
+                args.CurrentStep = nextStep;
+                args.GoingForward = goingForward;
+                OnStateChange(args);
+            }
+            public virtual void OnStateChange(StateUpdate e)
+            {
+                StateChange?.Invoke(this, e);
+            }
+
+           
+            public class StateUpdate : EventArgs
+            {
+                public SoftwareStep CurrentStep { get; set; }
+                public SoftwareStep PrevoiusStep { get; set; }
+                public bool GoingForward { get; set; }
+            }  
+        }
+
+
     }
     }

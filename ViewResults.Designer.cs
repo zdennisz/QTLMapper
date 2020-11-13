@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -40,12 +41,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "View Results View";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(647, 569);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 4;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
             // ViewResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
             this.Name = "ViewResults";
+            this.Size = new System.Drawing.Size(732, 601);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -54,5 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

@@ -82,6 +82,12 @@
     <Compile Include="InputData.Designer.cs">
       <DependentUpon>InputData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Introduction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Introduction.Designer.cs">
+      <DependentUpon>Introduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Population.cs" />
     <Compile Include="SelectedData_Model.cs" />
     <Compile Include="DataIndividualsAndTraits.cs" />
@@ -119,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="CalculateQTL.resx">
       <DependentUpon>CalculateQTL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Introduction.resx">
+      <DependentUpon>Introduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

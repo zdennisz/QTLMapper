@@ -22,6 +22,12 @@ namespace QTLProject
             this.btnNext.MouseClick += BtnNext_MouseClick;
             this.btnBack.MouseClick += BtnBack_MouseClick;
             SetDateTimeFormat();
+            DataGeneratorPresentor dgp = new DataGeneratorPresentor();
+            dgp.DefineChromosomeLength();
+            dgp.DefineChromosomePositions();
+            dgp.DefineParentalHaplotypes();
+            dgp.DefineQTL();
+            dgp.SimulateRecombination();
         }
 
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)

@@ -73,6 +73,7 @@ namespace QTLProject
         /// </summary>
         public void DefineChromosomeLength()
         {
+            go.Chromosome = new List<Chromosome>();
             switch (type)
             {
                 case OrganismType.Drosophila:
@@ -91,7 +92,7 @@ namespace QTLProject
         /// Defines the parental haplotypes according to the recombination type
         /// </summary>
         /// <param name="recType"></param>
-        public void DefineParentalHaplotypes(RecombinationType experimentDesign, double strengthOfNoise = 0.2)
+        public void DefineParentalHaplotypes(RecombinationType experimentDesign=RecombinationType.Backcross, double strengthOfNoise = 0.2)
         {
 
             mother = new Individ();
@@ -393,7 +394,7 @@ namespace QTLProject
                 BGender = false
             };
 
-            go.Chromosome.Add(ch);
+            go.addChr(ch);
 
             Chromosome ch1 = new Chromosome
             {
@@ -404,7 +405,7 @@ namespace QTLProject
                 BGender = false
             };
 
-            go.Chromosome.Add(ch1);
+            go.addChr(ch1);
 
             Chromosome ch2 = new Chromosome
             {
@@ -415,7 +416,7 @@ namespace QTLProject
                 BGender = false
             };
 
-            go.Chromosome.Add(ch2);
+            go.addChr(ch2);
 
 
 

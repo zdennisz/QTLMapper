@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="Chromosome.cs" />
     <Compile Include="DataGeneratorPresentor.cs" />
+    <Compile Include="HelpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpWindow.Designer.cs">
+      <DependentUpon>HelpWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="CalculateQTL.resx">
       <DependentUpon>CalculateQTL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpWindow.resx">
+      <DependentUpon>HelpWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>

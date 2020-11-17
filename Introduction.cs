@@ -12,6 +12,7 @@ namespace QTLProject
 {
     public partial class Introduction : UserControl
     {
+        HelpWindow hw;
         public Introduction()
         {
             InitializeComponent();
@@ -21,8 +22,14 @@ namespace QTLProject
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            //To Do
-            //open help window and  explain what does the app do with screen shots.
+            if (hw == null)
+            {
+                hw = new HelpWindow();
+                hw.Show();
+            }
+            
         }
+
+     
     }
 }

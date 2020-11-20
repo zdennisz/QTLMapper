@@ -21,15 +21,26 @@ namespace QTLProject
         public InputData()
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill;
-            this.Size = new Size(732, 601);
+            SetupUI();
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.btnNext.MouseClick += BtnNext_MouseClick;
-              
+
         }
         #endregion Constructor
 
         #region Private Methods
+
+        private void SetupUI()
+        {
+            this.Dock = DockStyle.Fill;
+            this.Size = new Size(732, 601);
+
+            foreach (Button button in this.flowLayoutPanel1.Controls)
+            {
+                button.BackColor = ColorTranslator.FromHtml("#EFFCFF");
+            }
+
+        }
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
             nextButtonClicked?.Invoke(this, e);
@@ -41,6 +52,6 @@ namespace QTLProject
         }
         #endregion Private Methods
 
-      
+
     }
 }

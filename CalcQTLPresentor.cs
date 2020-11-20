@@ -8,5 +8,17 @@ namespace QTLProject
 {
     public class CalcQTLPresentor
     {
+
+        public CalcQTLPresentor()
+        {
+
+        }
+
+        public void AnalyzeData()
+        {
+
+        }
+
+
     }
 }

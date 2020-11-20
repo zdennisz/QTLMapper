@@ -8,5 +8,19 @@ namespace QTLProject
 {
     public class VIewResultsPresentor
     {
+       public VIewResultsPresentor()
+        {
+
+        }
+
+       public void GenerateGrpah()
+        {
+
+        }
+
+        public void ReadData()
+        {
+
+        }
     }
 }

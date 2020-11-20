@@ -81,9 +81,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
+            this.label2.Text = "Design";
             // 
             // comboBox3
             // 
@@ -124,9 +124,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(32, 242);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "label4";
+            this.label4.Text = "Genetic Model";
             // 
             // panel2
             // 
@@ -150,9 +150,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
+            this.label3.Text = "Genetic Model";
             // 
             // panel3
             // 
@@ -176,9 +176,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "label5";
+            this.label5.Text = "Trait Model";
             // 
             // tableLayoutPanel2
             // 
@@ -188,8 +188,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(19, 437);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(19, 421);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -199,17 +199,17 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(529, 102);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(529, 144);
             this.tableLayoutPanel2.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(32, 421);
+            this.label6.Location = new System.Drawing.Point(32, 405);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 16;
-            this.label6.Text = "label6";
+            this.label6.Text = "Trait Model";
             // 
             // SimulateData
             // 

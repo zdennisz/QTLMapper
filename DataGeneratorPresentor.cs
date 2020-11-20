@@ -46,25 +46,28 @@ namespace QTLProject
         {
             //go over all chromosome and define the position according to each marker dBetweenMarkers=0.5 . ex: 0 , 0.5, 1.5 ...
             //each chromosome begin at 0 cm the position of loci
-            //Zeev: doesn't take into account length of chromosome?!
-            int idLocus=0;
+         
+            int idLocus = 0;
             for (int iChr = 0; iChr < nChr; iChr++)
             {
                 double posPrev = 0;
-                for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
+                if (posPrev < go.Chromosome[iChr].LenGenetcM)
                 {
-                    Locus locus = new Locus();
-                    //default location
-                    locus.Position.PositionChrGenetic = posPrev;
-                    posPrev+=dBetweenMarkers;
-                    locus.Name = "loc_" + jOnChr;
-                    idLocus++;
-                    locus.Id = idLocus;//Zeev: not iChr
-                    go.Chromosome[iChr].Locus.Add(locus);
+                    for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
+                    {
+                        Locus locus = new Locus();
+                        //default location
+                        locus.Position.PositionChrGenetic = posPrev;
+                        posPrev += dBetweenMarkers;
+                        locus.Name = "loc_" + jOnChr;
+                        idLocus++;
+                        locus.Id = idLocus;//Zeev: not iChr
+                        go.Chromosome[iChr].Locus.Add(locus);
+                    }
                 }
             }
         }
-        
+
         /// <summary>
         /// This method defines the length of the chromosomes
         /// difine global parameters:
@@ -92,7 +95,7 @@ namespace QTLProject
         /// Defines the parental haplotypes according to the recombination type
         /// </summary>
         /// <param name="recType"></param>
-        public void DefineParentalHaplotypes(RecombinationType experimentDesign=RecombinationType.Backcross, double strengthOfNoise = 0.2)
+        public void DefineParentalHaplotypes(RecombinationType experimentDesign = RecombinationType.Backcross, double strengthOfNoise = 0.2)
         {
 
             mother = new Individ();
@@ -308,7 +311,7 @@ namespace QTLProject
 
             foreach (Individ offspring in pop.Individ)
             {
-               
+
                 QTL_SingleLocusEffectOnSingleTrait effectOfQ1 = new QTL_SingleLocusEffectOnSingleTrait();
                 effectOfQ1.AdditiveEffect_d = 1;
                 effectOfQ1.AdditiveEffect_h = AdditiveEffect_h.Dominant;
@@ -328,7 +331,7 @@ namespace QTLProject
 
 
                 //define the genotype of children
-                foreach(int member in offSpring.Genotype)
+                foreach (int member in offSpring.Genotype)
                 {
                     int locationOfRecomb;
                     for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)

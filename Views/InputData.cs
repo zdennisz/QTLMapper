@@ -37,7 +37,8 @@ namespace QTLProject
 
             foreach (Button button in this.flowLayoutPanel1.Controls)
             {
-                button.BackColor = ColorTranslator.FromHtml("#EFFCFF");
+                button.BackColor = ColorTranslator.FromHtml("#ebf9fc");
+                button.FlatAppearance.BorderColor= ColorTranslator.FromHtml("#ebf9fc");
             }
 
         }

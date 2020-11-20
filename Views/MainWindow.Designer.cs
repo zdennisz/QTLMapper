@@ -77,7 +77,6 @@
             this.btnCalculateQTL.TabIndex = 4;
             this.btnCalculateQTL.Text = "Calculate QTL location and P Value";
             this.btnCalculateQTL.UseVisualStyleBackColor = false;
-
             // 
             // btnInputData
             // 
@@ -118,7 +117,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::QTLProject.Properties.Resources.QTLLogo;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(339, 58);

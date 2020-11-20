@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputData));
-            this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnOpenData = new System.Windows.Forms.Button();
@@ -47,15 +46,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Input Data View";
             // 
             // btnBack
             // 
@@ -78,6 +68,7 @@
             // btnOpenData
             // 
             this.btnOpenData.FlatAppearance.BorderSize = 0;
+            this.btnOpenData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenData.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenData.Image")));
             this.btnOpenData.Location = new System.Drawing.Point(62, 8);
             this.btnOpenData.Name = "btnOpenData";
@@ -88,6 +79,7 @@
             // btnEditData
             // 
             this.btnEditData.FlatAppearance.BorderSize = 0;
+            this.btnEditData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditData.Image = ((System.Drawing.Image)(resources.GetObject("btnEditData.Image")));
             this.btnEditData.Location = new System.Drawing.Point(116, 8);
             this.btnEditData.Name = "btnEditData";
@@ -98,6 +90,7 @@
             // btnCutData
             // 
             this.btnCutData.FlatAppearance.BorderSize = 0;
+            this.btnCutData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCutData.Image = ((System.Drawing.Image)(resources.GetObject("btnCutData.Image")));
             this.btnCutData.Location = new System.Drawing.Point(170, 8);
             this.btnCutData.Name = "btnCutData";
@@ -108,6 +101,7 @@
             // btnCopyData
             // 
             this.btnCopyData.FlatAppearance.BorderSize = 0;
+            this.btnCopyData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCopyData.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyData.Image")));
             this.btnCopyData.Location = new System.Drawing.Point(231, 8);
             this.btnCopyData.Name = "btnCopyData";
@@ -118,6 +112,7 @@
             // btnPasteData
             // 
             this.btnPasteData.FlatAppearance.BorderSize = 0;
+            this.btnPasteData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPasteData.Image = ((System.Drawing.Image)(resources.GetObject("btnPasteData.Image")));
             this.btnPasteData.Location = new System.Drawing.Point(285, 8);
             this.btnPasteData.Name = "btnPasteData";
@@ -164,6 +159,7 @@
             this.btnSaveData.BackColor = System.Drawing.SystemColors.Control;
             this.btnSaveData.FlatAppearance.BorderSize = 0;
             this.btnSaveData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSaveData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveData.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveData.Image")));
             this.btnSaveData.Location = new System.Drawing.Point(8, 8);
             this.btnSaveData.Name = "btnSaveData";
@@ -174,6 +170,7 @@
             // btnDelData
             // 
             this.btnDelData.FlatAppearance.BorderSize = 0;
+            this.btnDelData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelData.Image = ((System.Drawing.Image)(resources.GetObject("btnDelData.Image")));
             this.btnDelData.Location = new System.Drawing.Point(501, 8);
             this.btnDelData.Name = "btnDelData";
@@ -184,6 +181,7 @@
             // btnInsrData
             // 
             this.btnInsrData.FlatAppearance.BorderSize = 0;
+            this.btnInsrData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsrData.Image = ((System.Drawing.Image)(resources.GetObject("btnInsrData.Image")));
             this.btnInsrData.Location = new System.Drawing.Point(447, 8);
             this.btnInsrData.Name = "btnInsrData";
@@ -194,6 +192,7 @@
             // btnSortDsc
             // 
             this.btnSortDsc.FlatAppearance.BorderSize = 0;
+            this.btnSortDsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortDsc.Image = ((System.Drawing.Image)(resources.GetObject("btnSortDsc.Image")));
             this.btnSortDsc.Location = new System.Drawing.Point(393, 8);
             this.btnSortDsc.Name = "btnSortDsc";
@@ -204,6 +203,7 @@
             // btnSortAsc
             // 
             this.btnSortAsc.FlatAppearance.BorderSize = 0;
+            this.btnSortAsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortAsc.Image = ((System.Drawing.Image)(resources.GetObject("btnSortAsc.Image")));
             this.btnSortAsc.Location = new System.Drawing.Point(339, 8);
             this.btnSortAsc.Name = "btnSortAsc";
@@ -238,7 +238,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.label1);
             this.Name = "InputData";
             this.Size = new System.Drawing.Size(732, 601);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -248,8 +247,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnOpenData;

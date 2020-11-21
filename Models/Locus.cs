@@ -13,7 +13,7 @@ namespace QTLProject
         public string Name { get; set; }
         public bool BMarker { get; set; }
         public Position Position { get; set; }//ID of chromosome
-        //shalom 2
+       
         public string[] AlleneNameOriginal { get; set; }//usually ('0','1'), ('a','A'), ('m','M'), ('A','T'), ('C','G'),... 
         public LocusDominanceStatus IdDominanceStatus { get; set; }//0 - allele 0 is dominant, 1 - allele 1 is dominant, 2 - codominant
 

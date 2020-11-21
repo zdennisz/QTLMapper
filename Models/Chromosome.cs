@@ -6,6 +6,8 @@ namespace QTLProject
 {
     public class Chromosome
     {
+
+        private IList<Locus> locus = new List<Locus>();
         public int Id { get; set; }//0,1,2,3
         public string Name { get; set; }//for Human: 1,2,3,...,22, X and Y
         public double LenGenetcM { get; set; }//Genetic length of the chromosome (1 cM ~ 1% of recombination) NB! in this progects equal for males and females
@@ -16,7 +18,7 @@ namespace QTLProject
         public bool BRecInMales { get; set; }//Human: XX=Girl, XY=Boy: Males: false for X and Y
         public bool BRecInFemales { get; set; }//Human: XX=Girl, XY=Boy: Females: true for all
         
-        public IList<Locus> Locus { get; set; }//list of loci (markers and QTLs)
+        public IList<Locus> Locus { get { return locus; } set { locus = value; } }//list of loci (markers and QTLs)
 
         public Chromosome()
         {

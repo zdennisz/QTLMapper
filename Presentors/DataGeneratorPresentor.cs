@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTLProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,14 @@ namespace QTLProject
         public Individ father;
         public Individ offSpring;
         public Population pop;
+        private Database database;
+
 
         #endregion Fields
         /*Notes - 
          * DefineChromosomeLength - Should be run first to define the length since the next method assumes that the length was already defined (DefineChromosomePositions).
          * 
          */
-        //My First Commit
         #region Constructor
         /// <summary>
         /// The default nChr is 3 and the organism type is drosophila
@@ -36,6 +38,8 @@ namespace QTLProject
             go = new GenomeOrganization();
             nChr = _nChr;
             type = _type;
+            database = DatabaseProvider.GetDatabase();
+            database.GenomeOrganization = go;
 
         }
         #endregion Constructor
@@ -46,25 +50,31 @@ namespace QTLProject
         {
             //go over all chromosome and define the position according to each marker dBetweenMarkers=0.5 . ex: 0 , 0.5, 1.5 ...
             //each chromosome begin at 0 cm the position of loci
-         
+
             int idLocus = 0;
             for (int iChr = 0; iChr < nChr; iChr++)
             {
                 double posPrev = 0;
-                if (posPrev < go.Chromosome[iChr].LenGenetcM)
+                for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
                 {
-                    for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
+                    if (posPrev < go.Chromosome[iChr].LenGenetcM)
                     {
                         Locus locus = new Locus();
-                        //default location
+
+                        Position pos = new Position();
+                        locus.Position = pos;
+
                         locus.Position.PositionChrGenetic = posPrev;
                         posPrev += dBetweenMarkers;
+
                         locus.Name = "loc_" + jOnChr;
                         idLocus++;
+
                         locus.Id = idLocus;//Zeev: not iChr
                         go.Chromosome[iChr].Locus.Add(locus);
                     }
                 }
+
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using QTLProject.Models;
+﻿using CenterSpace.NMath.Core;
+using QTLProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -184,8 +185,8 @@ namespace QTLProject
         public void SimulateRecombination(int amountOfIndivids = 200)
         {
             Random rand = new Random();
-            double p, previousPosition, currentPosition = 0.0, l, lambda = (1 / 100);
-
+            double p, previousPosition, currentPosition = 0.0, l, lambda = 0.01;
+            
             //create population of  200 children -individulas
             pop = new Population();
             for (int i = 0; i < amountOfIndivids; i++)
@@ -216,6 +217,7 @@ namespace QTLProject
                     while (go.Chromosome[j].LenGenetcM > currentPosition)
                     {
                         // l=generate random number with exponantional distribution with lambda = 1/100
+                       
                         l = generateRandExponantionalDist(go.Chromosome[j].LenGenetcM, 0, lambda);
                         currentPosition = previousPosition + l;
                         Position pos = new Position();
@@ -268,23 +270,29 @@ namespace QTLProject
                         previousPosition = currentPosition;
                     }
 
-                    int locationOfRecomb;
+                    
                     for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
                     {
-                        locationOfRecomb = (int)offSpring.RecEventsParent0[g].PositionChrGenetic;
-                        offSpring.Haplotype0[locationOfRecomb] = mother.Haplotype0[g];
+                        Locus locusOfRecombination = new Locus();
+                        Position positionOfRecombination = new Position();
+                        positionOfRecombination = offSpring.RecEventsParent0[g];
+                        locusOfRecombination.Position = positionOfRecombination;
+                        offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
                     }
 
 
                     for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
                     {
-                        locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
-                        offSpring.Haplotype1[locationOfRecomb] = father.Haplotype1[r];
+
+                        Locus locusOfRecombination = new Locus();
+                        Position positionOfRecombination = new Position();
+                        positionOfRecombination = offSpring.RecEventsParent1[r];
+                        locusOfRecombination.Position = positionOfRecombination;
+                        offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
                     }
 
-                    pop.Individ.Add(offSpring);
-
                 }
+                pop.Individ.Add(offSpring);
 
             }
         }
@@ -315,8 +323,8 @@ namespace QTLProject
              QTL genotypes of children are defined based on the same position of recombination events (analogiously to genotypes of markers)
              Children traits are random values with normal distribution with average T and variance sigma^2, where T is defined by genotypes in QTL loci. 
              Example:
-             T(father)=2*d1+2*d2+2*d3=2*1+2*0.8+2*0.4
-             T(mother)=h1*d1+h2*d2+h3*d3=1*1+1*0.8+1*0.4
+            
+            
              */
 
             foreach (Individ offspring in pop.Individ)
@@ -334,29 +342,36 @@ namespace QTLProject
                 effectOfQ3.AdditiveEffect_d = 0.4;
                 effectOfQ3.AdditiveEffect_h = AdditiveEffect_h.Dominant;
 
-                // 0 T(father)
-                offSpring.TraitValue[0] = (float)(2 * effectOfQ1.AdditiveEffect_d + 2 * effectOfQ2.AdditiveEffect_d + 2 * effectOfQ3.AdditiveEffect_d);
-                // 1 T(mother)
-                offSpring.TraitValue[1] = (float)(effectOfQ1.AdditiveEffect_d * effectOfQ1.AdditiveEffect_h + effectOfQ2.AdditiveEffect_d * effectOfQ2.AdditiveEffect_h + effectOfQ3.AdditiveEffect_d * effectOfQ3.AdditiveEffect_h);
+                // 0  T(father)=2*d1+2*d2+2*d3=2*1+2*0.8+2*0.4
+                offspring.TraitValue[0]= (float)(2 * effectOfQ1.AdditiveEffect_d + 2 * effectOfQ2.AdditiveEffect_d + 2 * effectOfQ3.AdditiveEffect_d);
+                // 1  T(mother)=h1*d1+h2*d2+h3*d3=1*1+1*0.8+1*0.4
+                offspring.TraitValue[1] = (float)(effectOfQ1.AdditiveEffect_d * effectOfQ1.AdditiveEffect_h + effectOfQ2.AdditiveEffect_d * effectOfQ2.AdditiveEffect_h + effectOfQ3.AdditiveEffect_d * effectOfQ3.AdditiveEffect_h);
+
+             
+                //define the genotype of children - which is the combinations of all genes at a particular locus
+               //for(int i=0;i<offspring.Genotype.Length;i++)
+               // {
+               //     int locationOfRecomb;
+               //     for (int g = 0; g < offspring.RecEventsParent0.Count; g++)
+               //     {
+               //         locationOfRecomb = (int)offspring.RecEventsParent0[g].PositionChrGenetic;
+               //         if (locationOfRecomb < offspring.Genotype.Length)
+               //         {
+               //             offspring.Genotype[i] = mother.Haplotype0[g];
+               //         }
+                           
+               //     }
 
 
-                //define the genotype of children
-                foreach (int member in offSpring.Genotype)
-                {
-                    int locationOfRecomb;
-                    for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
-                    {
-                        locationOfRecomb = (int)offSpring.RecEventsParent0[g].PositionChrGenetic;
-                        offSpring.Genotype[locationOfRecomb] = mother.Haplotype0[g];
-                    }
-
-
-                    for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
-                    {
-                        locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
-                        offSpring.Genotype[locationOfRecomb] = father.Haplotype1[r];
-                    }
-                }
+               //     for (int r = 0; r < offspring.RecEventsParent1.Count; r++)
+               //     {
+               //         locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
+               //         if (locationOfRecomb < offspring.Genotype.Length)
+               //         {
+               //             offspring.Genotype[i] = mother.Haplotype1[r];
+               //         }
+               //     }
+               // }
             }
 
         }
@@ -374,18 +389,15 @@ namespace QTLProject
         private double generateRandExponantionalDist(double maxValue, double minValue, double lambda)
         {
             Random rand = new Random();
-            double u, t, increment, res = 0.0;
-            double result = maxValue;
+            double res=0.0;
+            var exponentionalDIst = new RandomNumberGenerator.UniformRandomNumber(rand.NextDouble);
+            var expRand = new RandGenExponential(lambda);
             do
             {
-                u = rand.NextDouble();
-                t = -Math.Log(u) / lambda;
-                increment =
-                 (maxValue - minValue) / 6.0;
-                result = minValue + (t * increment);
-            } while (result >= maxValue);
-
-            return res;
+                res = expRand.NextDouble();
+            } while (res > maxValue && res > minValue);
+           
+            return res ;
         }
 
         private GenomeOrganization genereateDrosophila(GenomeOrganization go, int nChr)
@@ -402,7 +414,7 @@ namespace QTLProject
             Chromosome ch = new Chromosome
             {
                 Name = "1",
-                LenGenetcM = 75,
+                LenGenetcM = drosophilaConst1* coef,
                 BRecInFemales = true,
                 BGender = false
             };

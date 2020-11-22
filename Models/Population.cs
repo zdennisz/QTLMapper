@@ -13,6 +13,6 @@ namespace QTLProject
         public int Id { get; set; }//id in the System
         public string Name { get; set; }
         public string Text { get; set; }//short description
-        public IList<Individ> Individ { get { return individ; } set { individ = (List<Individ>)value; } }//list of selected individuals
+        public IList<Individ> Individ { get { return individ; } set {  } }//list of selected individuals
     }
 }

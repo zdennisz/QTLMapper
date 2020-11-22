@@ -26,8 +26,9 @@ namespace QTLProject
             dgp.DefineChromosomeLength();
             dgp.DefineChromosomePositions();
             dgp.DefineParentalHaplotypes();
-            dgp.DefineQTL();
             dgp.SimulateRecombination();
+            dgp.DefineQTL();
+           
         }
 
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)

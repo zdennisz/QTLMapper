@@ -22,5 +22,10 @@ namespace QTLProject
         {
 
         }
+
+        public void GenereateQTLEffect()
+        {
+
+        }
     }
 }

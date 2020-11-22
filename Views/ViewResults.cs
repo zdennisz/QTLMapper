@@ -15,12 +15,39 @@ namespace QTLProject
     {
         public event EventHandler<EventArgsViewResults> backButtonClicked;
         private SoftwareStep prevStep;
+        private string index;
         public ViewResults()
         {
+            //create list/arraylist of string
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             this.btnBack.MouseClick += BtnBack_MouseClick;
-           
+            this.btnShowResutls.MouseClick += BtnShowResutls_MouseClick;
+            this.btnOpenFolder.BackColor =  ColorTranslator.FromHtml("#ebf9fc");
+            this.btnShowResutls.BackColor = ColorTranslator.FromHtml("#ebf9fc");
+            // this.comboBoxFuncs.Items.AddRange();
+            this.comboBoxFuncs.SelectedValueChanged += ComboBoxFuncs_SelectedValueChanged;
+        }
+
+        private void ComboBoxFuncs_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //save the seleted value
+            index = e.ToString();
+        }
+
+        private void BtnShowResutls_MouseClick(object sender, MouseEventArgs e)
+        {
+            //if not checked 1 , 2 ,3 ...
+            // message box  : please fill all fields
+            //
+            /*
+             if all checked
+
+            new presentor
+            ViewresultsPresentor pr=new ViewREsultsPresentor();
+            pr.GenereateQTLEffect();
+             
+             */
         }
 
         public void updateInternalstate(SoftwareStep step)
@@ -39,6 +66,19 @@ namespace QTLProject
             public SoftwareStep PrevoiusStep { get; set; }
         }
 
-       
+        private void ViewResults_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inputData1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

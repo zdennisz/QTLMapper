@@ -28,44 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewResults));
             this.btnBack = new System.Windows.Forms.Button();
+            this.displayGraphBtn = new System.Windows.Forms.RadioButton();
+            this.inDepthReportBtn = new System.Windows.Forms.RadioButton();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.txtOpenFolder = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnShowResutls = new System.Windows.Forms.Button();
+            this.comboBoxFuncs = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "View Results View";
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(647, 569);
+            this.btnBack.Location = new System.Drawing.Point(538, 564);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 4;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             // 
+            // displayGraphBtn
+            // 
+            this.displayGraphBtn.AutoSize = true;
+            this.displayGraphBtn.Location = new System.Drawing.Point(216, 72);
+            this.displayGraphBtn.Name = "displayGraphBtn";
+            this.displayGraphBtn.Size = new System.Drawing.Size(91, 17);
+            this.displayGraphBtn.TabIndex = 5;
+            this.displayGraphBtn.TabStop = true;
+            this.displayGraphBtn.Text = "Display Graph";
+            this.displayGraphBtn.UseVisualStyleBackColor = true;
+            // 
+            // inDepthReportBtn
+            // 
+            this.inDepthReportBtn.AutoSize = true;
+            this.inDepthReportBtn.Location = new System.Drawing.Point(326, 72);
+            this.inDepthReportBtn.Name = "inDepthReportBtn";
+            this.inDepthReportBtn.Size = new System.Drawing.Size(101, 17);
+            this.inDepthReportBtn.TabIndex = 6;
+            this.inDepthReportBtn.TabStop = true;
+            this.inDepthReportBtn.Text = "In Depth Report";
+            this.inDepthReportBtn.UseVisualStyleBackColor = true;
+            // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFolder.Image")));
+            this.btnOpenFolder.Location = new System.Drawing.Point(365, 13);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(43, 43);
+            this.btnOpenFolder.TabIndex = 7;
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            // 
+            // txtOpenFolder
+            // 
+            this.txtOpenFolder.Location = new System.Drawing.Point(12, 25);
+            this.txtOpenFolder.Name = "txtOpenFolder";
+            this.txtOpenFolder.Size = new System.Drawing.Size(336, 20);
+            this.txtOpenFolder.TabIndex = 9;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(515, 234);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(8, 8);
+            this.flowLayoutPanel1.TabIndex = 16;
+            // 
+            // btnShowResutls
+            // 
+            this.btnShowResutls.Location = new System.Drawing.Point(619, 564);
+            this.btnShowResutls.Name = "btnShowResutls";
+            this.btnShowResutls.Size = new System.Drawing.Size(101, 23);
+            this.btnShowResutls.TabIndex = 18;
+            this.btnShowResutls.Text = "Show Results";
+            this.btnShowResutls.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxFuncs
+            // 
+            this.comboBoxFuncs.FormattingEnabled = true;
+            this.comboBoxFuncs.Location = new System.Drawing.Point(12, 86);
+            this.comboBoxFuncs.Name = "comboBoxFuncs";
+            this.comboBoxFuncs.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxFuncs.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "View";
+            // 
             // ViewResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBoxFuncs);
+            this.Controls.Add(this.btnShowResutls);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.txtOpenFolder);
+            this.Controls.Add(this.btnOpenFolder);
+            this.Controls.Add(this.inDepthReportBtn);
+            this.Controls.Add(this.displayGraphBtn);
+            this.Controls.Add(this.btnBack);
             this.Name = "ViewResults";
             this.Size = new System.Drawing.Size(732, 601);
+            this.Load += new System.EventHandler(this.ViewResults_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.RadioButton displayGraphBtn;
+        private System.Windows.Forms.RadioButton inDepthReportBtn;
+        private System.Windows.Forms.Button btnOpenFolder;
+        private System.Windows.Forms.TextBox txtOpenFolder;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnShowResutls;
+        private System.Windows.Forms.ComboBox comboBoxFuncs;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -204,20 +204,16 @@ namespace QTLProject
                     {
                         //begin with grandmother (copy haplotpes H0)
                         //first recombination happens at coordinate 0
-                        offSpring.Haplotype0[0] = mother.Haplotype0[0];
-                    }
-                    else
-                    {
-                        //begin with grandfather(copy haplotpes H1)
-                        //first recombination happens at coordinate 0
-                        offSpring.Haplotype0[0] = mother.Haplotype1[0];
+                        Position pos = new Position();
+                        pos.Chromosome = go.Chromosome[j];
+                        pos.PositionChrGenetic = 0.0;
+                        offSpring.RecEventsParent0.Add(pos);
                     }
                     previousPosition = 0.0;
 
                     while (go.Chromosome[j].LenGenetcM > currentPosition)
                     {
                         // l=generate random number with exponantional distribution with lambda = 1/100
-                       
                         l = generateRandExponantionalDist(go.Chromosome[j].LenGenetcM, 0, lambda);
                         currentPosition = previousPosition + l;
                         Position pos = new Position();
@@ -246,14 +242,11 @@ namespace QTLProject
                     {
                         //begin with grandmother (copy haplotpes H0)
                         //first recombination happens at coordinate 0
-                        offSpring.Haplotype1[0] = father.Haplotype0[0];
+                        Position pos = new Position();
+                        pos.Chromosome = go.Chromosome[k];
+                        pos.PositionChrGenetic = 0.0;
+                        offSpring.RecEventsParent1.Add(pos);
 
-                    }
-                    else
-                    {
-                        //begin with grandfather(copy haplotpes H1)
-                        //first recombination happens at coordinate 0
-                        offSpring.Haplotype1[0] = father.Haplotype1[0];
                     }
                     previousPosition = 0.0;
 
@@ -270,33 +263,33 @@ namespace QTLProject
                         previousPosition = currentPosition;
                     }
 
-                    
-                    for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
-                    {
-                        Locus locusOfRecombination = new Locus();
-                        Position positionOfRecombination = new Position();
-                        positionOfRecombination = offSpring.RecEventsParent0[g];
-                        locusOfRecombination.Position = positionOfRecombination;
-                        offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
-                    }
-
-
-                    for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
-                    {
-
-                        Locus locusOfRecombination = new Locus();
-                        Position positionOfRecombination = new Position();
-                        positionOfRecombination = offSpring.RecEventsParent1[r];
-                        locusOfRecombination.Position = positionOfRecombination;
-                        offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
-                    }
-
                 }
                 pop.Individ.Add(offSpring);
 
             }
         }
+        public void allelInheritance()
+        {
+            for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
+            {
+                Locus locusOfRecombination = new Locus();
+                Position positionOfRecombination = new Position();
+                positionOfRecombination = offSpring.RecEventsParent0[g];
+                locusOfRecombination.Position = positionOfRecombination;
+                offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
+            }
 
+
+            for (int r = 0; r < offSpring.RecEventsParent1.Count; r++)
+            {
+
+                Locus locusOfRecombination = new Locus();
+                Position positionOfRecombination = new Position();
+                positionOfRecombination = offSpring.RecEventsParent1[r];
+                locusOfRecombination.Position = positionOfRecombination;
+                offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
+            }
+        }
 
         public void DefineQTL()
         {
@@ -329,7 +322,7 @@ namespace QTLProject
 
             foreach (Individ offspring in pop.Individ)
             {
-
+                //create array of this procedure
                 QTL_SingleLocusEffectOnSingleTrait effectOfQ1 = new QTL_SingleLocusEffectOnSingleTrait();
                 effectOfQ1.AdditiveEffect_d = 1;
                 effectOfQ1.AdditiveEffect_h = AdditiveEffect_h.Dominant;

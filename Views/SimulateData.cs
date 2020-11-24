@@ -6,6 +6,8 @@ using System.Threading;
 using System.Collections.Generic;
 using static QTLProject.Types;
 using QTLProject.Enums;
+using System.Drawing;
+using QTLProject.Views;
 
 namespace QTLProject
 {
@@ -25,8 +27,8 @@ namespace QTLProject
             this.btnNext.MouseClick += BtnNext_MouseClick;
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.comboBoxTrait.SelectedIndexChanged += ComboBoxTrait_SelectedIndexChanged;
-            this.comboBoxGenetic.SelectedIndexChanged += ComboBoxGenetic_SelectedIndexChanged;
-           
+
+
             SetDateTimeFormat();
             DataGeneratorPresentor dgp = new DataGeneratorPresentor();
             dgp.DefineChromosomeLength();
@@ -37,15 +39,9 @@ namespace QTLProject
 
         }
 
-        private void ComboBoxDesign_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
-        private void ComboBoxGenetic_SelectedIndexChanged(object sender, EventArgs e)
-        {
-      
-        }
+
+
 
         private void ComboBoxTrait_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -63,15 +59,15 @@ namespace QTLProject
             updateTraitTable((QTLTaritModels)this.comboBoxTrait.SelectedIndex);
         }
 
-    
+
 
         private void updateTraitTable(QTLTaritModels tableType)
         {
-            
+
             int tableAmount = 0;
             List<string> taritModelParams = new List<string>();
-            
-            foreach(TableLayoutPanel panel in this.panelTableContainer.Controls)
+
+            foreach (TableLayoutPanel panel in this.panelTableContainer.Controls)
             {
                 panel.Visible = false;
             }
@@ -98,32 +94,49 @@ namespace QTLProject
 
         private void createTable(int amountOftables, List<string> modelParams)
         {
-           
+          
+            float rowSize = 25,colSize=75;
             for (int i = 0; i < amountOftables; i++)
             {
+                int rowIndex = 0;
                 var table = (TableLayoutPanel)this.panelTableContainer.Controls[i];
                 table.Controls.Clear();
                 table.RowStyles.Clear();
                 table.ColumnCount = 2;
-                table.RowCount = modelParams.Count;
-                int rowIndex = 0;
-                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
+                table.RowCount = modelParams.Count + 1;
+                
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));
+                Label placeHodler = new Label();
+                placeHodler.Dock = DockStyle.Fill;
+                placeHodler.BackColor = ColorConstants.tableHeaderColor;
+                table.SetColumnSpan(placeHodler, 2);
+                table.Controls.Add(placeHodler, 0, rowIndex);
 
+                table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
+                rowIndex++;
                 foreach (string name in modelParams)
                 {
 
+                    TraitTableRow tableRow = new TraitTableRow();
+                    tableRow.rowLabel.Text = name;
+                    tableRow.Size = new Size(100, 25);
 
-                    Label l = new Label();
-                    l.Text = name;
+                    tableRow.rowTextBox.Name= "tb" + name.Replace(" ", "");
+                    tableRow.rowPanel.Dock = DockStyle.Fill;
+                    
+                    tableRow.rowPanel.BackColor = Color.White;
+                    tableRow.rowTextBox.BackColor = Color.White;
 
-                    l.Dock = DockStyle.Fill;
-                    TextBox tb = new TextBox();
-                    tb.Name = "tb" + name.Replace(" ", "");
-                    tb.Dock = DockStyle.Fill;
-
-                    table.Controls.Add(tb, 1, rowIndex);
-                    table.Controls.Add(l, 0, rowIndex);
-                    table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
+                    if (rowIndex % 2 == 0)
+                    {
+                        tableRow.rowPanel.BackColor = Color.LightGray;
+                        tableRow.rowTextBox.BackColor = Color.LightGray;
+                    }
+                    tableRow.rowTextBox.BorderStyle = BorderStyle.None;
+                    
+                    table.SetColumnSpan(tableRow, 2);
+                    table.Controls.Add(tableRow, 0, rowIndex);
+                    table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
 
 
                     rowIndex++;

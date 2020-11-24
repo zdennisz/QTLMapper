@@ -1,4 +1,5 @@
 ﻿using QTLProject;
+using QTLProject.Enums;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -204,7 +205,7 @@ namespace QTLbyRegression
         private void SetupUI()
         {
             //Set the background color 
-            this.BackColor = Color.FromArgb(239, 252, 255);
+            this.BackColor = ColorConstants.backgroundColor;
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.contentPanel.BackColor = Color.White;
             this.contentPanel.Paint += ContentPanel_Paint;
@@ -236,37 +237,37 @@ namespace QTLbyRegression
             //enables only the selected button
             if (ss != SoftwareStep.None)
             {
-                this.btnCalculateQTL.BackColor = Color.FromArgb(239, 252, 255);
-                this.btnInputData.BackColor = Color.FromArgb(239, 252, 255);
-                this.btnSimulateData.BackColor = Color.FromArgb(239, 252, 255);
-                this.btnViewResults.BackColor = Color.FromArgb(239, 252, 255);
+                this.btnCalculateQTL.BackColor = ColorConstants.backgroundColor;
+                this.btnInputData.BackColor = ColorConstants.backgroundColor;
+                this.btnSimulateData.BackColor = ColorConstants.backgroundColor;
+                this.btnViewResults.BackColor = ColorConstants.backgroundColor;
             }
             switch (ss)
             {
                 case SoftwareStep.CalculateData:
-                    this.btnCalculateQTL.BackColor = Color.FromArgb(255, 255, 255);
+                    this.btnCalculateQTL.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnCalculateQTL.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
                     break;
                 case SoftwareStep.InputData:
-                    this.btnInputData.BackColor = Color.FromArgb(255, 255, 255);
+                    this.btnInputData.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnInputData.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
                     break;
 
                 case SoftwareStep.SimulateData:
-                    this.btnSimulateData.BackColor = Color.FromArgb(255, 255, 255);
+                    this.btnSimulateData.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnSimulateData.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
                     break;
 
                 case SoftwareStep.ViewResults:
-                    this.btnViewResults.BackColor = Color.FromArgb(255, 255, 255);
+                    this.btnViewResults.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnViewResults.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
                     break;
 
                 case SoftwareStep.None:
-                    this.btnCalculateQTL.BackColor = Color.FromArgb(239, 252, 255);
-                    this.btnInputData.BackColor = Color.FromArgb(239, 252, 255);
-                    this.btnSimulateData.BackColor = Color.FromArgb(239, 252, 255);
-                    this.btnViewResults.BackColor = Color.FromArgb(239, 252, 255);
+                    this.btnCalculateQTL.BackColor = ColorConstants.backgroundColor;
+                    this.btnInputData.BackColor = ColorConstants.backgroundColor;
+                    this.btnSimulateData.BackColor = ColorConstants.backgroundColor;
+                    this.btnViewResults.BackColor = ColorConstants.backgroundColor;
                     break;
             }
         }

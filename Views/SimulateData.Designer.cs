@@ -30,7 +30,7 @@
         {
             this.btnBack = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
-            this.tableGeneticTable1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableTraitTable1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTraitModel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBoxGenetic = new System.Windows.Forms.ComboBox();
@@ -38,9 +38,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBoxTrait = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.tableTraitModel = new System.Windows.Forms.TableLayoutPanel();
+            this.tableGeneticModel = new System.Windows.Forms.TableLayoutPanel();
             this.labelGeneticModel = new System.Windows.Forms.Label();
-            this.tableGeneticTable2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableTraitTable2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelTableContainer = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -65,29 +65,29 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             // 
-            // tableGeneticTable1
+            // tableTraitTable1
             // 
-            this.tableGeneticTable1.AutoSize = true;
-            this.tableGeneticTable1.ColumnCount = 2;
-            this.tableGeneticTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.44186F));
-            this.tableGeneticTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.55814F));
-            this.tableGeneticTable1.Location = new System.Drawing.Point(252, 15);
-            this.tableGeneticTable1.Name = "tableGeneticTable1";
-            this.tableGeneticTable1.RowCount = 6;
-            this.tableGeneticTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.21127F));
-            this.tableGeneticTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.78873F));
-            this.tableGeneticTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-            this.tableGeneticTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableGeneticTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableGeneticTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableGeneticTable1.Size = new System.Drawing.Size(215, 152);
-            this.tableGeneticTable1.TabIndex = 14;
-            this.tableGeneticTable1.Visible = false;
+            this.tableTraitTable1.AutoSize = true;
+            this.tableTraitTable1.ColumnCount = 2;
+            this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.44186F));
+            this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.55814F));
+            this.tableTraitTable1.Location = new System.Drawing.Point(396, 18);
+            this.tableTraitTable1.Name = "tableTraitTable1";
+            this.tableTraitTable1.RowCount = 6;
+            this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.21127F));
+            this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.78873F));
+            this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableTraitTable1.Size = new System.Drawing.Size(200, 152);
+            this.tableTraitTable1.TabIndex = 14;
+            this.tableTraitTable1.Visible = false;
             // 
             // labelTraitModel
             // 
             this.labelTraitModel.AutoSize = true;
-            this.labelTraitModel.Location = new System.Drawing.Point(19, 125);
+            this.labelTraitModel.Location = new System.Drawing.Point(45, 125);
             this.labelTraitModel.Name = "labelTraitModel";
             this.labelTraitModel.Size = new System.Drawing.Size(60, 13);
             this.labelTraitModel.TabIndex = 15;
@@ -150,62 +150,63 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Trait Model";
             // 
-            // tableTraitModel
+            // tableGeneticModel
             // 
-            this.tableTraitModel.ColumnCount = 6;
-            this.tableTraitModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTraitModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTraitModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableTraitModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableTraitModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableTraitModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tableTraitModel.Location = new System.Drawing.Point(19, 346);
-            this.tableTraitModel.Name = "tableTraitModel";
-            this.tableTraitModel.RowCount = 7;
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableTraitModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableTraitModel.Size = new System.Drawing.Size(687, 144);
-            this.tableTraitModel.TabIndex = 15;
+            this.tableGeneticModel.ColumnCount = 6;
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.689F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.311F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableGeneticModel.Location = new System.Drawing.Point(19, 385);
+            this.tableGeneticModel.Name = "tableGeneticModel";
+            this.tableGeneticModel.RowCount = 7;
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.39535F));
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.60465F));
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableGeneticModel.Size = new System.Drawing.Size(687, 144);
+            this.tableGeneticModel.TabIndex = 15;
             // 
             // labelGeneticModel
             // 
             this.labelGeneticModel.AutoSize = true;
-            this.labelGeneticModel.Location = new System.Drawing.Point(32, 330);
+            this.labelGeneticModel.Location = new System.Drawing.Point(32, 369);
             this.labelGeneticModel.Name = "labelGeneticModel";
             this.labelGeneticModel.Size = new System.Drawing.Size(76, 13);
             this.labelGeneticModel.TabIndex = 16;
             this.labelGeneticModel.Text = "Genetic Model";
             this.labelGeneticModel.Visible = false;
             // 
-            // tableGeneticTable2
+            // tableTraitTable2
             // 
-            this.tableGeneticTable2.ColumnCount = 2;
-            this.tableGeneticTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableGeneticTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableGeneticTable2.Location = new System.Drawing.Point(13, 15);
-            this.tableGeneticTable2.Name = "tableGeneticTable2";
-            this.tableGeneticTable2.RowCount = 5;
-            this.tableGeneticTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableGeneticTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableGeneticTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableGeneticTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableGeneticTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableGeneticTable2.Size = new System.Drawing.Size(230, 152);
-            this.tableGeneticTable2.TabIndex = 17;
-            this.tableGeneticTable2.Visible = false;
+            this.tableTraitTable2.AutoSize = true;
+            this.tableTraitTable2.ColumnCount = 2;
+            this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.33333F));
+            this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.66667F));
+            this.tableTraitTable2.Location = new System.Drawing.Point(13, 15);
+            this.tableTraitTable2.Name = "tableTraitTable2";
+            this.tableTraitTable2.RowCount = 5;
+            this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableTraitTable2.Size = new System.Drawing.Size(200, 152);
+            this.tableTraitTable2.TabIndex = 17;
+            this.tableTraitTable2.Visible = false;
             // 
             // panelTableContainer
             // 
-            this.panelTableContainer.Controls.Add(this.tableGeneticTable2);
-            this.panelTableContainer.Controls.Add(this.tableGeneticTable1);
+            this.panelTableContainer.Controls.Add(this.tableTraitTable2);
+            this.panelTableContainer.Controls.Add(this.tableTraitTable1);
             this.panelTableContainer.Location = new System.Drawing.Point(22, 141);
             this.panelTableContainer.Name = "panelTableContainer";
-            this.panelTableContainer.Size = new System.Drawing.Size(661, 178);
+            this.panelTableContainer.Size = new System.Drawing.Size(661, 213);
             this.panelTableContainer.TabIndex = 18;
             // 
             // SimulateData
@@ -214,7 +215,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelTableContainer);
             this.Controls.Add(this.labelGeneticModel);
-            this.Controls.Add(this.tableTraitModel);
+            this.Controls.Add(this.tableGeneticModel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelTraitModel);
@@ -244,9 +245,9 @@
         private System.Windows.Forms.ComboBox comboBoxTrait;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelGeneticModel;
-        public System.Windows.Forms.TableLayoutPanel tableGeneticTable1;
-        public System.Windows.Forms.TableLayoutPanel tableTraitModel;
+        public System.Windows.Forms.TableLayoutPanel tableTraitTable1;
+        public System.Windows.Forms.TableLayoutPanel tableGeneticModel;
         private System.Windows.Forms.Panel panelTableContainer;
-        public System.Windows.Forms.TableLayoutPanel tableGeneticTable2;
+        public System.Windows.Forms.TableLayoutPanel tableTraitTable2;
     }
 }

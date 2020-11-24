@@ -71,7 +71,7 @@
             this.tableTraitTable1.ColumnCount = 2;
             this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.44186F));
             this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.55814F));
-            this.tableTraitTable1.Location = new System.Drawing.Point(396, 18);
+            this.tableTraitTable1.Location = new System.Drawing.Point(397, 18);
             this.tableTraitTable1.Name = "tableTraitTable1";
             this.tableTraitTable1.RowCount = 6;
             this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.21127F));
@@ -158,8 +158,8 @@
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableGeneticModel.Location = new System.Drawing.Point(19, 385);
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableGeneticModel.Location = new System.Drawing.Point(22, 373);
             this.tableGeneticModel.Name = "tableGeneticModel";
             this.tableGeneticModel.RowCount = 7;
             this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.39535F));
@@ -169,13 +169,13 @@
             this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableGeneticModel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableGeneticModel.Size = new System.Drawing.Size(687, 144);
+            this.tableGeneticModel.Size = new System.Drawing.Size(600, 178);
             this.tableGeneticModel.TabIndex = 15;
             // 
             // labelGeneticModel
             // 
             this.labelGeneticModel.AutoSize = true;
-            this.labelGeneticModel.Location = new System.Drawing.Point(32, 369);
+            this.labelGeneticModel.Location = new System.Drawing.Point(29, 357);
             this.labelGeneticModel.Name = "labelGeneticModel";
             this.labelGeneticModel.Size = new System.Drawing.Size(76, 13);
             this.labelGeneticModel.TabIndex = 16;
@@ -188,7 +188,7 @@
             this.tableTraitTable2.ColumnCount = 2;
             this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.33333F));
             this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.66667F));
-            this.tableTraitTable2.Location = new System.Drawing.Point(13, 15);
+            this.tableTraitTable2.Location = new System.Drawing.Point(19, 18);
             this.tableTraitTable2.Name = "tableTraitTable2";
             this.tableTraitTable2.RowCount = 5;
             this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -204,9 +204,9 @@
             // 
             this.panelTableContainer.Controls.Add(this.tableTraitTable2);
             this.panelTableContainer.Controls.Add(this.tableTraitTable1);
-            this.panelTableContainer.Location = new System.Drawing.Point(22, 141);
+            this.panelTableContainer.Location = new System.Drawing.Point(3, 141);
             this.panelTableContainer.Name = "panelTableContainer";
-            this.panelTableContainer.Size = new System.Drawing.Size(661, 213);
+            this.panelTableContainer.Size = new System.Drawing.Size(680, 192);
             this.panelTableContainer.TabIndex = 18;
             // 
             // SimulateData

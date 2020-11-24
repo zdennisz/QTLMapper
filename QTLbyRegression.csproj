@@ -93,6 +93,18 @@
     </Compile>
     <Compile Include="Models\Chromosome.cs" />
     <Compile Include="Presentors\DataGeneratorPresentor.cs" />
+    <Compile Include="Views\GeneticTableHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GeneticTableHeader.Designer.cs">
+      <DependentUpon>GeneticTableHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneticTableRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GeneticTableRow.Designer.cs">
+      <DependentUpon>GeneticTableRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HelpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +168,12 @@
     <Compile Include="Presentors\VIewResultsPresentor.cs" />
     <EmbeddedResource Include="Views\CalculateQTL.resx">
       <DependentUpon>CalculateQTL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GeneticTableHeader.resx">
+      <DependentUpon>GeneticTableHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GeneticTableRow.resx">
+      <DependentUpon>GeneticTableRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HelpWindow.resx">
       <DependentUpon>HelpWindow.cs</DependentUpon>

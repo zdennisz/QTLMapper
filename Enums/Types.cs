@@ -69,6 +69,14 @@ namespace QTLProject
             
         }
 
+        public enum QTLTaritModels
+        {
+            NoQTL=0,
+            OneQTL=1,
+            OneDominantQTL=2,
+            TwoLinkedQTL=3,
+        }
+
        
 
         public class State

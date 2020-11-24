@@ -6,6 +6,7 @@ namespace QTLProject
 {
     public class Model
     {
+       // 1 QTL in (chr1, 45.6), d=0.48, s=1.2
         public Locus[] QTL { get; set; }//[iQTL]
         public Trait[] Trait { get; set; }//[iSelectedTrait]
         public QTL_SingleLocusEffectOnSingleTrait[,] QTLeffect { get; set; }//[iSelectedTrait,iQTL]

@@ -48,4 +48,27 @@ namespace QTLProject
     public int Haplotype(int h, int iLocus){
         if (h==1) {return Haplotype1[iLocus];} else {return Haplotype0[iLocus];}
     }
+    public void InheritOrderedListOfLoci(List<Locus> OrderedListOfLoci){
+        HaplotypeInheritOrderedListOfLoci(OrderedListOfLoci, Parent0, RecEventsParent0, 
+                                                   out Haplotype0, 
+                                                   out Haplotype0Ok);
+        HaplotypeInheritOrderedListOfLoci(OrderedListOfLoci, Parent1, RecEventsParent1, 
+                                                   out Haplotype1, 
+                                                   out Haplotype1Ok);
+        Genotype = new List<int>();
+        GenotypeOk= new List<bool>();
+        int i=0;
+        foreach (Locus in OrderedListOfLoci) {
+            bool b=Haplotype0Ok[i] && Haplotype1Ok[i];
+            int a=-1;
+            if (b) { a=Haplotype0[i]+Haplotype1[i];}
+            GenotypeOk.add(b);
+            Genotype.add(a);
+            i++;
+        }
+    }
+    private void HaplotypeInheritOrderedListOfLoci(List<Locus> OrderedListOfLoci, Individ parent, IList<Position> RecEventsParent, 
+                                                   out List<int> Haplotype, 
+                                                   out List<bool> HaplotypeOk){
+    }
 }

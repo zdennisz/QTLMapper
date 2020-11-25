@@ -109,6 +109,10 @@ namespace QTLProject
                 public bool GoingForward { get; set; }
             }  
         }
+        
+        //public class ListOfValuesWithNA{
+        //    
+        //}
 
 
     }

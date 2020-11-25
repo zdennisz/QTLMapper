@@ -20,6 +20,8 @@ namespace QTLProject
         public IList<int> GenotypeOfInd { get { return genotypeOfInd; } set { genotypeOfInd = (List<int>)value;} }//[iIndSelected]
         
         public int[,] Genotype { get; set; }//[iIndSelected,iLocusSelected]
+        public bool[,] GenotypeOk { get; set; }//[iIndSelected,iLocusSelected]
         public float[,] TraitValue { get; set; }//[iIndSelected,iTraitSelected]
+        public bool[,] TraitValueOk { get; set; }//[iIndSelected,iTraitSelected]
     }
 }

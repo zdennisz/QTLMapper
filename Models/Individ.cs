@@ -38,8 +38,14 @@ namespace QTLProject
         //public int[] Genotype { get { return genotype; } set { } }
         //public Trait[] TraitKnownValue { get; set; }
         //public float[] TraitValue { get { return traitValue; } set { } }
+        public List<bool> traitPhenotypeValOk { get; set;}
+        public List<float> traitPhenotypeVal { get; set;}
+        public List<float> traitGenotypeVal { get; set;}
     }
     public bool HaplotypeOk(int h, int iLocus){
         if (h==1) {return Haplotype1Ok[iLocus];} else {return Haplotype0Ok[iLocus];}
+    }
+    public int Haplotype(int h, int iLocus){
+        if (h==1) {return Haplotype1[iLocus];} else {return Haplotype0[iLocus];}
     }
 }

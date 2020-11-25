@@ -70,5 +70,20 @@ namespace QTLProject
     private void HaplotypeInheritOrderedListOfLoci(List<Locus> OrderedListOfLoci, Individ parent, IList<Position> RecEventsParent, 
                                                    out List<int> Haplotype, 
                                                    out List<bool> HaplotypeOk){
+        int Phase=0;
+        int nRec=RecEventsParent.Count;
+        int nLoci=OrderedListOfLoci.Count;
+        //NotBeforePosition(Position Pos)
+        Haplotype = new List<int>();
+        HaplotypeOk= new List<bool>();
+        if (nLoci>0) {
+            Position PosLast=new Position();
+            PosLast.Chromosome=OrderedListOfLoci.Position.Chromosome;
+            PosLast.PositionChrGenetic=OrderedListOfLoci.Position.PositionChrGenetic+10;
+            Position PosNextRec=new Position();
+            if (nRec==0) {PosNextRec=PosLast;} else {PosNextRec=RecEventsParent[0];}
+            foreach (Locus in OrderedListOfLoci) {
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace QTLProject
         public string Name { get; set; }
         public bool BMarker { get; set; }
         public Position Position { get; set; }//ID of chromosome
+        public List<QTL_SingleLocusEffectOnSingleTrait>  QTL = new List<QTL_SingleLocusEffectOnSingleTrait>() ;
        
         public IList<AllelName> AlleneNameOriginal { get { return alleneNameOriginal;  } set { alleneNameOriginal = (List<AllelName>)value; } }//usually ('0','1'), ('a','A'), ('m','M'), ('A','T'), ('C','G'),... 
         public LocusDominanceStatus IdDominanceStatus { get; set; }//0 - allele 0 is dominant, 1 - allele 1 is dominant, 2 - codominant

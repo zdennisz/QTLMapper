@@ -19,7 +19,7 @@ namespace QTLProject
         public List<QTL_SingleLocusEffectOnSingleTrait>  QTL = new List<QTL_SingleLocusEffectOnSingleTrait>() ;
        
         //public IList<AllelName> AlleneNameOriginal { get { return alleneNameOriginal;  } set { alleneNameOriginal = (List<AllelName>)value; } }//usually ('0','1'), ('a','A'), ('m','M'), ('A','T'), ('C','G'),... 
-        public string[] AlleneNameOriginal=new string[2]
+        public string[] AlleneNameOriginal=new string[2];
         public LocusDominanceStatus IdDominanceStatus { get; set; }//0 - allele 0 is dominant, 1 - allele 1 is dominant, 2 - codominant
         
         public Locus(int nLociCurrent, Position pos){

@@ -71,18 +71,37 @@ namespace QTLProject
                                                    out List<int> Haplotype, 
                                                    out List<bool> HaplotypeOk){
         int Phase=0;
-        int nRec=RecEventsParent.Count;
-        int nLoci=OrderedListOfLoci.Count;
+        int NRec=RecEventsParent.Count;
+        int NLoci=OrderedListOfLoci.Count;
         //NotBeforePosition(Position Pos)
-        Haplotype = new List<int>();
-        HaplotypeOk= new List<bool>();
-        if (nLoci>0) {
+        List<int> Haplotype = new List<int>();
+        List<bool> HaplotypeOk= new List<bool>();
+        if (NLoci>0) {
             Position PosLast=new Position();
             PosLast.Chromosome=OrderedListOfLoci.Position.Chromosome;
             PosLast.PositionChrGenetic=OrderedListOfLoci.Position.PositionChrGenetic+10;
             Position PosNextRec=new Position();
-            if (nRec==0) {PosNextRec=PosLast;} else {PosNextRec=RecEventsParent[0];}
+            if (NRec==0) {PosNextRec=PosLast;} else {PosNextRec=RecEventsParent[0];}
+            int IRec=0;
+            int ILocus=0;
+            List<int> ParentHaplotype;
+            List<bool> ParentHaplotypeOk;
             foreach (Locus in OrderedListOfLoci) {
+                while (!PosNextRec.NotBeforePosition(Locus.Position)) {
+                    IRec++;
+                    if (IRec>=NRec) {PosNextRec=PosLast;} else {PosNextRec=RecEventsParent[IRec];}
+                    Phase=1-Phase;//0<->1
+                }
+                if (Phase==0){
+                    ParentHaplotype=Individ.Haplotype0;
+                    ParentHaplotypeOk=Individ.Haplotype0Ok;
+                } else {
+                    ParentHaplotype=Individ.Haplotype1;
+                    ParentHaplotypeOk=Individ.Haplotype1Ok;
+                }
+                Haplotype.add(ParentHaplotype[ILocus]);
+                HaplotypeOk.add(ParentHaplotypeOk[ILocus]);
+                ILocus++;
             }
         }
     }

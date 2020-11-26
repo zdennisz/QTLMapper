@@ -177,6 +177,12 @@ namespace QTLProject
             }
 
         }
+        
+        //dRec=expectation of number of recombination events in the interval (1 cM=0.01 recombination event)
+        //Independent recombination or start from he begin of chromosome => exponential distribution of distance to the next recombination
+        //E{exp(lambda)}=1/lambda=100 cM => lambda=1/100
+        //density: p(x)=lambda e^{- lambda*x}
+        //comulative distribution function: P(x)=P(exp(lambda)<x)=1 - e^{- lambda*x} ~ U[0,1] => e^{- lambda*x}=1-U[0,1] => - lambda*x=ln(1-U[0,1]) => x=(-1/lambda)*ln(1-U[0,1]) = -100*ln(1-U[0,1])  
 
         /// <summary>
         /// Simulates the recombination events for the production of the children from two parents

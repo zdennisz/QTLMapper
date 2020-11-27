@@ -60,6 +60,7 @@ namespace QTLProject
                 {
                     if (posPrev < go.Chromosome[iChr].LenGenetcM)
                     {
+                        /*
                         Locus locus = new Locus();
 
                         Position pos = new Position();
@@ -73,6 +74,7 @@ namespace QTLProject
 
                         locus.Id = idLocus;//Zeev: not iChr
                         go.Chromosome[iChr].Locus.Add(locus);
+                        */
                     }
                 }
 
@@ -108,76 +110,76 @@ namespace QTLProject
         /// <param name="recType"></param>
         public void DefineParentalHaplotypes(RecombinationType experimentDesign = RecombinationType.Backcross, double strengthOfNoise = 0.2)
         {
-
-            mother = new Individ();
-            father = new Individ();
-            Random s_Random = new Random();
-            switch (experimentDesign)
-            {
-                case RecombinationType.Backcross:
-                    for (int i = 0; i < mother.Haplotype0.Length; i++)
-                    {
-                        mother.Haplotype0[i] = 0;
-                        mother.Haplotype1[i] = 1;
-                    }
-                    for (int i = 0; i < father.Haplotype0.Length; i++)
-                    {
-                        father.Haplotype0[i] = 1;
-                        father.Haplotype1[i] = 1;
-                    }
-                    break;
-
-                case RecombinationType.BackcrossWithNoise:
-
-                    for (int i = 0; i < mother.Haplotype0.Length; i++)
-                    {
-
-                        if (s_Random.NextDouble() < strengthOfNoise)
+            /*
+                        mother = new Individ();
+                        father = new Individ();
+                        Random s_Random = new Random();
+                        switch (experimentDesign)
                         {
-                            mother.Haplotype0[i] = 1;
-                        }
-                        else
-                        {
-                            mother.Haplotype0[i] = 0;
-                        }
+                            case RecombinationType.Backcross:
+                                for (int i = 0; i < mother.Haplotype0.Length; i++)
+                                {
+                                    mother.Haplotype0[i] = 0;
+                                    mother.Haplotype1[i] = 1;
+                                }
+                                for (int i = 0; i < father.Haplotype0.Length; i++)
+                                {
+                                    father.Haplotype0[i] = 1;
+                                    father.Haplotype1[i] = 1;
+                                }
+                                break;
 
-                        if (s_Random.NextDouble() < strengthOfNoise)
-                        {
-                            mother.Haplotype1[i] = 0;
-                        }
-                        else
-                        {
-                            mother.Haplotype1[i] = 1;
-                        }
+                            case RecombinationType.BackcrossWithNoise:
 
-                    }
-                    for (int i = 0; i < father.Haplotype0.Length; i++)
-                    {
-                        if (s_Random.NextDouble() < strengthOfNoise)
-                        {
-                            father.Haplotype0[i] = 0;
-                        }
-                        else
-                        {
-                            father.Haplotype0[i] = 1;
-                        }
-                        if (s_Random.NextDouble() < strengthOfNoise)
-                        {
-                            father.Haplotype1[i] = 0;
-                        }
-                        else
-                        {
-                            father.Haplotype1[i] = 1;
-                        }
+                                for (int i = 0; i < mother.Haplotype0.Length; i++)
+                                {
 
-                    }
+                                    if (s_Random.NextDouble() < strengthOfNoise)
+                                    {
+                                        mother.Haplotype0[i] = 1;
+                                    }
+                                    else
+                                    {
+                                        mother.Haplotype0[i] = 0;
+                                    }
+
+                                    if (s_Random.NextDouble() < strengthOfNoise)
+                                    {
+                                        mother.Haplotype1[i] = 0;
+                                    }
+                                    else
+                                    {
+                                        mother.Haplotype1[i] = 1;
+                                    }
+
+                                }
+                                for (int i = 0; i < father.Haplotype0.Length; i++)
+                                {
+                                    if (s_Random.NextDouble() < strengthOfNoise)
+                                    {
+                                        father.Haplotype0[i] = 0;
+                                    }
+                                    else
+                                    {
+                                        father.Haplotype0[i] = 1;
+                                    }
+                                    if (s_Random.NextDouble() < strengthOfNoise)
+                                    {
+                                        father.Haplotype1[i] = 0;
+                                    }
+                                    else
+                                    {
+                                        father.Haplotype1[i] = 1;
+                                    }
+
+                                }
 
 
-                    break;
-            }
-
+                                break;
+                        }
+            */
         }
-        
+
         //dRec=expectation of number of recombination events in the interval (1 cM=0.01 recombination event)
         //Independent recombination or start from he begin of chromosome => exponential distribution of distance to the next recombination
         //E{exp(lambda)}=1/lambda=100 cM => lambda=1/100
@@ -276,6 +278,7 @@ namespace QTLProject
         }
         public void allelInheritance()
         {
+            /*
             for (int g = 0; g < offSpring.RecEventsParent0.Count; g++)
             {
                 Locus locusOfRecombination = new Locus();
@@ -295,6 +298,7 @@ namespace QTLProject
                 locusOfRecombination.Position = positionOfRecombination;
                 offSpring.LocusKnownHaplotype.Add(locusOfRecombination);
             }
+        */
         }
 
         public void DefineQTL()
@@ -340,37 +344,36 @@ namespace QTLProject
                 QTL_SingleLocusEffectOnSingleTrait effectOfQ3 = new QTL_SingleLocusEffectOnSingleTrait();
                 effectOfQ3.AdditiveEffect_d = 0.4;
                 effectOfQ3.AdditiveEffect_h = AdditiveEffect_h.Dominant;
-
+                /*
                 // 0  T(father)=2*d1+2*d2+2*d3=2*1+2*0.8+2*0.4
                 offspring.TraitValue[0]= (float)(2 * effectOfQ1.AdditiveEffect_d + 2 * effectOfQ2.AdditiveEffect_d + 2 * effectOfQ3.AdditiveEffect_d);
                 // 1  T(mother)=h1*d1+h2*d2+h3*d3=1*1+1*0.8+1*0.4
                 offspring.TraitValue[1] = (float)(effectOfQ1.AdditiveEffect_d * effectOfQ1.AdditiveEffect_h + effectOfQ2.AdditiveEffect_d * effectOfQ2.AdditiveEffect_h + effectOfQ3.AdditiveEffect_d * effectOfQ3.AdditiveEffect_h);
-
-             
+                */
                 //define the genotype of children - which is the combinations of all genes at a particular locus
-               //for(int i=0;i<offspring.Genotype.Length;i++)
-               // {
-               //     int locationOfRecomb;
-               //     for (int g = 0; g < offspring.RecEventsParent0.Count; g++)
-               //     {
-               //         locationOfRecomb = (int)offspring.RecEventsParent0[g].PositionChrGenetic;
-               //         if (locationOfRecomb < offspring.Genotype.Length)
-               //         {
-               //             offspring.Genotype[i] = mother.Haplotype0[g];
-               //         }
-                           
-               //     }
+                //for(int i=0;i<offspring.Genotype.Length;i++)
+                // {
+                //     int locationOfRecomb;
+                //     for (int g = 0; g < offspring.RecEventsParent0.Count; g++)
+                //     {
+                //         locationOfRecomb = (int)offspring.RecEventsParent0[g].PositionChrGenetic;
+                //         if (locationOfRecomb < offspring.Genotype.Length)
+                //         {
+                //             offspring.Genotype[i] = mother.Haplotype0[g];
+                //         }
+
+                //     }
 
 
-               //     for (int r = 0; r < offspring.RecEventsParent1.Count; r++)
-               //     {
-               //         locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
-               //         if (locationOfRecomb < offspring.Genotype.Length)
-               //         {
-               //             offspring.Genotype[i] = mother.Haplotype1[r];
-               //         }
-               //     }
-               // }
+                //     for (int r = 0; r < offspring.RecEventsParent1.Count; r++)
+                //     {
+                //         locationOfRecomb = (int)(offSpring.RecEventsParent1[r].PositionChrGenetic);
+                //         if (locationOfRecomb < offspring.Genotype.Length)
+                //         {
+                //             offspring.Genotype[i] = mother.Haplotype1[r];
+                //         }
+                //     }
+                // }
             }
 
         }

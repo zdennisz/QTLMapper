@@ -6,13 +6,16 @@ using System.Threading;
 using System.Collections.Generic;
 using static QTLProject.Types;
 using QTLProject.Enums;
-using System.Drawing;
-using QTLProject.Views;
+using QTLProject.Utils;
 
 namespace QTLProject
 {
     public partial class SimulateData : UserControl
     {
+        #region Fields
+        TableGenerator genetictable;
+        TableGenerator traitTable;
+        #endregion Fields
 
         #region Events
         public event EventHandler nextButtonClicked;
@@ -23,6 +26,8 @@ namespace QTLProject
         {
             InitializeComponent();
             setupUI();
+            genetictable = new TableGenerator(this.tableGeneticModel);
+            traitTable = new TableGenerator(this.panelTableContainer);
             //set the format of the dates
             this.btnNext.MouseClick += BtnNext_MouseClick;
             this.btnBack.MouseClick += BtnBack_MouseClick;
@@ -51,8 +56,7 @@ namespace QTLProject
             geneticParams.Add(Constants.PopSize);
             geneticParams.Add(Constants.MissingData);
             geneticParams.Add(Constants.Error);
-
-            createTableCol(geneticParams, 25, 400, 6, 8);
+            genetictable.CreateGeneticTable(geneticParams, 25, 400, 6, 8);
 
         }
         private void ComboBoxTrait_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,114 +101,15 @@ namespace QTLProject
                 {
                     tableAmount++;
                 }
-                createTableRow(tableAmount, taritModelParams, 25, 75, 2);
-
+                traitTable.CreateTraitTable(tableAmount, taritModelParams, 25, 75, 2);
+                
             }
 
             //update the genetic table
         }
 
-        private void createTableRow(int amountOftables, List<string> modelParams, float rowSize, float colSize, int colAmount)
-        {
-
-            for (int i = 0; i < amountOftables; i++)
-            {
-                int rowIndex = 0;
-                var table = (TableLayoutPanel)this.panelTableContainer.Controls[i];
-                table.Controls.Clear();
-                table.RowStyles.Clear();
-                table.ColumnCount = colAmount;
-                table.RowCount = modelParams.Count + 1;
-
-                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));
-                Label placeHodler = new Label();
-                placeHodler.Dock = DockStyle.Fill;
-                placeHodler.BackColor = ColorConstants.tableHeaderColor;
-                table.SetColumnSpan(placeHodler, table.ColumnCount);
-                table.Controls.Add(placeHodler, 0, rowIndex);
-
-                table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
-                rowIndex++;
-                foreach (string name in modelParams)
-                {
-
-                    TraitTableRow tableRow = new TraitTableRow();
-                    tableRow.rowLabel.Text = name;
-                    // tableRow.Size = new Size(100, 25);
-
-                    tableRow.rowTextBox.Name = "tb" + name.Replace(" ", "");
-                    tableRow.rowPanel.Dock = DockStyle.Fill;
-
-                    tableRow.rowPanel.BackColor = Color.White;
-                    tableRow.rowTextBox.BackColor = Color.White;
-
-                    if (rowIndex % 2 == 0)
-                    {
-                        tableRow.rowPanel.BackColor = Color.LightGray;
-                        tableRow.rowTextBox.BackColor = Color.LightGray;
-                    }
-                    tableRow.rowTextBox.BorderStyle = BorderStyle.None;
-
-                    table.SetColumnSpan(tableRow, 2);
-                    table.Controls.Add(tableRow, 0, rowIndex);
-                    table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
 
 
-                    rowIndex++;
-                }
-                table.Visible = true;
-            }
-        }
-
-        private void createTableCol(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
-        {
-            int rowIndex = 0;
-            var table = (TableLayoutPanel)this.tableGeneticModel;
-            table.Controls.Clear();
-            table.RowStyles.Clear();
-            table.ColumnCount = colAmount;
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));
-            GeneticTableHeader geneticTableRowHeader = new GeneticTableHeader();
-            geneticTableRowHeader.InitHeaderNames(modelParams);
-            geneticTableRowHeader.Dock = DockStyle.Fill;
-            geneticTableRowHeader.BackColor = ColorConstants.tableHeaderColor;
-
-            table.SetColumnSpan(geneticTableRowHeader, table.ColumnCount);
-            table.Controls.Add(geneticTableRowHeader, 0, rowIndex);
-
-            table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
-            rowIndex++;
-            while (rowIndex < amountOfRows)
-            {
-
-                GeneticTableRow tableRow = new GeneticTableRow();
-                tableRow.Dock = DockStyle.Fill;
-
-
-
-                if (rowIndex % 2 == 0)
-                {
-                    tableRow.BackColor = Color.LightGray;
-                    tableRow.BackColor = Color.LightGray;
-                    tableRow.setTextBoxBackgroundColor(Color.LightGray);
-                }
-                else
-                {
-                    tableRow.BackColor = Color.White;
-                    tableRow.BackColor = Color.White;
-                    tableRow.setTextBoxBackgroundColor(Color.White);
-
-                }
-                tableRow.BorderStyle = BorderStyle.None;
-                table.SetColumnSpan(tableRow, colAmount);
-                table.Controls.Add(tableRow, 0, rowIndex);
-                table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
-
-
-
-                rowIndex++;
-            }
-        }
         private void setupUI()
         {
             List<string> geneticModel = new List<string>();

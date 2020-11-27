@@ -1,6 +1,6 @@
 ﻿namespace QTLProject.Views
 {
-    partial class GeneticTableRow
+    partial class InputDataTableRow
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(500, 6);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(48, 20);
-            this.textBox6.TabIndex = 17;
             // 
             // textBox1
             // 
@@ -49,13 +40,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(48, 20);
             this.textBox1.TabIndex = 12;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(402, 6);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(48, 20);
-            this.textBox5.TabIndex = 16;
             // 
             // textBox2
             // 
@@ -78,17 +62,15 @@
             this.textBox3.Size = new System.Drawing.Size(48, 20);
             this.textBox3.TabIndex = 14;
             // 
-            // GeneticTableRow
+            // InputDataTableRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
-            this.Name = "GeneticTableRow";
+            this.Name = "InputDataTableRow";
             this.Size = new System.Drawing.Size(600, 25);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -96,10 +78,7 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox3;

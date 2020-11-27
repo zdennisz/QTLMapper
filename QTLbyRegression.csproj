@@ -85,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\TableGenerator.cs" />
     <Compile Include="Views\CalculateQTL.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +94,18 @@
     </Compile>
     <Compile Include="Models\Chromosome.cs" />
     <Compile Include="Presentors\DataGeneratorPresentor.cs" />
+    <Compile Include="Views\InputDataTableRow .cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\InputDataTableRow .Designer.cs">
+      <DependentUpon>InputDataTableRow .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InputDataTableHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\InputDataTableHeader.Designer.cs">
+      <DependentUpon>InputDataTableHeader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GeneticTableHeader.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +181,12 @@
     <Compile Include="Presentors\VIewResultsPresentor.cs" />
     <EmbeddedResource Include="Views\CalculateQTL.resx">
       <DependentUpon>CalculateQTL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\InputDataTableRow .resx">
+      <DependentUpon>InputDataTableRow .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\InputDataTableHeader.resx">
+      <DependentUpon>InputDataTableHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GeneticTableHeader.resx">
       <DependentUpon>GeneticTableHeader.cs</DependentUpon>

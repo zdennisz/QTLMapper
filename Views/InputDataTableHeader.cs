@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace QTLProject.Views
 {
-    public partial class GeneticTableHeader : UserControl
+    public partial class InputDataTableHeader : UserControl
     {
         List<Label> labels = new List<Label>();
-      
-        public GeneticTableHeader()
+       
+        public InputDataTableHeader()
         {
             InitializeComponent();
 
             initLabels();
-         
+            
         }
 
 
@@ -35,7 +35,7 @@ namespace QTLProject.Views
         public void InitHeaderNames(List<string> names)
         {
             int i=0; 
-            
+           
             while (i < names.Count)
             {
                 labels[i].Text = names[i];

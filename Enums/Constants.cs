@@ -29,7 +29,7 @@ namespace QTLProject.Enums
 
 
         /// <summary>
-        ///  Tratit table column names
+        ///  Trait table column names
         /// </summary>
         public const string QtlPos= "QTL pos (cM)";
         public const string QTLChr="QTL Chr";
@@ -37,6 +37,17 @@ namespace QTLProject.Enums
         public const string Varq="Var q";
         public const string AvgQ="Avq. Q";
         public const string Avgq="Avq. q";
+
+
+        /// <summary>
+        /// Table columns for input Data table
+        /// </summary>
+        public const string Marker = "Marker";
+        public const string CoorcM = "Coor(cM)";
+        public const string Chr = "Chr";
+        public const string Quality = "Quality";
+        public const string Map = "Map";
+
 
 
     }

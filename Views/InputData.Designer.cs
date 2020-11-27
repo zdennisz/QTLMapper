@@ -36,8 +36,7 @@
             this.btnCutData = new System.Windows.Forms.Button();
             this.btnCopyData = new System.Windows.Forms.Button();
             this.btnPasteData = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.inputDataTable = new System.Windows.Forms.TableLayoutPanel();
             this.btnSaveData = new System.Windows.Forms.Button();
             this.btnDelData = new System.Windows.Forms.Button();
             this.btnInsrData = new System.Windows.Forms.Button();
@@ -67,6 +66,7 @@
             // 
             // btnOpenData
             // 
+            this.btnOpenData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenData.FlatAppearance.BorderSize = 0;
             this.btnOpenData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenData.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenData.Image")));
@@ -78,6 +78,7 @@
             // 
             // btnEditData
             // 
+            this.btnEditData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditData.FlatAppearance.BorderSize = 0;
             this.btnEditData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditData.Image = ((System.Drawing.Image)(resources.GetObject("btnEditData.Image")));
@@ -89,6 +90,7 @@
             // 
             // btnCutData
             // 
+            this.btnCutData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCutData.FlatAppearance.BorderSize = 0;
             this.btnCutData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCutData.Image = ((System.Drawing.Image)(resources.GetObject("btnCutData.Image")));
@@ -100,6 +102,7 @@
             // 
             // btnCopyData
             // 
+            this.btnCopyData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCopyData.FlatAppearance.BorderSize = 0;
             this.btnCopyData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCopyData.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyData.Image")));
@@ -111,6 +114,7 @@
             // 
             // btnPasteData
             // 
+            this.btnPasteData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPasteData.FlatAppearance.BorderSize = 0;
             this.btnPasteData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPasteData.Image = ((System.Drawing.Image)(resources.GetObject("btnPasteData.Image")));
@@ -120,43 +124,35 @@
             this.btnPasteData.TabIndex = 9;
             this.btnPasteData.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // inputDataTable
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Input Data";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 484F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 139);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.21561F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.78439F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(726, 424);
-            this.tableLayoutPanel1.TabIndex = 11;
+            this.inputDataTable.ColumnCount = 6;
+            this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 484F));
+            this.inputDataTable.Location = new System.Drawing.Point(12, 129);
+            this.inputDataTable.Name = "inputDataTable";
+            this.inputDataTable.RowCount = 10;
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.21561F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.78439F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.inputDataTable.Size = new System.Drawing.Size(400, 424);
+            this.inputDataTable.TabIndex = 11;
             // 
             // btnSaveData
             // 
             this.btnSaveData.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveData.FlatAppearance.BorderSize = 0;
             this.btnSaveData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSaveData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -169,6 +165,7 @@
             // 
             // btnDelData
             // 
+            this.btnDelData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelData.FlatAppearance.BorderSize = 0;
             this.btnDelData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelData.Image = ((System.Drawing.Image)(resources.GetObject("btnDelData.Image")));
@@ -180,6 +177,7 @@
             // 
             // btnInsrData
             // 
+            this.btnInsrData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInsrData.FlatAppearance.BorderSize = 0;
             this.btnInsrData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsrData.Image = ((System.Drawing.Image)(resources.GetObject("btnInsrData.Image")));
@@ -191,6 +189,7 @@
             // 
             // btnSortDsc
             // 
+            this.btnSortDsc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSortDsc.FlatAppearance.BorderSize = 0;
             this.btnSortDsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortDsc.Image = ((System.Drawing.Image)(resources.GetObject("btnSortDsc.Image")));
@@ -202,6 +201,7 @@
             // 
             // btnSortAsc
             // 
+            this.btnSortAsc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSortAsc.FlatAppearance.BorderSize = 0;
             this.btnSortAsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortAsc.Image = ((System.Drawing.Image)(resources.GetObject("btnSortAsc.Image")));
@@ -234,15 +234,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.inputDataTable);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
             this.Name = "InputData";
             this.Size = new System.Drawing.Size(732, 601);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -254,8 +252,7 @@
         private System.Windows.Forms.Button btnCutData;
         private System.Windows.Forms.Button btnCopyData;
         private System.Windows.Forms.Button btnPasteData;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel inputDataTable;
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.Button btnDelData;
         private System.Windows.Forms.Button btnInsrData;

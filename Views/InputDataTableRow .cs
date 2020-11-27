@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace QTLProject.Views
 {
-    public partial class GeneticTableRow : UserControl
+    public partial class InputDataTableRow : UserControl
     {
-       
-        public GeneticTableRow( )
+      
+        public InputDataTableRow( )
         {
-            
+           
             InitializeComponent();
             foreach(TextBox tb in this.Controls)
             {
@@ -24,11 +24,11 @@ namespace QTLProject.Views
                 { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
                 tb.BackColor = this.BackColor;
             }
-           
+            
 
         }
 
-   
+  
 
         public void setTextBoxBackgroundColor(Color backColor)
         {

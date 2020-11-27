@@ -66,61 +66,71 @@
             // 
             // btnOpenData
             // 
+            this.btnOpenData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOpenData.BackgroundImage")));
+            this.btnOpenData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOpenData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenData.FlatAppearance.BorderSize = 0;
             this.btnOpenData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenData.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenData.Image")));
-            this.btnOpenData.Location = new System.Drawing.Point(62, 8);
+            this.btnOpenData.Location = new System.Drawing.Point(54, 8);
+            this.btnOpenData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnOpenData.Name = "btnOpenData";
-            this.btnOpenData.Size = new System.Drawing.Size(48, 48);
+            this.btnOpenData.Size = new System.Drawing.Size(26, 26);
             this.btnOpenData.TabIndex = 5;
             this.btnOpenData.UseVisualStyleBackColor = true;
             // 
             // btnEditData
             // 
+            this.btnEditData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditData.BackgroundImage")));
+            this.btnEditData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditData.FlatAppearance.BorderSize = 0;
             this.btnEditData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditData.Image = ((System.Drawing.Image)(resources.GetObject("btnEditData.Image")));
-            this.btnEditData.Location = new System.Drawing.Point(116, 8);
+            this.btnEditData.Location = new System.Drawing.Point(100, 8);
+            this.btnEditData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnEditData.Name = "btnEditData";
-            this.btnEditData.Size = new System.Drawing.Size(48, 48);
+            this.btnEditData.Size = new System.Drawing.Size(26, 26);
             this.btnEditData.TabIndex = 6;
             this.btnEditData.UseVisualStyleBackColor = true;
             // 
             // btnCutData
             // 
+            this.btnCutData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCutData.BackgroundImage")));
+            this.btnCutData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCutData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCutData.FlatAppearance.BorderSize = 0;
             this.btnCutData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCutData.Image = ((System.Drawing.Image)(resources.GetObject("btnCutData.Image")));
-            this.btnCutData.Location = new System.Drawing.Point(170, 8);
+            this.btnCutData.Location = new System.Drawing.Point(146, 8);
+            this.btnCutData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnCutData.Name = "btnCutData";
-            this.btnCutData.Size = new System.Drawing.Size(55, 48);
+            this.btnCutData.Size = new System.Drawing.Size(26, 26);
             this.btnCutData.TabIndex = 7;
             this.btnCutData.UseVisualStyleBackColor = true;
             // 
             // btnCopyData
             // 
+            this.btnCopyData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCopyData.BackgroundImage")));
+            this.btnCopyData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCopyData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCopyData.FlatAppearance.BorderSize = 0;
             this.btnCopyData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyData.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyData.Image")));
-            this.btnCopyData.Location = new System.Drawing.Point(231, 8);
+            this.btnCopyData.Location = new System.Drawing.Point(192, 8);
+            this.btnCopyData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnCopyData.Name = "btnCopyData";
-            this.btnCopyData.Size = new System.Drawing.Size(48, 48);
+            this.btnCopyData.Size = new System.Drawing.Size(26, 26);
             this.btnCopyData.TabIndex = 8;
             this.btnCopyData.UseVisualStyleBackColor = true;
             // 
             // btnPasteData
             // 
+            this.btnPasteData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPasteData.BackgroundImage")));
+            this.btnPasteData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPasteData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPasteData.FlatAppearance.BorderSize = 0;
             this.btnPasteData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPasteData.Image = ((System.Drawing.Image)(resources.GetObject("btnPasteData.Image")));
-            this.btnPasteData.Location = new System.Drawing.Point(285, 8);
+            this.btnPasteData.Location = new System.Drawing.Point(238, 8);
+            this.btnPasteData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnPasteData.Name = "btnPasteData";
-            this.btnPasteData.Size = new System.Drawing.Size(48, 48);
+            this.btnPasteData.Size = new System.Drawing.Size(26, 26);
             this.btnPasteData.TabIndex = 9;
             this.btnPasteData.UseVisualStyleBackColor = true;
             // 
@@ -133,7 +143,7 @@
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 484F));
-            this.inputDataTable.Location = new System.Drawing.Point(12, 129);
+            this.inputDataTable.Location = new System.Drawing.Point(3, 58);
             this.inputDataTable.Name = "inputDataTable";
             this.inputDataTable.RowCount = 10;
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.21561F));
@@ -152,62 +162,72 @@
             // btnSaveData
             // 
             this.btnSaveData.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveData.BackgroundImage")));
+            this.btnSaveData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveData.FlatAppearance.BorderSize = 0;
             this.btnSaveData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSaveData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveData.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveData.Image")));
             this.btnSaveData.Location = new System.Drawing.Point(8, 8);
+            this.btnSaveData.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.btnSaveData.Name = "btnSaveData";
-            this.btnSaveData.Size = new System.Drawing.Size(48, 48);
+            this.btnSaveData.Size = new System.Drawing.Size(26, 26);
             this.btnSaveData.TabIndex = 16;
             this.btnSaveData.UseVisualStyleBackColor = false;
             // 
             // btnDelData
             // 
+            this.btnDelData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelData.BackgroundImage")));
+            this.btnDelData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelData.FlatAppearance.BorderSize = 0;
             this.btnDelData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelData.Image = ((System.Drawing.Image)(resources.GetObject("btnDelData.Image")));
-            this.btnDelData.Location = new System.Drawing.Point(501, 8);
+            this.btnDelData.Location = new System.Drawing.Point(422, 8);
+            this.btnDelData.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.btnDelData.Name = "btnDelData";
-            this.btnDelData.Size = new System.Drawing.Size(48, 48);
+            this.btnDelData.Size = new System.Drawing.Size(26, 26);
             this.btnDelData.TabIndex = 15;
             this.btnDelData.UseVisualStyleBackColor = true;
             // 
             // btnInsrData
             // 
+            this.btnInsrData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsrData.BackgroundImage")));
+            this.btnInsrData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInsrData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInsrData.FlatAppearance.BorderSize = 0;
             this.btnInsrData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsrData.Image = ((System.Drawing.Image)(resources.GetObject("btnInsrData.Image")));
-            this.btnInsrData.Location = new System.Drawing.Point(447, 8);
+            this.btnInsrData.Location = new System.Drawing.Point(376, 8);
+            this.btnInsrData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnInsrData.Name = "btnInsrData";
-            this.btnInsrData.Size = new System.Drawing.Size(48, 48);
+            this.btnInsrData.Size = new System.Drawing.Size(26, 26);
             this.btnInsrData.TabIndex = 14;
             this.btnInsrData.UseVisualStyleBackColor = true;
             // 
             // btnSortDsc
             // 
+            this.btnSortDsc.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSortDsc.BackgroundImage")));
+            this.btnSortDsc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSortDsc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSortDsc.FlatAppearance.BorderSize = 0;
             this.btnSortDsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortDsc.Image = ((System.Drawing.Image)(resources.GetObject("btnSortDsc.Image")));
-            this.btnSortDsc.Location = new System.Drawing.Point(393, 8);
+            this.btnSortDsc.Location = new System.Drawing.Point(330, 8);
+            this.btnSortDsc.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnSortDsc.Name = "btnSortDsc";
-            this.btnSortDsc.Size = new System.Drawing.Size(48, 48);
+            this.btnSortDsc.Size = new System.Drawing.Size(26, 26);
             this.btnSortDsc.TabIndex = 13;
             this.btnSortDsc.UseVisualStyleBackColor = true;
             // 
             // btnSortAsc
             // 
+            this.btnSortAsc.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSortAsc.BackgroundImage")));
+            this.btnSortAsc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSortAsc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSortAsc.FlatAppearance.BorderSize = 0;
             this.btnSortAsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortAsc.Image = ((System.Drawing.Image)(resources.GetObject("btnSortAsc.Image")));
-            this.btnSortAsc.Location = new System.Drawing.Point(339, 8);
+            this.btnSortAsc.Location = new System.Drawing.Point(284, 8);
+            this.btnSortAsc.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnSortAsc.Name = "btnSortAsc";
-            this.btnSortAsc.Size = new System.Drawing.Size(48, 48);
+            this.btnSortAsc.Size = new System.Drawing.Size(26, 26);
             this.btnSortAsc.TabIndex = 12;
             this.btnSortAsc.UseVisualStyleBackColor = true;
             // 
@@ -223,10 +243,10 @@
             this.flowLayoutPanel1.Controls.Add(this.btnSortDsc);
             this.flowLayoutPanel1.Controls.Add(this.btnInsrData);
             this.flowLayoutPanel1.Controls.Add(this.btnDelData);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(149, 46);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(272, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(573, 77);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(460, 49);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // InputData

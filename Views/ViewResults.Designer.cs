@@ -38,6 +38,8 @@
             this.btnShowResutls = new System.Windows.Forms.Button();
             this.comboBoxFuncs = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBack
@@ -105,11 +107,21 @@
             // 
             // comboBoxFuncs
             // 
+            this.comboBoxFuncs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFuncs.FormattingEnabled = true;
+            this.comboBoxFuncs.Items.AddRange(new object[] {
+            "Distribution of Trait",
+            "Single Marker Tests",
+            "QTL Position",
+            "QTLs Effect",
+            "Trait Distribution for QTL alleles",
+            "Model Comparison",
+            "Power"});
             this.comboBoxFuncs.Location = new System.Drawing.Point(12, 86);
             this.comboBoxFuncs.Name = "comboBoxFuncs";
             this.comboBoxFuncs.Size = new System.Drawing.Size(121, 21);
             this.comboBoxFuncs.TabIndex = 19;
+            this.comboBoxFuncs.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFuncs_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -120,10 +132,30 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "View";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Selected:";
+            // 
+            // lblValue
+            // 
+            this.lblValue.AutoSize = true;
+            this.lblValue.Location = new System.Drawing.Point(67, 140);
+            this.lblValue.Name = "lblValue";
+            this.lblValue.Size = new System.Drawing.Size(13, 13);
+            this.lblValue.TabIndex = 22;
+            this.lblValue.Text = "?";
+            // 
             // ViewResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblValue);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxFuncs);
             this.Controls.Add(this.btnShowResutls);
@@ -151,5 +183,7 @@
         private System.Windows.Forms.Button btnShowResutls;
         private System.Windows.Forms.ComboBox comboBoxFuncs;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblValue;
     }
 }

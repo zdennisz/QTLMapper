@@ -26,13 +26,23 @@ namespace QTLProject
             this.btnOpenFolder.BackColor =  ColorTranslator.FromHtml("#ebf9fc");
             this.btnShowResutls.BackColor = ColorTranslator.FromHtml("#ebf9fc");
             // this.comboBoxFuncs.Items.AddRange();
-            this.comboBoxFuncs.SelectedValueChanged += ComboBoxFuncs_SelectedValueChanged;
+            this.btnOpenFolder.MouseClick += BtnOpenFolder_MouseClick;
+            this.comboBoxFuncs.SelectedIndexChanged += ComboBoxFuncs_SelectedIndexChanged;
         }
 
-        private void ComboBoxFuncs_SelectedValueChanged(object sender, EventArgs e)
+        private void BtnOpenFolder_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                txtOpenFolder.Text = fbd.SelectedPath;
+        }
+
+        private void ComboBoxFuncs_SelectedIndexChanged(object sender, EventArgs e)
         {
             //save the seleted value
-            index = e.ToString();
+            // index = e.ToString();
+            lblValue.Text = comboBoxFuncs.Text;
         }
 
         private void BtnShowResutls_MouseClick(object sender, MouseEventArgs e)
@@ -80,5 +90,9 @@ namespace QTLProject
         {
 
         }
+
+        
+
+       
     }
 }

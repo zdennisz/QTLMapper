@@ -48,6 +48,13 @@ namespace QTLProject.Enums
         public const string Quality = "Quality";
         public const string Map = "Map";
 
+        /// <summary>
+        /// Table names
+        /// </summary>
+        public const string GeneticTableRowName = "GeneticTableRow";
+        public const string TraitTableRowName = "TraitTableRow";
+        public const string InputDataTableRowName = "InputDataTableRow";
+
 
 
     }

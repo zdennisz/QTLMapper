@@ -156,7 +156,7 @@
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.inputDataTable.Size = new System.Drawing.Size(400, 424);
+            this.inputDataTable.Size = new System.Drawing.Size(600, 424);
             this.inputDataTable.TabIndex = 11;
             // 
             // btnSaveData

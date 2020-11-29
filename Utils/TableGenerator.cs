@@ -13,34 +13,91 @@ namespace QTLProject.Utils
 {
     public class TableGenerator
     {
-        TableLayoutPanel tableLayoutPanel;
-        Panel panelTableContainer;
- 
+        public TableLayoutPanel tableLayoutPanel;
+        public Panel panelTableContainer;
+
+
         public TableGenerator(TableLayoutPanel panel)
         {
             this.tableLayoutPanel = panel;
-           
+
 
         }
         public TableGenerator(Panel panel1)
         {
             this.panelTableContainer = panel1;
-            
+
         }
 
-        
+        public List<Dictionary<int, string>> RetreiveTableData()
+        {
+            List<Dictionary<int, string>> tableData = new List<Dictionary<int, string>>();
+
+            if (this.tableLayoutPanel != null)
+            {
+
+                foreach (var row in tableLayoutPanel.Controls)
+                {
+                    if (row.GetType().Name == Constants.GeneticTableRowName)
+                    {
+                        tableData.Add(((GeneticTableRow)row).tableRow);
+                    }
+                    if (row.GetType().Name == Constants.InputDataTableRowName)
+                    {
+                        tableData.Add(((InputDataTableRow)row).tableRow);
+                    }
+                }
+            }
+            else
+            {
+                int index = 0, row;
+                for (int i = 0; i < this.panelTableContainer.Controls.Count; i++)
+                {
+                    tableData.Add(new Dictionary<int, string>());
+                }
+
+                foreach (TableLayoutPanel table in this.panelTableContainer.Controls)
+                {
+                    foreach (var column in table.Controls)
+                    {
+
+
+                        if (column.GetType().Name == Constants.TraitTableRowName)
+                        {
+
+                            row = index % 6;
+                            if (index < 6)
+                            {
+                                tableData[0].Add(row, ((TraitTableRow)column).textVal);
+
+                            }
+                            else
+                            {
+
+                                tableData[1].Add(row, ((TraitTableRow)column).textVal);
+                            }
+                            index++;
+                        }
+                    }
+                }
+
+
+            }
+            return tableData;
+        }
+
 
 
         public void CreateGeneticTable(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
         {
-           
+
             int rowIndex = 0;
             var table = this.tableLayoutPanel;
             table.Controls.Clear();
             table.RowStyles.Clear();
             table.ColumnCount = colAmount;
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));    
-            var  tableRowHeader = new GeneticTableHeader();
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));
+            var tableRowHeader = new GeneticTableHeader();
             tableRowHeader.InitHeaderNames(modelParams);
             tableRowHeader.Dock = DockStyle.Fill;
             tableRowHeader.BackColor = ColorConstants.tableHeaderColor;

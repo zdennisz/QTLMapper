@@ -37,7 +37,7 @@
             // label1Col
             // 
             this.label1Col.AutoSize = true;
-            this.label1Col.Location = new System.Drawing.Point(0, 0);
+            this.label1Col.Location = new System.Drawing.Point(42, 0);
             this.label1Col.Name = "label1Col";
             this.label1Col.Size = new System.Drawing.Size(35, 13);
             this.label1Col.TabIndex = 6;
@@ -46,7 +46,7 @@
             // label2Col
             // 
             this.label2Col.AutoSize = true;
-            this.label2Col.Location = new System.Drawing.Point(100, 0);
+            this.label2Col.Location = new System.Drawing.Point(180, 0);
             this.label2Col.Name = "label2Col";
             this.label2Col.Size = new System.Drawing.Size(35, 13);
             this.label2Col.TabIndex = 7;
@@ -55,7 +55,7 @@
             // label3Col
             // 
             this.label3Col.AutoSize = true;
-            this.label3Col.Location = new System.Drawing.Point(200, 0);
+            this.label3Col.Location = new System.Drawing.Point(329, 0);
             this.label3Col.Name = "label3Col";
             this.label3Col.Size = new System.Drawing.Size(35, 13);
             this.label3Col.TabIndex = 8;
@@ -64,7 +64,7 @@
             // label4Col
             // 
             this.label4Col.AutoSize = true;
-            this.label4Col.Location = new System.Drawing.Point(300, 0);
+            this.label4Col.Location = new System.Drawing.Point(485, 0);
             this.label4Col.Name = "label4Col";
             this.label4Col.Size = new System.Drawing.Size(35, 13);
             this.label4Col.TabIndex = 9;

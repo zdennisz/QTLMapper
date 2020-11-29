@@ -12,7 +12,7 @@ namespace QTLProject.Views
 {
     public partial class GeneticTableRow : UserControl
     {
-       
+        public Dictionary<int, string> tableRow = new Dictionary<int, string>();
         public GeneticTableRow( )
         {
             
@@ -24,11 +24,44 @@ namespace QTLProject.Views
                 { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
                 tb.BackColor = this.BackColor;
             }
-           
+            this.textBox1.TextChanged += TextBox1_TextChanged;
+            this.textBox2.TextChanged += TextBox2_TextChanged;
+            this.textBox3.TextChanged += TextBox3_TextChanged;
+            this.textBox4.TextChanged += TextBox4_TextChanged;
+            this.textBox5.TextChanged += TextBox5_TextChanged;
+            this.textBox6.TextChanged += TextBox6_TextChanged;
 
         }
 
-   
+        private void TextBox6_TextChanged(object sender, EventArgs e)
+        {
+            this.tableRow[5]= this.textBox6.Text;
+        }
+
+        private void TextBox5_TextChanged(object sender, EventArgs e)
+        {
+            this.tableRow[4]= this.textBox5.Text;
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+            this.tableRow[3]= this.textBox4.Text;
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            this.tableRow[2]= this.textBox3.Text;
+        }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            this.tableRow[1]= this.textBox2.Text;
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.tableRow[0]= this.textBox1.Text;
+        }
 
         public void setTextBoxBackgroundColor(Color backColor)
         {

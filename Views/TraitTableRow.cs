@@ -12,6 +12,7 @@ namespace QTLProject.Views
 {
     public partial class TraitTableRow : UserControl
     {
+        public string textVal;
         public TraitTableRow()
         {
             InitializeComponent();
@@ -19,9 +20,13 @@ namespace QTLProject.Views
             this.rowTextBox.BorderStyle = BorderStyle.None;
             this.rowTextBox.Controls.Add(new Label()
             { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
-
+            this.rowTextBox.TextChanged += RowTextBox_TextChanged;
 
         }
 
+        private void RowTextBox_TextChanged(object sender, EventArgs e)
+        {
+            textVal = this.rowTextBox.Text;
+        }
     }
 }

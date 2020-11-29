@@ -19,6 +19,7 @@ namespace QTLProject
         public event EventHandler nextButtonClicked;
         public event EventHandler backButtonClicked;
         TableGenerator inputDatatable ;
+        InputDataPresentor inputDataPresentor;
         #endregion Fields
 
         #region Constructor
@@ -29,10 +30,49 @@ namespace QTLProject
             SetupUI();
             inputDatatable = new TableGenerator(this.inputDataTable);
             CreateTableColumns();
-          
-            this.btnBack.MouseClick += BtnBack_MouseClick;
-            this.btnNext.MouseClick += BtnNext_MouseClick;
+            inputDataPresentor = new InputDataPresentor();
+        }
 
+        private void BtnDelData_MouseClick(object sender, MouseEventArgs e)
+        {
+            //TODO make the presentor preform the actions
+
+            throw new NotImplementedException();
+        }
+
+        private void BtnPasteData_MouseClick(object sender, MouseEventArgs e)
+        {
+            //TODO make the presentor preform the actions
+            throw new NotImplementedException();
+        }
+
+        private void BtnEditData_MouseClick(object sender, MouseEventArgs e)
+        {
+            //TODO make the presentor preform the actions
+            throw new NotImplementedException();
+        }
+
+        private void BtnCutData_MouseClick(object sender, MouseEventArgs e)
+        {
+            //TODO make the presentor preform the actions
+            throw new NotImplementedException();
+        }
+
+        private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnSaveData_MouseClick(object sender, MouseEventArgs e)
+        {
+            //TODO make the presentor preform the actions
+            throw new NotImplementedException();
+        }
+
+        private void BtnOpenData_MouseClick(object sender, MouseEventArgs e)
+        {
+            //TODO make the presentor preform the actions
+            throw new NotImplementedException();
         }
 
         private void CreateTableColumns()
@@ -61,6 +101,24 @@ namespace QTLProject
                 button.BackColor = ColorTranslator.FromHtml("#ebf9fc");
                 button.FlatAppearance.BorderColor= ColorTranslator.FromHtml("#ebf9fc");
             }
+
+            this.btnBack.MouseClick += BtnBack_MouseClick;
+            this.btnNext.MouseClick += BtnNext_MouseClick;
+            this.btnOpenData.MouseClick += BtnOpenData_MouseClick;
+            this.btnSaveData.MouseClick += BtnSaveData_MouseClick;
+            this.btnCopyData.MouseClick += BtnCopyData_MouseClick;
+            this.btnCutData.MouseClick += BtnCutData_MouseClick;
+            this.btnEditData.MouseClick += BtnEditData_MouseClick;
+            this.btnPasteData.MouseClick += BtnPasteData_MouseClick;
+            this.btnDelData.MouseClick += BtnDelData_MouseClick;
+
+            this.btnInsrData.Enabled = false;
+            this.btnSortAsc.Enabled = false;
+            this.btnSortDsc.Enabled = false;
+
+            this.btnInsrData.Visible = false;
+            this.btnSortAsc.Visible = false;
+            this.btnSortDsc.Visible = false;
 
         }
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)

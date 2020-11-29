@@ -42,7 +42,9 @@ namespace QTLProject
             this.btnPasteData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnDelData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnInsrData = new QTLProject.Utils.RoundedButtonToolBar();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBack
@@ -67,6 +69,8 @@ namespace QTLProject
             // 
             // inputDataTable
             // 
+            this.inputDataTable.AutoSize = true;
+            this.inputDataTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.inputDataTable.ColumnCount = 6;
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -74,7 +78,8 @@ namespace QTLProject
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.inputDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 484F));
-            this.inputDataTable.Location = new System.Drawing.Point(66, 89);
+            this.inputDataTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inputDataTable.Location = new System.Drawing.Point(0, 0);
             this.inputDataTable.Name = "inputDataTable";
             this.inputDataTable.RowCount = 10;
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.21561F));
@@ -87,7 +92,7 @@ namespace QTLProject
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.inputDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.inputDataTable.Size = new System.Drawing.Size(600, 424);
+            this.inputDataTable.Size = new System.Drawing.Size(643, 256);
             this.inputDataTable.TabIndex = 11;
             // 
             // flowLayoutPanel1
@@ -205,17 +210,28 @@ namespace QTLProject
             this.btnInsrData.TabIndex = 14;
             this.btnInsrData.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.inputDataTable);
+            this.panel1.Location = new System.Drawing.Point(41, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(643, 452);
+            this.panel1.TabIndex = 18;
+            // 
             // InputData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.inputDataTable);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
             this.Name = "InputData";
             this.Size = new System.Drawing.Size(732, 601);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +248,6 @@ namespace QTLProject
         private RoundedButtonToolBar btnDelData;
         private RoundedButtonToolBar btnInsrData;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

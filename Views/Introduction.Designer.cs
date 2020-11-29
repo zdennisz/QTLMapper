@@ -54,9 +54,10 @@
             // labelIntroText
             // 
             this.labelIntroText.AutoSize = true;
+            this.labelIntroText.Font = new System.Drawing.Font("Arial", 10F);
             this.labelIntroText.Location = new System.Drawing.Point(14, 153);
             this.labelIntroText.Name = "labelIntroText";
-            this.labelIntroText.Size = new System.Drawing.Size(175, 13);
+            this.labelIntroText.Size = new System.Drawing.Size(228, 16);
             this.labelIntroText.TabIndex = 0;
             this.labelIntroText.Text = "Hello and Welcome to QTL Mapper";
             // 

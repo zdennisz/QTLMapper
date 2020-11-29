@@ -17,7 +17,8 @@ namespace QTLbyRegression
         InputData inputData = new InputData();
         CalculateQTL calcQTL = new CalculateQTL();
         Introduction introPage = new Introduction();
-
+        Label bottomBorder = new Label() { Height = 2, Dock = DockStyle.Bottom, BackColor = Color.LightGray };
+        Label topBorder = new Label() { Height = 1, Dock = DockStyle.Top, BackColor = Color.Black };
         #endregion Fields
 
         #region Constructor
@@ -209,11 +210,13 @@ namespace QTLbyRegression
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.contentPanel.BackColor = Color.White;
             this.contentPanel.Paint += ContentPanel_Paint;
-            this.btnCalculateQTL.Click += BtnCalculateQTL_Click; 
+            this.btnCalculateQTL.Click += BtnCalculateQTL_Click;
+            this.menuPanel.Controls.Add(topBorder);
+            this.btnCalculateQTL.Text = "Calculate QTL location && P-Value";
+            this.btnCalculateQTL.Font = new Font("Arial", 15, FontStyle.Regular);
+
             updateButtons(SoftwareStep.None);
             updateView(SoftwareStep.None);
-
-
         }
 
         private void BtnCalculateQTL_Click(object sender, EventArgs e)
@@ -241,26 +244,35 @@ namespace QTLbyRegression
                 this.btnInputData.BackColor = ColorConstants.backgroundColor;
                 this.btnSimulateData.BackColor = ColorConstants.backgroundColor;
                 this.btnViewResults.BackColor = ColorConstants.backgroundColor;
+
+                this.btnCalculateQTL.Controls.Remove(bottomBorder);
+                this.btnInputData.Controls.Remove(bottomBorder);
+                this.btnSimulateData.Controls.Remove(bottomBorder);
+                this.btnViewResults.Controls.Remove(bottomBorder);
             }
             switch (ss)
             {
                 case SoftwareStep.CalculateData:
                     this.btnCalculateQTL.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnCalculateQTL.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
+                    this.btnCalculateQTL.Controls.Add(bottomBorder);
                     break;
                 case SoftwareStep.InputData:
                     this.btnInputData.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnInputData.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
+                    this.btnInputData.Controls.Add(bottomBorder);
                     break;
 
                 case SoftwareStep.SimulateData:
                     this.btnSimulateData.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnSimulateData.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
+                    this.btnSimulateData.Controls.Add(bottomBorder);
                     break;
 
                 case SoftwareStep.ViewResults:
                     this.btnViewResults.BackColor = ColorConstants.backgroundContrastColor;
                     this.btnViewResults.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
+                    this.btnViewResults.Controls.Add(bottomBorder);
                     break;
 
                 case SoftwareStep.None:
@@ -268,6 +280,12 @@ namespace QTLbyRegression
                     this.btnInputData.BackColor = ColorConstants.backgroundColor;
                     this.btnSimulateData.BackColor = ColorConstants.backgroundColor;
                     this.btnViewResults.BackColor = ColorConstants.backgroundColor;
+
+                    this.btnCalculateQTL.Controls.Remove(bottomBorder);
+                    this.btnInputData.Controls.Remove(bottomBorder);
+                    this.btnSimulateData.Controls.Remove(bottomBorder);
+                    this.btnViewResults.Controls.Remove(bottomBorder);
+                        
                     break;
             }
         }

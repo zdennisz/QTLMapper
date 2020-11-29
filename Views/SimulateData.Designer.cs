@@ -49,6 +49,7 @@
             // 
             // btnBack
             // 
+            this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
             this.btnBack.Location = new System.Drawing.Point(566, 569);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
@@ -58,6 +59,7 @@
             // 
             // btnNext
             // 
+            this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
             this.btnNext.Location = new System.Drawing.Point(647, 569);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
@@ -87,9 +89,10 @@
             // labelTraitModel
             // 
             this.labelTraitModel.AutoSize = true;
+            this.labelTraitModel.Font = new System.Drawing.Font("Arial", 10F);
             this.labelTraitModel.Location = new System.Drawing.Point(45, 125);
             this.labelTraitModel.Name = "labelTraitModel";
-            this.labelTraitModel.Size = new System.Drawing.Size(60, 13);
+            this.labelTraitModel.Size = new System.Drawing.Size(77, 16);
             this.labelTraitModel.TabIndex = 15;
             this.labelTraitModel.Text = "Tarit Model";
             this.labelTraitModel.Visible = false;
@@ -116,9 +119,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 10F);
             this.label3.Location = new System.Drawing.Point(18, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(99, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Genetic Model";
             // 
@@ -144,9 +148,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 10F);
             this.label5.Location = new System.Drawing.Point(17, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.Size = new System.Drawing.Size(78, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Trait Model";
             // 
@@ -158,7 +163,7 @@
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableGeneticModel.Location = new System.Drawing.Point(22, 373);
             this.tableGeneticModel.Name = "tableGeneticModel";
             this.tableGeneticModel.RowCount = 7;
@@ -175,9 +180,10 @@
             // labelGeneticModel
             // 
             this.labelGeneticModel.AutoSize = true;
+            this.labelGeneticModel.Font = new System.Drawing.Font("Arial", 10F);
             this.labelGeneticModel.Location = new System.Drawing.Point(29, 357);
             this.labelGeneticModel.Name = "labelGeneticModel";
-            this.labelGeneticModel.Size = new System.Drawing.Size(76, 13);
+            this.labelGeneticModel.Size = new System.Drawing.Size(99, 16);
             this.labelGeneticModel.TabIndex = 16;
             this.labelGeneticModel.Text = "Genetic Model";
             this.labelGeneticModel.Visible = false;

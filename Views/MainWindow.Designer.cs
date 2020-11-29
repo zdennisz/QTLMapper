@@ -46,9 +46,10 @@
             this.btnSimulateData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSimulateData.FlatAppearance.BorderSize = 0;
             this.btnSimulateData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimulateData.Location = new System.Drawing.Point(3, 303);
+            this.btnSimulateData.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnSimulateData.Location = new System.Drawing.Point(0, 303);
             this.btnSimulateData.Name = "btnSimulateData";
-            this.btnSimulateData.Size = new System.Drawing.Size(200, 48);
+            this.btnSimulateData.Size = new System.Drawing.Size(217, 48);
             this.btnSimulateData.TabIndex = 1;
             this.btnSimulateData.Text = "Simulate Data";
             this.btnSimulateData.UseVisualStyleBackColor = false;
@@ -62,7 +63,7 @@
             this.menuPanel.Controls.Add(this.btnSimulateData);
             this.menuPanel.Location = new System.Drawing.Point(0, 83);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(208, 586);
+            this.menuPanel.Size = new System.Drawing.Size(217, 586);
             this.menuPanel.TabIndex = 4;
             // 
             // btnCalculateQTL
@@ -71,9 +72,10 @@
             this.btnCalculateQTL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCalculateQTL.FlatAppearance.BorderSize = 0;
             this.btnCalculateQTL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalculateQTL.Location = new System.Drawing.Point(3, 197);
+            this.btnCalculateQTL.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculateQTL.Location = new System.Drawing.Point(-3, 195);
             this.btnCalculateQTL.Name = "btnCalculateQTL";
-            this.btnCalculateQTL.Size = new System.Drawing.Size(200, 48);
+            this.btnCalculateQTL.Size = new System.Drawing.Size(220, 56);
             this.btnCalculateQTL.TabIndex = 4;
             this.btnCalculateQTL.Text = "Calculate QTL location and P Value";
             this.btnCalculateQTL.UseVisualStyleBackColor = false;
@@ -85,9 +87,11 @@
             this.btnInputData.FlatAppearance.BorderSize = 0;
             this.btnInputData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnInputData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInputData.Location = new System.Drawing.Point(3, 84);
+            this.btnInputData.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInputData.Location = new System.Drawing.Point(0, 86);
+            this.btnInputData.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnInputData.Name = "btnInputData";
-            this.btnInputData.Size = new System.Drawing.Size(200, 48);
+            this.btnInputData.Size = new System.Drawing.Size(217, 48);
             this.btnInputData.TabIndex = 3;
             this.btnInputData.Text = "Input Data";
             this.btnInputData.UseVisualStyleBackColor = false;
@@ -99,9 +103,10 @@
             this.btnViewResults.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewResults.FlatAppearance.BorderSize = 0;
             this.btnViewResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewResults.Location = new System.Drawing.Point(3, 415);
+            this.btnViewResults.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnViewResults.Location = new System.Drawing.Point(-3, 414);
             this.btnViewResults.Name = "btnViewResults";
-            this.btnViewResults.Size = new System.Drawing.Size(202, 48);
+            this.btnViewResults.Size = new System.Drawing.Size(220, 48);
             this.btnViewResults.TabIndex = 2;
             this.btnViewResults.Text = "View Results";
             this.btnViewResults.UseVisualStyleBackColor = false;
@@ -132,8 +137,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(944, 681);
             this.Controls.Add(this.contentPanel);
-            this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.menuPanel.ResumeLayout(false);

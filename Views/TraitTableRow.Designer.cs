@@ -57,19 +57,19 @@
             // rowLabel
             // 
             this.rowLabel.AutoSize = true;
-            this.rowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rowLabel.Font = new System.Drawing.Font("Arial", 10F);
             this.rowLabel.Location = new System.Drawing.Point(25, 2);
             this.rowLabel.Name = "rowLabel";
-            this.rowLabel.Size = new System.Drawing.Size(35, 13);
+            this.rowLabel.Size = new System.Drawing.Size(46, 16);
             this.rowLabel.TabIndex = 0;
             this.rowLabel.Text = "label1";
             // 
-            // TableRow
+            // TraitTableRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.rowPanel);
-            this.Name = "TableRow";
+            this.Name = "TraitTableRow";
             this.Size = new System.Drawing.Size(205, 25);
             this.rowPanel.ResumeLayout(false);
             this.rowPanel.PerformLayout();

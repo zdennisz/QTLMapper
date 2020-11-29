@@ -44,6 +44,7 @@
             // 
             // btnNext
             // 
+            this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
             this.btnNext.Location = new System.Drawing.Point(647, 569);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
@@ -53,6 +54,7 @@
             // 
             // btnBack
             // 
+            this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
             this.btnBack.Location = new System.Drawing.Point(566, 569);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);

@@ -68,7 +68,7 @@
             // 
             this.label4Col.AutoSize = true;
             this.label4Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label4Col.Location = new System.Drawing.Point(485, 0);
+            this.label4Col.Location = new System.Drawing.Point(475, 0);
             this.label4Col.Name = "label4Col";
             this.label4Col.Size = new System.Drawing.Size(46, 16);
             this.label4Col.TabIndex = 9;

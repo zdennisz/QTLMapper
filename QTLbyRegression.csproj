@@ -85,6 +85,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\RoundedButtonToolBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\TableGenerator.cs" />
     <Compile Include="Views\CalculateQTL.cs">
       <SubType>UserControl</SubType>

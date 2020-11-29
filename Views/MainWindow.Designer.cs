@@ -46,7 +46,7 @@
             this.btnSimulateData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSimulateData.FlatAppearance.BorderSize = 0;
             this.btnSimulateData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimulateData.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnSimulateData.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSimulateData.Location = new System.Drawing.Point(0, 303);
             this.btnSimulateData.Name = "btnSimulateData";
             this.btnSimulateData.Size = new System.Drawing.Size(217, 48);
@@ -87,7 +87,7 @@
             this.btnInputData.FlatAppearance.BorderSize = 0;
             this.btnInputData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnInputData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInputData.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInputData.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInputData.Location = new System.Drawing.Point(0, 86);
             this.btnInputData.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnInputData.Name = "btnInputData";
@@ -103,7 +103,7 @@
             this.btnViewResults.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewResults.FlatAppearance.BorderSize = 0;
             this.btnViewResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewResults.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnViewResults.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewResults.Location = new System.Drawing.Point(-3, 414);
             this.btnViewResults.Name = "btnViewResults";
             this.btnViewResults.Size = new System.Drawing.Size(220, 48);

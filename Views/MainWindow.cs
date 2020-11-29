@@ -213,7 +213,7 @@ namespace QTLbyRegression
             this.btnCalculateQTL.Click += BtnCalculateQTL_Click;
             this.menuPanel.Controls.Add(topBorder);
             this.btnCalculateQTL.Text = "Calculate QTL location && P-Value";
-            this.btnCalculateQTL.Font = new Font("Arial", 15, FontStyle.Regular);
+            this.btnCalculateQTL.Font = new Font("Arial", 12, FontStyle.Regular);
 
             updateButtons(SoftwareStep.None);
             updateView(SoftwareStep.None);

@@ -100,25 +100,22 @@ namespace QTLProject
             {
                 button.BackColor = ColorTranslator.FromHtml("#ebf9fc");
                 button.FlatAppearance.BorderColor= ColorTranslator.FromHtml("#ebf9fc");
+                button.Size = new Size(48, 48);
+                button.Image = (Image)(new Bitmap(button.Image, new Size(28, 28)));
+                
             }
 
+            
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.btnNext.MouseClick += BtnNext_MouseClick;
             this.btnOpenData.MouseClick += BtnOpenData_MouseClick;
             this.btnSaveData.MouseClick += BtnSaveData_MouseClick;
             this.btnCopyData.MouseClick += BtnCopyData_MouseClick;
             this.btnCutData.MouseClick += BtnCutData_MouseClick;
-            this.btnEditData.MouseClick += BtnEditData_MouseClick;
             this.btnPasteData.MouseClick += BtnPasteData_MouseClick;
             this.btnDelData.MouseClick += BtnDelData_MouseClick;
 
-            this.btnInsrData.Enabled = false;
-            this.btnSortAsc.Enabled = false;
-            this.btnSortDsc.Enabled = false;
-
-            this.btnInsrData.Visible = false;
-            this.btnSortAsc.Visible = false;
-            this.btnSortDsc.Visible = false;
+           
 
         }
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)

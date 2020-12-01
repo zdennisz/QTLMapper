@@ -28,6 +28,13 @@ namespace QTLProject
             // this.comboBoxFuncs.Items.AddRange();
             this.btnOpenFolder.MouseClick += BtnOpenFolder_MouseClick;
             this.comboBoxFuncs.SelectedIndexChanged += ComboBoxFuncs_SelectedIndexChanged;
+            this.displayGraphBtn.MouseClick += DisplayGraphBtn_MouseClick;
+        }
+
+        private void DisplayGraphBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            //if (displayGraphBtn.Checked && displayGraphBtn.Enabled)
+              //  displayGraphBtn.Checked == t;
         }
 
         private void BtnOpenFolder_MouseClick(object sender, MouseEventArgs e)

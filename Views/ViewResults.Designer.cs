@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblValue = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBack
@@ -65,11 +67,10 @@
             // inDepthReportBtn
             // 
             this.inDepthReportBtn.AutoSize = true;
-            this.inDepthReportBtn.Location = new System.Drawing.Point(326, 72);
+            this.inDepthReportBtn.Location = new System.Drawing.Point(6, 11);
             this.inDepthReportBtn.Name = "inDepthReportBtn";
             this.inDepthReportBtn.Size = new System.Drawing.Size(101, 17);
             this.inDepthReportBtn.TabIndex = 6;
-            this.inDepthReportBtn.TabStop = true;
             this.inDepthReportBtn.Text = "In Depth Report";
             this.inDepthReportBtn.UseVisualStyleBackColor = true;
             // 
@@ -150,10 +151,20 @@
             this.lblValue.TabIndex = 22;
             this.lblValue.Text = "?";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.inDepthReportBtn);
+            this.groupBox1.Location = new System.Drawing.Point(325, 61);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(122, 46);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            // 
             // ViewResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -162,12 +173,13 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.txtOpenFolder);
             this.Controls.Add(this.btnOpenFolder);
-            this.Controls.Add(this.inDepthReportBtn);
             this.Controls.Add(this.displayGraphBtn);
             this.Controls.Add(this.btnBack);
             this.Name = "ViewResults";
             this.Size = new System.Drawing.Size(732, 601);
             this.Load += new System.EventHandler(this.ViewResults_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +197,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblValue;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

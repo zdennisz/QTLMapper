@@ -102,10 +102,10 @@ namespace QTLProject
                     tableAmount++;
                 }
                 traitTable.CreateTraitTable(tableAmount, taritModelParams, 25, 75, 2);
-                
+
             }
 
-            //update the genetic table
+
         }
 
 

@@ -85,8 +85,82 @@ namespace QTLProject.Utils
             }
             return tableData;
         }
+        /// <summary>
+        /// Adds a row to the table
+        /// </summary>
+        public void AddTableRow()
+        {
+            var table = this.tableLayoutPanel;
+            int colAmount = table.ColumnCount;
+            int rowIndex = table.RowStyles.Count;
+            var tableRow = new InputDataTableRow();
+            tableRow.Dock = DockStyle.Fill;
+
+            if (rowIndex % 2 == 0)
+            {
+                tableRow.BackColor = Color.LightGray;
+                tableRow.BackColor = Color.LightGray;
+                tableRow.setTextBoxBackgroundColor(Color.LightGray);
+            }
+            else
+            {
+                tableRow.BackColor = Color.White;
+                tableRow.BackColor = Color.White;
+                tableRow.setTextBoxBackgroundColor(Color.White);
+
+            }
+
+            tableRow.BorderStyle = BorderStyle.None;
+            table.SetColumnSpan(tableRow, colAmount);
+            table.Controls.Add(tableRow, 0, rowIndex);
+            table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
 
 
+        }
+        /// <summary>
+        /// Removes the last row of the table
+        /// </summary>
+        public void DeleteTableRow()
+        {
+            var table = this.tableLayoutPanel;
+            int rowIndex = table.RowStyles.Count;
+            if (rowIndex > 1)
+            {
+                rowIndex--;
+                table.RowStyles.RemoveAt(rowIndex);
+                table.Controls.RemoveAt(rowIndex);
+            }
+
+
+        }
+
+        public void InsertTableData(List<Dictionary<int, string>> tableData)
+        {
+            //TODO check how many rows if less then what we have then generate the missing rows
+            var table = this.tableLayoutPanel;
+            if (tableData.Count > table.Controls.Count - 1)
+            {
+                int amountOfRowsToAdd = tableData.Count - (table.Controls.Count - 1);
+                while (amountOfRowsToAdd > 0)
+                {
+                    AddTableRow();
+                    amountOfRowsToAdd--;
+                }
+            }
+
+            int currRow=1;
+       
+            foreach(Dictionary<int,string>  dic in tableData)
+            {
+                var tableRow = (InputDataTableRow)table.Controls[currRow];
+                foreach (KeyValuePair<int, string> entry in dic)
+                {
+                    tableRow.Controls[entry.Key].Text = entry.Value;
+                }
+                currRow++;
+            }
+            //Assign the data to the actual table rows
+        }
 
         public void CreateGeneticTable(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
         {

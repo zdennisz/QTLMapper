@@ -7,28 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QTLProject.Types;
 
 namespace QTLProject.Views
 {
     public partial class InputDataTableRow : UserControl
     {
         public Dictionary<int, string> tableRow = new Dictionary<int, string>();
-        public InputDataTableRow( )
+        public bool CheckedStatus;
+        
+        public InputDataTableRow()
         {
-           
+
             InitializeComponent();
-            foreach(TextBox tb in this.Controls)
+            foreach (var tb in this.Controls.OfType<TextBox>())
             {
+
                 tb.BorderStyle = BorderStyle.None;
                 tb.Controls.Add(new Label()
                 { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
                 tb.BackColor = this.BackColor;
+
             }
 
             this.textBox1.TextChanged += TextBox1_TextChanged;
             this.textBox2.TextChanged += TextBox2_TextChanged;
             this.textBox3.TextChanged += TextBox3_TextChanged;
             this.textBox4.TextChanged += TextBox4_TextChanged;
+            this.selectedRow.CheckedChanged += SelectedRow_CheckedChanged;
+        }
+
+        private void SelectedRow_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckedStatus = this.selectedRow.Checked;
         }
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
@@ -54,10 +65,13 @@ namespace QTLProject.Views
         public void setTextBoxBackgroundColor(Color backColor)
         {
 
-            foreach(TextBox tb in this.Controls)
+            foreach (var tb in this.Controls.OfType<TextBox>())
             {
                 tb.BackColor = backColor;
             }
+
         }
+
+       
     }
 }

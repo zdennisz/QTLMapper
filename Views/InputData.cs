@@ -77,11 +77,6 @@ namespace QTLProject
             throw new NotImplementedException();
         }
 
-        private void BtnEditData_MouseClick(object sender, MouseEventArgs e)
-        {
-            //TODO make the presentor preform the actions
-            throw new NotImplementedException();
-        }
 
         private void BtnCutData_MouseClick(object sender, MouseEventArgs e)
         {
@@ -92,7 +87,8 @@ namespace QTLProject
         private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)
         {
             //TODO make the presentor preform the actions
-            throw new NotImplementedException();
+            int row;
+           // inputDataPresentor.SaveTableRow(row);
         }
 
         private void BtnSaveData_MouseClick(object sender, MouseEventArgs e)

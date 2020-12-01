@@ -32,6 +32,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.selectedRow = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -66,10 +67,21 @@
             this.textBox3.TabIndex = 14;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // selectedRow
+            // 
+            this.selectedRow.AutoSize = true;
+            this.selectedRow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.selectedRow.Location = new System.Drawing.Point(3, 5);
+            this.selectedRow.Name = "selectedRow";
+            this.selectedRow.Size = new System.Drawing.Size(15, 14);
+            this.selectedRow.TabIndex = 16;
+            this.selectedRow.UseVisualStyleBackColor = true;
+            // 
             // InputDataTableRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.selectedRow);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox4);
@@ -86,5 +98,6 @@
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.CheckBox selectedRow;
     }
 }

@@ -9,6 +9,7 @@ namespace QTLProject
     {
         #region Fields
         TableGenerator dataTable;
+        private int rowsToBeCopied;
         #endregion Fields
 
         #region Constructor
@@ -58,7 +59,8 @@ namespace QTLProject
 
         private void fillTable(List<Dictionary<int, string>> tableData)
         {
-            dataTable.InsertTableData(tableData);
+            int rowsToCopy = tableData.Count;
+            dataTable.InsertTableData(tableData, rowsToCopy);
         }
         #endregion Private Methods
 
@@ -79,6 +81,20 @@ namespace QTLProject
         public void AddTableRow()
         {
             dataTable.AddTableRow();
+        }
+
+        public void CopyTableRow()
+        {
+            rowsToBeCopied = dataTable.GetCopiedRows();
+        }
+
+        public void PasteTableRows()
+        {
+            if (this.rowsToBeCopied > 0)
+            {
+                dataTable.PasteTableRows(this.rowsToBeCopied);
+            }
+            
         }
 
         public void SaveTableData()

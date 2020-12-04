@@ -53,18 +53,18 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(476, 6);
+            this.textBox4.Location = new System.Drawing.Point(323, 6);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(48, 20);
-            this.textBox4.TabIndex = 15;
+            this.textBox4.TabIndex = 14;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(323, 6);
+            this.textBox3.Location = new System.Drawing.Point(476, 6);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(48, 20);
-            this.textBox3.TabIndex = 14;
+            this.textBox3.TabIndex = 15;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // selectedRow
@@ -74,7 +74,7 @@
             this.selectedRow.Location = new System.Drawing.Point(3, 5);
             this.selectedRow.Name = "selectedRow";
             this.selectedRow.Size = new System.Drawing.Size(15, 14);
-            this.selectedRow.TabIndex = 16;
+            this.selectedRow.TabIndex = 11;
             this.selectedRow.UseVisualStyleBackColor = true;
             // 
             // InputDataTableRow

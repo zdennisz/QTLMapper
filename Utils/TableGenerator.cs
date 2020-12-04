@@ -15,7 +15,7 @@ namespace QTLProject.Utils
     {
         public TableLayoutPanel tableLayoutPanel;
         public Panel panelTableContainer;
-
+        SortedDictionary<int, bool> selectedRows = new SortedDictionary<int, bool>();
 
         public TableGenerator(TableLayoutPanel panel)
         {
@@ -93,7 +93,9 @@ namespace QTLProject.Utils
             var table = this.tableLayoutPanel;
             int colAmount = table.ColumnCount;
             int rowIndex = table.RowStyles.Count;
-            var tableRow = new InputDataTableRow();
+            var tableRow = new InputDataTableRow(rowIndex);
+            tableRow.RowChecked += TableRow_RowChecked;
+
             tableRow.Dock = DockStyle.Fill;
 
             if (rowIndex % 2 == 0)
@@ -117,6 +119,14 @@ namespace QTLProject.Utils
 
 
         }
+
+        private void TableRow_RowChecked(object sender, EventArgs e)
+        {
+            InputDataTableRow row = sender as InputDataTableRow;
+            bool isChecked = ((CheckBox)(row.Controls[0])).Checked;
+            selectedRows[row.rowIndex] = isChecked;
+        }
+
         /// <summary>
         /// Removes the last row of the table
         /// </summary>
@@ -134,28 +144,31 @@ namespace QTLProject.Utils
 
         }
 
-        public void InsertTableData(List<Dictionary<int, string>> tableData)
+        public void InsertTableData(List<Dictionary<int, string>> tableData, int rowsToCopy)
         {
             //TODO check how many rows if less then what we have then generate the missing rows
             var table = this.tableLayoutPanel;
-            if (tableData.Count > table.Controls.Count - 1)
+            int amountOfRowsToAdd = rowsToCopy;
+            while (amountOfRowsToAdd > 0)
             {
-                int amountOfRowsToAdd = tableData.Count - (table.Controls.Count - 1);
-                while (amountOfRowsToAdd > 0)
-                {
-                    AddTableRow();
-                    amountOfRowsToAdd--;
-                }
+                AddTableRow();
+                amountOfRowsToAdd--;
             }
 
-            int currRow=1;
-       
-            foreach(Dictionary<int,string>  dic in tableData)
+            //this is the row of the insertion - we calcualte it by the general amount of rows and the amount of data to insert
+            //we remove additional one to account the table header which is a row in the table
+            int currRow = (table.Controls.Count) - tableData.Count;
+
+            //get the current data of the row to be copied
+            foreach (Dictionary<int, string> dic in tableData)
             {
+                //access the row in the table to place the data
                 var tableRow = (InputDataTableRow)table.Controls[currRow];
+                //first control is checkbox - thus we create offset
+                int offestIndex = 1;
                 foreach (KeyValuePair<int, string> entry in dic)
                 {
-                    tableRow.Controls[entry.Key].Text = entry.Value;
+                    tableRow.Controls[entry.Key + offestIndex].Text = entry.Value;
                 }
                 currRow++;
             }
@@ -235,7 +248,8 @@ namespace QTLProject.Utils
             while (rowIndex < amountOfRows)
             {
 
-                var tableRow = new InputDataTableRow();
+                var tableRow = new InputDataTableRow(rowIndex);
+                tableRow.RowChecked += TableRow_RowChecked;
                 tableRow.Dock = DockStyle.Fill;
 
 
@@ -314,6 +328,53 @@ namespace QTLProject.Utils
                 }
                 table.Visible = true;
             }
+        }
+
+        public int GetCopiedRows()
+        {
+            int rowsToCopy = 0;
+
+            foreach (KeyValuePair<int, bool> entry in selectedRows)
+            {
+                if (entry.Value == true)
+                {
+                    rowsToCopy++;
+                }
+            }
+
+            return rowsToCopy;
+        }
+        public void PasteTableRows(int rowsToCopy)
+        {
+            var table = this.tableLayoutPanel;
+            List<Dictionary<int, string>> tableRowData = new List<Dictionary<int, string>>();
+            //copy the rows data
+            foreach (KeyValuePair<int, bool> entry in selectedRows)
+            {
+                //copy the row 
+                if (entry.Value == true)
+                {
+                    //we get the index of the row 
+                    int rowIndex = entry.Key;
+                    Dictionary<int, string> row = new Dictionary<int, string>();
+                    InputDataTableRow rowToCopy = (InputDataTableRow)table.Controls[rowIndex];
+                    int i = 0;
+                    foreach (TextBox textBox in rowToCopy.Controls.OfType<TextBox>())
+                    {
+                        row.Add(i, textBox.Text);
+                        i++;
+                    }
+                    tableRowData.Add(row);
+                }
+            }
+
+            //only if we have data to send we insert the table data
+            if (tableRowData.Count > 0)
+            {
+                InsertTableData(tableRowData, rowsToCopy);
+            }
+
+
         }
     }
 }

@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using QTLProject.Enums;
-using QTLProject.Views;
-using QTLProject.Utils;
-using System.IO;
 
 namespace QTLProject
 {
@@ -74,7 +64,7 @@ namespace QTLProject
         private void BtnPasteData_MouseClick(object sender, MouseEventArgs e)
         {
             //TODO make the presentor preform the actions
-            throw new NotImplementedException();
+            inputDataPresentor.PasteTableRows();
         }
 
 
@@ -87,8 +77,8 @@ namespace QTLProject
         private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)
         {
             //TODO make the presentor preform the actions
-            int row;
-           // inputDataPresentor.SaveTableRow(row);
+            
+            inputDataPresentor.CopyTableRow();
         }
 
         private void BtnSaveData_MouseClick(object sender, MouseEventArgs e)

@@ -14,11 +14,11 @@ namespace QTLProject.Views
     public partial class InputDataTableRow : UserControl
     {
         public Dictionary<int, string> tableRow = new Dictionary<int, string>();
-        public bool CheckedStatus;
-        
-        public InputDataTableRow()
+        public int rowIndex;
+        public event EventHandler RowChecked;
+        public InputDataTableRow(int rowIndex)
         {
-
+            this.rowIndex = rowIndex;
             InitializeComponent();
             foreach (var tb in this.Controls.OfType<TextBox>())
             {
@@ -39,7 +39,7 @@ namespace QTLProject.Views
 
         private void SelectedRow_CheckedChanged(object sender, EventArgs e)
         {
-            CheckedStatus = this.selectedRow.Checked;
+            RowChecked?.Invoke(this, e);
         }
 
         private void TextBox4_TextChanged(object sender, EventArgs e)

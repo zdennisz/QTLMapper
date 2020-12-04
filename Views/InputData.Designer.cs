@@ -35,13 +35,13 @@ namespace QTLProject
             this.btnNext = new System.Windows.Forms.Button();
             this.inputDataTable = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnSaveData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnOpenData = new QTLProject.Utils.RoundedButtonToolBar();
+            this.btnSaveData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnCutData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnCopyData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnPasteData = new QTLProject.Utils.RoundedButtonToolBar();
-            this.btnDelData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnInsrData = new QTLProject.Utils.RoundedButtonToolBar();
+            this.btnDelData = new QTLProject.Utils.RoundedButtonToolBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,11 +104,25 @@ namespace QTLProject
             this.flowLayoutPanel1.Controls.Add(this.btnPasteData);
             this.flowLayoutPanel1.Controls.Add(this.btnInsrData);
             this.flowLayoutPanel1.Controls.Add(this.btnDelData);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(192, 6);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(271, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 49);
             this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // btnOpenData
+            // 
+            this.btnOpenData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOpenData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpenData.FlatAppearance.BorderSize = 0;
+            this.btnOpenData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenData.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenData.Image")));
+            this.btnOpenData.Location = new System.Drawing.Point(15, 8);
+            this.btnOpenData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnOpenData.Name = "btnOpenData";
+            this.btnOpenData.Size = new System.Drawing.Size(26, 26);
+            this.btnOpenData.TabIndex = 5;
+            this.btnOpenData.UseVisualStyleBackColor = true;
             // 
             // btnSaveData
             // 
@@ -126,24 +140,11 @@ namespace QTLProject
             this.btnSaveData.TabIndex = 16;
             this.btnSaveData.UseVisualStyleBackColor = false;
             // 
-            // btnOpenData
-            // 
-            this.btnOpenData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOpenData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOpenData.FlatAppearance.BorderSize = 0;
-            this.btnOpenData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenData.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenData.Image")));
-            this.btnOpenData.Location = new System.Drawing.Point(15, 8);
-            this.btnOpenData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.btnOpenData.Name = "btnOpenData";
-            this.btnOpenData.Size = new System.Drawing.Size(26, 26);
-            this.btnOpenData.TabIndex = 5;
-            this.btnOpenData.UseVisualStyleBackColor = true;
-            // 
             // btnCutData
             // 
             this.btnCutData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCutData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCutData.Enabled = false;
             this.btnCutData.FlatAppearance.BorderSize = 0;
             this.btnCutData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCutData.Image = ((System.Drawing.Image)(resources.GetObject("btnCutData.Image")));
@@ -153,6 +154,7 @@ namespace QTLProject
             this.btnCutData.Size = new System.Drawing.Size(26, 26);
             this.btnCutData.TabIndex = 7;
             this.btnCutData.UseVisualStyleBackColor = true;
+            this.btnCutData.Visible = false;
             // 
             // btnCopyData
             // 
@@ -182,20 +184,6 @@ namespace QTLProject
             this.btnPasteData.TabIndex = 9;
             this.btnPasteData.UseVisualStyleBackColor = true;
             // 
-            // btnDelData
-            // 
-            this.btnDelData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDelData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelData.FlatAppearance.BorderSize = 0;
-            this.btnDelData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelData.Image = ((System.Drawing.Image)(resources.GetObject("btnDelData.Image")));
-            this.btnDelData.Location = new System.Drawing.Point(291, 8);
-            this.btnDelData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.btnDelData.Name = "btnDelData";
-            this.btnDelData.Size = new System.Drawing.Size(26, 26);
-            this.btnDelData.TabIndex = 15;
-            this.btnDelData.UseVisualStyleBackColor = true;
-            // 
             // btnInsrData
             // 
             this.btnInsrData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -209,6 +197,20 @@ namespace QTLProject
             this.btnInsrData.Size = new System.Drawing.Size(26, 26);
             this.btnInsrData.TabIndex = 14;
             this.btnInsrData.UseVisualStyleBackColor = true;
+            // 
+            // btnDelData
+            // 
+            this.btnDelData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDelData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelData.FlatAppearance.BorderSize = 0;
+            this.btnDelData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelData.Image = ((System.Drawing.Image)(resources.GetObject("btnDelData.Image")));
+            this.btnDelData.Location = new System.Drawing.Point(291, 8);
+            this.btnDelData.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnDelData.Name = "btnDelData";
+            this.btnDelData.Size = new System.Drawing.Size(26, 26);
+            this.btnDelData.TabIndex = 15;
+            this.btnDelData.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 

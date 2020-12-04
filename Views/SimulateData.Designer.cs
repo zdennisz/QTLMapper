@@ -167,7 +167,7 @@
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableGeneticModel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableGeneticModel.Location = new System.Drawing.Point(0, 0);
             this.tableGeneticModel.Name = "tableGeneticModel";
@@ -224,7 +224,7 @@
             // 
             this.geneticTablePanel.AutoScroll = true;
             this.geneticTablePanel.Controls.Add(this.tableGeneticModel);
-            this.geneticTablePanel.Location = new System.Drawing.Point(10, 353);
+            this.geneticTablePanel.Location = new System.Drawing.Point(21, 353);
             this.geneticTablePanel.Name = "geneticTablePanel";
             this.geneticTablePanel.Size = new System.Drawing.Size(625, 210);
             this.geneticTablePanel.TabIndex = 19;

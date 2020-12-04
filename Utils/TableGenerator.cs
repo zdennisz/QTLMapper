@@ -127,6 +127,7 @@ namespace QTLProject.Utils
             selectedRows[row.rowIndex] = isChecked;
         }
 
+   
         /// <summary>
         /// Removes the last row of the table
         /// </summary>
@@ -143,7 +144,11 @@ namespace QTLProject.Utils
 
 
         }
-
+        /// <summary>
+        /// Inserts data into the selected table 
+        /// </summary>
+        /// <param name="tableData"></param>
+        /// <param name="rowsToCopy"></param>
         public void InsertTableData(List<Dictionary<int, string>> tableData, int rowsToCopy)
         {
             //TODO check how many rows if less then what we have then generate the missing rows
@@ -225,7 +230,14 @@ namespace QTLProject.Utils
                 rowIndex++;
             }
         }
-
+        /// <summary>
+        /// Generates a table according to the amount of params and teh sizes of the colums and rows
+        /// </summary>
+        /// <param name="modelParams"></param>
+        /// <param name="rowSize"></param>
+        /// <param name="colSize"></param>
+        /// <param name="colAmount"></param>
+        /// <param name="amountOfRows"></param>
         public void CreateInputDataTable(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
         {
 
@@ -277,7 +289,14 @@ namespace QTLProject.Utils
                 rowIndex++;
             }
         }
-
+        /// <summary>
+        /// Generates the table according to the params that are passed
+        /// </summary>
+        /// <param name="amountOftables"></param>
+        /// <param name="modelParams"></param>
+        /// <param name="rowSize"></param>
+        /// <param name="colSize"></param>
+        /// <param name="colAmount"></param>
         public void CreateTraitTable(int amountOftables, List<string> modelParams, float rowSize, float colSize, int colAmount)
         {
 
@@ -329,7 +348,10 @@ namespace QTLProject.Utils
                 table.Visible = true;
             }
         }
-
+        /// <summary>
+        /// Calculates the amount of rows to copy
+        /// </summary>
+        /// <returns></returns>
         public int GetCopiedRows()
         {
             int rowsToCopy = 0;
@@ -344,6 +366,10 @@ namespace QTLProject.Utils
 
             return rowsToCopy;
         }
+        /// <summary>
+        /// Pastes the copied rows to the end of the table 
+        /// </summary>
+        /// <param name="rowsToCopy"></param>
         public void PasteTableRows(int rowsToCopy)
         {
             var table = this.tableLayoutPanel;
@@ -376,5 +402,45 @@ namespace QTLProject.Utils
 
 
         }
+        /// <summary>
+        /// Generates a table for view only and it is identical from the input data table
+        /// </summary>
+        public void GenerateTableForView(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
+        {
+            //Creates the table
+            CreateInputDataTable(modelParams, rowSize, colSize, colAmount, amountOfRows);
+            //iterate over the rows and disable the checkbox
+            var table = this.tableLayoutPanel;
+            foreach(InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
+            {
+                //Disable all the controls to editing
+                foreach(Control control in row.Controls)
+                {
+                    control.Enabled = false;
+                }
+              
+            }
+
+           
+        }
+        public void PopulateViewTable(List<Dictionary<int,string>> data)
+        {
+            var table = this.tableLayoutPanel;
+            int  rowIndex = 0;
+            foreach (InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
+            {
+                int col =1;
+                var dic = data[rowIndex];
+                foreach(TextBox tb in row.Controls.OfType<TextBox>())
+                {
+                    string ouVal=null;
+                    dic.TryGetValue(col, out ouVal);
+                    tb.Text = ouVal;
+                    col++;
+                }
+                rowIndex++;
+            }
+        }
+
     }
 }

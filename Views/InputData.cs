@@ -36,23 +36,27 @@ namespace QTLProject
 
             foreach (Button button in this.flowLayoutPanel1.Controls)
             {
-                button.BackColor = ColorTranslator.FromHtml("#ebf9fc");
-                button.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#ebf9fc");
+                button.BackColor = ColorConstants.toolbarButtonsColor;
+                button.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
                 button.Size = new Size(48, 48);
                 button.Image = (Image)(new Bitmap(button.Image, new Size(28, 28)));
-
             }
+            btnBack.BackColor = ColorConstants.toolbarButtonsColor;
+            btnBack.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+            btnNext.BackColor = ColorConstants.toolbarButtonsColor;
+            btnNext.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+
+            setupEvents();
+            setupToolTips();
+       
 
 
-            this.btnBack.MouseClick += BtnBack_MouseClick;
-            this.btnNext.MouseClick += BtnNext_MouseClick;
-            this.btnOpenData.MouseClick += BtnOpenData_MouseClick;
-            this.btnSaveData.MouseClick += BtnSaveData_MouseClick;
-            this.btnCopyData.MouseClick += BtnCopyData_MouseClick;
-            this.btnCutData.MouseClick += BtnCutData_MouseClick;
-            this.btnPasteData.MouseClick += BtnPasteData_MouseClick;
-            this.btnDelData.MouseClick += BtnDelData_MouseClick;
-            this.btnInsrData.MouseClick += BtnInsrData_MouseClick;
+        }
+        /// <summary>
+        /// Initializes the tool tips
+        /// </summary>
+        private void setupToolTips()
+        {
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(btnOpenData, Constants.LoadFile);
             toolTip.SetToolTip(btnSaveData, Constants.SaveFile);
@@ -62,12 +66,25 @@ namespace QTLProject
             toolTip.SetToolTip(btnDelData, Constants.RemoveRows);
             toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
             toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
-
-
+        }
+        /// <summary>
+        /// Signs up for all the events
+        /// </summary>
+        private void setupEvents()
+        {
+            this.btnBack.MouseClick += BtnBack_MouseClick;
+            this.btnNext.MouseClick += BtnNext_MouseClick;
+            this.btnOpenData.MouseClick += BtnOpenData_MouseClick;
+            this.btnSaveData.MouseClick += BtnSaveData_MouseClick;
+            this.btnCopyData.MouseClick += BtnCopyData_MouseClick;
+            this.btnCutData.MouseClick += BtnCutData_MouseClick;
+            this.btnPasteData.MouseClick += BtnPasteData_MouseClick;
+            this.btnDelData.MouseClick += BtnDelData_MouseClick;
+            this.btnInsrData.MouseClick += BtnInsrData_MouseClick;
         }
         private void BtnDelData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
+         
 
             inputDataPresentor.DeleteTableRow();
 
@@ -75,7 +92,7 @@ namespace QTLProject
 
         private void BtnPasteData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
+          
             inputDataPresentor.PasteTableRows();
         }
 
@@ -88,7 +105,7 @@ namespace QTLProject
 
         private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
+            
             
             inputDataPresentor.CopyTableRow();
         }

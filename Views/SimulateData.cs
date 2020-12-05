@@ -129,6 +129,11 @@ namespace QTLProject
             toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
             toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
 
+            btnBack.BackColor = ColorConstants.toolbarButtonsColor;
+            btnBack.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+            btnNext.BackColor = ColorConstants.toolbarButtonsColor;
+            btnNext.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+
         }
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)
         {

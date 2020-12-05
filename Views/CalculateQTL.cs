@@ -50,13 +50,20 @@ namespace QTLProject
         }
         private void setupButtons()
         {
-            btnOpenDataGen.BackColor = ColorTranslator.FromHtml("#ebf9fc");
-            btnOpenDataGen.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#ebf9fc");
+          
+            btnOpenDataGen.BackColor = ColorConstants.toolbarButtonsColor;
+            btnOpenDataGen.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
             btnOpenDataGen.Size = new Size(60, 30);
             btnOpenDataGen.Image = (Image)(new Bitmap(btnOpenDataGen.Image, new Size(18, 18)));
 
-            btnOpenDataPhen.BackColor = ColorTranslator.FromHtml("#ebf9fc");
-            btnOpenDataPhen.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#ebf9fc");
+            btnBack.BackColor = ColorConstants.toolbarButtonsColor;
+            btnBack.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+            btnNext.BackColor = ColorConstants.toolbarButtonsColor;
+            btnNext.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+
+
+            btnOpenDataPhen.BackColor = ColorConstants.toolbarButtonsColor;
+            btnOpenDataPhen.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
             btnOpenDataPhen.Size = new Size(60, 30);
             btnOpenDataPhen.Image = (Image)(new Bitmap(btnOpenDataPhen.Image, new Size(18, 18)));
             ToolTip toolTip = new ToolTip();

@@ -54,9 +54,29 @@ namespace QTLProject.Enums
         public const string GeneticTableRowName = "GeneticTableRow";
         public const string TraitTableRowName = "TraitTableRow";
         public const string InputDataTableRowName = "InputDataTableRow";
+        /// <summary>
+        /// Tool tips strings for Input Data View
+        /// </summary>
+        public const string LoadFile = "Loads File";
+        public const string SaveFile = "Saves current Table";
+        public const string CopiesRows = "Copies the selected rows";
+        public const string PasteRows = "Pastes the selected rows";
+        public const string InsertRows = "Inserts rows at the end of the table";
+        public const string RemoveRows = "Removes rows from the end of the table";
 
+        /// <summary>
+        /// Tool tip string for Calculate QTL View
+        /// </summary>
+        public const string OpenGenFile = "Browse for Genotype File";
+        public const string OpenPhenFile = "Browse for Phenotype File";
 
-
+        /// <summary>
+        /// Tool tip for  all Views
+        /// </summary>
+        public const string GoToNextStage = "Go to next stage";
+        public const string GoToPrevStage = "Go to prevoius stage";
+        
+    
     }
 
     class ColorConstants

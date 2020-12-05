@@ -127,7 +127,7 @@ namespace QTLProject.Utils
             selectedRows[row.rowIndex] = isChecked;
         }
 
-   
+
         /// <summary>
         /// Removes the last row of the table
         /// </summary>
@@ -411,34 +411,37 @@ namespace QTLProject.Utils
             CreateInputDataTable(modelParams, rowSize, colSize, colAmount, amountOfRows);
             //iterate over the rows and disable the checkbox
             var table = this.tableLayoutPanel;
-            foreach(InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
+            foreach (InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
             {
                 //Disable all the controls to editing
-                foreach(Control control in row.Controls)
+                foreach (Control control in row.Controls)
                 {
                     control.Enabled = false;
                 }
-              
+
             }
 
-           
+
         }
-        public void PopulateViewTable(List<Dictionary<int,string>> data)
+        public void PopulateViewTable(List<Dictionary<int, string>> data)
         {
-            var table = this.tableLayoutPanel;
-            int  rowIndex = 0;
-            foreach (InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
+            if (data.Count > 0 && data != null)
             {
-                int col =1;
-                var dic = data[rowIndex];
-                foreach(TextBox tb in row.Controls.OfType<TextBox>())
+                var table = this.tableLayoutPanel;
+                int rowIndex = 0;
+                foreach (InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
                 {
-                    string ouVal=null;
-                    dic.TryGetValue(col, out ouVal);
-                    tb.Text = ouVal;
-                    col++;
+                    int col = 1;
+                    var dic = data[rowIndex];
+                    foreach (TextBox tb in row.Controls.OfType<TextBox>())
+                    {
+                        string ouVal = null;
+                        dic.TryGetValue(col, out ouVal);
+                        tb.Text = ouVal;
+                        col++;
+                    }
+                    rowIndex++;
                 }
-                rowIndex++;
             }
         }
 

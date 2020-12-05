@@ -99,12 +99,11 @@ namespace QTLProject
 
         public void SaveTableData()
         {
-            //TODO 
             List<Dictionary<int,string>> data = null;
             data=dataTable.RetreiveTableData();
-
-            //save the data to a singelton 
+            TempDataHolder.tempFileHolder = data; 
         }
+        
         #endregion Public Methods
     }
 }

@@ -22,14 +22,20 @@ namespace QTLProject
 
         }
 
-        public void GeneratePrevoiusTable(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
+        public void GeneratePrevoiusTable(List<string> modelParams, float rowSize, float colSize, int colAmount)
         {
+            //get the data from the singelton 
+            List<Dictionary<int, string>> dataFromDB = TempDataHolder.tempFileHolder;
+
+            //gets the amount of rows from the saved data
+            int amountOfRows = dataFromDB.Count;
+            
             //generate the table
             calQTLTable.GenerateTableForView(modelParams, rowSize, colSize, colAmount, amountOfRows);
-         
-            //get the data from the singelton 
-            List<Dictionary<int, string>> dataFromDB=null;
+
+
             
+
             //fill the data from the db
             calQTLTable.PopulateViewTable(dataFromDB);
         }

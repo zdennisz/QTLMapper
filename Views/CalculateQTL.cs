@@ -59,7 +59,11 @@ namespace QTLProject
             btnOpenDataPhen.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#ebf9fc");
             btnOpenDataPhen.Size = new Size(60, 30);
             btnOpenDataPhen.Image = (Image)(new Bitmap(btnOpenDataPhen.Image, new Size(18, 18)));
-
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
+            toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
+            toolTip.SetToolTip(btnOpenDataGen, Constants.OpenGenFile);
+            toolTip.SetToolTip(btnOpenDataPhen, Constants.OpenPhenFile);
         }
         private void setupComboBox()
         {
@@ -77,7 +81,7 @@ namespace QTLProject
             geneticParams.Add(Constants.Quality);
 
             
-            calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, 4, 14);
+            calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, 4);
         }
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {

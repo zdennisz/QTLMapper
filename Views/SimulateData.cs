@@ -125,6 +125,9 @@ namespace QTLProject
             traitModels.Add(Constants.TwoLinkedQTL);
             this.comboBoxTrait.Items.AddRange(traitModels.ToArray());
             this.comboBoxTrait.SelectedIndex = 0;
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
+            toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
 
         }
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)

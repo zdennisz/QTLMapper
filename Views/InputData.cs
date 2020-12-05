@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QTLProject.Enums;
+using QTLProject.Utils;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -19,6 +21,7 @@ namespace QTLProject
 
             InitializeComponent();
             SetupUI();
+          
             inputDataPresentor = new InputDataPresentor(this.inputDataTable);
         }
 
@@ -50,6 +53,15 @@ namespace QTLProject
             this.btnPasteData.MouseClick += BtnPasteData_MouseClick;
             this.btnDelData.MouseClick += BtnDelData_MouseClick;
             this.btnInsrData.MouseClick += BtnInsrData_MouseClick;
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(btnOpenData, Constants.LoadFile);
+            toolTip.SetToolTip(btnSaveData, Constants.SaveFile);
+            toolTip.SetToolTip(btnCopyData, Constants.CopiesRows);
+            toolTip.SetToolTip(btnPasteData, Constants.PasteRows);
+            toolTip.SetToolTip(btnInsrData, Constants.InsertRows);
+            toolTip.SetToolTip(btnDelData, Constants.RemoveRows);
+            toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
+            toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
 
 
         }
@@ -114,6 +126,7 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
+            inputDataPresentor.SaveTableData();
             nextButtonClicked?.Invoke(this, e);
         }
 

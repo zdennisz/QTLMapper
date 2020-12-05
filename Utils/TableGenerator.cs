@@ -209,9 +209,9 @@ namespace QTLProject.Utils
 
                 if (rowIndex % 2 == 0)
                 {
-                    tableRow.BackColor = Color.LightGray;
-                    tableRow.BackColor = Color.LightGray;
-                    tableRow.setTextBoxBackgroundColor(Color.LightGray);
+                    tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                    tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                    tableRow.setTextBoxBackgroundColor(ColorConstants.tableBackgroundColor);
                 }
                 else
                 {
@@ -268,9 +268,9 @@ namespace QTLProject.Utils
 
                 if (rowIndex % 2 == 0)
                 {
-                    tableRow.BackColor = Color.LightGray;
-                    tableRow.BackColor = Color.LightGray;
-                    tableRow.setTextBoxBackgroundColor(Color.LightGray);
+                    tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                    tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                    tableRow.setTextBoxBackgroundColor(ColorConstants.tableBackgroundColor);
                 }
                 else
                 {
@@ -333,8 +333,8 @@ namespace QTLProject.Utils
 
                     if (rowIndex % 2 == 0)
                     {
-                        tableRow.rowPanel.BackColor = Color.LightGray;
-                        tableRow.rowTextBox.BackColor = Color.LightGray;
+                        tableRow.rowPanel.BackColor = ColorConstants.tableBackgroundColor;
+                        tableRow.rowTextBox.BackColor = ColorConstants.tableBackgroundColor;
                     }
                     tableRow.rowTextBox.BorderStyle = BorderStyle.None;
 

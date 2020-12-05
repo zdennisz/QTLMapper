@@ -35,6 +35,7 @@ namespace QTLProject
             this.btnNext = new System.Windows.Forms.Button();
             this.inputDataTable = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnOpenData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnSaveData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnCutData = new QTLProject.Utils.RoundedButtonToolBar();
@@ -42,7 +43,6 @@ namespace QTLProject
             this.btnPasteData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnInsrData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnDelData = new QTLProject.Utils.RoundedButtonToolBar();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -107,8 +107,17 @@ namespace QTLProject
             this.flowLayoutPanel1.Location = new System.Drawing.Point(271, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 49);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 55);
             this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.inputDataTable);
+            this.panel1.Location = new System.Drawing.Point(41, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(643, 452);
+            this.panel1.TabIndex = 18;
             // 
             // btnOpenData
             // 
@@ -211,15 +220,6 @@ namespace QTLProject
             this.btnDelData.Size = new System.Drawing.Size(26, 26);
             this.btnDelData.TabIndex = 15;
             this.btnDelData.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.inputDataTable);
-            this.panel1.Location = new System.Drawing.Point(41, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(643, 452);
-            this.panel1.TabIndex = 18;
             // 
             // InputData
             // 

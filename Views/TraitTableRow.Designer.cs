@@ -69,6 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.rowPanel);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TraitTableRow";
             this.Size = new System.Drawing.Size(205, 25);
             this.rowPanel.ResumeLayout(false);

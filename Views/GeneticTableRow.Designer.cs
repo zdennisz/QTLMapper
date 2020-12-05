@@ -88,6 +88,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "GeneticTableRow";
             this.Size = new System.Drawing.Size(600, 25);
             this.ResumeLayout(false);

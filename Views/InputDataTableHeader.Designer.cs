@@ -82,6 +82,7 @@
             this.Controls.Add(this.label2Col);
             this.Controls.Add(this.label3Col);
             this.Controls.Add(this.label4Col);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "InputDataTableHeader";
             this.Size = new System.Drawing.Size(600, 25);
             this.ResumeLayout(false);

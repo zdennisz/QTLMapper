@@ -84,5 +84,6 @@ namespace QTLProject.Enums
         public static Color tableHeaderColor = Color.FromArgb(199, 243, 252);
         public static Color backgroundColor = Color.FromArgb(239, 252, 255);
         public static Color backgroundContrastColor = Color.FromArgb(255, 255, 255);
+        public static Color tableBackgroundColor = Color.FromArgb(242, 242, 242);
     }
 }

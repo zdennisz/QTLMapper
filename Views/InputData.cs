@@ -48,9 +48,6 @@ namespace QTLProject
 
             setupEvents();
             setupToolTips();
-       
-
-
         }
         /// <summary>
         /// Initializes the tool tips
@@ -129,7 +126,7 @@ namespace QTLProject
                 {
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
-                   // inputDataPresentor.ReadDataFromFile(filePath);
+                    inputDataPresentor.ReadDataFromFile(filePath);
                 }
             }
 

@@ -32,7 +32,7 @@ namespace QTLProject.Views
 
             this.textBox1.TextChanged += TextBox1_TextChanged;
             this.textBox2.TextChanged += TextBox2_TextChanged;
-            this.textBox3.TextChanged += TextBox3_TextChanged;
+            
             this.textBox4.TextChanged += TextBox4_TextChanged;
             this.selectedRow.CheckedChanged += SelectedRow_CheckedChanged;
         }
@@ -47,10 +47,6 @@ namespace QTLProject.Views
             tableRow[3] = this.textBox4.Text;
         }
 
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-            tableRow[2] = this.textBox3.Text;
-        }
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
@@ -72,6 +68,6 @@ namespace QTLProject.Views
 
         }
 
-       
+     
     }
 }

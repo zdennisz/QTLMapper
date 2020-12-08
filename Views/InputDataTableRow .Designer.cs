@@ -31,7 +31,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.selectedRow = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -59,14 +58,6 @@
             this.textBox4.TabIndex = 14;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(476, 6);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(48, 20);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // selectedRow
             // 
             this.selectedRow.AutoSize = true;
@@ -85,7 +76,6 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "InputDataTableRow";
             this.Size = new System.Drawing.Size(600, 25);
@@ -98,7 +88,6 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.CheckBox selectedRow;
     }
 }

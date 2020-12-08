@@ -31,7 +31,6 @@
             this.label1Col = new System.Windows.Forms.Label();
             this.label2Col = new System.Windows.Forms.Label();
             this.label3Col = new System.Windows.Forms.Label();
-            this.label4Col = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1Col
@@ -64,16 +63,6 @@
             this.label3Col.TabIndex = 8;
             this.label3Col.Text = "label3";
             // 
-            // label4Col
-            // 
-            this.label4Col.AutoSize = true;
-            this.label4Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label4Col.Location = new System.Drawing.Point(475, 4);
-            this.label4Col.Name = "label4Col";
-            this.label4Col.Size = new System.Drawing.Size(46, 16);
-            this.label4Col.TabIndex = 9;
-            this.label4Col.Text = "label4";
-            // 
             // InputDataTableHeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -81,7 +70,6 @@
             this.Controls.Add(this.label1Col);
             this.Controls.Add(this.label2Col);
             this.Controls.Add(this.label3Col);
-            this.Controls.Add(this.label4Col);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "InputDataTableHeader";
             this.Size = new System.Drawing.Size(600, 25);
@@ -95,6 +83,5 @@
         private System.Windows.Forms.Label label1Col;
         private System.Windows.Forms.Label label2Col;
         private System.Windows.Forms.Label label3Col;
-        private System.Windows.Forms.Label label4Col;
     }
 }

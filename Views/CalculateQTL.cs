@@ -85,10 +85,9 @@ namespace QTLProject
             geneticParams.Add(Constants.Marker);
             geneticParams.Add(Constants.CoorcM);
             geneticParams.Add(Constants.Chr);
-            geneticParams.Add(Constants.Quality);
-
             
-            calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, 4);
+            
+            calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, geneticParams.Count);
         }
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {

@@ -133,6 +133,7 @@ namespace QTLProject.Utils
 
             tableRow.BorderStyle = BorderStyle.None;
             table.SetColumnSpan(tableRow, colAmount);
+            
             table.Controls.Add(tableRow, 0, rowIndex);
             table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
         }

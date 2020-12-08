@@ -31,7 +31,6 @@ namespace QTLProject
         private void InitializeComponent()
         {
             this.tableTraitTable1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTraitModel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBoxGenetic = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@ namespace QTLProject
             this.geneticTablePanel = new System.Windows.Forms.Panel();
             this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnNext = new QTLProject.Utils.RoundedButtonToolBar();
+            this.tableDataPrecentage = new System.Windows.Forms.TableLayoutPanel();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTableContainer.SuspendLayout();
@@ -57,7 +57,7 @@ namespace QTLProject
             this.tableTraitTable1.ColumnCount = 2;
             this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.44186F));
             this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.55814F));
-            this.tableTraitTable1.Location = new System.Drawing.Point(397, 18);
+            this.tableTraitTable1.Location = new System.Drawing.Point(226, 20);
             this.tableTraitTable1.Name = "tableTraitTable1";
             this.tableTraitTable1.RowCount = 6;
             this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.21127F));
@@ -69,17 +69,6 @@ namespace QTLProject
             this.tableTraitTable1.Size = new System.Drawing.Size(200, 152);
             this.tableTraitTable1.TabIndex = 14;
             this.tableTraitTable1.Visible = false;
-            // 
-            // labelTraitModel
-            // 
-            this.labelTraitModel.AutoSize = true;
-            this.labelTraitModel.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelTraitModel.Location = new System.Drawing.Point(42, 100);
-            this.labelTraitModel.Name = "labelTraitModel";
-            this.labelTraitModel.Size = new System.Drawing.Size(77, 16);
-            this.labelTraitModel.TabIndex = 15;
-            this.labelTraitModel.Text = "Tarit Model";
-            this.labelTraitModel.Visible = false;
             // 
             // panel2
             // 
@@ -149,7 +138,7 @@ namespace QTLProject
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tableGeneticModel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableGeneticModel.Location = new System.Drawing.Point(0, 0);
             this.tableGeneticModel.Name = "tableGeneticModel";
@@ -181,7 +170,7 @@ namespace QTLProject
             this.tableTraitTable2.ColumnCount = 2;
             this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.33333F));
             this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.66667F));
-            this.tableTraitTable2.Location = new System.Drawing.Point(19, 18);
+            this.tableTraitTable2.Location = new System.Drawing.Point(20, 20);
             this.tableTraitTable2.Name = "tableTraitTable2";
             this.tableTraitTable2.RowCount = 5;
             this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -199,7 +188,7 @@ namespace QTLProject
             this.panelTableContainer.Controls.Add(this.tableTraitTable1);
             this.panelTableContainer.Location = new System.Drawing.Point(3, 118);
             this.panelTableContainer.Name = "panelTableContainer";
-            this.panelTableContainer.Size = new System.Drawing.Size(680, 229);
+            this.panelTableContainer.Size = new System.Drawing.Size(429, 229);
             this.panelTableContainer.TabIndex = 18;
             // 
             // geneticTablePanel
@@ -235,16 +224,30 @@ namespace QTLProject
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             // 
+            // tableDataPrecentage
+            // 
+            this.tableDataPrecentage.AutoSize = true;
+            this.tableDataPrecentage.ColumnCount = 2;
+            this.tableDataPrecentage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.Location = new System.Drawing.Point(430, 138);
+            this.tableDataPrecentage.Name = "tableDataPrecentage";
+            this.tableDataPrecentage.RowCount = 2;
+            this.tableDataPrecentage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.Size = new System.Drawing.Size(200, 100);
+            this.tableDataPrecentage.TabIndex = 18;
+            // 
             // SimulateData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tableDataPrecentage);
             this.Controls.Add(this.labelGeneticModel);
             this.Controls.Add(this.geneticTablePanel);
             this.Controls.Add(this.panelTableContainer);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.labelTraitModel);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
             this.Name = "SimulateData";
@@ -265,7 +268,6 @@ namespace QTLProject
         #endregion
         private RoundedButtonToolBar btnBack;
         private RoundedButtonToolBar btnNext;
-        private System.Windows.Forms.Label labelTraitModel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBoxGenetic;
         private System.Windows.Forms.Label label3;
@@ -278,5 +280,6 @@ namespace QTLProject
         private System.Windows.Forms.Panel panelTableContainer;
         public System.Windows.Forms.TableLayoutPanel tableTraitTable2;
         private System.Windows.Forms.Panel geneticTablePanel;
+        public System.Windows.Forms.TableLayoutPanel tableDataPrecentage;
     }
 }

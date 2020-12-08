@@ -30,6 +30,7 @@ namespace QTLProject.Enums
         public const string PopSize = "Pop Size";
         public const string MissingData = "Missing Data %";
         public const string Error = "Error %";
+        public const string ChrAmount = "Chr Amount";
 
         /// <summary>
         ///  Trait table column names

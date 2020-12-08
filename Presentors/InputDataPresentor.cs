@@ -3,6 +3,8 @@ using QTLProject.Utils;
 using System.Windows.Forms;
 using QTLProject.Enums;
 using System.IO;
+using static QTLProject.Types;
+
 namespace QTLProject
 {
     public class InputDataPresentor
@@ -60,7 +62,7 @@ namespace QTLProject
         private void fillTable(List<Dictionary<int, string>> tableData)
         {
             int rowsToCopy = tableData.Count;
-            dataTable.InsertTableData(tableData, rowsToCopy);
+            dataTable.InsertTableData(tableData, rowsToCopy, TableRowType.InputDataRow);
         }
         #endregion Private Methods
 
@@ -80,7 +82,7 @@ namespace QTLProject
 
         public void AddTableRow()
         {
-            dataTable.AddTableRow();
+            dataTable.AddTableRow(TableRowType.InputDataRow);
         }
 
         public void CopyTableRow()

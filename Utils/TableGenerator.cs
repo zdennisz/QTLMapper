@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static QTLProject.Types;
+using static QTLProject.Views.PopInfoTableRow;
 
 namespace QTLProject.Utils
 {
@@ -16,7 +17,8 @@ namespace QTLProject.Utils
         public TableLayoutPanel tableLayoutPanel;
         public Panel panelTableContainer;
         SortedDictionary<int, bool> selectedRows = new SortedDictionary<int, bool>();
-
+        public event EventHandler<EventArgsRowsAmount> AmountOfRowsChanged;
+       
         public TableGenerator(TableLayoutPanel panel)
         {
             this.tableLayoutPanel = panel;
@@ -88,14 +90,31 @@ namespace QTLProject.Utils
         /// <summary>
         /// Adds a row to the table
         /// </summary>
-        public void AddTableRow()
+        public void AddTableRow(TableRowType row)
+        {
+
+            switch (row)
+            {
+                case TableRowType.InputDataRow:
+                    AddTableRowInputData();
+
+
+                    break;
+                case TableRowType.GeneticDataRow:
+                    AddTableRowGeneticData();
+                    break;
+            }
+
+
+        }
+        private void AddTableRowInputData()
         {
             var table = this.tableLayoutPanel;
             int colAmount = table.ColumnCount;
             int rowIndex = table.RowStyles.Count;
-            var tableRow = new InputDataTableRow(rowIndex);
+            InputDataTableRow tableRow = null;
+            tableRow = new InputDataTableRow(rowIndex);
             tableRow.RowChecked += TableRow_RowChecked;
-
             tableRow.Dock = DockStyle.Fill;
 
             if (rowIndex % 2 == 0)
@@ -116,8 +135,49 @@ namespace QTLProject.Utils
             table.SetColumnSpan(tableRow, colAmount);
             table.Controls.Add(tableRow, 0, rowIndex);
             table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
+        }
 
+        private void AddTableRowGeneticData()
+        {
+            var table = this.tableLayoutPanel;
+            int colAmount = table.ColumnCount;
+            int rowIndex = table.RowStyles.Count;
+            GeneticTableRow tableRow;
+            tableRow = new GeneticTableRow();
+            tableRow.Dock = DockStyle.Fill;
 
+            if (rowIndex % 2 == 0)
+            {
+                tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                tableRow.setTextBoxBackgroundColor(ColorConstants.tableBackgroundColor);
+            }
+            else
+            {
+                tableRow.BackColor = Color.White;
+                tableRow.BackColor = Color.White;
+                tableRow.setTextBoxBackgroundColor(Color.White);
+
+            }
+
+            tableRow.BorderStyle = BorderStyle.None;
+            table.SetColumnSpan(tableRow, colAmount);
+            table.Controls.Add(tableRow, 0, rowIndex);
+            table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
+        }
+
+        /// <summary>
+        /// Adds rows according to the amount that it is  sent
+        /// </summary>
+        /// <param name="AmountOfRows"></param>
+        public void AddTableRow(int AmountOfRows,TableRowType type)
+        {
+           
+            while (AmountOfRows > 0)
+            {
+                AddTableRow(type);
+                AmountOfRows--;
+            }
         }
 
         private void TableRow_RowChecked(object sender, EventArgs e)
@@ -126,6 +186,76 @@ namespace QTLProject.Utils
             bool isChecked = ((CheckBox)(row.Controls[0])).Checked;
             selectedRows[row.rowIndex] = isChecked;
         }
+        /// <summary>
+        /// Get the amount of rows that the table has
+        /// </summary>
+        /// <returns></returns>
+        public int GetGeneticTableAmountOfRows()
+        {
+            var table = this.tableLayoutPanel;
+            //remove one since the header of the table is not a data row
+            return (table.RowStyles.Count-1);
+
+        }
+
+
+        public void GeneratePopInfoTable(List<string> modelParams, float rowSize, float colSize, int colAmount)
+        {
+            int rowIndex = 0;
+            var table = (TableLayoutPanel)this.tableLayoutPanel;
+            table.Controls.Clear();
+            table.RowStyles.Clear();
+            table.ColumnCount = colAmount;
+            table.RowCount = modelParams.Count + 1;
+
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));
+            Label placeHodler = new Label();
+            placeHodler.Dock = DockStyle.Fill;
+            placeHodler.Text = "Pop Info";
+            placeHodler.BackColor = ColorConstants.tableHeaderColor;
+            table.SetColumnSpan(placeHodler, table.ColumnCount);
+            table.Controls.Add(placeHodler, 0, rowIndex);
+
+            table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
+            rowIndex++;
+            foreach (string name in modelParams)
+            {
+
+                var tableRow = new PopInfoTableRow();
+                tableRow.rowLabel.Text = name;
+
+
+                tableRow.rowTextBox.Name = "tb" + name.Replace(" ", "");
+                tableRow.rowPanel.Dock = DockStyle.Fill;
+
+                tableRow.rowPanel.BackColor = Color.White;
+                tableRow.rowTextBox.BackColor = Color.White;
+
+                if (rowIndex % 2 == 0)
+                {
+                    tableRow.rowPanel.BackColor = ColorConstants.tableBackgroundColor;
+                    tableRow.rowTextBox.BackColor = ColorConstants.tableBackgroundColor;
+                }
+                tableRow.rowTextBox.BorderStyle = BorderStyle.None;
+
+                table.SetColumnSpan(tableRow, 2);
+                table.Controls.Add(tableRow, 0, rowIndex);
+                table.RowStyles.Add(new RowStyle(SizeType.Absolute, rowSize));
+                if (rowIndex == modelParams.Count)
+                {
+                    //sign up for the event for the Chr Amount
+                    tableRow.AmountOfRows += TableRow_AmountOfRows;
+                }
+
+                rowIndex++;
+            }
+        }
+
+        private void TableRow_AmountOfRows(object sender, PopInfoTableRow.EventArgsRowsAmount e)
+        {
+            AmountOfRowsChanged?.Invoke(this, e);
+        }
+
 
 
         /// <summary>
@@ -145,18 +275,30 @@ namespace QTLProject.Utils
 
         }
         /// <summary>
+        /// Removes rows according to the amount that it is  sent
+        /// </summary>
+        /// <param name="amountOfRows"></param>
+        public void DeleteTableRow(int amountOfRows)
+        {
+            while (amountOfRows > 0)
+            {
+                DeleteTableRow();
+                amountOfRows--;
+            }
+        }
+        /// <summary>
         /// Inserts data into the selected table 
         /// </summary>
         /// <param name="tableData"></param>
         /// <param name="rowsToCopy"></param>
-        public void InsertTableData(List<Dictionary<int, string>> tableData, int rowsToCopy)
+        public void InsertTableData(List<Dictionary<int, string>> tableData, int rowsToCopy, TableRowType type)
         {
             //TODO check how many rows if less then what we have then generate the missing rows
             var table = this.tableLayoutPanel;
             int amountOfRowsToAdd = rowsToCopy;
             while (amountOfRowsToAdd > 0)
             {
-                AddTableRow();
+                AddTableRow(type);
                 amountOfRowsToAdd--;
             }
 
@@ -398,7 +540,7 @@ namespace QTLProject.Utils
             //only if we have data to send we insert the table data
             if (tableRowData.Count > 0)
             {
-                InsertTableData(tableRowData, rowsToCopy);
+                InsertTableData(tableRowData, rowsToCopy,TableRowType.InputDataRow);
             }
 
 

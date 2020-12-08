@@ -170,6 +170,12 @@
     <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\Trait.cs" />
     <Compile Include="Enums\Types.cs" />
+    <Compile Include="Views\PopInfoTableRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PopInfoTableRow.Designer.cs">
+      <DependentUpon>PopInfoTableRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TraitTableRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SimulateData.resx">
       <DependentUpon>SimulateData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PopInfoTableRow.resx">
+      <DependentUpon>PopInfoTableRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TraitTableRow.resx">
       <DependentUpon>TraitTableRow.cs</DependentUpon>

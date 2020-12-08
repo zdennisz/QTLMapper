@@ -53,10 +53,7 @@ namespace QTLProject
             geneticParams.Add(Constants.ChrNum);
             geneticParams.Add(Constants.ChrLen);
             geneticParams.Add(Constants.MarkerPerCM);
-            geneticParams.Add(Constants.PopSize);
-            geneticParams.Add(Constants.MissingData);
-            geneticParams.Add(Constants.Error);
-            genetictable.CreateGeneticTable(geneticParams, 25, 400, 6, 18);
+            genetictable.CreateGeneticTable(geneticParams, 25, 400, geneticParams.Count, 18);
 
         }
         private void ComboBoxTrait_SelectedIndexChanged(object sender, EventArgs e)

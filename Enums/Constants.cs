@@ -23,10 +23,13 @@ namespace QTLProject.Enums
         public const string ChrNum = "Chr Num.";
         public const string ChrLen = "Chr Len. (cM)";
         public const string MarkerPerCM = "Marker per cM";
+       
+        /// <summary>
+        /// Error size titles 
+        /// </summary>
         public const string PopSize = "Pop Size";
         public const string MissingData = "Missing Data %";
         public const string Error = "Error %";
-
 
         /// <summary>
         ///  Trait table column names

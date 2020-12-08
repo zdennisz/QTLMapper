@@ -28,52 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(523, 6);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(48, 20);
-            this.textBox6.TabIndex = 17;
-            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(30, 6);
+            this.textBox1.Location = new System.Drawing.Point(50, 6);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(48, 20);
             this.textBox1.TabIndex = 12;
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(423, 6);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(48, 20);
-            this.textBox5.TabIndex = 16;
-            // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(128, 6);
+            this.textBox2.Location = new System.Drawing.Point(250, 6);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(48, 20);
             this.textBox2.TabIndex = 13;
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(323, 6);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(48, 20);
-            this.textBox4.TabIndex = 15;
-            // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(226, 6);
+            this.textBox3.Location = new System.Drawing.Point(500, 6);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(48, 20);
             this.textBox3.TabIndex = 14;
@@ -82,11 +58,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "GeneticTableRow";
@@ -97,12 +70,8 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox3;
     }
 }

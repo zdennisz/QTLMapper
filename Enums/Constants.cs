@@ -22,7 +22,7 @@ namespace QTLProject.Enums
         /// </summary>
         public const string ChrNum = "Chr Num.";
         public const string ChrLen = "Chr Len. (cM)";
-        public const string MarkerPerChr = "Marker per Chr";
+        public const string MarkerPerCM = "Marker per cM";
         public const string PopSize = "Pop Size";
         public const string MissingData = "Missing Data %";
         public const string Error = "Error %";
@@ -37,6 +37,7 @@ namespace QTLProject.Enums
         public const string Varq="Var q";
         public const string AvgQ="Avq. Q";
         public const string Avgq="Avq. q";
+        public const string DominanceEffect = "Dom. Effect";
 
 
         /// <summary>

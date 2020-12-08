@@ -52,7 +52,7 @@ namespace QTLProject
             List<string> geneticParams = new List<string>();
             geneticParams.Add(Constants.ChrNum);
             geneticParams.Add(Constants.ChrLen);
-            geneticParams.Add(Constants.MarkerPerChr);
+            geneticParams.Add(Constants.MarkerPerCM);
             geneticParams.Add(Constants.PopSize);
             geneticParams.Add(Constants.MissingData);
             geneticParams.Add(Constants.Error);
@@ -96,6 +96,7 @@ namespace QTLProject
                 taritModelParams.Add(Constants.Varq);
                 taritModelParams.Add(Constants.AvgQ);
                 taritModelParams.Add(Constants.Avgq);
+                taritModelParams.Add(Constants.DominanceEffect);
 
                 if (tableType == QTLTaritModels.TwoLinkedQTL)
                 {

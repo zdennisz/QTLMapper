@@ -100,9 +100,9 @@ namespace QTLProject.Utils
 
             if (rowIndex % 2 == 0)
             {
-                tableRow.BackColor = Color.LightGray;
-                tableRow.BackColor = Color.LightGray;
-                tableRow.setTextBoxBackgroundColor(Color.LightGray);
+                tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                tableRow.BackColor = ColorConstants.tableBackgroundColor;
+                tableRow.setTextBoxBackgroundColor(ColorConstants.tableBackgroundColor);
             }
             else
             {
@@ -312,6 +312,7 @@ namespace QTLProject.Utils
                 table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, colSize));
                 Label placeHodler = new Label();
                 placeHodler.Dock = DockStyle.Fill;
+                placeHodler.Text = "QTL #" + (i+1);
                 placeHodler.BackColor = ColorConstants.tableHeaderColor;
                 table.SetColumnSpan(placeHodler, table.ColumnCount);
                 table.Controls.Add(placeHodler, 0, rowIndex);
@@ -323,7 +324,7 @@ namespace QTLProject.Utils
 
                     TraitTableRow tableRow = new TraitTableRow();
                     tableRow.rowLabel.Text = name;
-                    // tableRow.Size = new Size(100, 25);
+                    
 
                     tableRow.rowTextBox.Name = "tb" + name.Replace(" ", "");
                     tableRow.rowPanel.Dock = DockStyle.Fill;

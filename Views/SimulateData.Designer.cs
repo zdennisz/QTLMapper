@@ -30,8 +30,6 @@ namespace QTLProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
-            this.btnNext = new QTLProject.Utils.RoundedButtonToolBar();
             this.tableTraitTable1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTraitModel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,35 +43,13 @@ namespace QTLProject
             this.tableTraitTable2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelTableContainer = new System.Windows.Forms.Panel();
             this.geneticTablePanel = new System.Windows.Forms.Panel();
+            this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
+            this.btnNext = new QTLProject.Utils.RoundedButtonToolBar();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTableContainer.SuspendLayout();
             this.geneticTablePanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnBack
-            // 
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnBack.Location = new System.Drawing.Point(516, 561);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(100, 32);
-            this.btnBack.TabIndex = 4;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnNext.Location = new System.Drawing.Point(623, 561);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(100, 32);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
             // 
             // tableTraitTable1
             // 
@@ -98,7 +74,7 @@ namespace QTLProject
             // 
             this.labelTraitModel.AutoSize = true;
             this.labelTraitModel.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelTraitModel.Location = new System.Drawing.Point(42, 117);
+            this.labelTraitModel.Location = new System.Drawing.Point(42, 100);
             this.labelTraitModel.Name = "labelTraitModel";
             this.labelTraitModel.Size = new System.Drawing.Size(77, 16);
             this.labelTraitModel.TabIndex = 15;
@@ -173,7 +149,7 @@ namespace QTLProject
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableGeneticModel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableGeneticModel.Location = new System.Drawing.Point(0, 0);
             this.tableGeneticModel.Name = "tableGeneticModel";
@@ -192,7 +168,7 @@ namespace QTLProject
             // 
             this.labelGeneticModel.AutoSize = true;
             this.labelGeneticModel.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelGeneticModel.Location = new System.Drawing.Point(42, 329);
+            this.labelGeneticModel.Location = new System.Drawing.Point(42, 350);
             this.labelGeneticModel.Name = "labelGeneticModel";
             this.labelGeneticModel.Size = new System.Drawing.Size(99, 16);
             this.labelGeneticModel.TabIndex = 16;
@@ -221,19 +197,43 @@ namespace QTLProject
             // 
             this.panelTableContainer.Controls.Add(this.tableTraitTable2);
             this.panelTableContainer.Controls.Add(this.tableTraitTable1);
-            this.panelTableContainer.Location = new System.Drawing.Point(3, 135);
+            this.panelTableContainer.Location = new System.Drawing.Point(3, 118);
             this.panelTableContainer.Name = "panelTableContainer";
-            this.panelTableContainer.Size = new System.Drawing.Size(680, 192);
+            this.panelTableContainer.Size = new System.Drawing.Size(680, 229);
             this.panelTableContainer.TabIndex = 18;
             // 
             // geneticTablePanel
             // 
             this.geneticTablePanel.AutoScroll = true;
             this.geneticTablePanel.Controls.Add(this.tableGeneticModel);
-            this.geneticTablePanel.Location = new System.Drawing.Point(21, 345);
+            this.geneticTablePanel.Location = new System.Drawing.Point(21, 366);
             this.geneticTablePanel.Name = "geneticTablePanel";
-            this.geneticTablePanel.Size = new System.Drawing.Size(625, 210);
+            this.geneticTablePanel.Size = new System.Drawing.Size(625, 185);
             this.geneticTablePanel.TabIndex = 19;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnBack.Location = new System.Drawing.Point(516, 561);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 32);
+            this.btnBack.TabIndex = 4;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnNext.Location = new System.Drawing.Point(623, 561);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(100, 32);
+            this.btnNext.TabIndex = 3;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
             // 
             // SimulateData
             // 

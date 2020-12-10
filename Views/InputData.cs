@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using QTLProject.Enums;
-using QTLProject.Views;
+﻿using QTLProject.Enums;
 using QTLProject.Utils;
-using System.IO;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace QTLProject
 {
@@ -29,6 +21,7 @@ namespace QTLProject
 
             InitializeComponent();
             SetupUI();
+          
             inputDataPresentor = new InputDataPresentor(this.inputDataTable);
         }
 
@@ -43,14 +36,39 @@ namespace QTLProject
 
             foreach (Button button in this.flowLayoutPanel1.Controls)
             {
-                button.BackColor = ColorTranslator.FromHtml("#ebf9fc");
-                button.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#ebf9fc");
+                button.BackColor = ColorConstants.toolbarButtonsColor;
+                button.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
                 button.Size = new Size(48, 48);
                 button.Image = (Image)(new Bitmap(button.Image, new Size(28, 28)));
-
             }
+            btnBack.BackColor = ColorConstants.toolbarButtonsColor;
+            btnBack.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+            btnNext.BackColor = ColorConstants.toolbarButtonsColor;
+            btnNext.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
 
-
+            setupEvents();
+            setupToolTips();
+        }
+        /// <summary>
+        /// Initializes the tool tips
+        /// </summary>
+        private void setupToolTips()
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(btnOpenData, Constants.LoadFile);
+            toolTip.SetToolTip(btnSaveData, Constants.SaveFile);
+            toolTip.SetToolTip(btnCopyData, Constants.CopiesRows);
+            toolTip.SetToolTip(btnPasteData, Constants.PasteRows);
+            toolTip.SetToolTip(btnInsrData, Constants.InsertRows);
+            toolTip.SetToolTip(btnDelData, Constants.RemoveRows);
+            toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
+            toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
+        }
+        /// <summary>
+        /// Signs up for all the events
+        /// </summary>
+        private void setupEvents()
+        {
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.btnNext.MouseClick += BtnNext_MouseClick;
             this.btnOpenData.MouseClick += BtnOpenData_MouseClick;
@@ -60,12 +78,10 @@ namespace QTLProject
             this.btnPasteData.MouseClick += BtnPasteData_MouseClick;
             this.btnDelData.MouseClick += BtnDelData_MouseClick;
             this.btnInsrData.MouseClick += BtnInsrData_MouseClick;
-
-
         }
         private void BtnDelData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
+         
 
             inputDataPresentor.DeleteTableRow();
 
@@ -73,8 +89,8 @@ namespace QTLProject
 
         private void BtnPasteData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
-            throw new NotImplementedException();
+          
+            inputDataPresentor.PasteTableRows();
         }
 
 
@@ -86,9 +102,9 @@ namespace QTLProject
 
         private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
-            int row;
-           // inputDataPresentor.SaveTableRow(row);
+            
+            
+            inputDataPresentor.CopyTableRow();
         }
 
         private void BtnSaveData_MouseClick(object sender, MouseEventArgs e)
@@ -110,7 +126,7 @@ namespace QTLProject
                 {
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
-                   // inputDataPresentor.ReadDataFromFile(filePath);
+                    inputDataPresentor.ReadDataFromFile(filePath);
                 }
             }
 
@@ -124,6 +140,7 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
+            inputDataPresentor.SaveTableData();
             nextButtonClicked?.Invoke(this, e);
         }
 

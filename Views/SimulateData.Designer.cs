@@ -1,4 +1,6 @@
-﻿namespace QTLProject
+﻿using QTLProject.Utils;
+
+namespace QTLProject
 {
     partial class SimulateData
     {
@@ -28,10 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
             this.tableTraitTable1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTraitModel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBoxGenetic = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,31 +42,14 @@
             this.tableTraitTable2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelTableContainer = new System.Windows.Forms.Panel();
             this.geneticTablePanel = new System.Windows.Forms.Panel();
+            this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
+            this.btnNext = new QTLProject.Utils.RoundedButtonToolBar();
+            this.tableDataPrecentage = new System.Windows.Forms.TableLayoutPanel();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTableContainer.SuspendLayout();
             this.geneticTablePanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnBack.Location = new System.Drawing.Point(566, 569);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 4;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnNext.Location = new System.Drawing.Point(647, 569);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
             // 
             // tableTraitTable1
             // 
@@ -75,7 +57,7 @@
             this.tableTraitTable1.ColumnCount = 2;
             this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.44186F));
             this.tableTraitTable1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.55814F));
-            this.tableTraitTable1.Location = new System.Drawing.Point(397, 18);
+            this.tableTraitTable1.Location = new System.Drawing.Point(226, 20);
             this.tableTraitTable1.Name = "tableTraitTable1";
             this.tableTraitTable1.RowCount = 6;
             this.tableTraitTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.21127F));
@@ -87,17 +69,6 @@
             this.tableTraitTable1.Size = new System.Drawing.Size(200, 152);
             this.tableTraitTable1.TabIndex = 14;
             this.tableTraitTable1.Visible = false;
-            // 
-            // labelTraitModel
-            // 
-            this.labelTraitModel.AutoSize = true;
-            this.labelTraitModel.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelTraitModel.Location = new System.Drawing.Point(42, 122);
-            this.labelTraitModel.Name = "labelTraitModel";
-            this.labelTraitModel.Size = new System.Drawing.Size(77, 16);
-            this.labelTraitModel.TabIndex = 15;
-            this.labelTraitModel.Text = "Tarit Model";
-            this.labelTraitModel.Visible = false;
             // 
             // panel2
             // 
@@ -167,7 +138,7 @@
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tableGeneticModel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableGeneticModel.Location = new System.Drawing.Point(0, 0);
             this.tableGeneticModel.Name = "tableGeneticModel";
@@ -186,7 +157,7 @@
             // 
             this.labelGeneticModel.AutoSize = true;
             this.labelGeneticModel.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelGeneticModel.Location = new System.Drawing.Point(42, 334);
+            this.labelGeneticModel.Location = new System.Drawing.Point(42, 350);
             this.labelGeneticModel.Name = "labelGeneticModel";
             this.labelGeneticModel.Size = new System.Drawing.Size(99, 16);
             this.labelGeneticModel.TabIndex = 16;
@@ -199,7 +170,7 @@
             this.tableTraitTable2.ColumnCount = 2;
             this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.33333F));
             this.tableTraitTable2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.66667F));
-            this.tableTraitTable2.Location = new System.Drawing.Point(19, 18);
+            this.tableTraitTable2.Location = new System.Drawing.Point(20, 20);
             this.tableTraitTable2.Name = "tableTraitTable2";
             this.tableTraitTable2.RowCount = 5;
             this.tableTraitTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -215,30 +186,68 @@
             // 
             this.panelTableContainer.Controls.Add(this.tableTraitTable2);
             this.panelTableContainer.Controls.Add(this.tableTraitTable1);
-            this.panelTableContainer.Location = new System.Drawing.Point(3, 141);
+            this.panelTableContainer.Location = new System.Drawing.Point(3, 118);
             this.panelTableContainer.Name = "panelTableContainer";
-            this.panelTableContainer.Size = new System.Drawing.Size(680, 192);
+            this.panelTableContainer.Size = new System.Drawing.Size(429, 229);
             this.panelTableContainer.TabIndex = 18;
             // 
             // geneticTablePanel
             // 
             this.geneticTablePanel.AutoScroll = true;
             this.geneticTablePanel.Controls.Add(this.tableGeneticModel);
-            this.geneticTablePanel.Location = new System.Drawing.Point(10, 353);
+            this.geneticTablePanel.Location = new System.Drawing.Point(21, 366);
             this.geneticTablePanel.Name = "geneticTablePanel";
-            this.geneticTablePanel.Size = new System.Drawing.Size(625, 210);
+            this.geneticTablePanel.Size = new System.Drawing.Size(625, 185);
             this.geneticTablePanel.TabIndex = 19;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnBack.Location = new System.Drawing.Point(516, 561);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 32);
+            this.btnBack.TabIndex = 4;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnNext.Location = new System.Drawing.Point(623, 561);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(100, 32);
+            this.btnNext.TabIndex = 3;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // tableDataPrecentage
+            // 
+            this.tableDataPrecentage.AutoSize = true;
+            this.tableDataPrecentage.ColumnCount = 2;
+            this.tableDataPrecentage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.Location = new System.Drawing.Point(430, 138);
+            this.tableDataPrecentage.Name = "tableDataPrecentage";
+            this.tableDataPrecentage.RowCount = 2;
+            this.tableDataPrecentage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableDataPrecentage.Size = new System.Drawing.Size(200, 100);
+            this.tableDataPrecentage.TabIndex = 18;
             // 
             // SimulateData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tableDataPrecentage);
             this.Controls.Add(this.labelGeneticModel);
             this.Controls.Add(this.geneticTablePanel);
             this.Controls.Add(this.panelTableContainer);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.labelTraitModel);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
             this.Name = "SimulateData";
@@ -257,9 +266,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Label labelTraitModel;
+        private RoundedButtonToolBar btnBack;
+        private RoundedButtonToolBar btnNext;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBoxGenetic;
         private System.Windows.Forms.Label label3;
@@ -272,5 +280,6 @@
         private System.Windows.Forms.Panel panelTableContainer;
         public System.Windows.Forms.TableLayoutPanel tableTraitTable2;
         private System.Windows.Forms.Panel geneticTablePanel;
+        public System.Windows.Forms.TableLayoutPanel tableDataPrecentage;
     }
 }

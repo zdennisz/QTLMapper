@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using static QTLProject.Types;
 using QTLProject.Enums;
 using QTLProject.Utils;
+using static QTLProject.Views.PopInfoTableRow;
 
 namespace QTLProject
 {
@@ -15,6 +16,7 @@ namespace QTLProject
         #region Fields
         TableGenerator genetictable;
         TableGenerator traitTable;
+        TableGenerator popInfoTable;
         #endregion Fields
 
         #region Events
@@ -28,50 +30,65 @@ namespace QTLProject
             setupUI();
             genetictable = new TableGenerator(this.tableGeneticModel);
             traitTable = new TableGenerator(this.panelTableContainer);
+            popInfoTable = new TableGenerator(this.tableDataPrecentage);
             //set the format of the dates
             this.btnNext.MouseClick += BtnNext_MouseClick;
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.comboBoxTrait.SelectedIndexChanged += ComboBoxTrait_SelectedIndexChanged;
+            popInfoTable.AmountOfRowsChanged += PopInfoTable_AmountOfRowsChanged;
             generateGeneticTable();
+            generatePopInfoTable();
 
             SetDateTimeFormat();
-            DataGeneratorPresentor dgp = new DataGeneratorPresentor();
+           /* DataGeneratorPresentor dgp = new DataGeneratorPresentor();
             dgp.DefineChromosomeLength();
             dgp.DefineChromosomePositions();
             dgp.DefineParentalHaplotypes();
             dgp.SimulateRecombination();
             dgp.DefineQTL();
+           */
+        }
+
+        private void PopInfoTable_AmountOfRowsChanged(object sender, EventArgsRowsAmount e)
+        {
+            int currRows = genetictable.GetGeneticTableAmountOfRows();
+            if (currRows < e.AmountOfRows&& e.AmountOfRows>0)
+            {
+                //add rows
+                var deltaInRows = e.AmountOfRows - currRows;
+                genetictable.AddTableRow(deltaInRows,TableRowType.GeneticDataRow);
+            }
+            else if (currRows > e.AmountOfRows && e.AmountOfRows > 0)
+            {
+                //delete rows
+                var deltaInRows = currRows - e.AmountOfRows;
+                genetictable.DeleteTableRow(deltaInRows);
+            }
 
         }
 
+        private void generatePopInfoTable()
+        {
+            List<string> tableParams = new List<string>();
+            tableParams.Add(Constants.PopSize);
+            tableParams.Add(Constants.MissingData);
+            tableParams.Add(Constants.Error);
+            tableParams.Add(Constants.ChrAmount);
 
-
+            popInfoTable.GeneratePopInfoTable(tableParams, 25, 100, 2);
+        }
 
         private void generateGeneticTable()
         {
             List<string> geneticParams = new List<string>();
             geneticParams.Add(Constants.ChrNum);
             geneticParams.Add(Constants.ChrLen);
-            geneticParams.Add(Constants.MarkerPerChr);
-            geneticParams.Add(Constants.PopSize);
-            geneticParams.Add(Constants.MissingData);
-            geneticParams.Add(Constants.Error);
-            genetictable.CreateGeneticTable(geneticParams, 25, 400, 6, 18);
+            geneticParams.Add(Constants.MarkerPerCM);
+            genetictable.CreateGeneticTable(geneticParams, 25, 400, geneticParams.Count, 4);
 
         }
         private void ComboBoxTrait_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.labelTraitModel.Text = this.comboBoxTrait.SelectedItem.ToString();
-            if (this.labelTraitModel.Text.Equals(Constants.NoQTL))
-            {
-                this.labelTraitModel.Visible = false;
-            }
-            else
-            {
-                this.labelTraitModel.Visible = true;
-            }
-
-
             updateTraitTable((QTLTaritModels)this.comboBoxTrait.SelectedIndex);
         }
 
@@ -96,6 +113,7 @@ namespace QTLProject
                 taritModelParams.Add(Constants.Varq);
                 taritModelParams.Add(Constants.AvgQ);
                 taritModelParams.Add(Constants.Avgq);
+                taritModelParams.Add(Constants.DominanceEffect);
 
                 if (tableType == QTLTaritModels.TwoLinkedQTL)
                 {
@@ -125,6 +143,14 @@ namespace QTLProject
             traitModels.Add(Constants.TwoLinkedQTL);
             this.comboBoxTrait.Items.AddRange(traitModels.ToArray());
             this.comboBoxTrait.SelectedIndex = 0;
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
+            toolTip.SetToolTip(btnNext, Constants.GoToNextStage);
+
+            btnBack.BackColor = ColorConstants.toolbarButtonsColor;
+            btnBack.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
+            btnNext.BackColor = ColorConstants.toolbarButtonsColor;
+            btnNext.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
 
         }
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)

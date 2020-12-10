@@ -77,6 +77,11 @@ namespace QTLProject
             TwoLinkedQTL=3,
         }
 
+        public enum TableRowType
+        {
+            InputDataRow=0,
+            GeneticDataRow=1
+        }
        
 
         public class State

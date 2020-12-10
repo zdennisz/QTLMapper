@@ -27,26 +27,10 @@ namespace QTLProject.Views
             this.textBox1.TextChanged += TextBox1_TextChanged;
             this.textBox2.TextChanged += TextBox2_TextChanged;
             this.textBox3.TextChanged += TextBox3_TextChanged;
-            this.textBox4.TextChanged += TextBox4_TextChanged;
-            this.textBox5.TextChanged += TextBox5_TextChanged;
-            this.textBox6.TextChanged += TextBox6_TextChanged;
+
 
         }
 
-        private void TextBox6_TextChanged(object sender, EventArgs e)
-        {
-            this.tableRow[5]= this.textBox6.Text;
-        }
-
-        private void TextBox5_TextChanged(object sender, EventArgs e)
-        {
-            this.tableRow[4]= this.textBox5.Text;
-        }
-
-        private void TextBox4_TextChanged(object sender, EventArgs e)
-        {
-            this.tableRow[3]= this.textBox4.Text;
-        }
 
         private void TextBox3_TextChanged(object sender, EventArgs e)
         {
@@ -71,5 +55,8 @@ namespace QTLProject.Views
                 tb.BackColor = backColor;
             }
         }
+
+     
+
     }
 }

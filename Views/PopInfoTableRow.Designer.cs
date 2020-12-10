@@ -1,6 +1,6 @@
 ﻿namespace QTLProject.Views
 {
-    partial class TraitTableRow
+    partial class PopInfoTableRow
     {
         /// <summary> 
         /// Required designer variable.
@@ -58,19 +58,19 @@
             // 
             this.rowLabel.AutoSize = true;
             this.rowLabel.Font = new System.Drawing.Font("Arial", 10F);
-            this.rowLabel.Location = new System.Drawing.Point(25, 2);
+            this.rowLabel.Location = new System.Drawing.Point(15, 2);
             this.rowLabel.Name = "rowLabel";
             this.rowLabel.Size = new System.Drawing.Size(46, 16);
             this.rowLabel.TabIndex = 0;
             this.rowLabel.Text = "label1";
             // 
-            // TraitTableRow
+            // PopInfoTableRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.rowPanel);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "TraitTableRow";
+            this.Name = "PopInfoTableRow";
             this.Size = new System.Drawing.Size(205, 25);
             this.rowPanel.ResumeLayout(false);
             this.rowPanel.PerformLayout();

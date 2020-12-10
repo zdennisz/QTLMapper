@@ -31,14 +31,13 @@
             this.label1Col = new System.Windows.Forms.Label();
             this.label2Col = new System.Windows.Forms.Label();
             this.label3Col = new System.Windows.Forms.Label();
-            this.label4Col = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1Col
             // 
             this.label1Col.AutoSize = true;
             this.label1Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1Col.Location = new System.Drawing.Point(42, 0);
+            this.label1Col.Location = new System.Drawing.Point(42, 4);
             this.label1Col.Name = "label1Col";
             this.label1Col.Size = new System.Drawing.Size(46, 16);
             this.label1Col.TabIndex = 6;
@@ -48,7 +47,7 @@
             // 
             this.label2Col.AutoSize = true;
             this.label2Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2Col.Location = new System.Drawing.Point(180, 0);
+            this.label2Col.Location = new System.Drawing.Point(180, 4);
             this.label2Col.Name = "label2Col";
             this.label2Col.Size = new System.Drawing.Size(46, 16);
             this.label2Col.TabIndex = 7;
@@ -58,21 +57,11 @@
             // 
             this.label3Col.AutoSize = true;
             this.label3Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3Col.Location = new System.Drawing.Point(329, 0);
+            this.label3Col.Location = new System.Drawing.Point(329, 4);
             this.label3Col.Name = "label3Col";
             this.label3Col.Size = new System.Drawing.Size(46, 16);
             this.label3Col.TabIndex = 8;
             this.label3Col.Text = "label3";
-            // 
-            // label4Col
-            // 
-            this.label4Col.AutoSize = true;
-            this.label4Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label4Col.Location = new System.Drawing.Point(475, 0);
-            this.label4Col.Name = "label4Col";
-            this.label4Col.Size = new System.Drawing.Size(46, 16);
-            this.label4Col.TabIndex = 9;
-            this.label4Col.Text = "label4";
             // 
             // InputDataTableHeader
             // 
@@ -81,7 +70,7 @@
             this.Controls.Add(this.label1Col);
             this.Controls.Add(this.label2Col);
             this.Controls.Add(this.label3Col);
-            this.Controls.Add(this.label4Col);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "InputDataTableHeader";
             this.Size = new System.Drawing.Size(600, 25);
             this.ResumeLayout(false);
@@ -94,6 +83,5 @@
         private System.Windows.Forms.Label label1Col;
         private System.Windows.Forms.Label label2Col;
         private System.Windows.Forms.Label label3Col;
-        private System.Windows.Forms.Label label4Col;
     }
 }

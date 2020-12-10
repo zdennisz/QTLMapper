@@ -15,16 +15,15 @@ namespace QTLProject
         public HelpWindow()
         {
             InitializeComponent();
-            this.tabPage1.Text = "I love Banans";
+            this.tabPage1.Text = "About";
             TextBox tb1 = new TextBox();
-            tb1.Text = "I love nuts too";
-            tb1.Name = "hey";
+            tb1.Text = "QTL mapper tool..";
             this.tabPage1.Controls.Add(tb1);
             
 
-            this.tabPage2.Text = "I love Apples";
+            this.tabPage2.Text = "Contact";
             TextBox tb2 = new TextBox();
-            tb2.Text = "I love Grains too";
+            tb2.Text = "Braude College";
             this.tabPage2.Controls.Add(tb2);
         }
     }

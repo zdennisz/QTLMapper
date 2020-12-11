@@ -303,9 +303,8 @@ namespace QTLProject.Utils
                 amountOfRowsToAdd--;
             }
 
-            //this is the row of the insertion - we calcualte it by the general amount of rows and the amount of data to insert
-            //we remove additional one to account the table header which is a row in the table
-            int currRow = (table.Controls.Count) - tableData.Count;
+            //this is the row of the insertion , row at index 0 is the row of the header
+            int currRow = 1;
 
             //get the current data of the row to be copied
             foreach (Dictionary<int, string> dic in tableData)
@@ -319,6 +318,11 @@ namespace QTLProject.Utils
                     tableRow.Controls[entry.Key + offestIndex].Text = entry.Value;
                 }
                 currRow++;
+                if(currRow> rowsToCopy)
+                {
+                    //break in case we reached the limit of the requested rows to copy
+                    break;
+                }
             }
             //Assign the data to the actual table rows
         }

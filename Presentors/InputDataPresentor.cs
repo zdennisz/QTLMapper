@@ -30,7 +30,7 @@ namespace QTLProject
             geneticParams.Add(Constants.CoorcM);
             geneticParams.Add(Constants.Chr);
 
-            dataTable.CreateInputDataTable(geneticParams, 25, 400, 3, 14);
+            dataTable.CreateInputDataTable(geneticParams, 25, 400, 3, 1);
 
         }
         private List<Dictionary<int, string>> parseData(string filePath)
@@ -59,10 +59,15 @@ namespace QTLProject
             
             return data;
         }
-
+        /// <summary>
+        /// Fills the table with data via the pointer to the table
+        /// </summary>
+        /// <param name="tableData"></param>
         private void fillTable(List<Dictionary<int, string>> tableData)
         {
-            int rowsToCopy = tableData.Count;
+            //limit the rows to copy to 100
+            int rowsToCopy = 100;
+
             dataTable.InsertTableData(tableData, rowsToCopy, TableRowType.InputDataRow);
         }
         #endregion Private Methods

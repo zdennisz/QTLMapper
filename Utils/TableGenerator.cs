@@ -329,7 +329,26 @@ namespace QTLProject.Utils
             }
             //Assign the data to the actual table rows
         }
-
+        public void InsertTableData(Dictionary<int,string> newRowData,TableRowType type)
+        {
+            
+            switch (type)
+            {
+                case TableRowType.InputDataRow:
+                    var table = this.tableLayoutPanel;
+                    int counter =0;
+                    foreach (KeyValuePair<int,string> entry in newRowData)
+                    {
+                        var row = ((InputDataTableRow)table.Controls[table.Controls.Count-1]);
+                        row.tableRow[counter] = entry.Value;
+                        counter++;
+                    }
+                    break;
+                
+                default:
+                break;
+            }
+        }
         public void CreateGeneticTable(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
         {
 

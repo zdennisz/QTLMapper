@@ -112,7 +112,13 @@ namespace QTLProject
         {
             dataTable.AddTableRow(TableRowType.InputDataRow);
             var data = TempDataHolder.PartialTempFileHolder;
-            data.Add(new Dictionary<int, string>());
+            Dictionary<int, string> newDic = new Dictionary<int, string>();
+            string str = "";
+            newDic.Add(0, str);
+            newDic.Add(1, str);
+            newDic.Add(2, str);
+            data.Add(newDic);
+            dataTable.InsertTableData(newDic,TableRowType.InputDataRow);
         }
 
         public void CopyTableRow()

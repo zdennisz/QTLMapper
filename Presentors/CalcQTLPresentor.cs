@@ -11,7 +11,7 @@ namespace QTLProject
     public class CalcQTLPresentor
     {
         TableGenerator calQTLTable;
-        private int amountOfRows = 100;
+      
         public CalcQTLPresentor(TableLayoutPanel panel)
         {
             calQTLTable = new TableGenerator(panel);
@@ -27,11 +27,12 @@ namespace QTLProject
         public void GeneratePrevoiusTable(List<string> modelParams, float rowSize, float colSize, int colAmount)
         {
             //get the data from the singelton 
-            List<Dictionary<int, string>> dataFromDB = TempDataHolder.tempFileHolder;
-           
-            
+            var dataFromDB = TempDataHolder.PartialTempFileHolder;
+
+
             //generate the table
-            calQTLTable.GenerateTableForView(modelParams, rowSize, colSize, colAmount, amountOfRows);
+           
+            calQTLTable.GenerateTableForView(modelParams, rowSize, colSize, colAmount, dataFromDB.Count);
 
 
             
@@ -40,7 +41,11 @@ namespace QTLProject
             calQTLTable.PopulateViewTable(dataFromDB);
         }
 
-
+        public void CombineGeneticMap()
+        {
+            
+            //combine the partial and full temp holder data
+        }
         public void ReadDataGenotype()
         {
 

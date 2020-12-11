@@ -265,12 +265,15 @@ namespace QTLProject.Utils
         public void DeleteTableRow()
         {
             var table = this.tableLayoutPanel;
+            
             int rowIndex = table.RowStyles.Count;
+            int rowIndexControls = table.Controls.Count;
             if (rowIndex > 1)
             {
                 rowIndex--;
+                rowIndexControls--;
                 table.RowStyles.RemoveAt(rowIndex);
-                table.Controls.RemoveAt(rowIndex);
+                table.Controls.RemoveAt(rowIndexControls);
             }
 
 
@@ -556,7 +559,8 @@ namespace QTLProject.Utils
         public void GenerateTableForView(List<string> modelParams, float rowSize, float colSize, int colAmount, int amountOfRows)
         {
             //Creates the table
-            CreateInputDataTable(modelParams, rowSize, colSize, colAmount, amountOfRows);
+            int amountOfRowsWithHeader = amountOfRows + 1;
+            CreateInputDataTable(modelParams, rowSize, colSize, colAmount, amountOfRowsWithHeader);
             //iterate over the rows and disable the checkbox
             var table = this.tableLayoutPanel;
             foreach (InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())

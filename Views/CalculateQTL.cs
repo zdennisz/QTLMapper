@@ -32,7 +32,7 @@ namespace QTLProject
 
         private void TempDataHolder_UpdateTempHolder(object sender, EventArgs e)
         {
-            setUpTable();
+           setUpTable();
         }
 
         private void setupUI()
@@ -111,6 +111,7 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
+            calcQTLPresentor.CombineGeneticMap();
             nextButtonClicked?.Invoke(this, e);
         }
 

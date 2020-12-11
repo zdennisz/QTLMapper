@@ -10,11 +10,11 @@ namespace QTLProject.Utils
     {
         public static event EventHandler UpdateTempHolder;
 
-        public  static List<Dictionary<int, string>> tempFileHolder = new List<Dictionary<int, string>>();
-
+        public static List<Dictionary<int, string>> PartialTempFileHolder = new List<Dictionary<int, string>>();
+        public static List<Dictionary<int, string>> FullTempFileHolder = new List<Dictionary<int, string>>();
         public static  void DataUpdated()
         {
-            UpdateTempHolder?.Invoke(tempFileHolder, null);
+            UpdateTempHolder?.Invoke(PartialTempFileHolder, null);
         }
     }
 }

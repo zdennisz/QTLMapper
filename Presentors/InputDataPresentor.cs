@@ -61,34 +61,58 @@ namespace QTLProject
         }
         /// <summary>
         /// Fills the table with data via the pointer to the table
+        /// (fills the table with 100 rows only)
         /// </summary>
         /// <param name="tableData"></param>
         private void fillTable(List<Dictionary<int, string>> tableData)
         {
-            //limit the rows to copy to 100
-            int rowsToCopy = 100;
 
-            dataTable.InsertTableData(tableData, rowsToCopy, TableRowType.InputDataRow);
+            dataTable.InsertTableData(tableData, tableData.Count, TableRowType.InputDataRow);
         }
         #endregion Private Methods
 
         #region Public Methods
         public void ReadDataFromFile(string path)
         {
-            List<Dictionary<int, string>> data = parseData(path);
-            //Currentlly disabled since we have no file to test 
-            fillTable(data);
+            //parse the data
+            var data = parseData(path);
+            //save the data in a temp holder
+            
+            List<Dictionary<int, string>> partialData = new List<Dictionary<int, string>>();
+            int counter = 0;
+            foreach( Dictionary<int,string> dic in data)
+            {
+                partialData.Add(dic);
+                counter++;
+                if (counter > 99)
+                {
+                    break;
+                }
+            }
+            TempDataHolder.PartialTempFileHolder = partialData;
+            TempDataHolder.FullTempFileHolder = data;
+            //fill the table
+            fillTable(partialData);
 
         }
-
+        /// <summary>
+        /// Delets the last row of the table
+        /// </summary>
         public void DeleteTableRow()
         {
+            //delets the last table row
             dataTable.DeleteTableRow();
+            //get the recent data
+            var data = TempDataHolder.PartialTempFileHolder;
+            //removes the data of the last row
+            data.RemoveAt(data.Count-1);
         }
 
         public void AddTableRow()
         {
             dataTable.AddTableRow(TableRowType.InputDataRow);
+            var data = TempDataHolder.PartialTempFileHolder;
+            data.Add(new Dictionary<int, string>());
         }
 
         public void CopyTableRow()
@@ -107,10 +131,10 @@ namespace QTLProject
 
         public void SaveTableData()
         {
-            List<Dictionary<int,string>> data = null;
-            data=dataTable.RetreiveTableData();
+           
+            var data=dataTable.RetreiveTableData();
             //save the data in a temp file holder
-            TempDataHolder.tempFileHolder = data;
+            TempDataHolder.PartialTempFileHolder = data;
             //assign the data
             TempDataHolder.DataUpdated();
             //send update message to who ever is listening

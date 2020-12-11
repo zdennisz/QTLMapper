@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using QTLProject.Enums;
+using QTLProject.Utils;
 
 namespace QTLProject
 {
@@ -21,6 +22,7 @@ namespace QTLProject
         {
             InitializeComponent();
             calcQTLPresentor = new CalcQTLPresentor(this.prevoiusTableData);
+            TempDataHolder.UpdateTempHolder += TempDataHolder_UpdateTempHolder;
             setupUI();
             this.Dock = DockStyle.Fill;
             this.btnBack.MouseClick += BtnBack_MouseClick;
@@ -28,13 +30,22 @@ namespace QTLProject
            
         }
 
+        private void TempDataHolder_UpdateTempHolder(object sender, EventArgs e)
+        {
+            setUpTable();
+        }
+
         private void setupUI()
         {
             setupComboBox();
-            setUpTable();
+            
             setupButtons();
             setupFilePaths();
         }
+
+        /// <summary>
+        /// Adds design to the textboxes  
+        /// </summary>
         private void setupFilePaths()
         {
             this.textBoxGenotype.BackColor = Color.White;
@@ -48,6 +59,9 @@ namespace QTLProject
             this.comboBoxModel.BackColor = Color.White;
 
         }
+        /// <summary>
+        /// Setups the buttons color and design
+        /// </summary>
         private void setupButtons()
         {
           
@@ -72,13 +86,18 @@ namespace QTLProject
             toolTip.SetToolTip(btnOpenDataGen, Constants.OpenGenFile);
             toolTip.SetToolTip(btnOpenDataPhen, Constants.OpenPhenFile);
         }
+        /// <summary>
+        /// Setups the comboboxes design and color 
+        /// </summary>
         private void setupComboBox()
         {
             ArrayList comboBoxData = new ArrayList() { Constants.NoQTL, Constants.OneQTL, Constants.DominantQTL, Constants.TwoLinkedQTL };
             this.comboBoxModel.Items.AddRange(comboBoxData.ToArray());
             this.comboBoxModel.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Genertes the table from the prevoius screen
+        /// </summary>
         private void setUpTable()
         {
             List<string> geneticParams = new List<string>();
@@ -89,6 +108,7 @@ namespace QTLProject
             
             calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, geneticParams.Count);
         }
+
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
             nextButtonClicked?.Invoke(this, e);
@@ -98,7 +118,11 @@ namespace QTLProject
         {
             backButtonClicked?.Invoke(this, e);
         }
-
+        /// <summary>
+        /// Browse for the genotype file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenDataGen_Click(object sender, EventArgs e)
         {
             var fileContent = string.Empty;
@@ -118,7 +142,11 @@ namespace QTLProject
                 }
             }
         }
-
+        /// <summary>
+        /// Browse for the phenotype file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenDataPhen_Click(object sender, EventArgs e)
         {
             var fileContent = string.Empty;

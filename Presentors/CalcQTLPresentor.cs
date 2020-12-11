@@ -11,9 +11,11 @@ namespace QTLProject
     public class CalcQTLPresentor
     {
         TableGenerator calQTLTable;
+        private int amountOfRows = 100;
         public CalcQTLPresentor(TableLayoutPanel panel)
         {
             calQTLTable = new TableGenerator(panel);
+            
             
         }
 
@@ -26,9 +28,7 @@ namespace QTLProject
         {
             //get the data from the singelton 
             List<Dictionary<int, string>> dataFromDB = TempDataHolder.tempFileHolder;
-
-            //gets the amount of rows from the saved data
-            int amountOfRows = dataFromDB.Count;
+           
             
             //generate the table
             calQTLTable.GenerateTableForView(modelParams, rowSize, colSize, colAmount, amountOfRows);

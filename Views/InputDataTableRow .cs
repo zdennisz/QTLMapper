@@ -44,7 +44,7 @@ namespace QTLProject.Views
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
         {
-            tableRow[3] = this.textBox4.Text;
+            tableRow[2] = this.textBox4.Text;
         }
 
 

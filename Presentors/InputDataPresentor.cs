@@ -109,7 +109,11 @@ namespace QTLProject
         {
             List<Dictionary<int,string>> data = null;
             data=dataTable.RetreiveTableData();
-            TempDataHolder.tempFileHolder = data; 
+            //save the data in a temp file holder
+            TempDataHolder.tempFileHolder = data;
+            //assign the data
+            TempDataHolder.DataUpdated();
+            //send update message to who ever is listening
         }
         
         #endregion Public Methods

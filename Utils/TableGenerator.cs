@@ -579,13 +579,11 @@ namespace QTLProject.Utils
                 int rowIndex = 0;
                 foreach (InputDataTableRow row in table.Controls.OfType<InputDataTableRow>())
                 {
-                    int col = 1;
+                    int col = 0;
                     var dic = data[rowIndex];
                     foreach (TextBox tb in row.Controls.OfType<TextBox>())
                     {
-                        string ouVal = null;
-                        dic.TryGetValue(col, out ouVal);
-                        tb.Text = ouVal;
+                        tb.Text = dic[col];
                         col++;
                     }
                     rowIndex++;

@@ -56,6 +56,8 @@ namespace QTLProject
                 allData.Add(dic);
             }
 
+            return allData;
+
         }
         public async void ReadDataGenotype(string path)
         {

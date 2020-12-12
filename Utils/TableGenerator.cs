@@ -30,7 +30,14 @@ namespace QTLProject.Utils
             this.panelTableContainer = panel1;
 
         }
-
+        /// <summary>
+        /// Changes the visiblity of the table
+        /// </summary>
+        /// <param name="val"></param>
+        public void ChangeTableVisibility(bool val)
+        {
+            this.tableLayoutPanel.Visible = val;
+        }
         public List<Dictionary<int, string>> RetreiveTableData()
         {
             List<Dictionary<int, string>> tableData = new List<Dictionary<int, string>>();

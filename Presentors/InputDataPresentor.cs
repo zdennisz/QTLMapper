@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using QTLProject.Enums;
 using System.IO;
 using static QTLProject.Types;
+using System.Threading.Tasks;
 
 namespace QTLProject
 {
@@ -23,6 +24,11 @@ namespace QTLProject
         #endregion Constructor
 
         #region Private Methods
+        /// <summary>
+        /// Write the data to the disk to a new file
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="data"></param>
         private async void WriteToFile(string path,List<Dictionary<int,string>> data)
         {
             using (StreamWriter writer = File.CreateText(path))
@@ -34,6 +40,9 @@ namespace QTLProject
               
             }
         }
+        /// <summary>
+        /// Create the basic table for the page
+        /// </summary>
         private void CreateTableColumns()
         {
             List<string> geneticParams = new List<string>();
@@ -44,6 +53,11 @@ namespace QTLProject
             dataTable.CreateInputDataTable(geneticParams, 25, 400, 3, 1);
 
         }
+        /// <summary>
+        /// Parse the file data from the file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         private List<Dictionary<int, string>> parseData(string filePath)
         {
             List<Dictionary<int, string>> data = new List<Dictionary<int, string>>();
@@ -83,10 +97,11 @@ namespace QTLProject
         #endregion Private Methods
 
         #region Public Methods
-        public void ReadDataFromFile(string path)
+        public async void ReadDataFromFile(string path)
         {
-            //parse the data
-            var data = parseData(path);
+            //parse the data in a none blocking way
+            var data = await  Task.Run(() => parseData(path));
+           
             //save the data in a temp holder
             
             List<Dictionary<int, string>> partialData = new List<Dictionary<int, string>>();
@@ -102,8 +117,12 @@ namespace QTLProject
             }
             TempDataHolder.PartialTempFileHolder = partialData;
             TempDataHolder.FullTempFileHolder = data;
+            //hide the table
+            dataTable.ChangeTableVisibility(false);
             //fill the table
             fillTable(partialData);
+            //show the table
+            dataTable.ChangeTableVisibility(true);
 
         }
         /// <summary>

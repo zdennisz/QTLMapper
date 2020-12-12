@@ -109,8 +109,10 @@ namespace QTLProject
 
         private void BtnSaveData_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
             //save the tabledata to new folder
+
+            inputDataPresentor.SaveDataToNewFile();
         }
 
         private void BtnOpenData_MouseClick(object sender, MouseEventArgs e)

@@ -23,6 +23,17 @@ namespace QTLProject
         #endregion Constructor
 
         #region Private Methods
+        private async void WriteToFile(string path,List<Dictionary<int,string>> data)
+        {
+            using (StreamWriter writer = File.CreateText(path))
+            {
+                foreach (Dictionary<int, string> dic in data)
+                {
+                    await writer.WriteAsync(dic[0] + "\t" + dic[1] + "\t" + dic[2]+"\n");
+                }
+              
+            }
+        }
         private void CreateTableColumns()
         {
             List<string> geneticParams = new List<string>();
@@ -148,7 +159,36 @@ namespace QTLProject
             TempDataHolder.DataUpdated();
             //send update message to who ever is listening
         }
-        
+
+        public void SaveDataToNewFile()
+        {
+            List<Dictionary<int, string>> allData = new List<Dictionary<int, string>>();
+            var fullData = TempDataHolder.FullTempFileHolder;
+            //copy the unmodified data
+            for(int i=100;i< fullData.Count; i++)
+            {
+                allData.Add(fullData[i]);
+            }
+            //save the modified data 
+            foreach(Dictionary<int,string> dic in TempDataHolder.PartialTempFileHolder)
+            {
+                allData.Add(dic);
+            }
+
+            string path =null;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                path = saveFileDialog1.FileName;
+                WriteToFile(path, allData);
+            }
+        }
+
         #endregion Public Methods
     }
 }

@@ -130,7 +130,10 @@ namespace QTLProject
         {
             if (this.rowsToBeCopied > 0)
             {
+                //copy the actual rows
                 dataTable.PasteTableRows(this.rowsToBeCopied);
+            
+
             }
             
         }

@@ -307,7 +307,17 @@ namespace QTLProject.Utils
             }
 
             //this is the row of the insertion , row at index 0 is the row of the header
-            int currRow = 1;
+            int currRow;
+            //insert when the table just initialized
+            if (table.Controls.Count<= rowsToCopy)
+            {
+                currRow = 1;
+            }
+            else
+            {
+                //insert when the table is already full
+                currRow = (table.Controls.Count) - rowsToCopy;
+            }
 
             //get the current data of the row to be copied
             foreach (Dictionary<int, string> dic in tableData)
@@ -321,11 +331,6 @@ namespace QTLProject.Utils
                     tableRow.Controls[entry.Key + offestIndex].Text = entry.Value;
                 }
                 currRow++;
-                if(currRow> rowsToCopy)
-                {
-                    //break in case we reached the limit of the requested rows to copy
-                    break;
-                }
             }
             //Assign the data to the actual table rows
         }

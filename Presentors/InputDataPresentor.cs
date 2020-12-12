@@ -100,10 +100,13 @@ namespace QTLProject
         public async void ReadDataFromFile(string path)
         {
             //parse the data in a none blocking way
+            Cursor.Current = Cursors.WaitCursor;
+
             var data = await  Task.Run(() => parseData(path));
-           
-            //save the data in a temp holder
             
+            Cursor.Current = Cursors.Default;
+            //save the data in a temp holder
+
             List<Dictionary<int, string>> partialData = new List<Dictionary<int, string>>();
             int counter = 0;
             foreach( Dictionary<int,string> dic in data)

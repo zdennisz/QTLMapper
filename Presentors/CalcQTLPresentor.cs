@@ -41,19 +41,43 @@ namespace QTLProject
             calQTLTable.PopulateViewTable(dataFromDB);
         }
 
-        public void CombineGeneticMap()
+        public List<Dictionary<int,string>> CombineGeneticMap()
         {
-            
-            //combine the partial and full temp holder data
-        }
-        public void ReadDataGenotype()
-        {
+            List<Dictionary<int, string>> allData = new List<Dictionary<int, string>>();
+            var fullData = TempDataHolder.FullTempFileHolder;
+            //copy the unmodified data
+            for (int i = 100; i < fullData.Count; i++)
+            {
+                allData.Add(fullData[i]);
+            }
+            //save the modified data 
+            foreach (Dictionary<int, string> dic in TempDataHolder.PartialTempFileHolder)
+            {
+                allData.Add(dic);
+            }
 
         }
-        public void ReadDataPhenotype()
+        public async void ReadDataGenotype(string path)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            var data = await Task.Run(() => parseGenData(path));
+            Cursor.Current = Cursors.Default;
 
         }
+        public async void ReadDataPhenotype(string path)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            var data = await Task.Run(() => parsePhenData(path));
+            Cursor.Current = Cursors.Default;
+        }
 
+        private object parseGenData(string path)
+        {
+            return null;
+        }
+        private object parsePhenData(string path)
+        {
+            return null;
+        }
     }
 }

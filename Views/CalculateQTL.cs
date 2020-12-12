@@ -111,7 +111,8 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
-            calcQTLPresentor.CombineGeneticMap();
+            var combinedData=calcQTLPresentor.CombineGeneticMap();
+            //TODO create the objects and all the required data from the geneticmap
             nextButtonClicked?.Invoke(this, e);
         }
 
@@ -138,7 +139,7 @@ namespace QTLProject
                 {
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
-                    // calcQTLPresentor.ReadDataGenotype(filePath);
+                    calcQTLPresentor.ReadDataGenotype(filePath);
                     this.textBoxGenotype.Text = filePath;
                 }
             }
@@ -162,7 +163,7 @@ namespace QTLProject
                 {
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
-                    // calcQTLPresentor.ReadDataPhenotype(filePath);
+                    calcQTLPresentor.ReadDataPhenotype(filePath);
                     this.textBoxPhenotype.Text = filePath;
                 }
             }

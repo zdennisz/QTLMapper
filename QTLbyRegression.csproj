@@ -117,6 +117,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ShowResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowResults.Designer.cs">
+      <DependentUpon>ShowResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\TempDataHolder.cs" />
     <Compile Include="Utils\RoundedButtonToolBar.cs">
       <SubType>Component</SubType>
@@ -221,6 +227,9 @@
       <DependentUpon>ViewResults.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentors\VIewResultsPresentor.cs" />
+    <EmbeddedResource Include="ShowResults.resx">
+      <DependentUpon>ShowResults.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CalculateQTL.resx">
       <DependentUpon>CalculateQTL.cs</DependentUpon>
     </EmbeddedResource>

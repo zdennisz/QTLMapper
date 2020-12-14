@@ -54,6 +54,9 @@ namespace QTLProject
 
         private void BtnShowResutls_MouseClick(object sender, MouseEventArgs e)
         {
+
+            ShowResults sr = new ShowResults();
+            sr.Show();
             //if not checked 1 , 2 ,3 ...
             // message box  : please fill all fields
             //

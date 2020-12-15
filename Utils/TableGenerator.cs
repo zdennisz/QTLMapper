@@ -206,7 +206,13 @@ namespace QTLProject.Utils
 
         }
 
-
+        /// <summary>
+        /// Generates the pop info table
+        /// </summary>
+        /// <param name="modelParams"></param>
+        /// <param name="rowSize"></param>
+        /// <param name="colSize"></param>
+        /// <param name="colAmount"></param>
         public void GeneratePopInfoTable(List<string> modelParams, float rowSize, float colSize, int colAmount)
         {
             int rowIndex = 0;
@@ -263,8 +269,33 @@ namespace QTLProject.Utils
         {
             AmountOfRowsChanged?.Invoke(this, e);
         }
+        /// <summary>
+        /// Initiates the table with basic default data
+        /// </summary>
+        /// <param name="defaultValues"></param>
+        public void InitGeneticTableDefaultData(List<string> defaultValues)
+        {
+            var table = this.tableLayoutPanel;
+            int colIndex = 0;
+            foreach(GeneticTableRow row in table.Controls.OfType<GeneticTableRow>())
+            {
+
+                row.Controls[0].Text = defaultValues[colIndex];
+
+                colIndex++;
 
 
+                row.Controls[1].Text = defaultValues[colIndex];
+                
+                colIndex++;
+
+                int val = Convert.ToInt32(row.Controls[0].Text);
+                int val2 = Convert.ToInt32(row.Controls[1].Text);
+                var result = val * val2;
+                
+                row.Controls[2].Text = Convert.ToString(result);
+            }
+        }
 
         /// <summary>
         /// Removes the last row of the table
@@ -530,6 +561,29 @@ namespace QTLProject.Utils
                 table.Visible = true;
             }
         }
+        
+        /// <summary>
+        /// Sets up the tables with default data
+        /// </summary>
+        /// <param name="amountOftables"></param>
+        /// <param name="defaultValues"></param>
+        public void InitTraitTableDefaultData(int amountOftables,List<string> defaultValues)
+        {
+            for(int i = 0; i < amountOftables; i++)
+            {
+                var table = (TableLayoutPanel)this.panelTableContainer.Controls[i];
+                int rowIndex = 0;
+                foreach(TraitTableRow row in table.Controls.OfType<TraitTableRow>())
+                {
+                    row.rowTextBox.Text = defaultValues[rowIndex];
+                    rowIndex = (rowIndex + 1) % 7;
+                }
+
+            }
+        }
+
+
+
         /// <summary>
         /// Calculates the amount of rows to copy
         /// </summary>

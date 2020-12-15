@@ -85,6 +85,14 @@ namespace QTLProject
             geneticParams.Add(Constants.ChrLen);
             geneticParams.Add(Constants.MarkerPerCM);
             genetictable.CreateGeneticTable(geneticParams, 25, 400, geneticParams.Count, 4);
+            List<string> defaultValues = new List<string>();
+            defaultValues.Add("1");
+            defaultValues.Add("100");
+            defaultValues.Add("2");
+            defaultValues.Add("100");
+            defaultValues.Add("3");
+            defaultValues.Add("100");
+            genetictable.InitGeneticTableDefaultData(defaultValues);
 
         }
         private void ComboBoxTrait_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,7 +128,15 @@ namespace QTLProject
                     tableAmount++;
                 }
                 traitTable.CreateTraitTable(tableAmount, taritModelParams, 25, 75, 2);
-
+                List<string> defaultValues = new List<string>();
+                defaultValues.Add("40");
+                defaultValues.Add("1");
+                defaultValues.Add("1");
+                defaultValues.Add("1");
+                defaultValues.Add("1");
+                defaultValues.Add("0");
+                defaultValues.Add("0.5");
+                traitTable.InitTraitTableDefaultData(tableAmount, defaultValues);
             }
 
 

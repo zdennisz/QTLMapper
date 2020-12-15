@@ -111,7 +111,8 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
-            var combinedData=calcQTLPresentor.CombineGeneticMap();
+           calcQTLPresentor.ProcessAllGeneticMapData();
+
             //TODO create the objects and all the required data from the geneticmap
             nextButtonClicked?.Invoke(this, e);
         }

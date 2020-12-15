@@ -37,7 +37,7 @@
             // 
             this.label1Col.AutoSize = true;
             this.label1Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1Col.Location = new System.Drawing.Point(42, 4);
+            this.label1Col.Location = new System.Drawing.Point(90, 4);
             this.label1Col.Name = "label1Col";
             this.label1Col.Size = new System.Drawing.Size(46, 16);
             this.label1Col.TabIndex = 6;
@@ -47,7 +47,7 @@
             // 
             this.label2Col.AutoSize = true;
             this.label2Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2Col.Location = new System.Drawing.Point(180, 4);
+            this.label2Col.Location = new System.Drawing.Point(280, 4);
             this.label2Col.Name = "label2Col";
             this.label2Col.Size = new System.Drawing.Size(46, 16);
             this.label2Col.TabIndex = 7;
@@ -57,7 +57,7 @@
             // 
             this.label3Col.AutoSize = true;
             this.label3Col.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3Col.Location = new System.Drawing.Point(329, 4);
+            this.label3Col.Location = new System.Drawing.Point(485, 4);
             this.label3Col.Name = "label3Col";
             this.label3Col.Size = new System.Drawing.Size(46, 16);
             this.label3Col.TabIndex = 8;

@@ -71,7 +71,10 @@ namespace QTLProject
         {
             return null;
         }
-    
+        /// <summary>
+        /// Combine all genetic data sources to one source
+        /// </summary>
+        /// <returns></returns>
         private List<Dictionary<int, string>> combineAllData()
         {
             List<Dictionary<int, string>> allData = new List<Dictionary<int, string>>();
@@ -89,7 +92,10 @@ namespace QTLProject
 
             return allData;
         }
-
+        /// <summary>
+        /// Create the genetic organism object via teh input data
+        /// </summary>
+        /// <param name="data"></param>
         private void buildGenomeOrganizm(List<Dictionary<int, string>> data)
         {
             var db = DatabaseProvider.GetDatabase();
@@ -144,6 +150,8 @@ namespace QTLProject
                 Chromosome ch = new Chromosome();
                 ch.Id = entry.Key;
                 ch.Locus = entry.Value;
+                var maxChrLen = ch.Locus.Max(x => x.Position.PositionChrGenetic);
+                ch.LenGenetcM = maxChrLen;
                 db.GenomeOrganization.addChr(ch);
             }
         }

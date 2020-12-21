@@ -96,8 +96,7 @@ namespace QTLProject
 
         private void BtnCutData_MouseClick(object sender, MouseEventArgs e)
         {
-            //TODO make the presentor preform the actions
-            throw new NotImplementedException();
+          
         }
 
         private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)

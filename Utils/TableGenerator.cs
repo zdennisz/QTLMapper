@@ -335,7 +335,7 @@ namespace QTLProject.Utils
         /// <param name="rowsToCopy"></param>
         public void InsertTableData(List<Dictionary<int, string>> tableData, int rowsToCopy, TableRowType type)
         {
-            //TODO check how many rows if less then what we have then generate the missing rows
+            
             var table = this.tableLayoutPanel;
             int amountOfRowsToAdd = rowsToCopy;
             while (amountOfRowsToAdd > 0)

@@ -114,7 +114,7 @@ namespace QTLProject
         {
            
 
-            //TODO create the objects and all the required data from the geneticmap
+            
             nextButtonClicked?.Invoke(this, e);
         }
 

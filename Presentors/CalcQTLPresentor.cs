@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static QTLProject.Types;
@@ -56,64 +57,111 @@ namespace QTLProject
             Cursor.Current = Cursors.WaitCursor;
             var rawData = await Task.Run(() => readFileGenData(path));
             Cursor.Current = Cursors.Default;
+            List<Dictionary<int, string>> filteredData = new List<Dictionary<int, string>>();
+            // filter out the locus that are not in the both files
+            //iterate over all the raw data and filter only the ones that are both 
+            db = DatabaseProvider.GetDatabase();
+            lock (db)
+            {
 
-            // Dictionary<string, List<int>> parsedData = new Dictionary<string, List<int>>();
-            // int individualNumber = 0;
-            // db = DatabaseProvider.GetDatabase();
-            //// db.DataIndividualsAndTraits = new DataIndividualsAndTraits();
+                //in filterd data we removed the markers that are not found in the map 
+                foreach (Dictionary<int, string> dic in rawData)
+                {
+                    var locus = findLocus(db.GenomeOrganization.Chromosome, dic[0]);
+                    if (locus != null)
+                    {
+                        filteredData.Add(dic);
+                    }
+                }
 
-            // foreach (Dictionary<int, string> dic in rawData)
-            // {
-            //     var locus=findLocus(db.GenomeOrganization.Chromosome, dic[0]);
-            //     if (locus!=null)
-            //     {
+                var population = Regex.Split(filteredData[0][1], string.Empty);
+                if (population[0] == "")
+                {
+                    population = population.Skip(1).ToArray();
+                }
+                if (population[population.Length - 1] == "")
+                {
+                    Array.Resize(ref population, population.Length - 1);
+                }
 
-            //         // we found it in genetic map
-            //         db.DataIndividualsAndTraits.Locus.Add(locus);
+                if (db.SubData.Count == 0)
+                {
+                   
+                    for (int i=0;i< population.Length; i++)
+                    {
+                        //create classes at first use
+                        DataIndividualsAndTraits individualsAndTraits = new DataIndividualsAndTraits();
+                        db.SubData.Add(individualsAndTraits);
+                        db.SubData[i].Genotype = new int[1, filteredData.Count];
+                        db.SubData[i].GenotypeOk = new bool[1, filteredData.Count];
+                    }
+                }
+                else
+                {
+                    //already created just need to define the size
+                    for (int i = 0; i < population.Length; i++)
+                    {
+                        db.SubData[i].Genotype = new int[1, filteredData.Count];
+                        db.SubData[i].GenotypeOk = new bool[1, filteredData.Count];
 
-            //         var population = dic[1].Split().ToArray();
-            //         for (int i=0;i<population.Length;i++)
-            //         {
+                    }
+                }
 
-            //             if (population[i].Equals("1"))
-            //             {
 
-            //                 //this individual has the marker
+                foreach (Dictionary<int, string> dic in filteredData)
+                {
+                    var pop = Regex.Split(dic[1], string.Empty);
+                    if (pop[0] == "")
+                    {
+                        pop = pop.Skip(1).ToArray();
+                    }
+                    if (pop[pop.Length-1] == "")
+                    {
+                        Array.Resize(ref pop, pop.Length - 1);
+                    }
 
-            //             }
-            //             else if (population[i].Equals("0"))
-            //             {
-            //                 //this individual dosent havethe marker
+                    int subIndex = 0;
+                    int offSetIndex = 1;
+                    if (offSetIndex == 0)
+                    {
+                        offSetIndex = 1;
+                    }
+                    foreach (DataIndividualsAndTraits indiv in db.SubData)
+                    {
 
-            //                 //zero
-            //             }
-            //             else
-            //             {
-            //                 //genotypeOfMarker.Add(-1);
+                        if (pop[offSetIndex].Equals("-"))
+                        {
+                            //missing data - need to add another state to go with 1 is true ,0 false , -1 missing
+                            indiv.Genotype[0, subIndex] = -1;
+                            indiv.GenotypeOk[0, subIndex] = false;
+                        }
+                        else if (pop[offSetIndex].Equals("1"))
+                        {
+                            // data is 1
+                            indiv.Genotype[0, subIndex] = 1;
+                            indiv.GenotypeOk[0, subIndex] = true;
+                        }
+                        else if (pop[offSetIndex].Equals("0"))
+                        {
+                            //data is 0
+                            indiv.Genotype[0, subIndex] = 0;
+                            indiv.GenotypeOk[0, subIndex] = false;
+                        }
+                        offSetIndex = (offSetIndex + 1) % pop.Length;
+                       
+                    }
 
-            //                 //missing data
-            //             }
-            //         }
+                    subIndex = (subIndex + 1) % filteredData.Count;
 
-            //         individualNumber++;
-            //     }
 
-            //     //parsedData.Add(dic[0], genotypeOfMarker);
 
-            // }
+                }
 
-            //db = DatabaseProvider.GetDatabase();
-            //lock (db)
-            //{
-            //    foreach(KeyValuePair<string,List<int>> entry in parsedData)
-            //    {
-            //        if (findLocus(entry.Key))
-            //        {
-            //            //if we find the locus in the genetic map we add it in the database else we dont
-            //        }
-            //    }
-            //    db.DataIndividualsAndTraits = new DataIndividualsAndTraits();
-            //}
+
+
+            }
+
+
 
         }
         public async void ReadDataPhenotype(string path)
@@ -126,6 +174,7 @@ namespace QTLProject
             //create list of traits
             List<Trait> tempListTraits = new List<Trait>();
 
+            //get full names of the traits
             for (int i = 0; i < rawData.Count; i++)
             {
                 string traitName;
@@ -135,24 +184,44 @@ namespace QTLProject
                 t.NameFull = traitName;
                 tempListTraits.Add(t);
             }
-
+            string tempValue=null;
+            for(int i=0; i < rawData.Count; i++)
+            {
+                //iterate and remove all the trait names since we dont need them anymore
+                rawData[i].Remove(0);
+                rawData[i].TryGetValue(rawData[i].Count , out tempValue);
+                if (tempValue.Equals(""))
+                {
+                    rawData[i].Remove(rawData[i].Count );
+                }
+              
+            }
             db = DatabaseProvider.GetDatabase();
             lock (db)
             {
-
-                if (db.SubData == null)
+                
+                
+               
+                if (db.SubData.Count == 0)
                 {
-                    db.SubData = new List<DataIndividualsAndTraits>();
 
+                    for (int i = 0; i < rawData[0].Count; i++)
+                    {
+                        //assign all the individuals the same traits from file
+                        DataIndividualsAndTraits individualsAndTraits = new DataIndividualsAndTraits();
+                        individualsAndTraits.Trait = tempListTraits;
+                        db.SubData.Add(individualsAndTraits);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < rawData[0].Count; i++)
+                    {
+                        //data already exists thus need to add it the traits
+                        db.SubData[i].Trait = tempListTraits;
+                    }
                 }
 
-                for (int i = 0; i < rawData[0].Count; i++)
-                {
-                    //assign all the individuals the same traits from file
-                    DataIndividualsAndTraits individualsAndTraits = new DataIndividualsAndTraits();
-                    individualsAndTraits.Trait = tempListTraits;
-                    db.SubData.Add(individualsAndTraits);
-                }
                 //we begin from 1 since index 0 is the trait name
                 int keyIndex = 1;
                 int colNum = 0;
@@ -168,10 +237,10 @@ namespace QTLProject
                     {
                         string tempVal;
                         dic.TryGetValue(keyIndex, out tempVal);
-                        if (tempVal.Equals("$")|| tempVal.Equals(""))
+                        if (tempVal.Equals("$") || tempVal.Equals(""))
                         {
                             //missing data
-                            db.SubData[i].TraitValueOk[0, colNum] =false;
+                            db.SubData[i].TraitValueOk[0, colNum] = false;
                             db.SubData[i].TraitValue[0, colNum] = -1;
                         }
                         else
@@ -180,7 +249,7 @@ namespace QTLProject
                             float val = float.Parse(tempVal);
                             db.SubData[i].TraitValue[0, colNum] = val;
                         }
-                        
+
 
 
                     }
@@ -189,7 +258,7 @@ namespace QTLProject
                     colNum = (colNum + 1) % rawData.Count;
                 }
             }
-        
+
         }
 
         private List<Dictionary<int, string>> readFileGenData(string path)
@@ -225,7 +294,7 @@ namespace QTLProject
                 var chromosome = chr;
                 foreach (Locus loc in chromosome.Locus)
                 {
-                    if (loc.Name.Equals(locusName))
+                    if (loc.FullName.Equals(locusName))
                     {
                         return loc;
                     }
@@ -314,6 +383,7 @@ namespace QTLProject
                     //same chromosome - as the first one from the list
                     p.Chromosome = markerList[0].Position.Chromosome;
                     Locus l = new Locus(markerId, p);
+                    l.FullName = row[0];
                     markerList.Add(l);
                     markerId++;
                     //add to the current chr
@@ -325,6 +395,7 @@ namespace QTLProject
                     p.Chromosome = new Chromosome();
                     p.Chromosome.Name = chrNumber.ToString();
                     Locus l = new Locus(markerId, p);
+                    l.FullName = row[0];
                     markerList.Add(l);
                     //add new chromosome
                     markerId++;

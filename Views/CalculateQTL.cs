@@ -107,11 +107,12 @@ namespace QTLProject
             
             
             calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, geneticParams.Count);
+            calcQTLPresentor.ProcessAllGeneticMapData();
         }
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
-           calcQTLPresentor.ProcessAllGeneticMapData();
+           
 
             //TODO create the objects and all the required data from the geneticmap
             nextButtonClicked?.Invoke(this, e);

@@ -23,10 +23,7 @@ namespace QTLProject
 
         }
 
-        public void AnalyzeData()
-        {
-
-        }
+      
 
         public void GeneratePrevoiusTable(List<string> modelParams, float rowSize, float colSize, int colAmount)
         {

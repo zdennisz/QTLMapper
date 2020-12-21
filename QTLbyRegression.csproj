@@ -117,10 +117,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ShowResults.cs">
+    <Compile Include="Views\ShowResults.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowResults.Designer.cs">
+    <Compile Include="Views\ShowResults.Designer.cs">
       <DependentUpon>ShowResults.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\TempDataHolder.cs" />
@@ -227,7 +227,7 @@
       <DependentUpon>ViewResults.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentors\VIewResultsPresentor.cs" />
-    <EmbeddedResource Include="ShowResults.resx">
+    <EmbeddedResource Include="Views\ShowResults.resx">
       <DependentUpon>ShowResults.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CalculateQTL.resx">

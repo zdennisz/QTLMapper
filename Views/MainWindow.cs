@@ -11,7 +11,7 @@ namespace QTLbyRegression
     {
         #region Fields
 
-        private State internalState=new State();
+        private State internalState = new State();
         SimulateData simData = new SimulateData();
         ViewResults vResults = new ViewResults();
         InputData inputData = new InputData();
@@ -25,7 +25,7 @@ namespace QTLbyRegression
 
         public MainWindow()
         {
-           
+
             InitializeComponent();
             SetupUI();
             internalState.StateChange += InternalState_StateChange;
@@ -42,11 +42,11 @@ namespace QTLbyRegression
         #region Events
         private void VResults_backButtonClicked2(object sender, ViewResults.EventArgsViewResults e)
         {
-            if (e.PrevoiusStep==SoftwareStep.SimulateData)
+            if (e.PrevoiusStep == SoftwareStep.SimulateData)
             {
                 internalState.UpdateState(SoftwareStep.SimulateData, SoftwareStep.ViewResults, false);
             }
-            else if (e.PrevoiusStep==SoftwareStep.CalculateData)
+            else if (e.PrevoiusStep == SoftwareStep.CalculateData)
             {
                 internalState.UpdateState(SoftwareStep.CalculateData, SoftwareStep.ViewResults, false);
             }
@@ -56,7 +56,7 @@ namespace QTLbyRegression
             }
         }
 
-   
+
         private void CalcQTL_backButtonClicked(object sender, EventArgs e)
         {
             internalState.UpdateState(SoftwareStep.InputData, SoftwareStep.CalculateData, false);
@@ -66,7 +66,7 @@ namespace QTLbyRegression
         {
             internalState.UpdateState(SoftwareStep.ViewResults, SoftwareStep.CalculateData, true);
         }
-      
+
         private void SimData_backButtonClicked(object sender, EventArgs e)
         {
             internalState.UpdateState(SoftwareStep.None, SoftwareStep.SimulateData, false);
@@ -76,7 +76,7 @@ namespace QTLbyRegression
         {
             internalState.UpdateState(SoftwareStep.ViewResults, SoftwareStep.SimulateData, true);
         }
-      
+
         private void InputData_backButtonClicked(object sender, EventArgs e)
         {
             internalState.UpdateState(SoftwareStep.None, SoftwareStep.InputData, false);
@@ -89,7 +89,7 @@ namespace QTLbyRegression
 
         #endregion Events
 
-     
+
 
         #region Private Methods
 
@@ -117,16 +117,18 @@ namespace QTLbyRegression
                     updateButtons(SoftwareStep.ViewResults);
                     updateView(SoftwareStep.ViewResults);
                 }
-                else if(e.PrevoiusStep== SoftwareStep.None&& e.CurrentStep == SoftwareStep.SimulateData)
+                else if (e.PrevoiusStep == SoftwareStep.None && e.CurrentStep == SoftwareStep.SimulateData)
                 {
                     updateButtons(SoftwareStep.SimulateData);
                     updateView(SoftwareStep.SimulateData);
-                }else if (e.PrevoiusStep == SoftwareStep.SimulateData && e.CurrentStep == SoftwareStep.ViewResults)
+                }
+                else if (e.PrevoiusStep == SoftwareStep.SimulateData && e.CurrentStep == SoftwareStep.ViewResults)
                 {
                     vResults.updateInternalstate(SoftwareStep.SimulateData);
                     updateButtons(SoftwareStep.ViewResults);
                     updateView(SoftwareStep.ViewResults);
-                }else if (e.PrevoiusStep==SoftwareStep.None && e.CurrentStep == SoftwareStep.ViewResults)
+                }
+                else if (e.PrevoiusStep == SoftwareStep.None && e.CurrentStep == SoftwareStep.ViewResults)
                 {
                     vResults.updateInternalstate(SoftwareStep.None);
                     updateButtons(SoftwareStep.ViewResults);
@@ -157,16 +159,17 @@ namespace QTLbyRegression
                     updateView(SoftwareStep.None);
 
                 }
-                else if (e.PrevoiusStep==SoftwareStep.SimulateData&& e.CurrentStep == SoftwareStep.None)
-                {
-                    updateButtons(SoftwareStep.None);
-                    updateView(SoftwareStep.None);
-                }else if (e.PrevoiusStep==SoftwareStep.ViewResults&& e.CurrentStep == SoftwareStep.None)
+                else if (e.PrevoiusStep == SoftwareStep.SimulateData && e.CurrentStep == SoftwareStep.None)
                 {
                     updateButtons(SoftwareStep.None);
                     updateView(SoftwareStep.None);
                 }
-                
+                else if (e.PrevoiusStep == SoftwareStep.ViewResults && e.CurrentStep == SoftwareStep.None)
+                {
+                    updateButtons(SoftwareStep.None);
+                    updateView(SoftwareStep.None);
+                }
+
 
             }
 
@@ -176,7 +179,7 @@ namespace QTLbyRegression
         {
             //clear all other views
             this.contentPanel.Controls.Clear();
-            UserControl refrence=null;
+            UserControl refrence = null;
             switch (stepToAddToMainWindow)
             {
                 case SoftwareStep.None:
@@ -230,7 +233,7 @@ namespace QTLbyRegression
             ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Gray, ButtonBorderStyle.Solid);
         }
 
-      
+
         /// <summary>
         /// Applies the selected button effect
         /// </summary>
@@ -285,27 +288,27 @@ namespace QTLbyRegression
                     this.btnInputData.Controls.Remove(bottomBorder);
                     this.btnSimulateData.Controls.Remove(bottomBorder);
                     this.btnViewResults.Controls.Remove(bottomBorder);
-                        
+
                     break;
             }
         }
 
         private void btnSimulateData_Click(object sender, EventArgs e)
         {
-            internalState.UpdateState(SoftwareStep.SimulateData, SoftwareStep.None,true);
-           
+            internalState.UpdateState(SoftwareStep.SimulateData, SoftwareStep.None, true);
+
         }
 
         private void btnViewResults_Click(object sender, EventArgs e)
         {
             internalState.UpdateState(SoftwareStep.ViewResults, SoftwareStep.None, true);
-           
+
         }
 
         private void btnInputData_Click(object sender, EventArgs e)
         {
             internalState.UpdateState(SoftwareStep.InputData, SoftwareStep.None, true);
-            
+
         }
 
         #endregion Private Methods

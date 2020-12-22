@@ -80,8 +80,19 @@ namespace QTLProject.Enums
         /// </summary>
         public const string GoToNextStage = "Go to next stage";
         public const string GoToPrevStage = "Go to prevoius stage";
-        
-    
+
+        /// <summary>
+        /// Types of tests to preform 
+        /// </summary>
+        public const string DistributionTest = "Distribution of Trait";
+        public const string SingleMarkerTest = "Single Marker Tests";
+        public const string QTLPosition = "QTL Position";
+        public const string QTLsEffect = "QTLs Effect";
+        public const string TraitDistributionforQTLalleles = "Trait Distribution for QTL alleles";
+        public const string ModelComparison = "Model Comparison";
+        public const string Power = "Power";
+
+
     }
 
     class ColorConstants
@@ -91,5 +102,6 @@ namespace QTLProject.Enums
         public static Color backgroundContrastColor = Color.FromArgb(255, 255, 255);
         public static Color tableBackgroundColor = Color.FromArgb(242, 242, 242);
         public static Color toolbarButtonsColor = Color.FromArgb(235, 249, 252);
+        public static Color highliteColor = Color.FromArgb(255, 0, 229);
     }
 }

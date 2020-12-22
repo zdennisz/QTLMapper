@@ -43,8 +43,8 @@ namespace QTLProject
 
             this.btnOpenFolder.BackColor = ColorConstants.toolbarButtonsColor;
             this.btnOpenFolder.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
-            this.btnOpenFolder.Size = new Size(60, 30);
-            this.btnOpenFolder.Image = (Image)(new Bitmap(btnOpenFolder.Image, new Size(18, 18)));
+            this.btnOpenFolder.Size = new Size(48, 48);
+            this.btnOpenFolder.Image = (Image)(new Bitmap(btnOpenFolder.Image, new Size(24, 24)));
 
 
             this.txtOpenFolder.BackColor = Color.White;

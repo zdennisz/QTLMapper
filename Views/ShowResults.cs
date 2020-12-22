@@ -33,30 +33,7 @@ namespace QTLProject
                     },
                     PointGeometrySize = 25
                 },
-                new LineSeries
-                {
-                    Values = new ChartValues<ObservablePoint>
-                    {
-                        new ObservablePoint(0,2),      //First Point of 2nd Line
-                        new ObservablePoint(2,5),       //2nd POint
-                        new ObservablePoint(3,6),     //------
-                        new ObservablePoint(6,8),
-                        new ObservablePoint(10,5)
-                    },
-                    PointGeometrySize = 15
-                },
-                new LineSeries
-                {
-                    Values = new ChartValues<ObservablePoint>
-                    {
-                        new ObservablePoint(0,4),      //First Point of 3rd Line
-                        new ObservablePoint(5,5),       //2nd POint
-                        new ObservablePoint(7,7),     //------
-                        new ObservablePoint(9,10),
-                        new ObservablePoint(10,9)
-                    },
-                    PointGeometrySize = 15
-                }
+                
             };
 
         }

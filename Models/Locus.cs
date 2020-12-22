@@ -13,6 +13,7 @@ namespace QTLProject
         private List<AllelName> alleneNameOriginal = new List<AllelName>();
 
         public int Id { get; set; }//id in the System
+        public string FullName { get; set; }
         public string Name { get; set; }
         public bool BMarker { get; set; }
         public Position Position { get; set; }//ID of chromosome

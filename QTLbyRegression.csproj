@@ -117,7 +117,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShowResults.cs">
+    <Compile Include="ShowResults.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ShowResults.Designer.cs">

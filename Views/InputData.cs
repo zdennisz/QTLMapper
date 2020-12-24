@@ -21,7 +21,7 @@ namespace QTLProject
 
             InitializeComponent();
             SetupUI();
-          
+
             inputDataPresentor = new InputDataPresentor(this.inputDataTable);
         }
 
@@ -81,7 +81,7 @@ namespace QTLProject
         }
         private void BtnDelData_MouseClick(object sender, MouseEventArgs e)
         {
-         
+
 
             inputDataPresentor.DeleteTableRow();
 
@@ -89,20 +89,20 @@ namespace QTLProject
 
         private void BtnPasteData_MouseClick(object sender, MouseEventArgs e)
         {
-          
+
             inputDataPresentor.PasteTableRows();
         }
 
 
         private void BtnCutData_MouseClick(object sender, MouseEventArgs e)
         {
-          
+
         }
 
         private void BtnCopyData_MouseClick(object sender, MouseEventArgs e)
         {
-            
-            
+
+
             inputDataPresentor.CopyTableRow();
         }
 
@@ -143,7 +143,15 @@ namespace QTLProject
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
             inputDataPresentor.SaveTableData();
-            nextButtonClicked?.Invoke(this, e);
+            if (inputDataPresentor.CheckDataAviliablity())
+            {
+                
+                nextButtonClicked?.Invoke(this, e);
+            }
+            else
+            {
+                MessageBox.Show("Please load genetic map", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)

@@ -5,6 +5,7 @@ using QTLProject.Enums;
 using System.IO;
 using static QTLProject.Types;
 using System.Threading.Tasks;
+using QTLProject.Models;
 
 namespace QTLProject
 {
@@ -154,6 +155,16 @@ namespace QTLProject
             dataTable.InsertTableData(newDic,TableRowType.InputDataRow);
         }
 
+        public bool CheckDataAviliablity()
+        {
+            Database db = DatabaseProvider.GetDatabase();
+            if (db.GenomeOrganization.Chromosome.Count > 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
         public void CopyTableRow()
         {
             rowsToBeCopied = dataTable.GetCopiedRows();

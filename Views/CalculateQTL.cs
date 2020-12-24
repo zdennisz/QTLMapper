@@ -112,10 +112,17 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
-           
 
+            if (calcQTLPresentor.CheckDataAviliability())
+            {
+                nextButtonClicked?.Invoke(this, e);
+            }
+            else
+            {
+                MessageBox.Show("Please load genotype data and phenotype data accordingly", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             
-            nextButtonClicked?.Invoke(this, e);
+         
         }
 
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)

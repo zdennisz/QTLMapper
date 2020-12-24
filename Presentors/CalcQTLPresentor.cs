@@ -49,6 +49,16 @@ namespace QTLProject
             buildGenomeOrganizm(allData);
 
         }
+        public bool CheckDataAviliability()
+        {
+            Database db = DatabaseProvider.GetDatabase();
+            if(db.SubData.Count>0 && db.SubData[0].Genotype!=null && db.SubData[0].TraitValue!=null)
+            {
+                return true;
+            }
+           
+            return false;
+        }
         public async void ReadDataGenotype(string path)
         {
             Cursor.Current = Cursors.WaitCursor;

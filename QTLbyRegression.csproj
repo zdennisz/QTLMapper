@@ -120,6 +120,8 @@
     <Compile Include="Utils\CustomToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utils\HistogramChart.cs" />
+    <Compile Include="Utils\LineChartXY.cs" />
     <Compile Include="Utils\MyRectangle.cs" />
     <Compile Include="Views\ShowResults.cs">
       <SubType>Form</SubType>

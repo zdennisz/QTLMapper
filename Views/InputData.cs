@@ -123,6 +123,7 @@ namespace QTLProject
             {
                 openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 2;
+                openFileDialog.Title = "Load Genetic Map data";
                 openFileDialog.RestoreDirectory = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {

@@ -210,7 +210,8 @@ namespace QTLbyRegression
         {
             //Set the background color 
             this.BackColor = ColorConstants.backgroundColor;
-            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.contentPanel.BackColor = Color.White;
             this.contentPanel.Paint += ContentPanel_Paint;
             this.btnCalculateQTL.Click += BtnCalculateQTL_Click;

@@ -6,6 +6,7 @@ using System.IO;
 using static QTLProject.Types;
 using System.Threading.Tasks;
 using QTLProject.Models;
+using System;
 
 namespace QTLProject
 {
@@ -30,13 +31,18 @@ namespace QTLProject
         /// </summary>
         /// <param name="path"></param>
         /// <param name="data"></param>
-        private async void WriteToFile(string path,List<Dictionary<int,string>> data)
+        private async void WriteToFile(string pathWithoutExt,string fileName,string extension,List<Dictionary<int,string>> data)
         {
-            using (StreamWriter writer = File.CreateText(path))
+            
+            string formatedFileName = fileName+ DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+            formatedFileName+=extension;
+            pathWithoutExt= pathWithoutExt+"//"+ formatedFileName;
+            using (StreamWriter writer = File.CreateText(pathWithoutExt))
             {
-                foreach (Dictionary<int, string> dic in data)
+                  writer.WriteLine("marker" + "\t" + "LG" + "\t" + "coorOnLG"+ "\t");
+                 foreach(Dictionary<int, string> dic in data)
                 {
-                    await writer.WriteAsync(dic[0] + "\t" + dic[1] + "\t" + dic[2]+"\n");
+                    await writer.WriteLineAsync(dic[0] + "\t" + dic[1] + "\t" + dic[2]);
                 }
               
             }
@@ -63,8 +69,9 @@ namespace QTLProject
         {
             List<Dictionary<int, string>> data = new List<Dictionary<int, string>>();
             string line;
+            FileStream fileStream=null;
             //open the file and read it 
-            var fileStream = File.OpenRead(filePath);
+            fileStream = File.OpenRead(filePath);
             using (StreamReader reader = new StreamReader(fileStream))
             {
                //read the first line of the col names
@@ -81,8 +88,11 @@ namespace QTLProject
                     data.Add(row);
                 }
 
-            } 
+            }
             
+          
+
+
             return data;
         }
         /// <summary>
@@ -213,12 +223,16 @@ namespace QTLProject
 
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
             saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.OverwritePrompt = false; 
             saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 path = saveFileDialog1.FileName;
-                WriteToFile(path, allData);
+                string fileName =Path.GetFileNameWithoutExtension(path);
+                string extension=Path.GetExtension(path);
+                var pathWithoutExt = Path.GetDirectoryName(path);
+                WriteToFile(pathWithoutExt, fileName, extension,allData);
             }
         }
 

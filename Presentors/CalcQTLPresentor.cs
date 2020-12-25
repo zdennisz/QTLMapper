@@ -344,16 +344,19 @@ namespace QTLProject
         {
             List<Dictionary<int, string>> allData = new List<Dictionary<int, string>>();
             var fullData = TempDataHolder.FullTempFileHolder;
-            //copy the unmodified data
-            for (int i = 100; i < fullData.Count; i++)
-            {
-                allData.Add(fullData[i]);
-            }
             //save the modified data 
+            int counter = 0;
             foreach (Dictionary<int, string> dic in TempDataHolder.PartialTempFileHolder)
             {
                 allData.Add(dic);
+                counter++;
             }
+            //copy the unmodified data
+            for (int i = counter; i < fullData.Count; i++)
+            {
+                allData.Add(fullData[i]);
+            }
+
 
             return allData;
         }

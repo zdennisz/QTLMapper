@@ -46,6 +46,12 @@ namespace QTLProject
             btnNext.BackColor = ColorConstants.toolbarButtonsColor;
             btnNext.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
 
+            this.btnSaveData.Enabled = false;
+            this.btnPasteData.Enabled = false;
+            this.btnInsrData.Enabled = false;
+            this.btnDelData.Enabled = false;
+            this.btnCopyData.Enabled = false;
+
             setupEvents();
             setupToolTips();
         }
@@ -130,6 +136,11 @@ namespace QTLProject
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
                     inputDataPresentor.ReadDataFromFile(filePath);
+                    this.btnSaveData.Enabled = true;
+                    this.btnPasteData.Enabled = true;
+                    this.btnInsrData.Enabled = true;
+                    this.btnDelData.Enabled = true;
+                    this.btnCopyData.Enabled = true;
                 }
             }
 

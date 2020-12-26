@@ -297,6 +297,26 @@ namespace QTLProject.Utils
             }
         }
 
+        public void InitPopInfoDefaultData(int popSize,int chrAmount)
+        {
+            var table = this.tableLayoutPanel;
+            int index = 0;
+            foreach(PopInfoTableRow row in table.Controls.OfType<PopInfoTableRow>())
+            {
+                
+                if (index == 0)
+                {
+                    row.rowTextBox.Text = popSize.ToString();
+                }
+                if (index == 3)
+                {
+                    row.rowTextBox.Text = chrAmount.ToString();
+                }
+                index++;
+            }
+
+        }
+
         /// <summary>
         /// Removes the last row of the table
         /// </summary>

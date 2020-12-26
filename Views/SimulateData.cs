@@ -76,6 +76,7 @@ namespace QTLProject
             tableParams.Add(Constants.ChrAmount);
 
             popInfoTable.GeneratePopInfoTable(tableParams, 25, 100, 2);
+            popInfoTable.InitPopInfoDefaultData(200, 3);
         }
 
         private void generateGeneticTable()

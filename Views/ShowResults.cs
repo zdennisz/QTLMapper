@@ -22,9 +22,18 @@ namespace QTLProject
 {
     public partial class ShowResults : Form
     {
-        public ShowResults()
+        bool isGraph, isInDepthReport;
+        string typeOfGraph;
+        VIewResultsPresentor presentor;
+        public ShowResults(bool isGraph,bool isInDepthReport,string typeOfGraph)
         {
             InitializeComponent();
+            this.isGraph = isGraph;
+            this.isInDepthReport = isInDepthReport;
+            this.typeOfGraph = typeOfGraph;
+
+            string res = presentor.CalculatePValue();
+
             setupUI();
             this.tabControl.TabPages[0].Text = "Chart Series";
             this.tabControl.TabPages[1].Text = "Histogram Chart";
@@ -57,8 +66,8 @@ namespace QTLProject
 
 
             lineChartXY.AddLineChart(points, 25);
-           // lineChartXY.AddLineChart(points2, 14);
-            //lineChartXY.AddLineChart(points3, 10);
+            lineChartXY.AddLineChart(points2, 14);
+            lineChartXY.AddLineChart(points3, 10);
 
 
             HistogramChart histogramChart = new HistogramChart(this.cartesianChart3);
@@ -85,6 +94,8 @@ namespace QTLProject
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
         }
+
+
     }
 }
 

@@ -392,7 +392,7 @@ namespace QTLProject
         /// Save the genotype to file 
         /// </summary>
         /// <param name="path"></param>
-        public void SaveGeneticMap(string path)
+        public bool SaveGeneticMap(string path)
         {
             Database db = DatabaseProvider.GetDatabase();
             string header = "marker" + "\t" + "LG" + "\t" + "coorOnLG";
@@ -412,6 +412,7 @@ namespace QTLProject
                 }
 
             }
+            return true;
         }
         #endregion Public Methods
 

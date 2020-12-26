@@ -41,24 +41,24 @@ namespace QTLProject
             generatePopInfoTable();
 
             SetDateTimeFormat();
-           /* 
-            * DataGeneratorPresentor dgp = new DataGeneratorPresentor();
-            dgp.DefineChromosomeLength();
-            dgp.DefineChromosomePositions();
-            dgp.DefineParentalHaplotypes();
-            dgp.SimulateRecombination();
-            dgp.DefineQTL();
-           */
+            /* 
+             * DataGeneratorPresentor dgp = new DataGeneratorPresentor();
+             dgp.DefineChromosomeLength();
+             dgp.DefineChromosomePositions();
+             dgp.DefineParentalHaplotypes();
+             dgp.SimulateRecombination();
+             dgp.DefineQTL();
+            */
         }
 
         private void PopInfoTable_AmountOfRowsChanged(object sender, EventArgsRowsAmount e)
         {
             int currRows = genetictable.GetGeneticTableAmountOfRows();
-            if (currRows < e.AmountOfRows&& e.AmountOfRows>0)
+            if (currRows < e.AmountOfRows && e.AmountOfRows > 0)
             {
                 //add rows
                 var deltaInRows = e.AmountOfRows - currRows;
-                genetictable.AddTableRow(deltaInRows,TableRowType.GeneticDataRow);
+                genetictable.AddTableRow(deltaInRows, TableRowType.GeneticDataRow);
             }
             else if (currRows > e.AmountOfRows && e.AmountOfRows > 0)
             {
@@ -188,9 +188,16 @@ namespace QTLProject
             //dgp.DefineQTL();
 
             //  nextButtonClicked?.Invoke(this, e);
-            GenerateGeneticMap();
+            if (GenerateGeneticMap())
+            {
+                MessageBox.Show("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Data was not generated since empty lines detected at genetic map table.", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            MessageBox.Show("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          
         }
         #endregion Constructor
 
@@ -220,7 +227,7 @@ namespace QTLProject
             generateTableOfTraits(dateTime);
 
 
-          
+
 
         }
 
@@ -231,7 +238,7 @@ namespace QTLProject
             var delimiter = "\t";
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filePath = filePath + "\\Genotype_" + dateTime.ToString() + ".CSV";    
+            filePath = filePath + "\\Genotype_" + dateTime.ToString() + ".CSV";
             using (var writer = new StreamWriter(filePath))
             {
                 //    var line = string.Join(delimiter, itemContent);
@@ -239,7 +246,7 @@ namespace QTLProject
             }
         }
 
-        private void produceData(List<Dictionary<int, string>> data)
+        private bool produceData(List<Dictionary<int, string>> data)
         {
             DateTime dateTime = DateTime.Now;
             dgp.DefineChromosomeLength();
@@ -248,28 +255,43 @@ namespace QTLProject
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             filePath = filePath + "\\GeneticMap_" + dateTime.ToString() + ".txt";
-            dgp.SaveGeneticMap(filePath);
            
+            return dgp.SaveGeneticMap(filePath);
+
         }
         /// <summary>
         /// Generates the genetic map for the organism
         /// </summary>
-        private void GenerateGeneticMap()
+        private bool GenerateGeneticMap()
         {
+            bool dataVerified = true;
             // checks which organism is it 
             var data = genetictable.RetreiveTableData();
-            string lengthOfChr1 = Convert.ToString(75);
-            string lengthOfChr2 = Convert.ToString(107);
-            string lengthOfChr3 = Convert.ToString(110);
-            if (data.Count == 3 && data[0][1].Equals(lengthOfChr1) && data[1][1].Equals(lengthOfChr2) && data[2][1].Equals(lengthOfChr3))
+            foreach (Dictionary<int, string> dic in data)
             {
-                dgp = new DataGeneratorPresentor(3,OrganismType.Drosophila);
+                if (dic.Count < 3)
+                {
+                    dataVerified = false;
+                    break;
+                }
             }
-            else
+            if (dataVerified == true)
             {
-                dgp = new DataGeneratorPresentor(data.Count, OrganismType.Random,data);
+                string lengthOfChr1 = Convert.ToString(75);
+                string lengthOfChr2 = Convert.ToString(107);
+                string lengthOfChr3 = Convert.ToString(110);
+                if (data.Count == 3 && data[0][1].Equals(lengthOfChr1) && data[1][1].Equals(lengthOfChr2) && data[2][1].Equals(lengthOfChr3))
+                {
+                    dgp = new DataGeneratorPresentor(3, OrganismType.Drosophila);
+                }
+                else
+                {
+                    dgp = new DataGeneratorPresentor(data.Count, OrganismType.Random, data);
+                }
+                
+                return produceData(data);
             }
-            produceData(data);
+            return false;
         }
 
         private void generateTableOfTraits(DateTime dateTime)

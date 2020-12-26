@@ -2,6 +2,7 @@
 using QTLProject.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace QTLProject
         public Individ offSpring;
         public Population pop;
         private Database database;
-
+        private List<Dictionary<int, string>> rawGeneticData;
 
         #endregion Fields
         /*Notes - 
@@ -43,38 +44,51 @@ namespace QTLProject
             database.GenomeOrganization = go;
 
         }
+        public DataGeneratorPresentor(int _nChr = 3, OrganismType _type = OrganismType.Drosophila, List<Dictionary<int, string>> data = null) :
+            this(_nChr, _type)
+        {
+            rawGeneticData = data;
+        }
         #endregion Constructor
 
         #region Public Methods
 
-        public void DefineChromosomePositions(double dBetweenMarkers = 0.5, long nOnChr = 11)
+        public void DefineChromosomePositions(double dBetweenMarkers = 0.5, long numberOfLocii = 11)
         {
+            List<int> numberOfLoci=null;
             //go over all chromosome and define the position according to each marker dBetweenMarkers=0.5 . ex: 0 , 0.5, 1.5 ...
             //each chromosome begin at 0 cm the position of loci
+            if (OrganismType.Random == this.type)
+            {
+                numberOfLoci = new List<int>();
+                foreach (Dictionary<int, string> dic in rawGeneticData)
+                {
+                    numberOfLoci.Add(Convert.ToInt32(dic[2]));
+                }
+            }
 
             int idLocus = 0;
             for (int iChr = 0; iChr < nChr; iChr++)
             {
-                double posPrev = 0;
-                for (int jOnChr = 0; jOnChr < nOnChr; jOnChr++)
+                if (OrganismType.Random == this.type)
+                {
+                    numberOfLocii = numberOfLoci[iChr];
+                }
+                double posPrev = -0.5;
+                for (int jOnChr = 0; jOnChr < numberOfLocii; jOnChr++)
                 {
                     if (posPrev < go.Chromosome[iChr].LenGenetcM)
                     {
-                        /*
-                        Locus locus = new Locus();
-
                         Position pos = new Position();
-                        locus.Position = pos;
-
-                        locus.Position.PositionChrGenetic = posPrev;
-                        posPrev += dBetweenMarkers;
-
-                        locus.Name = "loc_" + jOnChr;
+                        pos.Chromosome = go.Chromosome[iChr];
+                        pos.PositionChrGenetic = posPrev;
+                        pos.PositionChrGenetic += dBetweenMarkers;
+                        posPrev = pos.PositionChrGenetic;
+                        Locus locus = new Locus(jOnChr, pos);
                         idLocus++;
-
-                        locus.Id = idLocus;//Zeev: not iChr
+                        locus.Id = idLocus;
                         go.Chromosome[iChr].Locus.Add(locus);
-                        */
+
                     }
                 }
 
@@ -95,11 +109,8 @@ namespace QTLProject
                 case OrganismType.Drosophila:
                     go = genereateDrosophila(go, nChr);
                     break;
-                case OrganismType.PseudoWheat:
-                    go = generatePseudoWheat(go, nChr);
-                    break;
                 default:
-                    //error organisim is not supported
+                    go = randomOrganism(go, nChr);
                     break;
             }
         }
@@ -194,7 +205,7 @@ namespace QTLProject
         {
             Random rand = new Random();
             double p, previousPosition, currentPosition = 0.0, l, lambda = 0.01;
-            
+
             //create population of  200 children -individulas
             pop = new Population();
             for (int i = 0; i < amountOfIndivids; i++)
@@ -377,7 +388,31 @@ namespace QTLProject
             }
 
         }
+        /// <summary>
+        /// Save the genotype to file 
+        /// </summary>
+        /// <param name="path"></param>
+        public void SaveGeneticMap(string path)
+        {
+            Database db = DatabaseProvider.GetDatabase();
+            string header = "marker" + "\t" + "LG" + "\t" + "coorOnLG";
+            string chNum = "";
+            using (var writer = new StreamWriter(path))
+            {
 
+                writer.WriteLine(header);
+
+                foreach (Chromosome ch in db.GenomeOrganization.Chromosome)
+                {
+                    chNum = "LG" + ch.Id;
+                    foreach (Locus l in ch.Locus)
+                    {
+                        writer.WriteLine(l.Name + "\t" + chNum + "\t" + l.Position.PositionChrGenetic);
+                    }
+                }
+
+            }
+        }
         #endregion Public Methods
 
         #region Private Methods
@@ -391,15 +426,15 @@ namespace QTLProject
         private double generateRandExponantionalDist(double maxValue, double minValue, double lambda)
         {
             Random rand = new Random();
-            double res=0.0;
+            double res = 0.0;
             var exponentionalDIst = new RandomNumberGenerator.UniformRandomNumber(rand.NextDouble);
             var expRand = new RandGenExponential(lambda);
             do
             {
                 res = expRand.NextDouble();
             } while (res > maxValue && res > minValue);
-           
-            return res ;
+
+            return res;
         }
 
         private GenomeOrganization genereateDrosophila(GenomeOrganization go, int nChr)
@@ -416,7 +451,7 @@ namespace QTLProject
             Chromosome ch = new Chromosome
             {
                 Name = "1",
-                LenGenetcM = drosophilaConst1* coef,
+                LenGenetcM = drosophilaConst1 * coef,
                 BRecInFemales = true,
                 BGender = false
             };
@@ -450,14 +485,26 @@ namespace QTLProject
             return go;
         }
 
-
-        private GenomeOrganization generatePseudoWheat(GenomeOrganization go, int nChr)
+        private GenomeOrganization randomOrganism(GenomeOrganization go, int nChr)
         {
+            double coef = 1;
+            List<int> chrLength = new List<int>();
+            foreach (Dictionary<int, string> dic in rawGeneticData)
+            {
+                chrLength.Add(Convert.ToInt32(dic[1]));
+            }
 
-
+            for (int i = 0; i < nChr; i++)
+            {
+                Chromosome ch = new Chromosome();
+                ch.Name = Convert.ToString(i);
+                ch.LenGenetcM = coef * chrLength[i];
+                go.addChr(ch);
+            }
 
             return go;
         }
+
         #endregion Private Methods
     }
 

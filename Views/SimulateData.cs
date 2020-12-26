@@ -17,6 +17,7 @@ namespace QTLProject
         TableGenerator genetictable;
         TableGenerator traitTable;
         TableGenerator popInfoTable;
+        DataGeneratorPresentor dgp;
         #endregion Fields
 
         #region Events
@@ -40,7 +41,8 @@ namespace QTLProject
             generatePopInfoTable();
 
             SetDateTimeFormat();
-           /* DataGeneratorPresentor dgp = new DataGeneratorPresentor();
+           /* 
+            * DataGeneratorPresentor dgp = new DataGeneratorPresentor();
             dgp.DefineChromosomeLength();
             dgp.DefineChromosomePositions();
             dgp.DefineParentalHaplotypes();
@@ -88,11 +90,11 @@ namespace QTLProject
             genetictable.CreateGeneticTable(geneticParams, 25, 400, geneticParams.Count, 4);
             List<string> defaultValues = new List<string>();
             defaultValues.Add("1");
-            defaultValues.Add("100");
+            defaultValues.Add("75");
             defaultValues.Add("2");
-            defaultValues.Add("100");
+            defaultValues.Add("107");
             defaultValues.Add("3");
-            defaultValues.Add("100");
+            defaultValues.Add("110");
             genetictable.InitGeneticTableDefaultData(defaultValues);
 
         }
@@ -177,7 +179,18 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
-            nextButtonClicked?.Invoke(this, e);
+            //call the presentor to create all the data and save it into 3 files
+
+
+
+            // dgp.DefineParentalHaplotypes();
+            // dgp.SimulateRecombination();
+            //dgp.DefineQTL();
+
+            //  nextButtonClicked?.Invoke(this, e);
+            GenerateGeneticMap();
+
+            MessageBox.Show("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion Constructor
 
@@ -201,35 +214,24 @@ namespace QTLProject
             generateTableOfGenotypes(dateTime);
 
             //Step 2 - Generate genetic map
-            generateGeneticMap(dateTime);
+            //done!
 
             //Step 3 - Generate Table of traits
             generateTableOfTraits(dateTime);
 
 
-            GenerateOkMessageBox("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Information");
+          
 
         }
 
-        private void GenerateOkMessageBox(string message, string caption)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result;
 
-            result = MessageBox.Show(message, caption, buttons, MessageBoxIcon.Information);
-            if (result == DialogResult.OK)
-            {
-
-            }
-        }
 
         private void generateTableOfGenotypes(DateTime dateTime)
         {
             var delimiter = "\t";
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filePath = filePath + "\\Genotype_" + dateTime.ToString() + ".CSV";
-
+            filePath = filePath + "\\Genotype_" + dateTime.ToString() + ".CSV";    
             using (var writer = new StreamWriter(filePath))
             {
                 //    var line = string.Join(delimiter, itemContent);
@@ -237,20 +239,38 @@ namespace QTLProject
             }
         }
 
-        private void generateGeneticMap(DateTime dateTime)
+        private void produceData(List<Dictionary<int, string>> data)
         {
+            DateTime dateTime = DateTime.Now;
+            dgp.DefineChromosomeLength();
+            dgp.DefineChromosomePositions();
             var delimiter = "\t";
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filePath = filePath + "\\GeneticMap_" + dateTime.ToString() + ".CSV";
-
-            using (var writer = new StreamWriter(filePath))
-            {
-                //    var line = string.Join(delimiter, itemContent);
-                //    writer.WriteLine(line);
-            }
+            filePath = filePath + "\\GeneticMap_" + dateTime.ToString() + ".txt";
+            dgp.SaveGeneticMap(filePath);
+           
         }
-
+        /// <summary>
+        /// Generates the genetic map for the organism
+        /// </summary>
+        private void GenerateGeneticMap()
+        {
+            // checks which organism is it 
+            var data = genetictable.RetreiveTableData();
+            string lengthOfChr1 = Convert.ToString(75);
+            string lengthOfChr2 = Convert.ToString(107);
+            string lengthOfChr3 = Convert.ToString(110);
+            if (data.Count == 3 && data[0][1].Equals(lengthOfChr1) && data[1][1].Equals(lengthOfChr2) && data[2][1].Equals(lengthOfChr3))
+            {
+                dgp = new DataGeneratorPresentor(3,OrganismType.Drosophila);
+            }
+            else
+            {
+                dgp = new DataGeneratorPresentor(data.Count, OrganismType.Random,data);
+            }
+            produceData(data);
+        }
 
         private void generateTableOfTraits(DateTime dateTime)
         {

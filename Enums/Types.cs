@@ -51,6 +51,7 @@ namespace QTLProject
         {
             Drosophila=1,
             PseudoWheat=2,
+            Random=3
         }
 
         public enum RecombinationType

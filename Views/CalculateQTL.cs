@@ -102,8 +102,8 @@ namespace QTLProject
         {
             List<string> geneticParams = new List<string>();
             geneticParams.Add(Constants.Marker);
-            geneticParams.Add(Constants.CoorcM);
             geneticParams.Add(Constants.Chr);
+            geneticParams.Add(Constants.CoorcM);
             
             
             calcQTLPresentor.GeneratePrevoiusTable(geneticParams, 25, 400, geneticParams.Count);

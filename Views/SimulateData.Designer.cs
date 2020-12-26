@@ -138,7 +138,7 @@ namespace QTLProject
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.tableGeneticModel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.tableGeneticModel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableGeneticModel.Location = new System.Drawing.Point(0, 0);
             this.tableGeneticModel.Name = "tableGeneticModel";
@@ -205,7 +205,7 @@ namespace QTLProject
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnBack.Location = new System.Drawing.Point(516, 561);
+            this.btnBack.Location = new System.Drawing.Point(502, 561);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(100, 32);
             this.btnBack.TabIndex = 4;
@@ -217,11 +217,11 @@ namespace QTLProject
             this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnNext.Location = new System.Drawing.Point(623, 561);
+            this.btnNext.Location = new System.Drawing.Point(608, 561);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(100, 32);
+            this.btnNext.Size = new System.Drawing.Size(115, 32);
             this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "Next";
+            this.btnNext.Text = "Generate Data";
             this.btnNext.UseVisualStyleBackColor = true;
             // 
             // tableDataPrecentage

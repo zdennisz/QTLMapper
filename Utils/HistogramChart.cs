@@ -56,16 +56,28 @@ namespace QTLProject.Utils
             ChartValues<double> values = new ChartValues<double>();
             values.AddRange(val);
             ColumnSeries cs = new ColumnSeries();
+            cs.MaxColumnWidth = double.PositiveInfinity;
+            cs.ColumnPadding = 0;
             cs.Values = values;
-            cs.MaxColumnWidth = 12d;
+          
            
-            cs.Stroke = ConvertColor(seriresColor);
+            cs.Stroke = ConvertColor(Color.White);
             cs.Fill = ConvertColor(seriresColor);
             this.axisX.Labels = titles;
-            
             this.chart.Series.Add(cs);
             this.chart.AxisX[0].Foreground = ConvertColor(Color.Black);
             this.chart.AxisY[0].Foreground = ConvertColor(Color.Black);
+        }
+
+        public void RemvoeColumnSeries()
+        {
+            if (this.chart.Series.Count > 0)
+            {
+                this.chart.Series.Clear();
+
+            }
+         
+            
         }
         /// <summary>
         ///  Converts the color from drawing to media standard
@@ -81,7 +93,9 @@ namespace QTLProject.Utils
         }
         private string labelFormatter(double val)
         {
-            return val.ToString("N");
+         
+            
+            return val.ToString("P");
         }
 
 

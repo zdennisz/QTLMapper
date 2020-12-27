@@ -34,6 +34,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.traitCombobox = new System.Windows.Forms.ComboBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             // cartesianChart3
             // 
-            this.cartesianChart3.Location = new System.Drawing.Point(134, 87);
+            this.cartesianChart3.Location = new System.Drawing.Point(6, 206);
             this.cartesianChart3.Name = "cartesianChart3";
             this.cartesianChart3.Size = new System.Drawing.Size(463, 188);
             this.cartesianChart3.TabIndex = 2;
@@ -78,6 +79,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.traitCombobox);
             this.tabPage2.Controls.Add(this.cartesianChart3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -86,6 +88,15 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // traitCombobox
+            // 
+            this.traitCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.traitCombobox.FormattingEnabled = true;
+            this.traitCombobox.Location = new System.Drawing.Point(6, 6);
+            this.traitCombobox.Name = "traitCombobox";
+            this.traitCombobox.Size = new System.Drawing.Size(121, 21);
+            this.traitCombobox.TabIndex = 3;
             // 
             // ShowResults
             // 
@@ -109,5 +120,6 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox traitCombobox;
     }
 }

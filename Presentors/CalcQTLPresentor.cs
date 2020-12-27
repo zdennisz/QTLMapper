@@ -114,7 +114,7 @@ namespace QTLProject
                     }
                 }
 
-
+                int subIndex = 0;
                 foreach (Dictionary<int, string> dic in filteredData)
                 {
                     var pop = Regex.Split(dic[1], string.Empty);
@@ -127,12 +127,9 @@ namespace QTLProject
                         Array.Resize(ref pop, pop.Length - 1);
                     }
 
-                    int subIndex = 0;
-                    int offSetIndex = 1;
-                    if (offSetIndex == 0)
-                    {
-                        offSetIndex = 1;
-                    }
+                    
+                    int offSetIndex = 0;
+                 
                     foreach (DataIndividualsAndTraits indiv in db.SubData)
                     {
 
@@ -228,41 +225,41 @@ namespace QTLProject
                         db.SubData[i].Trait = tempListTraits;
                     }
                 }
-
-                //we begin from 1 since index 0 is the trait name
-                int keyIndex = 1;
-                int colNum = 0;
-                for (int i = 0; i < rawData[0].Count; i++)
+                //init all arrays
+                for(int j = 0; j < rawData[0].Count; j++)
                 {
-                    if (keyIndex == 0)
+                    db.SubData[j].TraitValueOk = new bool[1, rawData.Count];
+                    db.SubData[j].TraitValue = new float[1, rawData.Count];
+                }
+                int traitCounter = 0;
+                int dicCounter = 1;
+                foreach (Dictionary<int,string> dic in rawData)
+                {
+
+                    for(int i = 0; i < db.SubData.Count; i++)
                     {
-                        keyIndex = 1;
-                    }
-                    db.SubData[i].TraitValueOk = new bool[1, rawData.Count];
-                    db.SubData[i].TraitValue = new float[1, rawData.Count];
-                    foreach (Dictionary<int, string> dic in rawData)
-                    {
-                        string tempVal;
-                        dic.TryGetValue(keyIndex, out tempVal);
+                        string tempVal=dic[dicCounter];
                         if (tempVal.Equals("$") || tempVal.Equals(""))
                         {
                             //missing data
-                            db.SubData[i].TraitValueOk[0, colNum] = false;
-                            db.SubData[i].TraitValue[0, colNum] = -1;
+                            db.SubData[i].TraitValueOk[0, traitCounter] = false;
+                            db.SubData[i].TraitValue[0, traitCounter] = 0;
                         }
                         else
                         {
-                            db.SubData[i].TraitValueOk[0, colNum] = true;
+                            db.SubData[i].TraitValueOk[0, traitCounter] = true;
                             float val = float.Parse(tempVal);
-                            db.SubData[i].TraitValue[0, colNum] = val;
+                            db.SubData[i].TraitValue[0, traitCounter] = val;
                         }
-
-
-
+                        dicCounter++;
+                        dicCounter = dicCounter % 117;
+                        if (dicCounter == 0)
+                        {
+                            dicCounter = 1;
+                        }
                     }
+                    traitCounter++;
 
-                    keyIndex = (keyIndex + 1) % rawData.Count;
-                    colNum = (colNum + 1) % rawData.Count;
                 }
             }
 

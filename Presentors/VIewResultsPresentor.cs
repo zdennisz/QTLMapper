@@ -4,20 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CartesianChart = LiveCharts.WinForms.CartesianChart;
+using LiveCharts.WinForms;
+using QTLProject.Enums;
 using QTLProject.Models;
+using QTLProject.Utils;
 
 namespace QTLProject
 {
     public class VIewResultsPresentor
     {
         Database db = null;
-        public VIewResultsPresentor()
+        HistogramChart traithistogramChart;
+        public VIewResultsPresentor(CartesianChart chart )
         {
-
-
+            traithistogramChart = new HistogramChart(chart);
+            db = DatabaseProvider.GetDatabase();
             //calcs
         }
-
+        public List<Trait> GetTraitList()
+        {
+          
+          return (List<Trait>)db.SubData[0].Trait;
+            
+        }
         public void GenerateGrpah()
         {
 
@@ -107,6 +117,91 @@ namespace QTLProject
                
 
             return Convert.ToString(result);
+        }
+
+        public void TraitDistributionHistogram(int traitIndex)
+        {
+
+            traithistogramChart.AxisXTitle = "Trait Values";
+            traithistogramChart.AxisYTitle = "Proportion of trait Values";
+            traithistogramChart.RemvoeColumnSeries();
+            HashSet<double> allTraitValues = new HashSet<double>();
+
+            double popSize = db.SubData.Count * 1.0;
+            double proportionVal = 0.0;
+            double max = db.SubData[0].TraitValue[0, traitIndex];
+            double min = db.SubData[0].TraitValue[0, traitIndex];
+            double traitVal;
+            for (int i = 0; i < db.SubData.Count; i++)
+            {
+                if (db.SubData[i].TraitValue[0, traitIndex] > max && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    max = db.SubData[i].TraitValue[0, traitIndex];
+                }
+
+
+                if (db.SubData[i].TraitValue[0, traitIndex] < min && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    min = db.SubData[i].TraitValue[0, traitIndex];
+                }
+
+            }
+            traitVal = (max - min) / 5.0;
+            List<string> allValues = new List<string>();
+            for (int i = 1; i <= 5; i++)
+            {
+                proportionVal = traitVal * i;
+                allValues.Add(proportionVal.ToString("0.000"));
+            }
+
+            Dictionary<int, double> proportionOfIndivid = new Dictionary<int, double>();
+            double j = 0.0, k = 0.0, h = 0.0, g = 0.0, l = 0.0;
+            proportionOfIndivid[0] = j;
+            proportionOfIndivid[1] = h;
+            proportionOfIndivid[2] = k;
+            proportionOfIndivid[3] = g;
+            proportionOfIndivid[4] = l;
+            for (int i = 0; i < this.db.SubData.Count; i++)
+            {
+                if (db.SubData[i].TraitValue[0, traitIndex] >= 0 && db.SubData[i].TraitValue[0, traitIndex] < traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    j++;
+                    proportionOfIndivid[0] = j;
+                }
+                else if (db.SubData[i].TraitValue[0, traitIndex] >= traitVal && db.SubData[i].TraitValue[0, traitIndex] < 2 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    k++;
+                    proportionOfIndivid[1] = k;
+                }
+                else if (db.SubData[i].TraitValue[0, traitIndex] >= 2 * traitVal && db.SubData[i].TraitValue[0, traitIndex] < 3 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    h++;
+                    proportionOfIndivid[2] = h;
+                }
+                else if (db.SubData[i].TraitValue[0, traitIndex] >= 3 * traitVal && db.SubData[i].TraitValue[0, traitIndex] < 4 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    g++;
+                    proportionOfIndivid[3] = g;
+                }
+                else if (db.SubData[i].TraitValue[0, traitIndex] >= 4 * traitVal && db.SubData[i].TraitValue[0, traitIndex] < 5 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                {
+                    l++;
+                    proportionOfIndivid[4] = l;
+                }
+
+            }
+            proportionOfIndivid[0] = proportionOfIndivid[0] / popSize;
+            proportionOfIndivid[1] = proportionOfIndivid[1] / popSize;
+            proportionOfIndivid[2] = proportionOfIndivid[2] / popSize;
+            proportionOfIndivid[3] = proportionOfIndivid[3] / popSize;
+            proportionOfIndivid[4] = proportionOfIndivid[4] / popSize;
+
+            //get the proportion of the indivivuals
+
+
+
+
+            traithistogramChart.AddColumnSeries(allValues, proportionOfIndivid.Values.ToList<double>(), ColorConstants.highliteColor);
         }
     }
 }

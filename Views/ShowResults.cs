@@ -16,23 +16,25 @@ using System.Windows.Media;
 using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
 using QTLProject.Enums;
-
+using QTLProject.Models;
 
 namespace QTLProject
 {
     public partial class ShowResults : Form
     {
         bool isGraph, isInDepthReport;
-        string typeOfGraph;
+        string typeOfGraph, typeOfTraitHistogram;
+        
+       
         VIewResultsPresentor presentor;
-        public ShowResults(bool isGraph,bool isInDepthReport,string typeOfGraph)
+        public ShowResults(bool isGraph, bool isInDepthReport, string typeOfGraph)
         {
             InitializeComponent();
             this.isGraph = isGraph;
             this.isInDepthReport = isInDepthReport;
             this.typeOfGraph = typeOfGraph;
-
-            string res = presentor.CalculatePValue();
+            presentor = new VIewResultsPresentor(this.cartesianChart3);
+            //  string res = presentor.CalculatePValue();
 
             setupUI();
             this.tabControl.TabPages[0].Text = "Chart Series";
@@ -70,11 +72,8 @@ namespace QTLProject
             lineChartXY.AddLineChart(points3, 10);
 
 
-            HistogramChart histogramChart = new HistogramChart(this.cartesianChart3);
-            histogramChart.AxisXTitle = "Some X values";
-            histogramChart.AxisYTitle = "Some y Values";
 
-            List < string > sss= new List<string>();
+            List<string> sss = new List<string>();
             sss.Add("Heelo");
             sss.Add("I");
             sss.Add("Like");
@@ -85,16 +84,45 @@ namespace QTLProject
             doubleList.Add(0.02);
             doubleList.Add(0.1);
 
-
-            histogramChart.AddColumnSeries(sss, doubleList, ColorConstants.highliteColor);
+           
         }
         private void setupUI()
         {
             this.BackColor = ColorConstants.backgroundColor;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.MaximizeBox = false; 
+            setupComobox();
+           
         }
 
+        private void setupComobox()
+        {
+            
+            foreach (Trait t in presentor.GetTraitList())
+            {
+                this.traitCombobox.Items.Add(t.NameFull);
+            }
+            this.traitCombobox.SelectedValueChanged += TraitCombobox_SelectedValueChanged;
+            this.traitCombobox.SelectedIndex = 0;
+        }
+        private void TraitCombobox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            typeOfTraitHistogram = (sender as ComboBox).Text;
+            List<Trait> list = presentor.GetTraitList();
+
+            int indexFound = 0;
+            for(int i = 0; i < list.Count; i++)
+            {
+                if (typeOfTraitHistogram.Equals(list[i].NameFull))
+                {
+                    indexFound = i;
+                    break;
+                }
+            }
+            presentor.TraitDistributionHistogram(indexFound);
+        }
+
+       
 
     }
 }

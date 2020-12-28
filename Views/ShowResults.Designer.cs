@@ -35,9 +35,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.traitCombobox = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.markerQualityChart = new LiveCharts.WinForms.CartesianChart();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // cartesianChart1
@@ -60,6 +63,7 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -98,6 +102,24 @@
             this.traitCombobox.Size = new System.Drawing.Size(121, 21);
             this.traitCombobox.TabIndex = 3;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.markerQualityChart);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(768, 400);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // markerQualityChart
+            // 
+            this.markerQualityChart.Location = new System.Drawing.Point(6, 193);
+            this.markerQualityChart.Name = "markerQualityChart";
+            this.markerQualityChart.Size = new System.Drawing.Size(433, 201);
+            this.markerQualityChart.TabIndex = 5;
+            // 
             // ShowResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +131,7 @@
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -121,5 +144,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ComboBox traitCombobox;
+        private System.Windows.Forms.TabPage tabPage3;
+        private LiveCharts.WinForms.CartesianChart markerQualityChart;
     }
 }

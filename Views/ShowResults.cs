@@ -33,13 +33,14 @@ namespace QTLProject
             this.isGraph = isGraph;
             this.isInDepthReport = isInDepthReport;
             this.typeOfGraph = typeOfGraph;
-            presentor = new VIewResultsPresentor(this.cartesianChart3);
+            presentor = new VIewResultsPresentor();
+            presentor.MarkerQualityHistogram(this.markerQualityChart);
             //  string res = presentor.CalculatePValue();
 
             setupUI();
             this.tabControl.TabPages[0].Text = "Chart Series";
-            this.tabControl.TabPages[1].Text = "Histogram Chart";
-
+            this.tabControl.TabPages[1].Text = "Trait distribution Chart";
+            this.tabControl.TabPages[2].Text = "Marker Qualites Chart";
             LineChartXY lineChartXY = new LineChartXY(this.cartesianChart1);
             lineChartXY.AxisXTitle = "Some  X Title";
             lineChartXY.AxisYTitle = "Some  Y Title";
@@ -119,7 +120,7 @@ namespace QTLProject
                     break;
                 }
             }
-            presentor.TraitDistributionHistogram(indexFound);
+            presentor.TraitDistributionHistogram(indexFound,this.cartesianChart3);
         }
 
        

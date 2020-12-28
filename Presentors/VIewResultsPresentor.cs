@@ -17,6 +17,7 @@ namespace QTLProject
         Database db = null;
         HistogramChart traithistogramChart;
         HistogramChart markerQualityHistogramChart;
+        HistogramChart segregationMarkerChart;
         public VIewResultsPresentor()
         {
             //traithistogramChart = new HistogramChart(chart);
@@ -120,13 +121,13 @@ namespace QTLProject
             return Convert.ToString(result);
         }
 
-        public void TraitDistributionHistogram(int traitIndex,CartesianChart chart)
+        public void TraitDistributionHistogram(int traitIndex, CartesianChart chart)
         {
             if (traithistogramChart == null)
             {
                 traithistogramChart = new HistogramChart(chart);
             }
-             
+
             traithistogramChart.AxisXTitle = "Trait Values";
             traithistogramChart.AxisYTitle = "Proportion of trait Values";
             traithistogramChart.RemvoeColumnSeries();
@@ -228,7 +229,7 @@ namespace QTLProject
             int sixtyPercent = 0;
             int eightyPercent = 0;
             int oneHundrerdPercent = 0;
-            double popSize = db.SubData.Count*1.0;
+            double popSize = db.SubData.Count * 1.0;
             double temp;
             double counter = 0;
             // this is our 100%
@@ -280,13 +281,91 @@ namespace QTLProject
             titles.Add("60-80%");
             titles.Add("80-100%");
             List<double> values = new List<double>();
-            values.Add(twentyPercent/ popSize);
-            values.Add(fortyPercent/ popSize);
-            values.Add(sixtyPercent/ popSize);
-            values.Add(eightyPercent/ popSize);
-            values.Add(oneHundrerdPercent/ popSize);
+            values.Add(twentyPercent / popSize);
+            values.Add(fortyPercent / popSize);
+            values.Add(sixtyPercent / popSize);
+            values.Add(eightyPercent / popSize);
+            values.Add(oneHundrerdPercent / popSize);
             markerQualityHistogramChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
 
+        }
+
+        public void SegregationMarkerHistogram(CartesianChart chart)
+        {
+            if (segregationMarkerChart == null)
+            {
+                segregationMarkerChart = new HistogramChart(chart);
+            }
+            segregationMarkerChart.AxisXTitle = " n0/(n1+n0)";
+            segregationMarkerChart.AxisYTitle = "Proportion of Markers %";
+            int twentyPercent = 0;
+            int fortyPercent = 0;
+            int sixtyPercent = 0;
+            int eightyPercent = 0;
+            int oneHundrerdPercent = 0;
+            double popSize = db.SubData.Count * 1.0;
+            double temp;
+            double counterN0 = 0;
+            double counterN1 = 0;
+            // this is our 100%
+            double genotypeSize = db.SubData[0].Genotype.Length;
+            //we iterate over all the population
+            for (int i = 0; i < this.db.SubData.Count; i++)
+            {
+                counterN0 = 0;
+                counterN1 = 0;
+                //we iterate over the genotype of each person
+                for (int j = 0; j < this.db.SubData[i].Genotype.Length; j++)
+                {
+                    if ( this.db.SubData[i].Genotype[0, j] == 0)
+                    {
+                        counterN0++;
+                    }
+                    else if ( this.db.SubData[i].Genotype[0, j] == 1)
+                    {
+                        counterN1++;
+                    }
+
+                }
+                //we finished going over the persons genotype divide by the 100 percent and add to the relevant bucket
+
+                temp = counterN0 / (counterN1+counterN0);
+                
+                if (temp >= 0.0 && temp < 0.2)
+                {
+                    twentyPercent++;
+                }
+                else if (temp >= 0.2 && temp < 0.4)
+                {
+                    fortyPercent++;
+                }
+                else if (temp >= 0.4 && temp < 0.6)
+                {
+                    sixtyPercent++;
+                }
+                else if (temp >= 0.6 && temp < 0.8)
+                {
+                    eightyPercent++;
+                }
+                else if (temp >= 0.8 && temp <= 0.1)
+                {
+                    oneHundrerdPercent++;
+                }
+
+            }
+            List<string> titles = new List<string>();
+            titles.Add("0-20%");
+            titles.Add("20-40%");
+            titles.Add("40-60%");
+            titles.Add("60-80%");
+            titles.Add("80-100%");
+            List<double> values = new List<double>();
+            values.Add(twentyPercent / popSize);
+            values.Add(fortyPercent / popSize);
+            values.Add(sixtyPercent / popSize);
+            values.Add(eightyPercent / popSize);
+            values.Add(oneHundrerdPercent / popSize);
+            segregationMarkerChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
         }
 
     }

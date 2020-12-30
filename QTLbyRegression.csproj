@@ -166,12 +166,6 @@
     <Compile Include="Views\GeneticTableRow.Designer.cs">
       <DependentUpon>GeneticTableRow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HelpWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\HelpWindow.Designer.cs">
-      <DependentUpon>HelpWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\InputData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -250,10 +244,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GeneticTableRow.resx">
       <DependentUpon>GeneticTableRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\HelpWindow.resx">
-      <DependentUpon>HelpWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>

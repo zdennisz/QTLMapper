@@ -194,7 +194,7 @@ namespace QTLProject
                 {
                     eightyPercent++;
                 }
-                else if (temp >= 0.8 && temp <= 0.1)
+                else if (temp >= 0.8 && temp <= 1.0)
                 {
                     oneHundrerdPercent++;
                 }
@@ -274,7 +274,7 @@ namespace QTLProject
                 {
                     eightyPercent++;
                 }
-                else if (temp >= 0.8 && temp <= 0.1)
+                else if (temp >= 0.8 && temp <= 1.0)
                 {
                     oneHundrerdPercent++;
                 }
@@ -353,7 +353,7 @@ namespace QTLProject
                     {
                         eightyPercent++;
                     }
-                    else if (temp >= 0.8 && temp <= 0.1)
+                    else if (temp >= 0.8 && temp <= 1.0)
                     {
                         oneHundrerdPercent++;
                     }

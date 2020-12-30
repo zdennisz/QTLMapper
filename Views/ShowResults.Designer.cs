@@ -51,7 +51,7 @@
             // 
             // cartesianChart1
             // 
-            this.cartesianChart1.Location = new System.Drawing.Point(179, 31);
+            this.cartesianChart1.Location = new System.Drawing.Point(165, 97);
             this.cartesianChart1.Name = "cartesianChart1";
             this.cartesianChart1.Size = new System.Drawing.Size(395, 300);
             this.cartesianChart1.TabIndex = 0;
@@ -80,6 +80,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.AutoScroll = true;
             this.tabPage1.Controls.Add(this.cartesianChart1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";

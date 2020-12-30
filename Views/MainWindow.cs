@@ -300,12 +300,6 @@ namespace QTLbyRegression
 
         }
 
-        private void btnViewResults_Click(object sender, EventArgs e)
-        {
-            internalState.UpdateState(SoftwareStep.ViewResults, SoftwareStep.None, true);
-
-        }
-
         private void btnInputData_Click(object sender, EventArgs e)
         {
             internalState.UpdateState(SoftwareStep.InputData, SoftwareStep.None, true);

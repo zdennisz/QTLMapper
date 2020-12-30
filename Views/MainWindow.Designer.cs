@@ -110,7 +110,6 @@
             this.btnViewResults.TabIndex = 2;
             this.btnViewResults.Text = "View Results";
             this.btnViewResults.UseVisualStyleBackColor = false;
-            this.btnViewResults.Click += new System.EventHandler(this.btnViewResults_Click);
             // 
             // contentPanel
             // 

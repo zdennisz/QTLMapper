@@ -42,16 +42,6 @@ namespace QTLProject
             this.btnShowResutls.BackColor = ColorConstants.toolbarButtonsColor;
             this.btnShowResutls.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
 
-            this.btnOpenFolder.BackColor = ColorConstants.toolbarButtonsColor;
-            this.btnOpenFolder.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
-            this.btnOpenFolder.Size = new Size(48, 48);
-            this.btnOpenFolder.Image = (Image)(new Bitmap(btnOpenFolder.Image, new Size(24, 24)));
-
-
-            this.txtOpenFolder.BackColor = Color.White;
-            this.txtOpenFolder.BorderStyle = BorderStyle.None;
-            this.txtOpenFolder.Controls.Add(new Label()
-            { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(btnBack, Constants.GoToPrevStage);
            
@@ -61,7 +51,6 @@ namespace QTLProject
         {
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.btnShowResutls.MouseClick += BtnShowResutls_MouseClick;
-            this.btnOpenFolder.MouseClick += BtnOpenFolder_MouseClick;
             this.comboBoxFuncs.SelectedIndexChanged += ComboBoxFuncs_SelectedIndexChanged;
             this.ToggleButtonDisplayGraph.SliderValueChanged += ToggleButtonDisplayGraph_SliderValueChanged;
             this.ToggleButtonInDepthReport.SliderValueChanged += ToggleButtonInDepthReport_SliderValueChanged;
@@ -86,13 +75,7 @@ namespace QTLProject
         }
      
 
-        private void BtnOpenFolder_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                txtOpenFolder.Text = fbd.SelectedPath;
-        }
+  
 
         private void ComboBoxFuncs_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -115,16 +98,6 @@ namespace QTLProject
         public void updateInternalstate(SoftwareStep step)
         {
             this.prevStep = step;
-            if (this.prevStep != SoftwareStep.None)
-            {
-                this.btnOpenFolder.Enabled = false;
-              
-            }
-            else
-            {
-                this.btnOpenFolder.Enabled = true;
-
-            }
         }
         private void BtnBack_MouseClick(object sender, MouseEventArgs e)
         {

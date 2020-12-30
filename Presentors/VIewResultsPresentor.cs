@@ -430,10 +430,10 @@ namespace QTLProject
             double denom = denomLeft + denomRight;
             double df = num / denom;
 
-            return acmALgo(tStatistic, df);
+            return Student(tStatistic, df);
 
         }
-        private double acmALgo(double t, double df)
+        private double Student(double t, double df)
         {
             // for large integer df or double df
             // adapted from ACM algorithm 395

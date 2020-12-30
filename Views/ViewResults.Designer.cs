@@ -30,33 +30,22 @@ namespace QTLProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewResults));
-            this.txtOpenFolder = new System.Windows.Forms.TextBox();
             this.comboBoxFuncs = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnShowResutls = new QTLProject.Utils.RoundedButtonToolBar();
-            this.btnOpenFolder = new QTLProject.Utils.RoundedButtonToolBar();
-            this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
-            this.ToggleButtonDisplayGraph = new QTLProject.Utils.CustomToggleButton();
             this.ToggleButtonInDepthReport = new QTLProject.Utils.CustomToggleButton();
+            this.ToggleButtonDisplayGraph = new QTLProject.Utils.CustomToggleButton();
+            this.btnShowResutls = new QTLProject.Utils.RoundedButtonToolBar();
+            this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
             this.SuspendLayout();
-            // 
-            // txtOpenFolder
-            // 
-            this.txtOpenFolder.Enabled = false;
-            this.txtOpenFolder.Location = new System.Drawing.Point(12, 48);
-            this.txtOpenFolder.Name = "txtOpenFolder";
-            this.txtOpenFolder.Size = new System.Drawing.Size(335, 20);
-            this.txtOpenFolder.TabIndex = 9;
             // 
             // comboBoxFuncs
             // 
             this.comboBoxFuncs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFuncs.Font = new System.Drawing.Font("Arial", 10F);
             this.comboBoxFuncs.FormattingEnabled = true;
-            this.comboBoxFuncs.Location = new System.Drawing.Point(12, 128);
+            this.comboBoxFuncs.Location = new System.Drawing.Point(20, 80);
             this.comboBoxFuncs.Name = "comboBoxFuncs";
             this.comboBoxFuncs.Size = new System.Drawing.Size(217, 24);
             this.comboBoxFuncs.TabIndex = 19;
@@ -66,7 +55,7 @@ namespace QTLProject
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(9, 97);
+            this.label1.Location = new System.Drawing.Point(17, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 16);
             this.label1.TabIndex = 20;
@@ -76,7 +65,7 @@ namespace QTLProject
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(364, 101);
+            this.label2.Location = new System.Drawing.Point(372, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 16);
             this.label2.TabIndex = 23;
@@ -86,11 +75,43 @@ namespace QTLProject
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(479, 101);
+            this.label3.Location = new System.Drawing.Point(487, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 16);
             this.label3.TabIndex = 24;
             this.label3.Text = "In Depth Report";
+            // 
+            // ToggleButtonInDepthReport
+            // 
+            this.ToggleButtonInDepthReport.BorderColor = System.Drawing.Color.LightGray;
+            this.ToggleButtonInDepthReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ToggleButtonInDepthReport.ForeColor = System.Drawing.Color.White;
+            this.ToggleButtonInDepthReport.IsOn = false;
+            this.ToggleButtonInDepthReport.Location = new System.Drawing.Point(490, 72);
+            this.ToggleButtonInDepthReport.Name = "ToggleButtonInDepthReport";
+            this.ToggleButtonInDepthReport.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.ToggleButtonInDepthReport.OffText = "";
+            this.ToggleButtonInDepthReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(229)))));
+            this.ToggleButtonInDepthReport.OnText = "";
+            this.ToggleButtonInDepthReport.Size = new System.Drawing.Size(60, 35);
+            this.ToggleButtonInDepthReport.TabIndex = 28;
+            this.ToggleButtonInDepthReport.TextEnabled = true;
+            // 
+            // ToggleButtonDisplayGraph
+            // 
+            this.ToggleButtonDisplayGraph.BorderColor = System.Drawing.Color.LightGray;
+            this.ToggleButtonDisplayGraph.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ToggleButtonDisplayGraph.ForeColor = System.Drawing.Color.White;
+            this.ToggleButtonDisplayGraph.IsOn = false;
+            this.ToggleButtonDisplayGraph.Location = new System.Drawing.Point(375, 72);
+            this.ToggleButtonDisplayGraph.Name = "ToggleButtonDisplayGraph";
+            this.ToggleButtonDisplayGraph.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.ToggleButtonDisplayGraph.OffText = "";
+            this.ToggleButtonDisplayGraph.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(229)))));
+            this.ToggleButtonDisplayGraph.OnText = "";
+            this.ToggleButtonDisplayGraph.Size = new System.Drawing.Size(66, 35);
+            this.ToggleButtonDisplayGraph.TabIndex = 27;
+            this.ToggleButtonDisplayGraph.TextEnabled = true;
             // 
             // btnShowResutls
             // 
@@ -104,18 +125,6 @@ namespace QTLProject
             this.btnShowResutls.Text = "Show Results";
             this.btnShowResutls.UseVisualStyleBackColor = true;
             // 
-            // btnOpenFolder
-            // 
-            this.btnOpenFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOpenFolder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFolder.Image")));
-            this.btnOpenFolder.Location = new System.Drawing.Point(367, 35);
-            this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(26, 26);
-            this.btnOpenFolder.TabIndex = 7;
-            this.btnOpenFolder.UseVisualStyleBackColor = true;
-            // 
             // btnBack
             // 
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -128,38 +137,6 @@ namespace QTLProject
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             // 
-            // ToggleButtonDisplayGraph
-            // 
-            this.ToggleButtonDisplayGraph.BorderColor = System.Drawing.Color.LightGray;
-            this.ToggleButtonDisplayGraph.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ToggleButtonDisplayGraph.ForeColor = System.Drawing.Color.White;
-            this.ToggleButtonDisplayGraph.IsOn = false;
-            this.ToggleButtonDisplayGraph.Location = new System.Drawing.Point(367, 120);
-            this.ToggleButtonDisplayGraph.Name = "ToggleButtonDisplayGraph";
-            this.ToggleButtonDisplayGraph.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.ToggleButtonDisplayGraph.OffText = "";
-            this.ToggleButtonDisplayGraph.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(229)))));
-            this.ToggleButtonDisplayGraph.OnText = "";
-            this.ToggleButtonDisplayGraph.Size = new System.Drawing.Size(66, 35);
-            this.ToggleButtonDisplayGraph.TabIndex = 27;
-            this.ToggleButtonDisplayGraph.TextEnabled = true;
-            // 
-            // ToggleButtonInDepthReport
-            // 
-            this.ToggleButtonInDepthReport.BorderColor = System.Drawing.Color.LightGray;
-            this.ToggleButtonInDepthReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ToggleButtonInDepthReport.ForeColor = System.Drawing.Color.White;
-            this.ToggleButtonInDepthReport.IsOn = false;
-            this.ToggleButtonInDepthReport.Location = new System.Drawing.Point(482, 120);
-            this.ToggleButtonInDepthReport.Name = "ToggleButtonInDepthReport";
-            this.ToggleButtonInDepthReport.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.ToggleButtonInDepthReport.OffText = "";
-            this.ToggleButtonInDepthReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(229)))));
-            this.ToggleButtonInDepthReport.OnText = "";
-            this.ToggleButtonInDepthReport.Size = new System.Drawing.Size(60, 35);
-            this.ToggleButtonInDepthReport.TabIndex = 28;
-            this.ToggleButtonInDepthReport.TextEnabled = true;
-            // 
             // ViewResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,8 +148,6 @@ namespace QTLProject
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxFuncs);
             this.Controls.Add(this.btnShowResutls);
-            this.Controls.Add(this.txtOpenFolder);
-            this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.btnBack);
             this.Name = "ViewResults";
             this.Size = new System.Drawing.Size(732, 601);
@@ -184,8 +159,6 @@ namespace QTLProject
 
         #endregion
         private RoundedButtonToolBar btnBack;
-        private RoundedButtonToolBar btnOpenFolder;
-        private System.Windows.Forms.TextBox txtOpenFolder;
         private RoundedButtonToolBar btnShowResutls;
         private System.Windows.Forms.ComboBox comboBoxFuncs;
         private System.Windows.Forms.Label label1;

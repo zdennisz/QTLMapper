@@ -19,7 +19,7 @@ namespace QTLProject
         public event EventHandler<EventArgsViewResults> backButtonClicked;
         private SoftwareStep prevStep;
         private string testType = "";
-        private bool graphVal,inDepthReportVal;
+        private bool inDepthReportVal;
 
         public ViewResults()
         {
@@ -52,7 +52,6 @@ namespace QTLProject
             this.btnBack.MouseClick += BtnBack_MouseClick;
             this.btnShowResutls.MouseClick += BtnShowResutls_MouseClick;
             this.comboBoxFuncs.SelectedIndexChanged += ComboBoxFuncs_SelectedIndexChanged;
-            this.ToggleButtonDisplayGraph.SliderValueChanged += ToggleButtonDisplayGraph_SliderValueChanged;
             this.ToggleButtonInDepthReport.SliderValueChanged += ToggleButtonInDepthReport_SliderValueChanged;
         }
 
@@ -61,10 +60,6 @@ namespace QTLProject
             this.inDepthReportVal = (sender as CustomToggleButton).IsOn;
         }
 
-        private void ToggleButtonDisplayGraph_SliderValueChanged(object sender, EventArgs e)
-        {
-           this.graphVal = (sender as CustomToggleButton).IsOn;
-        }
 
         private void setupCombobox()
         {
@@ -89,7 +84,7 @@ namespace QTLProject
             
             if (!(this.testType.Equals(string.Empty)))
             {
-                ShowResults sr = new ShowResults(graphVal,inDepthReportVal,this.testType);
+                ShowResults sr = new ShowResults(inDepthReportVal,this.testType);
                 sr.Show();
             }
 

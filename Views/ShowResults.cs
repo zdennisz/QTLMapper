@@ -22,15 +22,14 @@ namespace QTLProject
 {
     public partial class ShowResults : Form
     {
-        bool isGraph, isInDepthReport;
+        bool  isInDepthReport;
         string typeOfGraph, typeOfTraitHistogram;
         
        
         VIewResultsPresentor presentor;
-        public ShowResults(bool isGraph, bool isInDepthReport, string typeOfGraph)
+        public ShowResults(bool isInDepthReport, string typeOfGraph)
         {
             InitializeComponent();
-            this.isGraph = isGraph;
             this.isInDepthReport = isInDepthReport;
             this.typeOfGraph = typeOfGraph;
             presentor = new VIewResultsPresentor();

@@ -32,10 +32,8 @@ namespace QTLProject
         {
             this.comboBoxFuncs = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ToggleButtonInDepthReport = new QTLProject.Utils.CustomToggleButton();
-            this.ToggleButtonDisplayGraph = new QTLProject.Utils.CustomToggleButton();
             this.btnShowResutls = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
             this.SuspendLayout();
@@ -61,21 +59,11 @@ namespace QTLProject
             this.label1.TabIndex = 20;
             this.label1.Text = "Calculation Type";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(372, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 16);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Display Graph";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(487, 53);
+            this.label3.Location = new System.Drawing.Point(470, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 16);
             this.label3.TabIndex = 24;
@@ -96,22 +84,6 @@ namespace QTLProject
             this.ToggleButtonInDepthReport.Size = new System.Drawing.Size(60, 35);
             this.ToggleButtonInDepthReport.TabIndex = 28;
             this.ToggleButtonInDepthReport.TextEnabled = true;
-            // 
-            // ToggleButtonDisplayGraph
-            // 
-            this.ToggleButtonDisplayGraph.BorderColor = System.Drawing.Color.LightGray;
-            this.ToggleButtonDisplayGraph.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ToggleButtonDisplayGraph.ForeColor = System.Drawing.Color.White;
-            this.ToggleButtonDisplayGraph.IsOn = false;
-            this.ToggleButtonDisplayGraph.Location = new System.Drawing.Point(375, 72);
-            this.ToggleButtonDisplayGraph.Name = "ToggleButtonDisplayGraph";
-            this.ToggleButtonDisplayGraph.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.ToggleButtonDisplayGraph.OffText = "";
-            this.ToggleButtonDisplayGraph.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(229)))));
-            this.ToggleButtonDisplayGraph.OnText = "";
-            this.ToggleButtonDisplayGraph.Size = new System.Drawing.Size(66, 35);
-            this.ToggleButtonDisplayGraph.TabIndex = 27;
-            this.ToggleButtonDisplayGraph.TextEnabled = true;
             // 
             // btnShowResutls
             // 
@@ -142,9 +114,7 @@ namespace QTLProject
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ToggleButtonInDepthReport);
-            this.Controls.Add(this.ToggleButtonDisplayGraph);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxFuncs);
             this.Controls.Add(this.btnShowResutls);
@@ -162,9 +132,7 @@ namespace QTLProject
         private RoundedButtonToolBar btnShowResutls;
         private System.Windows.Forms.ComboBox comboBoxFuncs;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private CustomToggleButton ToggleButtonDisplayGraph;
         private CustomToggleButton ToggleButtonInDepthReport;
     }
 }

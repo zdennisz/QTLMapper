@@ -31,7 +31,6 @@ namespace QTLbyRegression
             internalState.StateChange += InternalState_StateChange;
             inputData.nextButtonClicked += InputData_nextButtonClicked;
             inputData.backButtonClicked += InputData_backButtonClicked;
-            simData.nextButtonClicked += SimData_nextButtonClicked;
             simData.backButtonClicked += SimData_backButtonClicked;
             calcQTL.nextButtonClicked += CalcQTL_nextButtonClicked;
             calcQTL.backButtonClicked += CalcQTL_backButtonClicked;
@@ -72,10 +71,6 @@ namespace QTLbyRegression
             internalState.UpdateState(SoftwareStep.None, SoftwareStep.SimulateData, false);
         }
 
-        private void SimData_nextButtonClicked(object sender, EventArgs e)
-        {
-            internalState.UpdateState(SoftwareStep.ViewResults, SoftwareStep.SimulateData, true);
-        }
 
         private void InputData_backButtonClicked(object sender, EventArgs e)
         {

@@ -16,6 +16,7 @@ namespace QTLProject
     {
         TableGenerator calQTLTable;
         Database db;
+        public ErrorMessage errorMessage;
         public CalcQTLPresentor(TableLayoutPanel panel)
         {
             calQTLTable = new TableGenerator(panel);
@@ -23,7 +24,7 @@ namespace QTLProject
 
         }
 
-      
+
 
         public void GeneratePrevoiusTable(List<string> modelParams, float rowSize, float colSize, int colAmount)
         {
@@ -52,12 +53,23 @@ namespace QTLProject
         public bool CheckDataAviliability()
         {
             Database db = DatabaseProvider.GetDatabase();
-            if(db.SubData.Count>0 && db.SubData[0].Genotype!=null && db.SubData[0].TraitValue!=null)
+
+            if (db.SubData.Count > 0 && db.SubData[0].Genotype != null && db.SubData[0].TraitValue == null)
             {
-                return true;
+                errorMessage = ErrorMessage.MissingPhenotype;
+               return  false;
             }
-           
-            return false;
+            else if (db.SubData.Count > 0 && db.SubData[0].TraitValue != null && db.SubData[0].Genotype == null)
+            {
+                errorMessage = ErrorMessage.MissingGenotype;
+                return false;
+            }else if(db.SubData.Count == 0 )
+            {
+                errorMessage = ErrorMessage.NoDataLoaded;
+                return false;
+            }
+
+            return true;
         }
         public async void ReadDataGenotype(string path)
         {
@@ -80,7 +92,12 @@ namespace QTLProject
                         filteredData.Add(dic);
                     }
                 }
-
+                if (filteredData.Count == 0)
+                {
+                    MessageBox.Show("Cannot find any Genotypes in the Genetic Map,\nPlease reload the Genetic map with a relevant ogranism.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorMessage = ErrorMessage.BadGeneticMap;
+                    return;
+                }
                 var population = Regex.Split(filteredData[0][1], string.Empty);
                 if (population[0] == "")
                 {
@@ -93,8 +110,8 @@ namespace QTLProject
 
                 if (db.SubData.Count == 0)
                 {
-                   
-                    for (int i=0;i< population.Length; i++)
+
+                    for (int i = 0; i < population.Length; i++)
                     {
                         //create classes at first use
                         DataIndividualsAndTraits individualsAndTraits = new DataIndividualsAndTraits();
@@ -122,14 +139,14 @@ namespace QTLProject
                     {
                         pop = pop.Skip(1).ToArray();
                     }
-                    if (pop[pop.Length-1] == "")
+                    if (pop[pop.Length - 1] == "")
                     {
                         Array.Resize(ref pop, pop.Length - 1);
                     }
 
-                    
+
                     int offSetIndex = 0;
-                 
+
                     foreach (DataIndividualsAndTraits indiv in db.SubData)
                     {
 
@@ -152,7 +169,7 @@ namespace QTLProject
                             indiv.GenotypeOk[0, subIndex] = false;
                         }
                         offSetIndex = (offSetIndex + 1) % pop.Length;
-                       
+
                     }
 
                     subIndex = (subIndex + 1) % filteredData.Count;
@@ -188,24 +205,24 @@ namespace QTLProject
                 t.NameFull = traitName;
                 tempListTraits.Add(t);
             }
-            string tempValue=null;
-            for(int i=0; i < rawData.Count; i++)
+            string tempValue = null;
+            for (int i = 0; i < rawData.Count; i++)
             {
                 //iterate and remove all the trait names since we dont need them anymore
                 rawData[i].Remove(0);
-                rawData[i].TryGetValue(rawData[i].Count , out tempValue);
+                rawData[i].TryGetValue(rawData[i].Count, out tempValue);
                 if (tempValue.Equals(""))
                 {
-                    rawData[i].Remove(rawData[i].Count );
+                    rawData[i].Remove(rawData[i].Count);
                 }
-              
+
             }
             db = DatabaseProvider.GetDatabase();
             lock (db)
             {
-                
-                
-               
+
+
+
                 if (db.SubData.Count == 0)
                 {
 
@@ -226,19 +243,19 @@ namespace QTLProject
                     }
                 }
                 //init all arrays
-                for(int j = 0; j < rawData[0].Count; j++)
+                for (int j = 0; j < rawData[0].Count; j++)
                 {
                     db.SubData[j].TraitValueOk = new bool[1, rawData.Count];
                     db.SubData[j].TraitValue = new float[1, rawData.Count];
                 }
                 int traitCounter = 0;
                 int dicCounter = 1;
-                foreach (Dictionary<int,string> dic in rawData)
+                foreach (Dictionary<int, string> dic in rawData)
                 {
 
-                    for(int i = 0; i < db.SubData.Count; i++)
+                    for (int i = 0; i < db.SubData.Count; i++)
                     {
-                        string tempVal=dic[dicCounter];
+                        string tempVal = dic[dicCounter];
                         if (tempVal.Equals("$") || tempVal.Equals(""))
                         {
                             //missing data

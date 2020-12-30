@@ -83,7 +83,14 @@ namespace QTLProject
             InputDataRow=0,
             GeneticDataRow=1
         }
-       
+
+        public enum ErrorMessage
+        {
+            MissingPhenotype=0,
+            MissingGenotype=1,
+            BadGeneticMap=2,
+            NoDataLoaded=3
+        }
 
         public class State
         {

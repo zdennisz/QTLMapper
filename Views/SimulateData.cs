@@ -179,7 +179,7 @@ namespace QTLProject
 
         private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
-            //call the presentor to create all the data and save it into 3 files
+            
 
 
 
@@ -187,10 +187,10 @@ namespace QTLProject
             // dgp.SimulateRecombination();
             //dgp.DefineQTL();
 
-            //  nextButtonClicked?.Invoke(this, e);
+            
             if (GenerateGeneticMap())
             {
-                MessageBox.Show("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Data Generated Successfully at " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\GeneticMap_CurrentDate"+"\n\nYou can go to Input data and use the data as the Genetic Map.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

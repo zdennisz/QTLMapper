@@ -119,7 +119,25 @@ namespace QTLProject
             }
             else
             {
-                MessageBox.Show("Please load genotype data and phenotype data accordingly", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                switch (calcQTLPresentor.errorMessage)
+                {
+                    case Types.ErrorMessage.BadGeneticMap:
+                        MessageBox.Show("Please load Genetic Map with another file the data is inconsistent with the genotype.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+
+                    case Types.ErrorMessage.MissingGenotype:
+                        MessageBox.Show("Please load genotype data it is missing.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case Types.ErrorMessage.MissingPhenotype:
+                        MessageBox.Show("Please load phenotype data it is missing.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case Types.ErrorMessage.NoDataLoaded:
+                        MessageBox.Show("Please load genotype data and phenotype data accordingly.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    default:
+                        break;
+                }
+               
             }
             
          
@@ -141,7 +159,7 @@ namespace QTLProject
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.Title = "Load Genotype data";
                 openFileDialog.RestoreDirectory = true;
@@ -166,7 +184,7 @@ namespace QTLProject
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.Title = "Load Phenotype data";
                 openFileDialog.RestoreDirectory = true;

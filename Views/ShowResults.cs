@@ -36,13 +36,15 @@ namespace QTLProject
             presentor = new VIewResultsPresentor();
             presentor.MarkerQualityHistogram(this.markerQualityChart);
             presentor.SegregationMarkerHistogram(this.segregationChart);
-            //  string res = presentor.CalculatePValue();
+            presentor.PValueHistogram(this.pValueChart);
+         
 
             setupUI();
             this.tabControl.TabPages[0].Text = "Chart Series";
             this.tabControl.TabPages[1].Text = "Trait distribution Chart";
             this.tabControl.TabPages[2].Text = "Marker Qualites Chart";
             this.tabControl.TabPages[3].Text = "Segregation Chart";
+            this.tabControl.TabPages[4].Text = "P value Chart";
 
             LineChartXY lineChartXY = new LineChartXY(this.cartesianChart1);
             lineChartXY.AxisXTitle = "Some  X Title";

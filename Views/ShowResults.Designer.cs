@@ -39,11 +39,14 @@
             this.markerQualityChart = new LiveCharts.WinForms.CartesianChart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.segregationChart = new LiveCharts.WinForms.CartesianChart();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pValueChart = new LiveCharts.WinForms.CartesianChart();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // cartesianChart1
@@ -68,6 +71,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPage5);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -143,6 +147,25 @@
             this.segregationChart.TabIndex = 0;
             this.segregationChart.Text = "cartesianChart2";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.pValueChart);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(768, 400);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // pValueChart
+            // 
+            this.pValueChart.Location = new System.Drawing.Point(6, 154);
+            this.pValueChart.Name = "pValueChart";
+            this.pValueChart.Size = new System.Drawing.Size(587, 240);
+            this.pValueChart.TabIndex = 0;
+            this.pValueChart.Text = "cartesianChart2";
+            // 
             // ShowResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +179,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -172,5 +196,7 @@
         private LiveCharts.WinForms.CartesianChart markerQualityChart;
         private System.Windows.Forms.TabPage tabPage4;
         private LiveCharts.WinForms.CartesianChart segregationChart;
+        private System.Windows.Forms.TabPage tabPage5;
+        private LiveCharts.WinForms.CartesianChart pValueChart;
     }
 }

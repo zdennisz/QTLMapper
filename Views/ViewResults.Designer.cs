@@ -63,7 +63,7 @@ namespace QTLProject
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(470, 53);
+            this.label3.Location = new System.Drawing.Point(324, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 16);
             this.label3.TabIndex = 24;
@@ -75,7 +75,7 @@ namespace QTLProject
             this.ToggleButtonInDepthReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ToggleButtonInDepthReport.ForeColor = System.Drawing.Color.White;
             this.ToggleButtonInDepthReport.IsOn = false;
-            this.ToggleButtonInDepthReport.Location = new System.Drawing.Point(490, 72);
+            this.ToggleButtonInDepthReport.Location = new System.Drawing.Point(346, 73);
             this.ToggleButtonInDepthReport.Name = "ToggleButtonInDepthReport";
             this.ToggleButtonInDepthReport.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.ToggleButtonInDepthReport.OffText = "";

@@ -56,69 +56,67 @@ namespace QTLProject
             histChart.AxisXTitle = "Trait Values";
             histChart.AxisYTitle = "Proportion of trait Values";
             histChart.RemvoeColumnSeries();
-            
 
-            double popSize = db.SubData.Count * 1.0;
-            double max = db.SubData[0].TraitValue[0, traitIndex];
-            double min = db.SubData[0].TraitValue[0, traitIndex];
-            double traitVal;
+            double max, min;
+            max = db.SubData[0].TraitValue[0, traitIndex];
+            min = db.SubData[0].TraitValue[0, traitIndex];
+            double popSize = 0.0;
+            // make sure that our population is according to the size of the traits that we actually have info about them      
+            foreach (DataIndividualsAndTraits ind in db.SubData)
+            {
+                if (ind.TraitValueOk[0, traitIndex] == true)
+                {
+                    popSize++;
+                }
+            }
+            // double traitVal;
             for (int i = 0; i < db.SubData.Count; i++)
             {
+
                 if (db.SubData[i].TraitValue[0, traitIndex] > max && db.SubData[i].TraitValueOk[0, traitIndex] == true)
                 {
                     max = db.SubData[i].TraitValue[0, traitIndex];
                 }
 
 
-                if (db.SubData[i].TraitValue[0, traitIndex] < min && db.SubData[i].TraitValueOk[0, traitIndex] == true)
-                {
-                    min = db.SubData[i].TraitValue[0, traitIndex];
-                }
-
             }
-            traitVal = (max - min) / 5.0;
 
-            Dictionary<int, double> proportionOfIndivid = new Dictionary<int, double>();
-            double j = 0.0, k = 0.0, h = 0.0, g = 0.0, l = 0.0;
-            proportionOfIndivid[0] = j;
-            proportionOfIndivid[1] = h;
-            proportionOfIndivid[2] = k;
-            proportionOfIndivid[3] = g;
-            proportionOfIndivid[4] = l;
+
+
+            double twentyPrecent = 0.0, fortyPrecent = 0.0, sixtyPrecent = 0.0, eightPrecent= 0.0, onehundredPrecent= 0.0;
+
             for (int i = 0; i < this.db.SubData.Count; i++)
             {
-                if (db.SubData[i].TraitValue[0, traitIndex] >= 0 && db.SubData[i].TraitValue[0, traitIndex] < traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                double temp = db.SubData[i].TraitValue[0, traitIndex];
+                temp = temp / max;
+                if (temp >= 0.0 && temp < 0.2 && db.SubData[i].TraitValueOk[0, traitIndex] == true)
                 {
-                    j++;
-                    proportionOfIndivid[0] = j;
+                    twentyPrecent++;
+
                 }
-                else if (db.SubData[i].TraitValue[0, traitIndex] >= traitVal && db.SubData[i].TraitValue[0, traitIndex] < 2 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                else if (temp >= 0.2 && temp < 0.4 && db.SubData[i].TraitValueOk[0, traitIndex] == true)
                 {
-                    k++;
-                    proportionOfIndivid[1] = k;
+                    fortyPrecent++;
+
                 }
-                else if (db.SubData[i].TraitValue[0, traitIndex] >= 2 * traitVal && db.SubData[i].TraitValue[0, traitIndex] < 3 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                else if (temp >= 0.4 && temp < 0.6 && db.SubData[i].TraitValueOk[0, traitIndex] == true)
                 {
-                    h++;
-                    proportionOfIndivid[2] = h;
+                    sixtyPrecent++;
+
                 }
-                else if (db.SubData[i].TraitValue[0, traitIndex] >= 3 * traitVal && db.SubData[i].TraitValue[0, traitIndex] < 4 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                else if (temp >= 0.6 && temp < 0.8 && db.SubData[i].TraitValueOk[0, traitIndex] == true)
                 {
-                    g++;
-                    proportionOfIndivid[3] = g;
+                    eightPrecent++;
+
                 }
-                else if (db.SubData[i].TraitValue[0, traitIndex] >= 4 * traitVal && db.SubData[i].TraitValue[0, traitIndex] < 5 * traitVal && db.SubData[i].TraitValueOk[0, traitIndex] == true)
+                else if (temp >= 0.8 && temp < 1.0 && db.SubData[i].TraitValueOk[0, traitIndex] == true)
                 {
-                    l++;
-                    proportionOfIndivid[4] = l;
+                    onehundredPrecent++;
+
                 }
 
             }
-            proportionOfIndivid[0] = proportionOfIndivid[0] / popSize;
-            proportionOfIndivid[1] = proportionOfIndivid[1] / popSize;
-            proportionOfIndivid[2] = proportionOfIndivid[2] / popSize;
-            proportionOfIndivid[3] = proportionOfIndivid[3] / popSize;
-            proportionOfIndivid[4] = proportionOfIndivid[4] / popSize;
+
 
             //get the proportion of the indivivuals
 
@@ -128,9 +126,14 @@ namespace QTLProject
             titles.Add("40-60%");
             titles.Add("60-80%");
             titles.Add("80-100%");
+            List<double> values = new List<double>();
+            values.Add(twentyPrecent / popSize);
+            values.Add(fortyPrecent / popSize);
+            values.Add(sixtyPrecent / popSize);
+            values.Add(eightPrecent / popSize);
+            values.Add(onehundredPrecent / popSize);
 
-
-            histChart.AddColumnSeries(titles, proportionOfIndivid.Values.ToList<double>(), ColorConstants.highliteColor);
+            histChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
         }
 
         public void MarkerQualityHistogram(CartesianChart chart)
@@ -284,7 +287,7 @@ namespace QTLProject
             histChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
         }
 
-        List<double> pLogValues=new List<double>();
+        List<double> pLogValues = new List<double>();
         List<double> pLogRanges = new List<double>();
         public void PValueHistogram(CartesianChart chart)
         {
@@ -403,7 +406,7 @@ namespace QTLProject
                 {
                     sixtyPercent++;
                 }
-                else if (d >= 0.6 && d <0.8)
+                else if (d >= 0.6 && d < 0.8)
                 {
                     eightyPercent++;
                 }

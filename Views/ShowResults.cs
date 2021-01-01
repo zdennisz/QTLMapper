@@ -53,18 +53,20 @@ namespace QTLProject
             {
                 //graph number 4 - dosent work
                 //presentor.ChiSquaredLineChart(this.chart);
-                this.labelChartType.Text = Constants.QTLsEffect;
+                //this.labelChartType.Text = Constants.QTLsEffect;
+                this.labelChartType.Text = "Coming soon in the next version.";
             }
             else if (this.typeOfGraph.Equals(Constants.ModelComparison))
             {
                 // grpahs number 6
-                this.labelChartType.Text = Constants.ModelComparison;
-
+               // this.labelChartType.Text = Constants.ModelComparison;
+                this.labelChartType.Text = "Coming soon in the next version.";
             }
             else if (this.typeOfGraph.Equals(Constants.Power))
             {
                 // grpahs number 7
-                this.labelChartType.Text = Constants.Power;
+                //this.labelChartType.Text = Constants.Power;
+                this.labelChartType.Text = "Coming soon in the next version.";
             }
 
             setupUI();

@@ -288,7 +288,7 @@ namespace QTLProject
         }
 
         List<double> pLogValues = new List<double>();
-        List<double> pLogRanges = new List<double>();
+        
         public void PValueHistogram(CartesianChart chart)
         {
             if (histChart == null)
@@ -356,11 +356,6 @@ namespace QTLProject
                 }
             }
 
-            pLogRanges.Add((-1.0 * Math.Log(twentyPercent / popSize)));
-            pLogRanges.Add((-1.0 * Math.Log(fortyPercent / popSize)));
-            pLogRanges.Add((-1.0 * Math.Log(sixtyPercent / popSize)));
-            pLogRanges.Add((-1.0 * Math.Log(eightyPercent / popSize)));
-            pLogRanges.Add((-1.0 * Math.Log(oneHundrerdPercent / popSize)));
             List<double> pValues = new List<double>();
             pValues.Add(twentyPercent / popSize);
             pValues.Add(fortyPercent / popSize);

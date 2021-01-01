@@ -38,66 +38,37 @@ namespace QTLProject
 
             if (this.typeOfGraph.Equals(Constants.SingleMarkerTest))
             {
-                presentor.PValueHistogram(this.chart);
+                //graph number 2
+                presentor.MarkerQualityHistogram(this.chart);
                 this.labelChartType.Text = Constants.SingleMarkerTest;
+
             }
             else if (this.typeOfGraph.Equals(Constants.QTLPosition))
             {
-                presentor.MarkerQualityHistogram(this.chart);
+                //graph number 3
+                presentor.SegregationMarkerHistogram(this.chart);
                 this.labelChartType.Text = Constants.QTLPosition;
             }
-            else if (this.typeOfGraph.Equals(Constants.TraitDistributionforQTLalleles))
+            else if (this.typeOfGraph.Equals(Constants.QTLsEffect))
             {
-                presentor.SegregationMarkerHistogram(this.chart);
-                this.labelChartType.Text = Constants.TraitDistributionforQTLalleles;
+                //graph number 4 - dosent work
+                //presentor.ChiSquaredLineChart(this.chart);
+                this.labelChartType.Text = Constants.QTLsEffect;
+            }
+            else if (this.typeOfGraph.Equals(Constants.ModelComparison))
+            {
+                // grpahs number 6
+                this.labelChartType.Text = Constants.ModelComparison;
+
+            }
+            else if (this.typeOfGraph.Equals(Constants.Power))
+            {
+                // grpahs number 7
+                this.labelChartType.Text = Constants.Power;
             }
 
             setupUI();
-            /*
-             LineChartXY lineChartXY = new LineChartXY(this.cartesianChart1);
-             lineChartXY.AxisXTitle = "Some  X Title";
-             lineChartXY.AxisYTitle = "Some  Y Title";
 
-             List<ObservablePoint> points = new List<ObservablePoint>();
-             points.Add(new ObservablePoint(0, 10));
-             points.Add(new ObservablePoint(4, 7));
-             points.Add(new ObservablePoint(5, 3));
-             points.Add(new ObservablePoint(7, 6));
-             points.Add(new ObservablePoint(10, 8));
-
-             List<ObservablePoint> points2 = new List<ObservablePoint>();
-             points2.Add(new ObservablePoint(0, 2));
-             points2.Add(new ObservablePoint(2, 5));
-             points2.Add(new ObservablePoint(3, 6));
-             points2.Add(new ObservablePoint(6, 8));
-             points2.Add(new ObservablePoint(10, 5));
-
-             List<ObservablePoint> points3 = new List<ObservablePoint>();
-             points3.Add(new ObservablePoint(0, 4));
-             points3.Add(new ObservablePoint(5, 5));
-             points3.Add(new ObservablePoint(7, 7));
-             points3.Add(new ObservablePoint(9, 10));
-             points3.Add(new ObservablePoint(10, 9));
-
-
-
-             lineChartXY.AddLineChart(points, 25);
-             lineChartXY.AddLineChart(points2, 14);
-             lineChartXY.AddLineChart(points3, 10);
-
-
-
-             List<string> sss = new List<string>();
-             sss.Add("Heelo");
-             sss.Add("I");
-             sss.Add("Like");
-             sss.Add("Cookies");
-             List<double> doubleList = new List<double>();
-             doubleList.Add(0.045);
-             doubleList.Add(0.087);
-             doubleList.Add(0.02);
-             doubleList.Add(0.1);
-            */
 
         }
         private void setupUI()
@@ -113,29 +84,37 @@ namespace QTLProject
             {
                 this.calculationsPanel.Visible = false;
             }
+
             if (this.typeOfGraph.Equals(Constants.DistributionTest))
             {
-                setupComobox();
-                this.traitCombobox.Visible = true;
+                setupComoboxforTraitDist();
+                this.selectionCombobox.Visible = true;
                 this.labelChartType.Text = Constants.DistributionTest;
+            }
+            else if (this.typeOfGraph.Equals(Constants.TraitDistributionforQTLalleles))
+            {
+                setupComoboxForPVal();
+                this.selectionCombobox.Visible = true;
+                this.labelChartType.Text = Constants.TraitDistributionforQTLalleles;
             }
             else
             {
-                this.traitCombobox.Visible = false;
+                this.selectionCombobox.Visible = false;
+
             }
 
 
         }
 
-        private void setupComobox()
+        private void setupComoboxforTraitDist()
         {
 
             foreach (Trait t in presentor.GetTraitList())
             {
-                this.traitCombobox.Items.Add(t.NameFull);
+                this.selectionCombobox.Items.Add(t.NameFull);
             }
-            this.traitCombobox.SelectedValueChanged += TraitCombobox_SelectedValueChanged;
-            this.traitCombobox.SelectedIndex = 0;
+            this.selectionCombobox.SelectedValueChanged += TraitCombobox_SelectedValueChanged;
+            this.selectionCombobox.SelectedIndex = 0;
         }
         private void TraitCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -151,11 +130,30 @@ namespace QTLProject
                     break;
                 }
             }
+            //graph number 1
             presentor.TraitDistributionHistogram(indexFound, this.chart);
         }
 
+        private void setupComoboxForPVal()
+        {
+            this.selectionCombobox.Items.Add("P-Value");
+            this.selectionCombobox.Items.Add("-Log(P-Value)");
+            this.selectionCombobox.SelectedValueChanged += TraitCombobox_SelectedValueChanged1;
+            this.selectionCombobox.SelectedIndex = 0;
+        }
 
-
+        private void TraitCombobox_SelectedValueChanged1(object sender, EventArgs e)
+        {
+            string typeOfHistogram = (sender as ComboBox).Text;
+            if (typeOfHistogram.Equals("P-Value"))
+            {
+                presentor.PValueHistogram(this.chart);
+            }
+            else
+            {
+                presentor.PValueLogHistogram(this.chart);
+            }
+        }
     }
 }
 

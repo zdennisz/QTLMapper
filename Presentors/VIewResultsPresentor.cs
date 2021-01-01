@@ -1,4 +1,5 @@
-﻿using QTLProject.Enums;
+﻿using LiveCharts.Defaults;
+using QTLProject.Enums;
 using QTLProject.Models;
 using QTLProject.Utils;
 using System;
@@ -12,11 +13,8 @@ namespace QTLProject
     {
         #region Fields
         Database db = null;
-        HistogramChart traithistogramChart;
-        HistogramChart markerQualityHistogramChart;
-        HistogramChart segregationMarkerChart;
-        HistogramChart pValueChart;
-        HistogramChart pValueLogChart;
+        HistogramChart histChart;
+        LineChartXY lineChart;
 
         #endregion Fields
 
@@ -43,25 +41,24 @@ namespace QTLProject
 
         public void GenereateQTLEffect()
         {
-            
+
         }
 
- 
+
 
         public void TraitDistributionHistogram(int traitIndex, CartesianChart chart)
         {
-            if (traithistogramChart == null)
+            if (histChart == null)
             {
-                traithistogramChart = new HistogramChart(chart);
+                histChart = new HistogramChart(chart);
             }
 
-            traithistogramChart.AxisXTitle = "Trait Values";
-            traithistogramChart.AxisYTitle = "Proportion of trait Values";
-            traithistogramChart.RemvoeColumnSeries();
-            HashSet<double> allTraitValues = new HashSet<double>();
+            histChart.AxisXTitle = "Trait Values";
+            histChart.AxisYTitle = "Proportion of trait Values";
+            histChart.RemvoeColumnSeries();
+            
 
             double popSize = db.SubData.Count * 1.0;
-            double proportionVal = 0.0;
             double max = db.SubData[0].TraitValue[0, traitIndex];
             double min = db.SubData[0].TraitValue[0, traitIndex];
             double traitVal;
@@ -133,17 +130,17 @@ namespace QTLProject
             titles.Add("80-100%");
 
 
-            traithistogramChart.AddColumnSeries(titles, proportionOfIndivid.Values.ToList<double>(), ColorConstants.highliteColor);
+            histChart.AddColumnSeries(titles, proportionOfIndivid.Values.ToList<double>(), ColorConstants.highliteColor);
         }
 
         public void MarkerQualityHistogram(CartesianChart chart)
         {
-            if (markerQualityHistogramChart == null)
+            if (histChart == null)
             {
-                markerQualityHistogramChart = new HistogramChart(chart);
+                histChart = new HistogramChart(chart);
             }
-            markerQualityHistogramChart.AxisXTitle = " Missing Data %";
-            markerQualityHistogramChart.AxisYTitle = "Proportion of Markers %";
+            histChart.AxisXTitle = " Missing Data %";
+            histChart.AxisYTitle = "Proportion of Markers %";
 
             // find out which markers are:
             //0-20% 
@@ -213,42 +210,34 @@ namespace QTLProject
             values.Add(sixtyPercent / popSize);
             values.Add(eightyPercent / popSize);
             values.Add(oneHundrerdPercent / popSize);
-            markerQualityHistogramChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
+            histChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
 
         }
 
         public void SegregationMarkerHistogram(CartesianChart chart)
         {
-            if (segregationMarkerChart == null)
+            if (histChart == null)
             {
-                segregationMarkerChart = new HistogramChart(chart);
+                histChart = new HistogramChart(chart);
             }
-            segregationMarkerChart.AxisXTitle = " n0/(n1+n0)";
-            segregationMarkerChart.AxisYTitle = "Proportion of Markers %";
-            int twentyPercent = 0;
-            int fortyPercent = 0;
-            int sixtyPercent = 0;
-            int eightyPercent = 0;
-            int oneHundrerdPercent = 0;
-            double popSize = db.SubData.Count * 1.0;
-            double temp;
-            double counterN0 = 0;
-            double counterN1 = 0;
-            // this is our 100%
+            histChart.AxisXTitle = " n0/(n1+n0)";
+            histChart.AxisYTitle = "Proportion of Markers %";
+            int twentyPercent = 0, fortyPercent = 0, sixtyPercent = 0, eightyPercent = 0, oneHundrerdPercent = 0;
+            double temp, counterN0 = 0, counterN1 = 0;
             double genotypeSize = db.SubData[0].Genotype.Length;
             //we iterate over all the population
-            for (int i = 0; i < this.db.SubData.Count; i++)
+            for (int i = 0; i < this.db.SubData[0].Genotype.Length; i++)
             {
                 counterN0 = 0;
                 counterN1 = 0;
                 //we iterate over the genotype of each person
-                for (int j = 0; j < this.db.SubData[i].Genotype.Length; j++)
+                for (int j = 0; j < this.db.SubData.Count; j++)
                 {
-                    if (this.db.SubData[i].Genotype[0, j] == 0)
+                    if (this.db.SubData[j].Genotype[0, i] == 0)
                     {
                         counterN0++;
                     }
-                    else if (this.db.SubData[i].Genotype[0, j] == 1)
+                    else if (this.db.SubData[j].Genotype[0, i] == 1)
                     {
                         counterN1++;
                     }
@@ -287,22 +276,25 @@ namespace QTLProject
             titles.Add("60-80%");
             titles.Add("80-100%");
             List<double> values = new List<double>();
-            values.Add(twentyPercent / popSize);
-            values.Add(fortyPercent / popSize);
-            values.Add(sixtyPercent / popSize);
-            values.Add(eightyPercent / popSize);
-            values.Add(oneHundrerdPercent / popSize);
-            segregationMarkerChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
+            values.Add(twentyPercent / genotypeSize);
+            values.Add(fortyPercent / genotypeSize);
+            values.Add(sixtyPercent / genotypeSize);
+            values.Add(eightyPercent / genotypeSize);
+            values.Add(oneHundrerdPercent / genotypeSize);
+            histChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
         }
 
+        List<double> pLogValues=new List<double>();
+        List<double> pLogRanges = new List<double>();
         public void PValueHistogram(CartesianChart chart)
         {
-            if (pValueChart == null)
+            if (histChart == null)
             {
-                pValueChart = new HistogramChart(chart);
+                histChart = new HistogramChart(chart);
             }
-            pValueChart.AxisXTitle = "P-Value";
-            pValueChart.AxisYTitle = "Proportion of Markers %";
+            histChart.AxisXTitle = "P-Value";
+            histChart.AxisYTitle = "Proportion of Markers %";
+            histChart.RemvoeColumnSeries();
             int twentyPercent = 0;
             int fortyPercent = 0;
             int sixtyPercent = 0;
@@ -337,6 +329,7 @@ namespace QTLProject
                     //calculate the pvalue for trait and genotype and put in the correct bin
                     //temp=result of p value
                     temp = StatisticCalculations.PValueTStatistic(no, n1);
+                    pLogValues.Add((-1.0 * Math.Log(temp)));
                     if (temp >= 0.0 && temp < 0.2)
                     {
                         twentyPercent++;
@@ -360,35 +353,128 @@ namespace QTLProject
                 }
             }
 
-
-
-
-            List<double> values = new List<double>();
-            values.Add(twentyPercent / popSize);
-            values.Add(fortyPercent / popSize);
-            values.Add(sixtyPercent / popSize);
-            values.Add(eightyPercent / popSize);
-            values.Add(oneHundrerdPercent / popSize);
-            List<string> titles = new List<string>();
-            titles.Add("0-20%");
-            titles.Add("20-40%");
-            titles.Add("40-60%");
-            titles.Add("60-80%");
-            titles.Add("80-100%");
-            pValueChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
+            pLogRanges.Add((-1.0 * Math.Log(twentyPercent / popSize)));
+            pLogRanges.Add((-1.0 * Math.Log(fortyPercent / popSize)));
+            pLogRanges.Add((-1.0 * Math.Log(sixtyPercent / popSize)));
+            pLogRanges.Add((-1.0 * Math.Log(eightyPercent / popSize)));
+            pLogRanges.Add((-1.0 * Math.Log(oneHundrerdPercent / popSize)));
+            List<double> pValues = new List<double>();
+            pValues.Add(twentyPercent / popSize);
+            pValues.Add(fortyPercent / popSize);
+            pValues.Add(sixtyPercent / popSize);
+            pValues.Add(eightyPercent / popSize);
+            pValues.Add(oneHundrerdPercent / popSize);
+            List<string> pTitles = new List<string>();
+            pTitles.Add("0-20%");
+            pTitles.Add("20-40%");
+            pTitles.Add("40-60%");
+            pTitles.Add("60-80%");
+            pTitles.Add("80-100%");
+            histChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
         }
 
         public void PValueLogHistogram(CartesianChart chart)
         {
-            if (pValueLogChart == null)
+            int twentyPercent = 0;
+            int fortyPercent = 0;
+            int sixtyPercent = 0;
+            int eightyPercent = 0;
+            int oneHundrerdPercent = 0;
+            double popSize = (db.SubData[0].Genotype.Length) * (db.SubData[0].TraitValue.Length) * 1.0;
+            if (histChart == null)
             {
-                pValueLogChart = new HistogramChart(chart);
+                histChart = new HistogramChart(chart);
             }
-            pValueLogChart.AxisXTitle = "-Log(P-Value)";
-            pValueLogChart.AxisYTitle = "-Log(Proportion of Markers %)";
-        }
+            histChart.AxisXTitle = "-Log(P-Value)";
+            histChart.AxisYTitle = "-Log(Proportion of Markers %)";
+            histChart.RemvoeColumnSeries();
 
+            foreach (double d in pLogValues)
+            {
+                if (d >= 0.0 && d < 0.2)
+                {
+                    twentyPercent++;
+                }
+                else if (d >= 0.2 && d < 0.4)
+                {
+                    fortyPercent++;
+                }
+                else if (d >= 0.4 && d < 0.6)
+                {
+                    sixtyPercent++;
+                }
+                else if (d >= 0.6 && d <0.8)
+                {
+                    eightyPercent++;
+                }
+                else if (d >= 0.8 && d <= 1.0)
+                {
+                    oneHundrerdPercent++;
+                }
+            }
+
+
+            List<double> pValues = new List<double>();
+            pValues.Add((twentyPercent / popSize));
+            pValues.Add((fortyPercent / popSize));
+            pValues.Add((sixtyPercent / popSize));
+            pValues.Add((eightyPercent / popSize));
+            pValues.Add((oneHundrerdPercent / popSize));
+
+            List<string> pTitles = new List<string>();
+            pTitles.Add("0-20%");
+            pTitles.Add("20-40%");
+            pTitles.Add("40-60%");
+            pTitles.Add("60-80%");
+            pTitles.Add("80-100%");
+            histChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
+        }
+        public void ChiSquaredLineChart(CartesianChart chart)
+        {
+            if (lineChart == null)
+            {
+                lineChart = new LineChartXY(chart);
+            }
+
+            lineChart.AxisXTitle = "Chi^2 statistic";
+            lineChart.AxisYTitle = "Proportion of markers";
+            double chiVal = 0;
+            double chiValOverall = 0;
+            double temp, counterN0 = 0, counterN1 = 0;
+            // this is our 100%
+            List<ObservablePoint> list = new List<ObservablePoint>();
+            double genotypeSize = db.SubData[0].Genotype.Length;
+            //we iterate over all the population
+            for (int i = 0; i < this.db.SubData[0].Genotype.Length; i++)
+            {
+                counterN0 = 0;
+                counterN1 = 0;
+                chiVal = 0;
+                //we iterate over the genotype of each person
+                for (int j = 0; j < this.db.SubData.Count; j++)
+                {
+                    if (this.db.SubData[j].Genotype[0, i] == 0)
+                    {
+                        counterN0++;
+                    }
+                    else if (this.db.SubData[j].Genotype[0, i] == 1)
+                    {
+                        counterN1++;
+                    }
+
+                }
+                //we finished going over the persons genotype divide by the 100 percent and add to the relevant bucket
+
+                temp = counterN0 / (counterN1 + counterN0);
+                chiVal = (Math.Pow(temp - 0.5, 2.0) / 0.5);
+                chiValOverall += chiVal;
+                //list.Add(new ObservablePoint(i*1.0,chiVal));
+
+            }
+
+            // lineChart.AddLineChart(list, 5.0);
+        }
         #endregion Public Methods
- 
+
     }
 }

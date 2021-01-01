@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowResults));
-            this.traitCombobox = new System.Windows.Forms.ComboBox();
+            this.selectionCombobox = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelChartType = new System.Windows.Forms.Label();
             this.histogramPanel = new System.Windows.Forms.Panel();
             this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.calculationsPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labelChartType = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.histogramPanel.SuspendLayout();
             this.calculationsPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // traitCombobox
+            // selectionCombobox
             // 
-            this.traitCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.traitCombobox.FormattingEnabled = true;
-            this.traitCombobox.Location = new System.Drawing.Point(21, 22);
-            this.traitCombobox.Name = "traitCombobox";
-            this.traitCombobox.Size = new System.Drawing.Size(121, 21);
-            this.traitCombobox.TabIndex = 3;
+            this.selectionCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectionCombobox.FormattingEnabled = true;
+            this.selectionCombobox.Location = new System.Drawing.Point(21, 22);
+            this.selectionCombobox.Name = "selectionCombobox";
+            this.selectionCombobox.Size = new System.Drawing.Size(121, 21);
+            this.selectionCombobox.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
@@ -64,6 +64,24 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(704, 561);
             this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelChartType);
+            this.panel1.Controls.Add(this.selectionCombobox);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(640, 112);
+            this.panel1.TabIndex = 1;
+            // 
+            // labelChartType
+            // 
+            this.labelChartType.AutoSize = true;
+            this.labelChartType.Location = new System.Drawing.Point(18, 6);
+            this.labelChartType.Name = "labelChartType";
+            this.labelChartType.Size = new System.Drawing.Size(35, 13);
+            this.labelChartType.TabIndex = 4;
+            this.labelChartType.Text = "label2";
             // 
             // histogramPanel
             // 
@@ -101,24 +119,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Calculations Panel";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.labelChartType);
-            this.panel1.Controls.Add(this.traitCombobox);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 112);
-            this.panel1.TabIndex = 1;
-            // 
-            // labelChartType
-            // 
-            this.labelChartType.AutoSize = true;
-            this.labelChartType.Location = new System.Drawing.Point(18, 6);
-            this.labelChartType.Name = "labelChartType";
-            this.labelChartType.Size = new System.Drawing.Size(35, 13);
-            this.labelChartType.TabIndex = 4;
-            this.labelChartType.Text = "label2";
-            // 
             // ShowResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,17 +128,17 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShowResults";
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.histogramPanel.ResumeLayout(false);
             this.calculationsPanel.ResumeLayout(false);
             this.calculationsPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox traitCombobox;
+        private System.Windows.Forms.ComboBox selectionCombobox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel calculationsPanel;
         private System.Windows.Forms.Panel histogramPanel;

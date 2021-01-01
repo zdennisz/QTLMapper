@@ -79,6 +79,7 @@ namespace QTLProject
             List<Dictionary<int, string>> filteredData = new List<Dictionary<int, string>>();
             // filter out the locus that are not in the both files
             //iterate over all the raw data and filter only the ones that are both 
+            List<Locus> LocusList = new List<Locus>();
             db = DatabaseProvider.GetDatabase();
             lock (db)
             {
@@ -90,6 +91,7 @@ namespace QTLProject
                     if (locus != null)
                     {
                         filteredData.Add(dic);
+                        LocusList.Add(locus);
                     }
                 }
                 if (filteredData.Count == 0)
@@ -118,6 +120,7 @@ namespace QTLProject
                         db.SubData.Add(individualsAndTraits);
                         db.SubData[i].Genotype = new int[1, filteredData.Count];
                         db.SubData[i].GenotypeOk = new bool[1, filteredData.Count];
+                        db.SubData[i].Locus = LocusList;
                     }
                 }
                 else
@@ -127,6 +130,7 @@ namespace QTLProject
                     {
                         db.SubData[i].Genotype = new int[1, filteredData.Count];
                         db.SubData[i].GenotypeOk = new bool[1, filteredData.Count];
+                        db.SubData[i].Locus = LocusList;
 
                     }
                 }
@@ -146,7 +150,7 @@ namespace QTLProject
 
 
                     int offSetIndex = 0;
-
+                 
                     foreach (DataIndividualsAndTraits indiv in db.SubData)
                     {
 

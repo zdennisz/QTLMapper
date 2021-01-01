@@ -58,9 +58,10 @@ namespace QTLProject
             }
             else if (this.typeOfGraph.Equals(Constants.ModelComparison))
             {
-                // grpahs number 6
-               // this.labelChartType.Text = Constants.ModelComparison;
-                this.labelChartType.Text = "Coming soon in the next version.";
+                // graph number 6
+                 this.labelChartType.Text = Constants.ModelComparison;
+                presentor.ModelComparison(this.chart);
+            //need to add two comoboxes to select combination of chromosome 1- 27 to trait 1-32
             }
             else if (this.typeOfGraph.Equals(Constants.Power))
             {

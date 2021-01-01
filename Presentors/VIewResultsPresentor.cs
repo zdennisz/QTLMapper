@@ -1,4 +1,5 @@
-﻿using LiveCharts.Defaults;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
 using QTLProject.Enums;
 using QTLProject.Models;
 using QTLProject.Utils;
@@ -83,7 +84,7 @@ namespace QTLProject
 
 
 
-            double twentyPrecent = 0.0, fortyPrecent = 0.0, sixtyPrecent = 0.0, eightPrecent= 0.0, onehundredPrecent= 0.0;
+            double twentyPrecent = 0.0, fortyPrecent = 0.0, sixtyPrecent = 0.0, eightPrecent = 0.0, onehundredPrecent = 0.0;
 
             for (int i = 0; i < this.db.SubData.Count; i++)
             {
@@ -288,7 +289,7 @@ namespace QTLProject
         }
 
         List<double> pLogValues = new List<double>();
-        
+
         public void PValueHistogram(CartesianChart chart)
         {
             if (histChart == null)
@@ -472,6 +473,67 @@ namespace QTLProject
 
             // lineChart.AddLineChart(list, 5.0);
         }
+
+
+        public void ModelComparison(CartesianChart chart)
+        {
+            if (lineChart == null)
+            {
+                lineChart = new LineChartXY(chart);
+            }
+            List<double> pLogValues = new List<double>();
+            lineChart.AxisXTitle = "Position on chromosome";
+            lineChart.AxisYTitle = "-Log(P-Value)";
+            int singleTrait = 3;
+            double temp;
+
+
+            for (int i = 0; i < this.db.SubData[0].Genotype.Length; i++)
+            {
+
+                List<double> no = new List<double>();
+                List<double> n1 = new List<double>();
+                for (int k = 0; k < this.db.SubData.Count; k++)
+                {
+                    if (this.db.SubData[k].Genotype[0, i] == 0)
+                    {
+                        no.Add(this.db.SubData[k].TraitValue[0, singleTrait]);
+                    }
+                    else if (this.db.SubData[k].Genotype[0, i] == 1)
+                    {
+                        n1.Add(this.db.SubData[k].TraitValue[0, singleTrait]);
+                    }
+                    //calculate the pvalue for trait and genotype and put in the correct bin
+                    //temp=result of p value 
+                }
+                temp = StatisticCalculations.PValueTStatistic(no, n1);
+                pLogValues.Add((-1.0 * Math.Log(temp)));
+            }
+            ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
+            List<List<ObservablePoint>> listOfSeries = new List<List<ObservablePoint>>();
+
+            for (int i = 0; i < 27; i++)
+            {
+                listOfSeries.Add(new List<ObservablePoint>());
+            }
+
+            for (int i = 0; i < pLogValues.Count; i++)
+            {
+                //we need to get the x value from the locus that we have saved
+                var chrNum = this.db.SubData[0].Locus[i].Position.Chromosome.Name;
+
+                listOfSeries[Convert.ToInt32(chrNum)-1].Add(new ObservablePoint(this.db.SubData[0].Locus[i].Position.PositionChrGenetic, pLogValues[i]));
+
+            }
+           
+            
+            listOfSeries[0].Sort((x, y) => x.X.CompareTo(y.X));
+            lineChart.AddLineChart(listOfSeries[0], 5.0);
+            //calculate the log of p value of the first genotype and use its coordinates as the x value and y as the log p value
+
+        }
+
+       
         #endregion Public Methods
 
     }

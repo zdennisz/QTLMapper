@@ -108,7 +108,7 @@ namespace QTLProject.Views
             {
                 string formatedFileName = fileName + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
                 formatedFileName += extension;
-                pathWithoutExt = pathWithoutExt + "//" + formatedFileName;
+                var pathToSave = pathWithoutExt + "//" + formatedFileName;
                 Bitmap bmp = new Bitmap(chart.Width, chart.Height);
                 chart.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 bmp.Save(pathWithoutExt, ImageFormat.Png);

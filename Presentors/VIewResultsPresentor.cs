@@ -16,6 +16,7 @@ namespace QTLProject
         Database db = null;
         HistogramChart histChart;
         HistogramChart PValhistChart;
+        HistogramChart traitHistogramDist;
         LineChartXY lineChart;
         #endregion Fields
 
@@ -49,13 +50,14 @@ namespace QTLProject
 
         public void TraitDistributionHistogram(int traitIndex, CartesianChart chart)
         {
+            if (traitHistogramDist == null)
+            {
+                traitHistogramDist = new HistogramChart(chart);
+            }
 
-            HistogramChart histChart = new HistogramChart(chart);
-
-
-            histChart.AxisXTitle = "Trait Values";
-            histChart.AxisYTitle = "Proportion of Individuals";
-            histChart.RemvoeColumnSeries();
+            traitHistogramDist.AxisXTitle = "Trait Values";
+            traitHistogramDist.AxisYTitle = "Proportion of Individuals";
+            traitHistogramDist.RemvoeColumnSeries();
 
             double max, min;
             max = db.SubData[0].TraitValue[0, traitIndex];
@@ -132,7 +134,7 @@ namespace QTLProject
             values.Add(eightPrecent / popSize);
             values.Add(onehundredPrecent / popSize);
 
-            histChart.AddColumnSeries(titles, values, ColorConstants.highliteColor);
+            traitHistogramDist.AddColumnSeries(titles, values, ColorConstants.highliteColor);
         }
 
         public void MarkerQualityHistogram(CartesianChart chart)

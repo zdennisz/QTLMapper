@@ -30,10 +30,8 @@ namespace QTLProject.Views
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonPanelContainer = new System.Windows.Forms.Panel();
             this.selectionCombobox = new System.Windows.Forms.ComboBox();
-            this.labelColAmount = new System.Windows.Forms.Label();
-            this.numericUpDownColAmount = new System.Windows.Forms.NumericUpDown();
             this.labelChartType = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -46,23 +44,25 @@ namespace QTLProject.Views
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.chiChart = new LiveCharts.WinForms.CartesianChart();
             this.cartesianChart7 = new LiveCharts.WinForms.CartesianChart();
+            this.labelColAmount = new System.Windows.Forms.Label();
+            this.numericUpDownColAmount = new System.Windows.Forms.NumericUpDown();
             this.buttonPreformLogOnData = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonSaveGraph = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonRemoveOutliers = new QTLProject.Utils.RoundedButtonToolBar();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).BeginInit();
+            this.buttonPanelContainer.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.buttonPanelContainer);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -70,19 +70,19 @@ namespace QTLProject.Views
             this.flowLayoutPanel1.Size = new System.Drawing.Size(704, 561);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
+            // buttonPanelContainer
             // 
-            this.panel1.Controls.Add(this.selectionCombobox);
-            this.panel1.Controls.Add(this.labelColAmount);
-            this.panel1.Controls.Add(this.numericUpDownColAmount);
-            this.panel1.Controls.Add(this.buttonPreformLogOnData);
-            this.panel1.Controls.Add(this.buttonSaveGraph);
-            this.panel1.Controls.Add(this.buttonRemoveOutliers);
-            this.panel1.Controls.Add(this.labelChartType);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(703, 100);
-            this.panel1.TabIndex = 0;
+            this.buttonPanelContainer.Controls.Add(this.labelColAmount);
+            this.buttonPanelContainer.Controls.Add(this.numericUpDownColAmount);
+            this.buttonPanelContainer.Controls.Add(this.buttonPreformLogOnData);
+            this.buttonPanelContainer.Controls.Add(this.buttonSaveGraph);
+            this.buttonPanelContainer.Controls.Add(this.buttonRemoveOutliers);
+            this.buttonPanelContainer.Controls.Add(this.selectionCombobox);
+            this.buttonPanelContainer.Controls.Add(this.labelChartType);
+            this.buttonPanelContainer.Location = new System.Drawing.Point(3, 3);
+            this.buttonPanelContainer.Name = "buttonPanelContainer";
+            this.buttonPanelContainer.Size = new System.Drawing.Size(703, 100);
+            this.buttonPanelContainer.TabIndex = 0;
             // 
             // selectionCombobox
             // 
@@ -93,34 +93,13 @@ namespace QTLProject.Views
             this.selectionCombobox.Size = new System.Drawing.Size(121, 21);
             this.selectionCombobox.TabIndex = 18;
             // 
-            // labelColAmount
-            // 
-            this.labelColAmount.AutoSize = true;
-            this.labelColAmount.Location = new System.Drawing.Point(304, 50);
-            this.labelColAmount.Name = "labelColAmount";
-            this.labelColAmount.Size = new System.Drawing.Size(100, 13);
-            this.labelColAmount.TabIndex = 17;
-            this.labelColAmount.Text = "Amount Of Columns";
-            // 
-            // numericUpDownColAmount
-            // 
-            this.numericUpDownColAmount.Location = new System.Drawing.Point(423, 46);
-            this.numericUpDownColAmount.Name = "numericUpDownColAmount";
-            this.numericUpDownColAmount.Size = new System.Drawing.Size(128, 20);
-            this.numericUpDownColAmount.TabIndex = 16;
-            this.numericUpDownColAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDownColAmount.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
             // labelChartType
             // 
             this.labelChartType.AutoSize = true;
-            this.labelChartType.Location = new System.Drawing.Point(17, 17);
+            this.labelChartType.Font = new System.Drawing.Font("Arial", 10F);
+            this.labelChartType.Location = new System.Drawing.Point(17, 15);
             this.labelChartType.Name = "labelChartType";
-            this.labelChartType.Size = new System.Drawing.Size(35, 13);
+            this.labelChartType.Size = new System.Drawing.Size(46, 16);
             this.labelChartType.TabIndex = 8;
             this.labelChartType.Text = "label2";
             // 
@@ -229,32 +208,66 @@ namespace QTLProject.Views
             this.cartesianChart7.TabIndex = 2;
             this.cartesianChart7.Text = "cartesianChart7";
             // 
+            // labelColAmount
+            // 
+            this.labelColAmount.AutoSize = true;
+            this.labelColAmount.Font = new System.Drawing.Font("Arial", 10F);
+            this.labelColAmount.Location = new System.Drawing.Point(297, 51);
+            this.labelColAmount.Name = "labelColAmount";
+            this.labelColAmount.Size = new System.Drawing.Size(134, 16);
+            this.labelColAmount.TabIndex = 23;
+            this.labelColAmount.Text = "Amount Of Columns";
+            // 
+            // numericUpDownColAmount
+            // 
+            this.numericUpDownColAmount.Location = new System.Drawing.Point(432, 49);
+            this.numericUpDownColAmount.Name = "numericUpDownColAmount";
+            this.numericUpDownColAmount.Size = new System.Drawing.Size(128, 20);
+            this.numericUpDownColAmount.TabIndex = 22;
+            this.numericUpDownColAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownColAmount.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
             // buttonPreformLogOnData
             // 
-            this.buttonPreformLogOnData.Location = new System.Drawing.Point(557, 17);
+            this.buttonPreformLogOnData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPreformLogOnData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPreformLogOnData.Font = new System.Drawing.Font("Arial", 10F);
+            this.buttonPreformLogOnData.Location = new System.Drawing.Point(430, 7);
             this.buttonPreformLogOnData.Name = "buttonPreformLogOnData";
-            this.buttonPreformLogOnData.Size = new System.Drawing.Size(128, 23);
-            this.buttonPreformLogOnData.TabIndex = 15;
+            this.buttonPreformLogOnData.Size = new System.Drawing.Size(130, 32);
+            this.buttonPreformLogOnData.TabIndex = 21;
             this.buttonPreformLogOnData.Text = "-Log on Data";
             this.buttonPreformLogOnData.UseVisualStyleBackColor = true;
             // 
             // buttonSaveGraph
             // 
-            this.buttonSaveGraph.Location = new System.Drawing.Point(423, 17);
+            this.buttonSaveGraph.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSaveGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveGraph.Font = new System.Drawing.Font("Arial", 10F);
+            this.buttonSaveGraph.Location = new System.Drawing.Point(565, 7);
             this.buttonSaveGraph.Name = "buttonSaveGraph";
-            this.buttonSaveGraph.Size = new System.Drawing.Size(128, 23);
-            this.buttonSaveGraph.TabIndex = 14;
+            this.buttonSaveGraph.Size = new System.Drawing.Size(130, 32);
+            this.buttonSaveGraph.TabIndex = 20;
             this.buttonSaveGraph.Text = "Save Graph";
             this.buttonSaveGraph.UseVisualStyleBackColor = true;
+            this.buttonSaveGraph.Click += new System.EventHandler(this.buttonSaveGraph_Click);
             // 
             // buttonRemoveOutliers
             // 
-            this.buttonRemoveOutliers.Location = new System.Drawing.Point(289, 17);
+            this.buttonRemoveOutliers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRemoveOutliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRemoveOutliers.Font = new System.Drawing.Font("Arial", 10F);
+            this.buttonRemoveOutliers.Location = new System.Drawing.Point(292, 7);
             this.buttonRemoveOutliers.Name = "buttonRemoveOutliers";
-            this.buttonRemoveOutliers.Size = new System.Drawing.Size(128, 23);
-            this.buttonRemoveOutliers.TabIndex = 13;
+            this.buttonRemoveOutliers.Size = new System.Drawing.Size(130, 32);
+            this.buttonRemoveOutliers.TabIndex = 19;
             this.buttonRemoveOutliers.Text = "Remove Outliers";
             this.buttonRemoveOutliers.UseVisualStyleBackColor = true;
+            this.buttonRemoveOutliers.Click += new System.EventHandler(this.buttonRemoveOutliers_Click);
             // 
             // SingleMarkerTestView
             // 
@@ -264,15 +277,15 @@ namespace QTLProject.Views
             this.Name = "SingleMarkerTestView";
             this.Size = new System.Drawing.Size(704, 561);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).EndInit();
+            this.buttonPanelContainer.ResumeLayout(false);
+            this.buttonPanelContainer.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,7 +293,7 @@ namespace QTLProject.Views
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel buttonPanelContainer;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -288,16 +301,16 @@ namespace QTLProject.Views
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label labelChartType;
-        private System.Windows.Forms.Label labelColAmount;
-        private System.Windows.Forms.NumericUpDown numericUpDownColAmount;
-        private Utils.RoundedButtonToolBar buttonPreformLogOnData;
-        private Utils.RoundedButtonToolBar buttonSaveGraph;
-        private Utils.RoundedButtonToolBar buttonRemoveOutliers;
         private LiveCharts.WinForms.CartesianChart pvalChart;
         private System.Windows.Forms.ComboBox selectionCombobox;
         private LiveCharts.WinForms.CartesianChart markerQualityChart;
         private LiveCharts.WinForms.CartesianChart segregationChart;
         private LiveCharts.WinForms.CartesianChart chiChart;
         private LiveCharts.WinForms.CartesianChart cartesianChart7;
+        private System.Windows.Forms.Label labelColAmount;
+        private System.Windows.Forms.NumericUpDown numericUpDownColAmount;
+        private Utils.RoundedButtonToolBar buttonPreformLogOnData;
+        private Utils.RoundedButtonToolBar buttonSaveGraph;
+        private Utils.RoundedButtonToolBar buttonRemoveOutliers;
     }
 }

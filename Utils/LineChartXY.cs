@@ -14,7 +14,7 @@ using Color = System.Drawing.Color;
 
 namespace QTLProject.Utils
 {
-    class LineChartXY:UserControl
+    public class LineChartXY:UserControl
     {
         private CartesianChart chart;
         private Axis axisY,axisX;
@@ -28,6 +28,7 @@ namespace QTLProject.Utils
             chart.AxisX.Add(axisX);
             chart.AxisY.Add(axisY);
             this.chart.Series = new SeriesCollection();
+
 
         }
 

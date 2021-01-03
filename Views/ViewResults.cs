@@ -64,7 +64,7 @@ namespace QTLProject
         private void setupCombobox()
         {
 
-            ArrayList tests = new ArrayList() { Constants.DistributionTest, Constants.SingleMarkerTest, Constants.QTLPosition, Constants.QTLsEffect, Constants.TraitDistributionforQTLalleles, Constants.ModelComparison, Constants.Power };
+            ArrayList tests = new ArrayList() { Constants.DistributionTest, Constants.SingleMarkerTest, Constants.QTLPosition};
             this.comboBoxFuncs.Items.AddRange(tests.ToArray());
             this.comboBoxFuncs.SelectedIndex = 0;
         }

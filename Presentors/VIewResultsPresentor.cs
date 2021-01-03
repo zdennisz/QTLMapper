@@ -15,8 +15,8 @@ namespace QTLProject
         #region Fields
         Database db = null;
         HistogramChart histChart;
+        HistogramChart PValhistChart;
         LineChartXY lineChart;
-
         #endregion Fields
 
         #region Constructor
@@ -49,13 +49,12 @@ namespace QTLProject
 
         public void TraitDistributionHistogram(int traitIndex, CartesianChart chart)
         {
-            if (histChart == null)
-            {
-                histChart = new HistogramChart(chart);
-            }
+
+            HistogramChart histChart = new HistogramChart(chart);
+
 
             histChart.AxisXTitle = "Trait Values";
-            histChart.AxisYTitle = "Proportion of trait Values";
+            histChart.AxisYTitle = "Proportion of Individuals";
             histChart.RemvoeColumnSeries();
 
             double max, min;
@@ -70,7 +69,7 @@ namespace QTLProject
                     popSize++;
                 }
             }
-            // double traitVal;
+
             for (int i = 0; i < db.SubData.Count; i++)
             {
 
@@ -120,13 +119,12 @@ namespace QTLProject
 
 
             //get the proportion of the indivivuals
-
             List<string> titles = new List<string>();
-            titles.Add("0-20%");
-            titles.Add("20-40%");
-            titles.Add("40-60%");
-            titles.Add("60-80%");
-            titles.Add("80-100%");
+            titles.Add("0.0-" + (max * 0.2).ToString("0.00"));
+            titles.Add((max * 0.2).ToString("0.00") + "-" + (max * 0.4).ToString("0.00"));
+            titles.Add((max * 0.4).ToString("0.00") + "-" + (max * 0.6).ToString("0.00"));
+            titles.Add((max * 0.6).ToString("0.00") + "-" + (max * 0.8).ToString("0.00"));
+            titles.Add((max * 0.8).ToString("0.00") + "-" + (max).ToString("0.00"));
             List<double> values = new List<double>();
             values.Add(twentyPrecent / popSize);
             values.Add(fortyPrecent / popSize);
@@ -139,10 +137,9 @@ namespace QTLProject
 
         public void MarkerQualityHistogram(CartesianChart chart)
         {
-            if (histChart == null)
-            {
-                histChart = new HistogramChart(chart);
-            }
+
+            HistogramChart histChart = new HistogramChart(chart);
+
             histChart.AxisXTitle = " Missing Data %";
             histChart.AxisYTitle = "Proportion of Markers %";
 
@@ -220,10 +217,9 @@ namespace QTLProject
 
         public void SegregationMarkerHistogram(CartesianChart chart)
         {
-            if (histChart == null)
-            {
-                histChart = new HistogramChart(chart);
-            }
+
+            HistogramChart histChart = new HistogramChart(chart);
+
             histChart.AxisXTitle = " n0/(n1+n0)";
             histChart.AxisYTitle = "Proportion of Markers %";
             int twentyPercent = 0, fortyPercent = 0, sixtyPercent = 0, eightyPercent = 0, oneHundrerdPercent = 0;
@@ -292,13 +288,13 @@ namespace QTLProject
 
         public void PValueHistogram(CartesianChart chart)
         {
-            if (histChart == null)
+            if (PValhistChart == null)
             {
-                histChart = new HistogramChart(chart);
+                PValhistChart = new HistogramChart(chart);
             }
-            histChart.AxisXTitle = "P-Value";
-            histChart.AxisYTitle = "Proportion of Markers %";
-            histChart.RemvoeColumnSeries();
+            PValhistChart.AxisXTitle = "P-Value";
+            PValhistChart.AxisYTitle = "Proportion of Markers %";
+            PValhistChart.RemvoeColumnSeries();
             int twentyPercent = 0;
             int fortyPercent = 0;
             int sixtyPercent = 0;
@@ -369,7 +365,7 @@ namespace QTLProject
             pTitles.Add("40-60%");
             pTitles.Add("60-80%");
             pTitles.Add("80-100%");
-            histChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
+            PValhistChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
         }
 
         public void PValueLogHistogram(CartesianChart chart)
@@ -380,13 +376,14 @@ namespace QTLProject
             int eightyPercent = 0;
             int oneHundrerdPercent = 0;
             double popSize = (db.SubData[0].Genotype.Length) * (db.SubData[0].TraitValue.Length) * 1.0;
-            if (histChart == null)
+            if (PValhistChart == null)
             {
-                histChart = new HistogramChart(chart);
+                PValhistChart = new HistogramChart(chart);
             }
-            histChart.AxisXTitle = "-Log(P-Value)";
-            histChart.AxisYTitle = "-Log(Proportion of Markers %)";
-            histChart.RemvoeColumnSeries();
+            PValhistChart.RemvoeColumnSeries();
+            PValhistChart.AxisXTitle = "-Log(P-Value)";
+            PValhistChart.AxisYTitle = "-Log(Proportion of Markers %)";
+
 
             foreach (double d in pLogValues)
             {
@@ -426,7 +423,7 @@ namespace QTLProject
             pTitles.Add("40-60%");
             pTitles.Add("60-80%");
             pTitles.Add("80-100%");
-            histChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
+            PValhistChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
         }
         public void ChiSquaredLineChart(CartesianChart chart)
         {
@@ -475,16 +472,16 @@ namespace QTLProject
         }
 
 
-        public void ModelComparison(CartesianChart chart)
+        public void QTLPosition(int index, List<LineChartXY> charts)
         {
-            if (lineChart == null)
+
+            foreach(LineChartXY chartXy in charts)
             {
-                lineChart = new LineChartXY(chart);
+                chartXy.AxisXTitle = "Position on chromosome";
+                chartXy.AxisYTitle = "-Log(P-Value)";
             }
             List<double> pLogValues = new List<double>();
-            lineChart.AxisXTitle = "Position on chromosome";
-            lineChart.AxisYTitle = "-Log(P-Value)";
-            int singleTrait = 3;
+           
             double temp;
 
 
@@ -497,22 +494,21 @@ namespace QTLProject
                 {
                     if (this.db.SubData[k].Genotype[0, i] == 0)
                     {
-                        no.Add(this.db.SubData[k].TraitValue[0, singleTrait]);
+                        no.Add(this.db.SubData[k].TraitValue[0, index]);
                     }
                     else if (this.db.SubData[k].Genotype[0, i] == 1)
                     {
-                        n1.Add(this.db.SubData[k].TraitValue[0, singleTrait]);
+                        n1.Add(this.db.SubData[k].TraitValue[0, index]);
                     }
                     //calculate the pvalue for trait and genotype and put in the correct bin
-                    //temp=result of p value 
+
                 }
                 temp = StatisticCalculations.PValueTStatistic(no, n1);
                 pLogValues.Add((-1.0 * Math.Log(temp)));
             }
-            ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
             List<List<ObservablePoint>> listOfSeries = new List<List<ObservablePoint>>();
 
-            for (int i = 0; i < 27; i++)
+            for (int i = 0; i < db.GenomeOrganization.Chromosome.Count; i++)
             {
                 listOfSeries.Add(new List<ObservablePoint>());
             }
@@ -522,18 +518,27 @@ namespace QTLProject
                 //we need to get the x value from the locus that we have saved
                 var chrNum = this.db.SubData[0].Locus[i].Position.Chromosome.Name;
 
-                listOfSeries[Convert.ToInt32(chrNum)-1].Add(new ObservablePoint(this.db.SubData[0].Locus[i].Position.PositionChrGenetic, pLogValues[i]));
+                listOfSeries[Convert.ToInt32(chrNum) - 1].Add(new ObservablePoint(this.db.SubData[0].Locus[i].Position.PositionChrGenetic, pLogValues[i]));
 
             }
-           
-            
-            listOfSeries[0].Sort((x, y) => x.X.CompareTo(y.X));
-            lineChart.AddLineChart(listOfSeries[0], 5.0);
-            //calculate the log of p value of the first genotype and use its coordinates as the x value and y as the log p value
+
+            int counter = 0;
+            int itemOfList = -1;
+            foreach (List<ObservablePoint> l in listOfSeries)
+            {
+                if (counter % 9 == 0)
+                {
+                    itemOfList++;
+                }
+
+                l.Sort((x, y) => x.X.CompareTo(y.X));
+                counter++;
+                charts[itemOfList].AddLineChart(l, 5);
+            }
 
         }
 
-       
+
         #endregion Public Methods
 
     }

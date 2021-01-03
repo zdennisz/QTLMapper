@@ -124,6 +124,18 @@
     <Compile Include="Utils\LineChartXY.cs" />
     <Compile Include="Utils\MyRectangle.cs" />
     <Compile Include="Utils\StatisticCalculations.cs" />
+    <Compile Include="Views\DistributionOfTraitView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DistributionOfTraitView.Designer.cs">
+      <DependentUpon>DistributionOfTraitView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QTLPositionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\QTLPositionView.Designer.cs">
+      <DependentUpon>QTLPositionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShowResults.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +227,12 @@
     <Compile Include="Views\PopInfoTableRow.Designer.cs">
       <DependentUpon>PopInfoTableRow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SingleMarkerTestView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\SingleMarkerTestView.Designer.cs">
+      <DependentUpon>SingleMarkerTestView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TraitTableRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +246,12 @@
       <DependentUpon>ViewResults.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentors\VIewResultsPresentor.cs" />
+    <EmbeddedResource Include="Views\DistributionOfTraitView.resx">
+      <DependentUpon>DistributionOfTraitView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\QTLPositionView.resx">
+      <DependentUpon>QTLPositionView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ShowResults.resx">
       <DependentUpon>ShowResults.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PopInfoTableRow.resx">
       <DependentUpon>PopInfoTableRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SingleMarkerTestView.resx">
+      <DependentUpon>SingleMarkerTestView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TraitTableRow.resx">
       <DependentUpon>TraitTableRow.cs</DependentUpon>

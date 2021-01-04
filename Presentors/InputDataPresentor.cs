@@ -78,7 +78,11 @@ namespace QTLProject
                 reader.ReadLine();
                 while ( (line = reader.ReadLine()) != null){
                     string[] symbols = line.Split('\t');
-                    Dictionary<int,string> row=new Dictionary<int,string>();
+                    if (symbols.Length != 3)
+                    {
+                        return null;
+                    }
+                        Dictionary<int,string> row=new Dictionary<int,string>();
                     for(int i=0;i< symbols.Length;i++)
                     {
                         //symbol is what we to put in to the data structure
@@ -114,8 +118,13 @@ namespace QTLProject
             Cursor.Current = Cursors.WaitCursor;
 
             var data = await  Task.Run(() => parseData(path));
-            
             Cursor.Current = Cursors.Default;
+            if (data == null)
+            {
+                MessageBox.Show("Genetic Map is in incorrect format.\nFormat example :\nMarker name\tChromosome (i)\tGenetic location(cM)", "Format Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+                
             //save the data in a temp holder
 
             List<Dictionary<int, string>> partialData = new List<Dictionary<int, string>>();

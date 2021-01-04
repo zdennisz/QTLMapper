@@ -26,12 +26,14 @@ namespace QTLProject.Views
         {
             InitializeComponent();
             VIewResultsPresentor = new VIewResultsPresentor();
-
-
-            foreach (CartesianChart chart in this.cartesianChartsContainer.Controls.OfType<CartesianChart>())
+            for(int i = 0; i < 9; i++)
             {
-                charts.Add(new LineChartXY(chart));
+                CartesianChart cartesianChart = new CartesianChart();
+                cartesianChart.Size = new Size(670, 200);
+                this.flowLayoutPanel1.Controls.Add(cartesianChart);
+                charts.Add(new LineChartXY(cartesianChart));
             }
+
             foreach (RoundedButtonToolBar btn in this.buttonPanelContainer.Controls.OfType<RoundedButtonToolBar>())
             {
                 btn.BackColor = ColorConstants.toolbarButtonsColor;

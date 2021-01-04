@@ -507,8 +507,7 @@ namespace QTLProject
                 chartXy.AxisXTitle = "Position on chromosome";
                 chartXy.AxisYTitle = "-Log(P-Value)";
             }
-            List<double> pLogValues = new List<double>();
-
+ 
             double temp;
 
 
@@ -553,7 +552,7 @@ namespace QTLProject
             int itemOfList = -1;
             foreach (List<ObservablePoint> l in listOfSeries)
             {
-                if (counter % 9 == 0)
+                if (counter % 3 == 0)
                 {
                     itemOfList++;
                 }

@@ -31,36 +31,19 @@ namespace QTLProject.Views
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QTLPositionView));
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonPanelContainer = new System.Windows.Forms.Panel();
             this.labelColAmount = new System.Windows.Forms.Label();
             this.numericUpDownColAmount = new System.Windows.Forms.NumericUpDown();
             this.labelChartType = new System.Windows.Forms.Label();
             this.selectionCombobox = new System.Windows.Forms.ComboBox();
-            this.cartesianChartsContainer = new System.Windows.Forms.Panel();
-            this.cartesianChart3 = new LiveCharts.WinForms.CartesianChart();
-            this.cartesianChart2 = new LiveCharts.WinForms.CartesianChart();
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.notifyIconQTLPosition = new System.Windows.Forms.NotifyIcon(this.components);
             this.buttonPreformLogOnData = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonSaveGraph = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonRemoveOutliers = new QTLProject.Utils.RoundedButtonToolBar();
-            this.notifyIconQTLPosition = new System.Windows.Forms.NotifyIcon(this.components);
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonPanelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).BeginInit();
-            this.cartesianChartsContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.buttonPanelContainer);
-            this.flowLayoutPanel1.Controls.Add(this.cartesianChartsContainer);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(704, 561);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonPanelContainer
             // 
@@ -118,39 +101,11 @@ namespace QTLProject.Views
             this.selectionCombobox.Size = new System.Drawing.Size(121, 21);
             this.selectionCombobox.TabIndex = 13;
             // 
-            // cartesianChartsContainer
+            // notifyIconQTLPosition
             // 
-            this.cartesianChartsContainer.Controls.Add(this.cartesianChart3);
-            this.cartesianChartsContainer.Controls.Add(this.cartesianChart2);
-            this.cartesianChartsContainer.Controls.Add(this.cartesianChart1);
-            this.cartesianChartsContainer.Location = new System.Drawing.Point(3, 109);
-            this.cartesianChartsContainer.Name = "cartesianChartsContainer";
-            this.cartesianChartsContainer.Size = new System.Drawing.Size(698, 427);
-            this.cartesianChartsContainer.TabIndex = 1;
-            // 
-            // cartesianChart3
-            // 
-            this.cartesianChart3.Location = new System.Drawing.Point(3, 296);
-            this.cartesianChart3.Name = "cartesianChart3";
-            this.cartesianChart3.Size = new System.Drawing.Size(692, 128);
-            this.cartesianChart3.TabIndex = 2;
-            this.cartesianChart3.Text = "cartesianChart3";
-            // 
-            // cartesianChart2
-            // 
-            this.cartesianChart2.Location = new System.Drawing.Point(3, 154);
-            this.cartesianChart2.Name = "cartesianChart2";
-            this.cartesianChart2.Size = new System.Drawing.Size(692, 136);
-            this.cartesianChart2.TabIndex = 1;
-            this.cartesianChart2.Text = "cartesianChart2";
-            // 
-            // cartesianChart1
-            // 
-            this.cartesianChart1.Location = new System.Drawing.Point(3, 3);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(692, 145);
-            this.cartesianChart1.TabIndex = 0;
-            this.cartesianChart1.Text = "cartesianChart1";
+            this.notifyIconQTLPosition.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconQTLPosition.Icon")));
+            this.notifyIconQTLPosition.Text = "notifyIcon1";
+            this.notifyIconQTLPosition.Visible = true;
             // 
             // buttonPreformLogOnData
             // 
@@ -190,43 +145,41 @@ namespace QTLProject.Views
             this.buttonRemoveOutliers.UseVisualStyleBackColor = true;
             this.buttonRemoveOutliers.Click += new System.EventHandler(this.buttonRemoveOutliers_Click);
             // 
-            // notifyIconQTLPosition
+            // flowLayoutPanel1
             // 
-            this.notifyIconQTLPosition.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconQTLPosition.Icon")));
-            this.notifyIconQTLPosition.Text = "notifyIcon1";
-            this.notifyIconQTLPosition.Visible = true;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 109);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(698, 449);
+            this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
             // QTLPositionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.buttonPanelContainer);
             this.Name = "QTLPositionView";
             this.Size = new System.Drawing.Size(704, 561);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.buttonPanelContainer.ResumeLayout(false);
             this.buttonPanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).EndInit();
-            this.cartesianChartsContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel buttonPanelContainer;
-        private System.Windows.Forms.Panel cartesianChartsContainer;
         private System.Windows.Forms.Label labelChartType;
         private System.Windows.Forms.ComboBox selectionCombobox;
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
-        private LiveCharts.WinForms.CartesianChart cartesianChart3;
-        private LiveCharts.WinForms.CartesianChart cartesianChart2;
         private System.Windows.Forms.Label labelColAmount;
         private System.Windows.Forms.NumericUpDown numericUpDownColAmount;
         private Utils.RoundedButtonToolBar buttonPreformLogOnData;
         private Utils.RoundedButtonToolBar buttonSaveGraph;
         private Utils.RoundedButtonToolBar buttonRemoveOutliers;
         private System.Windows.Forms.NotifyIcon notifyIconQTLPosition;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

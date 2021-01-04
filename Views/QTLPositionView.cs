@@ -121,7 +121,7 @@ namespace QTLProject.Views
         private void showToastMessage(string message = "File Saved at selected location.")
         {
             notifyIconQTLPosition.Visible = true;
-            notifyIconQTLPosition.BalloonTipText = "File Saved at selected location.";
+            notifyIconQTLPosition.BalloonTipText = message;
             notifyIconQTLPosition.ShowBalloonTip(1000);
         }
     }

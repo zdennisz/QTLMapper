@@ -14,10 +14,9 @@ namespace QTLProject
     {
         #region Fields
         Database db = null;
-        HistogramChart histChart;
+        HistogramChart histChartChi;
         HistogramChart PValhistChart;
         HistogramChart traitHistogramDist;
-        LineChartXY lineChart;
         #endregion Fields
 
         #region Constructor
@@ -37,16 +36,6 @@ namespace QTLProject
             return (List<Trait>)db.SubData[0].Trait;
 
         }
-
-
-
-
-        public void GenereateQTLEffect()
-        {
-
-        }
-
-
 
         public void TraitDistributionHistogram(int traitIndex, CartesianChart chart)
         {
@@ -427,27 +416,32 @@ namespace QTLProject
             pTitles.Add("80-100%");
             PValhistChart.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
         }
-        public void ChiSquaredLineChart(CartesianChart chart)
+        public void ChiSquaredHistogramChart(CartesianChart chart)
         {
-            if (lineChart == null)
+            if (histChartChi == null)
             {
-                lineChart = new LineChartXY(chart);
+                histChartChi = new HistogramChart(chart);
             }
 
-            lineChart.AxisXTitle = "Chi^2 statistic";
-            lineChart.AxisYTitle = "Proportion of markers";
+            histChartChi.AxisXTitle = "Chi^2 statistic";
+            histChartChi.AxisYTitle = "Proportion of markers";
             double chiVal = 0;
-            double chiValOverall = 0;
-            double temp, counterN0 = 0, counterN1 = 0;
+            double chiExpected = 0;
+            double counterN0 = 0, counterN1 = 0;
+            int twentyPercent = 0;
+            int fortyPercent = 0;
+            int sixtyPercent = 0;
+            int eightyPercent = 0;
+            int oneHundrerdPercent = 0;
+            double popSize = this.db.SubData[0].Genotype.Length * 1.0;
             // this is our 100%
-            List<ObservablePoint> list = new List<ObservablePoint>();
-            double genotypeSize = db.SubData[0].Genotype.Length;
             //we iterate over all the population
             for (int i = 0; i < this.db.SubData[0].Genotype.Length; i++)
             {
                 counterN0 = 0;
                 counterN1 = 0;
                 chiVal = 0;
+                chiExpected = 0;
                 //we iterate over the genotype of each person
                 for (int j = 0; j < this.db.SubData.Count; j++)
                 {
@@ -462,28 +456,59 @@ namespace QTLProject
 
                 }
                 //we finished going over the persons genotype divide by the 100 percent and add to the relevant bucket
+                chiExpected = (counterN0 + counterN1) / 2;
+                chiVal = (Math.Pow((counterN0 - chiExpected), 2.0) + Math.Pow((counterN1 - chiExpected), 2.0)) / chiExpected;
 
-                temp = counterN0 / (counterN1 + counterN0);
-                chiVal = (Math.Pow(temp - 0.5, 2.0) / 0.5);
-                chiValOverall += chiVal;
-                //list.Add(new ObservablePoint(i*1.0,chiVal));
+                if (chiVal >= 0.0 && chiVal < 0.2)
+                {
+                    twentyPercent++;
+                }
+                else if (chiVal >= 0.2 && chiVal < 0.4)
+                {
+                    fortyPercent++;
+                }
+                else if (chiVal >= 0.4 && chiVal < 0.6)
+                {
+                    sixtyPercent++;
+                }
+                else if (chiVal >= 0.6 && chiVal < 0.8)
+                {
+                    eightyPercent++;
+                }
+                else if (chiVal >= 0.8 && chiVal <= 1.0)
+                {
+                    oneHundrerdPercent++;
+                }
+
 
             }
 
-            // lineChart.AddLineChart(list, 5.0);
+            List<double> pValues = new List<double>();
+            pValues.Add((twentyPercent / popSize));
+            pValues.Add((fortyPercent / popSize));
+            pValues.Add((sixtyPercent / popSize));
+            pValues.Add((eightyPercent / popSize));
+            pValues.Add((oneHundrerdPercent / popSize));
+            List<string> pTitles = new List<string>();
+            pTitles.Add("0-20%");
+            pTitles.Add("20-40%");
+            pTitles.Add("40-60%");
+            pTitles.Add("60-80%");
+            pTitles.Add("80-100%");
+            histChartChi.AddColumnSeries(pTitles, pValues, ColorConstants.highliteColor);
         }
 
 
         public void QTLPosition(int index, List<LineChartXY> charts)
         {
 
-            foreach(LineChartXY chartXy in charts)
+            foreach (LineChartXY chartXy in charts)
             {
                 chartXy.AxisXTitle = "Position on chromosome";
                 chartXy.AxisYTitle = "-Log(P-Value)";
             }
             List<double> pLogValues = new List<double>();
-           
+
             double temp;
 
 

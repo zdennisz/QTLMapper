@@ -20,15 +20,15 @@ namespace QTLProject.Views
     {
 
         VIewResultsPresentor VIewResultsPresentor;
-         List<LineChartXY> charts = new List<LineChartXY>();
+        List<LineChartXY> charts = new List<LineChartXY>();
         int amountOfColumns;
         public QTLPositionView()
         {
             InitializeComponent();
             VIewResultsPresentor = new VIewResultsPresentor();
-            
-            
-            foreach(CartesianChart chart in this.cartesianChartsContainer.Controls.OfType<CartesianChart>())
+
+
+            foreach (CartesianChart chart in this.cartesianChartsContainer.Controls.OfType<CartesianChart>())
             {
                 charts.Add(new LineChartXY(chart));
             }
@@ -40,7 +40,7 @@ namespace QTLProject.Views
             setupComoboxforTraitDist();
             this.labelChartType.Text = Constants.QTLPosition;
             this.numericUpDownColAmount.ValueChanged += NumericUpDownColAmount_ValueChanged;
-            
+
 
         }
 
@@ -79,6 +79,7 @@ namespace QTLProject.Views
         private void buttonRemoveOutliers_Click(object sender, EventArgs e)
         {
             //Rosen algo
+            showToastMessage("Preform Rosen Algorithm on the data");
         }
 
         private void buttonSaveGraph_Click(object sender, EventArgs e)
@@ -100,7 +101,7 @@ namespace QTLProject.Views
             }
         }
 
-        private void saveGraphToFile( string pathWithoutExt, string fileName, string extension)
+        private void saveGraphToFile(string pathWithoutExt, string fileName, string extension)
         {
             var chartsContainer = this.buttonPanelContainer.Controls;
 
@@ -113,7 +114,15 @@ namespace QTLProject.Views
                 chart.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 bmp.Save(pathWithoutExt, ImageFormat.Png);
             }
+            showToastMessage();
 
+        }
+
+        private void showToastMessage(string message = "File Saved at selected location.")
+        {
+            notifyIconQTLPosition.Visible = true;
+            notifyIconQTLPosition.BalloonTipText = "File Saved at selected location.";
+            notifyIconQTLPosition.ShowBalloonTip(1000);
         }
     }
 }

@@ -22,36 +22,40 @@ namespace QTLProject.Views
         CartesianChart PValueChart;
         CartesianChart markerQualityHistogram;
         CartesianChart chiSquaredChart;
-        int amountOfColumns , tabIndex=0;
+        int amountOfColumns, tabIndex = 0;
+        
         public SingleMarkerTestView()
         {
             InitializeComponent();
             viewResultsPresentor = new VIewResultsPresentor();
-            foreach(RoundedButtonToolBar btn in this.buttonPanelContainer.Controls.OfType<RoundedButtonToolBar>())
+            foreach (RoundedButtonToolBar btn in this.buttonPanelContainer.Controls.OfType<RoundedButtonToolBar>())
             {
                 btn.BackColor = ColorConstants.toolbarButtonsColor;
                 btn.FlatAppearance.BorderColor = ColorConstants.toolbarButtonsColor;
             }
-          
+
             this.tabControl1.SelectedIndexChanged += TabControl1_SelectedIndexChanged;
+            this.numericUpDownColAmount.ValueChanged += NumericUpDownColAmount_ValueChanged;
+
             PValueChart = this.pvalChart;
             segregationHistogram = this.segregationChart;
             markerQualityHistogram = this.markerQualityChart;
-            chiSquaredChart= this.chiChart;
-            this.numericUpDownColAmount.ValueChanged += NumericUpDownColAmount_ValueChanged;
+            chiSquaredChart = this.chiChart;
+
+
             setupComoboxForPVal();
             viewResultsPresentor.MarkerQualityHistogram(this.markerQualityHistogram);
             viewResultsPresentor.SegregationMarkerHistogram(this.segregationHistogram);
+            viewResultsPresentor.ChiSquaredHistogramChart(this.chiSquaredChart);
             this.labelChartType.Text = Constants.SingleMarkerTest;
-            //viewResultsPresentor.ChiSquaredLineChart(this.chiSquaredChart);
         }
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-             tabIndex = (sender as TabControl).SelectedIndex;
+            tabIndex = (sender as TabControl).SelectedIndex;
         }
 
-    
+
 
         private void NumericUpDownColAmount_ValueChanged(object sender, EventArgs e)
         {
@@ -82,11 +86,13 @@ namespace QTLProject.Views
         private void buttonRemoveOutliers_Click(object sender, EventArgs e)
         {
             //Preform Rosen algo
-            
+            showToastMessage("Preform Rosen Algorithm on the data");
+
         }
 
         private void buttonSaveGraph_Click(object sender, EventArgs e)
         {
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
             saveFileDialog.Filter = "png files (*.png)|*.png";
@@ -100,26 +106,36 @@ namespace QTLProject.Views
                 string fileName = Path.GetFileNameWithoutExtension(path);
                 string extension = Path.GetExtension(path);
                 var pathWithoutExt = Path.GetDirectoryName(path);
-                saveGraphToFile(tabIndex,pathWithoutExt, fileName, extension);
+                saveGraphToFile(tabIndex, pathWithoutExt, fileName, extension);
             }
-           
+
 
         }
 
-        private void saveGraphToFile(int tabIndex,string pathWithoutExt,string fileName,string extension)
+        private void saveGraphToFile(int tabIndex, string pathWithoutExt, string fileName, string extension)
         {
             var tab = this.tabControl1.Controls[tabIndex];
-            
+
             foreach (CartesianChart chart in tab.Controls.OfType<CartesianChart>())
             {
                 string formatedFileName = fileName + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
                 formatedFileName += extension;
-                var pathToSave= pathWithoutExt + "//" + formatedFileName;
+                var pathToSave = pathWithoutExt + "//" + formatedFileName;
                 Bitmap bmp = new Bitmap(chart.Width, chart.Height);
                 chart.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 bmp.Save(pathToSave, ImageFormat.Png);
             }
+            showToastMessage();
 
+
+        }
+
+
+        private void showToastMessage(string message = "File Saved at selected location.")
+        {
+            notifyIconSingleMarkerTest.Visible = true;
+            notifyIconSingleMarkerTest.BalloonTipText = "File Saved at selected location.";
+            notifyIconSingleMarkerTest.ShowBalloonTip(1000);
         }
     }
 }

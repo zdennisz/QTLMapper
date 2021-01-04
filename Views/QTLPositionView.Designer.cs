@@ -29,6 +29,8 @@ namespace QTLProject.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QTLPositionView));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonPanelContainer = new System.Windows.Forms.Panel();
             this.labelColAmount = new System.Windows.Forms.Label();
@@ -42,6 +44,7 @@ namespace QTLProject.Views
             this.buttonPreformLogOnData = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonSaveGraph = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonRemoveOutliers = new QTLProject.Utils.RoundedButtonToolBar();
+            this.notifyIconQTLPosition = new System.Windows.Forms.NotifyIcon(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.buttonPanelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).BeginInit();
@@ -187,6 +190,12 @@ namespace QTLProject.Views
             this.buttonRemoveOutliers.UseVisualStyleBackColor = true;
             this.buttonRemoveOutliers.Click += new System.EventHandler(this.buttonRemoveOutliers_Click);
             // 
+            // notifyIconQTLPosition
+            // 
+            this.notifyIconQTLPosition.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconQTLPosition.Icon")));
+            this.notifyIconQTLPosition.Text = "notifyIcon1";
+            this.notifyIconQTLPosition.Visible = true;
+            // 
             // QTLPositionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,5 +227,6 @@ namespace QTLProject.Views
         private Utils.RoundedButtonToolBar buttonPreformLogOnData;
         private Utils.RoundedButtonToolBar buttonSaveGraph;
         private Utils.RoundedButtonToolBar buttonRemoveOutliers;
+        private System.Windows.Forms.NotifyIcon notifyIconQTLPosition;
     }
 }

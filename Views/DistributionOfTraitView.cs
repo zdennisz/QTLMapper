@@ -73,6 +73,7 @@ namespace QTLProject.Views
         private void buttonRemoveOutliers_Click(object sender, EventArgs e)
         {
             //ROsen algo
+            showToastMessage("Preform Rosen Algorithm on the data");
         }
 
         private void buttonSaveGraph_Click(object sender, EventArgs e)
@@ -90,8 +91,15 @@ namespace QTLProject.Views
                 Bitmap bmp = new Bitmap(chart.Width, chart.Height);
                 chart.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 bmp.Save(path, ImageFormat.Png);
+                showToastMessage();
             }
 
+        }
+        private void showToastMessage(string message = "File Saved at selected location.")
+        {
+            notifyIconDistributionOfTrait.Visible = true;
+            notifyIconDistributionOfTrait.BalloonTipText = message;
+            notifyIconDistributionOfTrait.ShowBalloonTip(1000);
         }
     }
 }

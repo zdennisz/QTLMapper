@@ -29,6 +29,8 @@ namespace QTLProject.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DistributionOfTraitView));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonPanelContainer = new System.Windows.Forms.Panel();
             this.labelColAmount = new System.Windows.Forms.Label();
@@ -40,6 +42,7 @@ namespace QTLProject.Views
             this.selectionCombobox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.notifyIconDistributionOfTrait = new System.Windows.Forms.NotifyIcon(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.buttonPanelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).BeginInit();
@@ -167,6 +170,12 @@ namespace QTLProject.Views
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             // 
+            // notifyIconDistributionOfTrait
+            // 
+            this.notifyIconDistributionOfTrait.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconDistributionOfTrait.Icon")));
+            this.notifyIconDistributionOfTrait.Text = "notifyIcon1";
+            this.notifyIconDistributionOfTrait.Visible = true;
+            // 
             // DistributionOfTraitView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,5 +205,6 @@ namespace QTLProject.Views
         private Utils.RoundedButtonToolBar buttonPreformLogOnData;
         private Utils.RoundedButtonToolBar buttonSaveGraph;
         private Utils.RoundedButtonToolBar buttonRemoveOutliers;
+        private System.Windows.Forms.NotifyIcon notifyIconDistributionOfTrait;
     }
 }

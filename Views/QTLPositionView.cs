@@ -30,6 +30,7 @@ namespace QTLProject.Views
             {
                 CartesianChart cartesianChart = new CartesianChart();
                 cartesianChart.Size = new Size(670, 200);
+                cartesianChart.Hoverable = false;
                 this.flowLayoutPanel1.Controls.Add(cartesianChart);
                 charts.Add(new LineChartXY(cartesianChart));
             }

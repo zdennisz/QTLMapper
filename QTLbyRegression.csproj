@@ -239,11 +239,11 @@
     <Compile Include="Views\TraitTableRow.Designer.cs">
       <DependentUpon>TraitTableRow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewResults.cs">
+    <Compile Include="Views\SelectTestType.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\ViewResults.Designer.cs">
-      <DependentUpon>ViewResults.cs</DependentUpon>
+    <Compile Include="Views\SelectTestType.Designer.cs">
+      <DependentUpon>SelectTestType.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentors\VIewResultsPresentor.cs" />
     <EmbeddedResource Include="Views\DistributionOfTraitView.resx">
@@ -296,8 +296,8 @@
     <EmbeddedResource Include="Views\TraitTableRow.resx">
       <DependentUpon>TraitTableRow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ViewResults.resx">
-      <DependentUpon>ViewResults.cs</DependentUpon>
+    <EmbeddedResource Include="Views\SelectTestType.resx">
+      <DependentUpon>SelectTestType.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

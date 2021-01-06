@@ -36,6 +36,10 @@ namespace QTLProject
             return (List<Trait>)db.SubData[0].Trait;
 
         }
+        public int GetGenomOrganismChromosomeSize()
+        {
+            return db.GenomeOrganization.Chromosome.Count;
+        }
 
         public void TraitDistributionHistogram(int traitIndex, CartesianChart chart)
         {
@@ -499,68 +503,79 @@ namespace QTLProject
         }
 
 
-        public void QTLPosition(int index, List<LineChartXY> charts)
+        public void QTLPosition(int amountOfTraits, List<LineChartXY> charts, int amountOfChromosomes)
         {
+            Dictionary<int, List<List<ObservablePoint>>> chromosomes = new Dictionary<int, List<List<ObservablePoint>>>();
+            for (int i = 0; i < amountOfChromosomes; i++)
+            {
+                //each list is a chromosome
+                List<List<ObservablePoint>> p = new List<List<ObservablePoint>>();
+                p.Add(new List<ObservablePoint>());
+                chromosomes.Add(i, p);
 
+            }
             foreach (LineChartXY chartXy in charts)
             {
                 chartXy.AxisXTitle = "Position on chromosome";
                 chartXy.AxisYTitle = "-Log(P-Value)";
+                
             }
- 
-            double temp;
 
-
-            for (int i = 0; i < this.db.SubData[0].Genotype.Length; i++)
+            double temp, tempLogVal=0.0;
+            int chrNum=0;
+            //we calcualte for the g traits the qtl position
+            for (int g = 0; g < amountOfTraits; g++)
             {
 
-                List<double> no = new List<double>();
-                List<double> n1 = new List<double>();
-                for (int k = 0; k < this.db.SubData.Count; k++)
+                //here we calculate to all of the markers its p value according to a a few traits
+                for (int i = 0; i < this.db.SubData[0].Genotype.Length; i++)
                 {
-                    if (this.db.SubData[k].Genotype[0, i] == 0)
-                    {
-                        no.Add(this.db.SubData[k].TraitValue[0, index]);
-                    }
-                    else if (this.db.SubData[k].Genotype[0, i] == 1)
-                    {
-                        n1.Add(this.db.SubData[k].TraitValue[0, index]);
-                    }
-                    //calculate the pvalue for trait and genotype and put in the correct bin
 
+                    List<double> no = new List<double>();
+                    List<double> n1 = new List<double>();
+                    for (int k = 0; k < this.db.SubData.Count; k++)
+                    {
+                        if (this.db.SubData[k].Genotype[0, i] == 0)
+                        {
+                            no.Add(this.db.SubData[k].TraitValue[0, g]);
+                        }
+                        else if (this.db.SubData[k].Genotype[0, i] == 1)
+                        {
+                            n1.Add(this.db.SubData[k].TraitValue[0, g]);
+                        }
+                        //calculate the pvalue for trait and genotype and put in the correct bin
+
+                    }
+                    temp = StatisticCalculations.PValueTStatistic(no, n1);
+                    tempLogVal=((-1.0 * Math.Log(temp)));
+                    chrNum = Convert.ToInt32(this.db.SubData[0].Locus[i].Position.Chromosome.Name);
+                    if (chrNum <= amountOfChromosomes)
+                    {
+                        chrNum--;
+                        int seriresNum = chromosomes[chrNum].Count-1;
+                        chromosomes[chrNum][seriresNum].Add(new ObservablePoint(this.db.SubData[0].Locus[i].Position.PositionChrGenetic, tempLogVal));
+                    }
+                   
                 }
-                temp = StatisticCalculations.PValueTStatistic(no, n1);
-                pLogValues.Add((-1.0 * Math.Log(temp)));
-            }
-            List<List<ObservablePoint>> listOfSeries = new List<List<ObservablePoint>>();
-
-            for (int i = 0; i < db.GenomeOrganization.Chromosome.Count; i++)
-            {
-                listOfSeries.Add(new List<ObservablePoint>());
-            }
-
-            for (int i = 0; i < pLogValues.Count; i++)
-            {
-                //we need to get the x value from the locus that we have saved
-                var chrNum = this.db.SubData[0].Locus[i].Position.Chromosome.Name;
-
-                listOfSeries[Convert.ToInt32(chrNum) - 1].Add(new ObservablePoint(this.db.SubData[0].Locus[i].Position.PositionChrGenetic, pLogValues[i]));
+                foreach(KeyValuePair <int,List<List<ObservablePoint>>> entry in chromosomes)
+                {
+                    entry.Value.Add(new List<ObservablePoint>());
+                } 
 
             }
-
             int counter = 0;
-            int itemOfList = -1;
-            foreach (List<ObservablePoint> l in listOfSeries)
+            foreach (KeyValuePair<int,List<List<ObservablePoint>>> entry in chromosomes)
             {
-                if (counter % 3 == 0)
+                foreach(List<ObservablePoint> l in entry.Value)
                 {
-                    itemOfList++;
+                    l.Sort((x, y) => x.X.CompareTo(y.X));
+                    charts[counter].AddLineChart(l, 5);
                 }
 
-                l.Sort((x, y) => x.X.CompareTo(y.X));
                 counter++;
-                charts[itemOfList].AddLineChart(l, 5);
             }
+
+
 
         }
 

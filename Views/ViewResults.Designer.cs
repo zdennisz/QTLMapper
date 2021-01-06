@@ -32,8 +32,6 @@ namespace QTLProject
         {
             this.comboBoxFuncs = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ToggleButtonInDepthReport = new QTLProject.Utils.CustomToggleButton();
             this.btnShowResutls = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
             this.SuspendLayout();
@@ -58,32 +56,6 @@ namespace QTLProject
             this.label1.Size = new System.Drawing.Size(113, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Calculation Type";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(324, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 16);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "In Depth Report";
-            // 
-            // ToggleButtonInDepthReport
-            // 
-            this.ToggleButtonInDepthReport.BorderColor = System.Drawing.Color.LightGray;
-            this.ToggleButtonInDepthReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ToggleButtonInDepthReport.ForeColor = System.Drawing.Color.White;
-            this.ToggleButtonInDepthReport.IsOn = false;
-            this.ToggleButtonInDepthReport.Location = new System.Drawing.Point(346, 73);
-            this.ToggleButtonInDepthReport.Name = "ToggleButtonInDepthReport";
-            this.ToggleButtonInDepthReport.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.ToggleButtonInDepthReport.OffText = "";
-            this.ToggleButtonInDepthReport.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(229)))));
-            this.ToggleButtonInDepthReport.OnText = "";
-            this.ToggleButtonInDepthReport.Size = new System.Drawing.Size(60, 35);
-            this.ToggleButtonInDepthReport.TabIndex = 28;
-            this.ToggleButtonInDepthReport.TextEnabled = true;
             // 
             // btnShowResutls
             // 
@@ -113,8 +85,6 @@ namespace QTLProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ToggleButtonInDepthReport);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxFuncs);
             this.Controls.Add(this.btnShowResutls);
@@ -132,7 +102,5 @@ namespace QTLProject
         private RoundedButtonToolBar btnShowResutls;
         private System.Windows.Forms.ComboBox comboBoxFuncs;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private CustomToggleButton ToggleButtonInDepthReport;
     }
 }

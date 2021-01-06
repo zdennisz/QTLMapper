@@ -21,12 +21,13 @@ namespace QTLProject.Views
 
         VIewResultsPresentor VIewResultsPresentor;
         List<LineChartXY> charts = new List<LineChartXY>();
-        int amountOfColumns;
+        int amountOfChromosomes=4;
         public QTLPositionView()
         {
             InitializeComponent();
             VIewResultsPresentor = new VIewResultsPresentor();
-            for(int i = 0; i < 9; i++)
+            this.numericUpDownColAmount.ValueChanged += NumericUpDownColAmount_ValueChanged;
+            for (int i = 0; i < amountOfChromosomes; i++)
             {
                 CartesianChart cartesianChart = new CartesianChart();
                 cartesianChart.Size = new Size(670, 200);
@@ -42,14 +43,38 @@ namespace QTLProject.Views
             }
             setupComoboxforTraitDist();
             this.labelChartType.Text = Constants.QTLPosition;
-            this.numericUpDownColAmount.ValueChanged += NumericUpDownColAmount_ValueChanged;
+            
 
 
         }
 
         private void NumericUpDownColAmount_ValueChanged(object sender, EventArgs e)
         {
-            amountOfColumns = Convert.ToInt32((sender as NumericUpDown).Value);
+            int temp= Convert.ToInt32((sender as NumericUpDown).Value);
+            int maxAmount = this.VIewResultsPresentor.GetGenomOrganismChromosomeSize();
+            if (temp> maxAmount)
+            {
+                MessageBox.Show("The current limit to the chromosome amount is " + maxAmount, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.numericUpDownColAmount.Value = 27;
+            }
+            else
+            {
+                amountOfChromosomes = temp;
+                recalculateGraphs(amountOfChromosomes);
+            }
+        }
+
+        private void recalculateGraphs(int amountOfgrpahs)
+        {
+            //TODO iterate over the grpahs and add or delete controls according to what value was sent
+            if(charts.Count< amountOfgrpahs)
+            {
+                //add graphs
+            }
+            else
+            {
+                //remove graphs
+            }
         }
 
         private void setupComoboxforTraitDist()
@@ -76,7 +101,31 @@ namespace QTLProject.Views
                     break;
                 }
             }
-            VIewResultsPresentor.QTLPosition(indexFound, this.charts);
+            //We find the index of the trait and calculate the data up to that trait
+            //example we pick 1 trait we draw up to the first trait only
+            //we pick 2nd trait we calculate the results for 1 trait and the second
+            //we pick 3rd trait we calcualte the results for 1 trait ,2nd trait and 3rd trait...
+            indexFound++;
+            if (indexFound>=3 )
+            {
+                if(MessageBox.Show("Picking traits higher then the first 2 may cause performace issues and slow downs.", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    VIewResultsPresentor.QTLPosition(indexFound, this.charts, amountOfChromosomes);
+                }
+                else
+                {
+                    VIewResultsPresentor.QTLPosition(1, this.charts, amountOfChromosomes);
+                    indexFound--;
+                    selectionCombobox.SelectedIndex = indexFound;
+                }
+
+            }
+            else
+            {
+                VIewResultsPresentor.QTLPosition(indexFound, this.charts, amountOfChromosomes);
+            }
+            
+
         }
 
         private void buttonRemoveOutliers_Click(object sender, EventArgs e)

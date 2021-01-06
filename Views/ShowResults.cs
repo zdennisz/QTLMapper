@@ -24,12 +24,11 @@ namespace QTLProject
 {
     public partial class ShowResults : Form
     {
-        bool isInDepthReport;
+        
         string typeOfGraph;
-        public ShowResults(bool isInDepthReport, string typeOfGraph)
+        public ShowResults( string typeOfGraph)
         {
             InitializeComponent();
-            this.isInDepthReport = isInDepthReport;
             this.typeOfGraph = typeOfGraph;
             setupUI();
 

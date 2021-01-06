@@ -40,7 +40,6 @@ namespace QTLProject.Utils
             values.AddRange(list);
             lineSeries.Values = values;
             lineSeries.PointGeometrySize = pointSize;
-            lineSeries.PointGeometry = null;
             this.chart.Series.Add(lineSeries);
             this.chart.AxisX[0].Foreground = ConvertColor(Color.Black);
             this.chart.AxisY[0].Foreground = ConvertColor(Color.Black);

@@ -34,12 +34,12 @@ namespace QTLProject.Views
             this.buttonPanelContainer = new System.Windows.Forms.Panel();
             this.labelColAmount = new System.Windows.Forms.Label();
             this.numericUpDownColAmount = new System.Windows.Forms.NumericUpDown();
-            this.labelChartType = new System.Windows.Forms.Label();
-            this.selectionCombobox = new System.Windows.Forms.ComboBox();
-            this.notifyIconQTLPosition = new System.Windows.Forms.NotifyIcon(this.components);
             this.buttonPreformLogOnData = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonSaveGraph = new QTLProject.Utils.RoundedButtonToolBar();
             this.buttonRemoveOutliers = new QTLProject.Utils.RoundedButtonToolBar();
+            this.labelChartType = new System.Windows.Forms.Label();
+            this.selectionCombobox = new System.Windows.Forms.ComboBox();
+            this.notifyIconQTLPosition = new System.Windows.Forms.NotifyIcon(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonPanelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColAmount)).BeginInit();
@@ -65,47 +65,22 @@ namespace QTLProject.Views
             this.labelColAmount.Font = new System.Drawing.Font("Arial", 10F);
             this.labelColAmount.Location = new System.Drawing.Point(296, 54);
             this.labelColAmount.Name = "labelColAmount";
-            this.labelColAmount.Size = new System.Drawing.Size(134, 16);
+            this.labelColAmount.Size = new System.Drawing.Size(170, 16);
             this.labelColAmount.TabIndex = 19;
-            this.labelColAmount.Text = "Amount Of Columns";
+            this.labelColAmount.Text = "Amount Of Chromosomes";
             // 
             // numericUpDownColAmount
             // 
-            this.numericUpDownColAmount.Location = new System.Drawing.Point(431, 52);
+            this.numericUpDownColAmount.Location = new System.Drawing.Point(472, 51);
             this.numericUpDownColAmount.Name = "numericUpDownColAmount";
             this.numericUpDownColAmount.Size = new System.Drawing.Size(128, 20);
             this.numericUpDownColAmount.TabIndex = 18;
             this.numericUpDownColAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownColAmount.Value = new decimal(new int[] {
-            5,
+            4,
             0,
             0,
             0});
-            // 
-            // labelChartType
-            // 
-            this.labelChartType.AutoSize = true;
-            this.labelChartType.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelChartType.Location = new System.Drawing.Point(20, 23);
-            this.labelChartType.Name = "labelChartType";
-            this.labelChartType.Size = new System.Drawing.Size(46, 16);
-            this.labelChartType.TabIndex = 14;
-            this.labelChartType.Text = "label2";
-            // 
-            // selectionCombobox
-            // 
-            this.selectionCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectionCombobox.FormattingEnabled = true;
-            this.selectionCombobox.Location = new System.Drawing.Point(23, 42);
-            this.selectionCombobox.Name = "selectionCombobox";
-            this.selectionCombobox.Size = new System.Drawing.Size(121, 21);
-            this.selectionCombobox.TabIndex = 13;
-            // 
-            // notifyIconQTLPosition
-            // 
-            this.notifyIconQTLPosition.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconQTLPosition.Icon")));
-            this.notifyIconQTLPosition.Text = "notifyIcon1";
-            this.notifyIconQTLPosition.Visible = true;
             // 
             // buttonPreformLogOnData
             // 
@@ -144,6 +119,31 @@ namespace QTLProject.Views
             this.buttonRemoveOutliers.Text = "Remove Outliers";
             this.buttonRemoveOutliers.UseVisualStyleBackColor = true;
             this.buttonRemoveOutliers.Click += new System.EventHandler(this.buttonRemoveOutliers_Click);
+            // 
+            // labelChartType
+            // 
+            this.labelChartType.AutoSize = true;
+            this.labelChartType.Font = new System.Drawing.Font("Arial", 10F);
+            this.labelChartType.Location = new System.Drawing.Point(20, 23);
+            this.labelChartType.Name = "labelChartType";
+            this.labelChartType.Size = new System.Drawing.Size(46, 16);
+            this.labelChartType.TabIndex = 14;
+            this.labelChartType.Text = "label2";
+            // 
+            // selectionCombobox
+            // 
+            this.selectionCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectionCombobox.FormattingEnabled = true;
+            this.selectionCombobox.Location = new System.Drawing.Point(23, 42);
+            this.selectionCombobox.Name = "selectionCombobox";
+            this.selectionCombobox.Size = new System.Drawing.Size(121, 21);
+            this.selectionCombobox.TabIndex = 13;
+            // 
+            // notifyIconQTLPosition
+            // 
+            this.notifyIconQTLPosition.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconQTLPosition.Icon")));
+            this.notifyIconQTLPosition.Text = "notifyIcon1";
+            this.notifyIconQTLPosition.Visible = true;
             // 
             // flowLayoutPanel1
             // 

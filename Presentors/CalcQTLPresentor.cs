@@ -57,13 +57,14 @@ namespace QTLProject
             if (db.SubData.Count > 0 && db.SubData[0].Genotype != null && db.SubData[0].TraitValue == null)
             {
                 errorMessage = ErrorMessage.MissingPhenotype;
-               return  false;
+                return false;
             }
             else if (db.SubData.Count > 0 && db.SubData[0].TraitValue != null && db.SubData[0].Genotype == null)
             {
                 errorMessage = ErrorMessage.MissingGenotype;
                 return false;
-            }else if(db.SubData.Count == 0 )
+            }
+            else if (db.SubData.Count == 0)
             {
                 errorMessage = ErrorMessage.NoDataLoaded;
                 return false;
@@ -79,6 +80,12 @@ namespace QTLProject
             List<Dictionary<int, string>> filteredData = new List<Dictionary<int, string>>();
             // filter out the locus that are not in the both files
             //iterate over all the raw data and filter only the ones that are both 
+            if(rawData == null)
+            {
+                MessageBox.Show("Genotype file is not in correct format.\nExample:\nmarkerName\t010101010", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             List<Locus> LocusList = new List<Locus>();
             db = DatabaseProvider.GetDatabase();
             lock (db)
@@ -150,7 +157,7 @@ namespace QTLProject
 
 
                     int offSetIndex = 0;
-                 
+
                     foreach (DataIndividualsAndTraits indiv in db.SubData)
                     {
 
@@ -298,14 +305,23 @@ namespace QTLProject
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] symbols = line.Split('\t');
-                    Dictionary<int, string> row = new Dictionary<int, string>();
-                    for (int i = 0; i < symbols.Length; i++)
+                    if (symbols.Length == 2)
                     {
-                        //symbol is what we to put in to the data structure
-                        row.Add(i, symbols[i]);
-                    }
 
-                    data.Add(row);
+
+                        Dictionary<int, string> row = new Dictionary<int, string>();
+                        for (int i = 0; i < symbols.Length; i++)
+                        {
+                            //symbol is what we to put in to the data structure
+                            row.Add(i, symbols[i]);
+                        }
+
+                        data.Add(row);
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             return data;
@@ -341,6 +357,7 @@ namespace QTLProject
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] symbols = line.Split('\t');
+                    
                     Dictionary<int, string> row = new Dictionary<int, string>();
                     for (int i = 0; i < symbols.Length; i++)
                     {

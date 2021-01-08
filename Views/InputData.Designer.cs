@@ -30,10 +30,10 @@ namespace QTLProject
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputData));
             this.inputDataTable = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnOpenData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnSaveData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnCutData = new QTLProject.Utils.RoundedButtonToolBar();
@@ -41,8 +41,10 @@ namespace QTLProject
             this.btnPasteData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnInsrData = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnDelData = new QTLProject.Utils.RoundedButtonToolBar();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnBack = new QTLProject.Utils.RoundedButtonToolBar();
             this.btnNext = new QTLProject.Utils.RoundedButtonToolBar();
+            this.notifyInputDataSaved = new System.Windows.Forms.NotifyIcon(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -89,15 +91,6 @@ namespace QTLProject
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 55);
             this.flowLayoutPanel1.TabIndex = 17;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.inputDataTable);
-            this.panel1.Location = new System.Drawing.Point(41, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(643, 452);
-            this.panel1.TabIndex = 18;
             // 
             // btnOpenData
             // 
@@ -201,6 +194,15 @@ namespace QTLProject
             this.btnDelData.TabIndex = 15;
             this.btnDelData.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.inputDataTable);
+            this.panel1.Location = new System.Drawing.Point(41, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(643, 452);
+            this.panel1.TabIndex = 18;
+            // 
             // btnBack
             // 
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -224,6 +226,11 @@ namespace QTLProject
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // notifyInputDataSaved
+            // 
+            this.notifyInputDataSaved.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyInputDataSaved.Icon")));
+            this.notifyInputDataSaved.Visible = true;
             // 
             // InputData
             // 
@@ -255,5 +262,6 @@ namespace QTLProject
         private RoundedButtonToolBar btnInsrData;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NotifyIcon notifyInputDataSaved;
     }
 }

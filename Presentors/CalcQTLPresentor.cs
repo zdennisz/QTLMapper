@@ -201,7 +201,11 @@ namespace QTLProject
             Cursor.Current = Cursors.WaitCursor;
             var rawData = await Task.Run(() => readPhenData(path));
             Cursor.Current = Cursors.Default;
-
+            if (rawData == null)
+            {
+                MessageBox.Show("Phenotype file is not in correct format.\nExample:tc111\t0.25\t0.21...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //create list of traits
             List<Trait> tempListTraits = new List<Trait>();
@@ -357,7 +361,10 @@ namespace QTLProject
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] symbols = line.Split('\t');
-                    
+                    if (symbols[0].Substring(0, 1).ToLower().Equals("t"))
+                    {
+
+                  
                     Dictionary<int, string> row = new Dictionary<int, string>();
                     for (int i = 0; i < symbols.Length; i++)
                     {
@@ -366,6 +373,11 @@ namespace QTLProject
                     }
 
                     data.Add(row);
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             return data;

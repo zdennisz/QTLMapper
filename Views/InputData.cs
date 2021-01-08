@@ -117,7 +117,8 @@ namespace QTLProject
 
             //save the tabledata to new folder
 
-            inputDataPresentor.SaveDataToNewFile();
+            inputDataPresentor.SaveDataToNewFile(notifyInputDataSaved);
+            
         }
 
         private void BtnOpenData_MouseClick(object sender, MouseEventArgs e)
@@ -170,6 +171,8 @@ namespace QTLProject
         {
             backButtonClicked?.Invoke(this, e);
         }
+      
+
         #endregion Private Methods
 
 

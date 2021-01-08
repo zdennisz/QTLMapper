@@ -109,6 +109,15 @@ namespace QTLProject
 
             dataTable.InsertTableData(tableData, tableData.Count, TableRowType.InputDataRow);
         }
+
+        private void showToastMessage(NotifyIcon notifyIcon, string message = "File Saved at selected location.")
+        {
+            notifyIcon.Visible = true;
+            notifyIcon.BalloonTipText = message;
+            notifyIcon.ShowBalloonTip(1000);
+        }
+
+
         #endregion Private Methods
 
         #region Public Methods
@@ -212,7 +221,7 @@ namespace QTLProject
             //send update message to who ever is listening
         }
 
-        public void SaveDataToNewFile()
+        public void SaveDataToNewFile(NotifyIcon notifyIcon)
         {
             List<Dictionary<int, string>> allData = new List<Dictionary<int, string>>();
             var fullData = TempDataHolder.FullTempFileHolder;
@@ -242,8 +251,15 @@ namespace QTLProject
                 string extension=Path.GetExtension(path);
                 var pathWithoutExt = Path.GetDirectoryName(path);
                 WriteToFile(pathWithoutExt, fileName, extension,allData);
+                showToastMessage(notifyIcon);
+
+
             }
         }
+
+
+
+
 
         #endregion Public Methods
     }

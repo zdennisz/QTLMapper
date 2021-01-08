@@ -514,11 +514,13 @@ namespace QTLProject
                 chromosomes.Add(i, p);
 
             }
+            double maxVal= getLongestChr(this.db.GenomeOrganization.Chromosome,amountOfChromosomes);
             foreach (LineChartXY chartXy in charts)
             {
                 chartXy.AxisXTitle = "Position on chromosome";
                 chartXy.AxisYTitle = "-Log(P-Value)";
-                
+                chartXy.SetXAxisMaxValue = maxVal;
+
             }
 
             double temp, tempLogVal=0.0;
@@ -581,6 +583,20 @@ namespace QTLProject
 
 
         #endregion Public Methods
+
+        #region PrivateMethods
+        private double getLongestChr(IList<Chromosome> Chr,int range)
+        {
+            //retreive only the amount of graphs that we are drawing
+            List<Chromosome> _chr = ((List<Chromosome>)Chr).GetRange(0, range); 
+
+           
+            double maxGeneticLenChromosome = _chr.Max(r => r.LenGenetcM);
+
+            return maxGeneticLenChromosome;
+        }
+
+        #endregion PrivateMethods
 
     }
 }

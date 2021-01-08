@@ -20,6 +20,8 @@ namespace QTLProject.Utils
         private Axis axisY,axisX;
         public string AxisXTitle { set { axisX.Title = value; } }
         public string AxisYTitle { set { axisY.Title = value; } }
+
+        public double SetXAxisMaxValue { set { axisX.MaxValue = value; } }
         public LineChartXY(CartesianChart chart)
         {
             this.chart = chart;
